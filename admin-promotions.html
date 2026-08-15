@@ -3,798 +3,25 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <title>จัดการโปรโมชั่น | Mon Bridge Stay</title>
+<title>จัดการโปรโมชั่น | Mon Bridge Stay</title>
 
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            background: #F7F3E8;
-            color: #3E3328;
-            font-family: Arial, sans-serif;
-        }
-
-
-        /* =========================
-           SIDEBAR
-        ========================= */
-
-        .sidebar {
-
-            position: fixed;
-
-            left: 0;
-            top: 0;
-
-            width: 300px;
-            height: 100vh;
-
-            background: #4E342E;
-
-            color: white;
-
-            padding: 30px 18px;
-
-            overflow-y: auto;
-        }
-
-
-        .logo {
-
-            font-size: 28px;
-
-            font-weight: bold;
-
-            margin-bottom: 35px;
-
-            line-height: 1.2;
-        }
-
-
-        .logo span {
-            display: block;
-        }
-
-
-        .menu {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 8px;
-        }
-
-
-        .menu a {
-
-            color: white;
-
-            text-decoration: none;
-
-            padding: 16px 22px;
-
-            border-radius: 14px;
-
-            font-size: 19px;
-
-            font-weight: 500;
-
-            transition: 0.2s;
-        }
-
-
-        .menu a:hover {
-
-            background: #795548;
-        }
-
-
-        .menu a.active {
-
-            background: #806052;
-        }
-
-
-        /* =========================
-           MAIN
-        ========================= */
-
-        .main {
-
-            margin-left: 300px;
-
-            padding: 45px;
-
-            min-height: 100vh;
-        }
-
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        .page-header {
-
-            background: white;
-
-            border-radius: 22px;
-
-            padding: 30px 40px;
-
-            margin-bottom: 35px;
-
-            box-shadow:
-                0 5px 20px rgba(62, 51, 40, 0.08);
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            gap: 20px;
-        }
-
-
-        .page-header-left {
-            flex: 1;
-        }
-
-
-        .page-header h1 {
-
-            margin: 0;
-
-            color: #6D4C41;
-
-            font-weight: bold;
-
-            font-size: 40px;
-        }
-
-
-        .page-header p {
-
-            margin: 8px 0 0;
-
-            font-size: 18px;
-        }
-
-
-        .header-buttons {
-
-            display: flex;
-
-            gap: 10px;
-        }
-
-
-        .btn {
-
-            border: none;
-
-            border-radius: 10px;
-
-            padding: 11px 18px;
-
-            font-size: 15px;
-
-            cursor: pointer;
-
-            transition: 0.2s;
-        }
-
-
-        .btn-primary {
-
-            background: #795548;
-
-            color: white;
-        }
-
-
-        .btn-primary:hover {
-
-            background: #5D4037;
-        }
-
-
-        .btn-refresh {
-
-            background: #8D6E63;
-
-            color: white;
-        }
-
-
-        .btn-refresh:hover {
-
-            background: #6D4C41;
-        }
-
-
-        /* =========================
-           SUMMARY
-        ========================= */
-
-        .summary {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 25px;
-
-            margin-bottom: 35px;
-        }
-
-
-        .summary-card {
-
-            background: white;
-
-            border-radius: 22px;
-
-            padding: 25px 30px;
-
-            min-height: 130px;
-
-            box-shadow:
-                0 5px 20px rgba(62, 51, 40, 0.08);
-        }
-
-
-        .summary-number {
-
-            font-size: 34px;
-
-            font-weight: bold;
-
-            color: #795548;
-
-            margin-bottom: 8px;
-        }
-
-
-        .summary-label {
-
-            font-size: 17px;
-
-            color: #6D4C41;
-        }
-
-
-        /* =========================
-           SEARCH
-        ========================= */
-
-        .search-box {
-
-            background: white;
-
-            border-radius: 22px;
-
-            padding: 25px 30px;
-
-            margin-bottom: 25px;
-
-            box-shadow:
-                0 5px 20px rgba(62, 51, 40, 0.08);
-        }
-
-
-        .search-title {
-
-            color: #6D4C41;
-
-            font-size: 20px;
-
-            font-weight: bold;
-
-            margin-bottom: 12px;
-        }
-
-
-        .search-row {
-
-            display: flex;
-
-            gap: 12px;
-        }
-
-
-        .search-input {
-
-            flex: 1;
-
-            padding: 13px 16px;
-
-            border: 1px solid #D7CCC8;
-
-            border-radius: 12px;
-
-            font-size: 16px;
-
-            outline: none;
-        }
-
-
-        .search-input:focus {
-
-            border-color: #795548;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(121, 85, 72, 0.12);
-        }
-
-
-        .btn-clear {
-
-            background: #E8E1D8;
-
-            color: #5D4037;
-        }
-
-
-        .btn-clear:hover {
-
-            background: #D7CCC8;
-        }
-
-
-        /* =========================
-           TABLE BOX
-        ========================= */
-
-        .promotion-box {
-
-            background: white;
-
-            border-radius: 22px;
-
-            padding: 30px;
-
-            box-shadow:
-                0 5px 20px rgba(62, 51, 40, 0.08);
-        }
-
-
-        .table-responsive {
-
-            overflow-x: auto;
-        }
-
-
-        table {
-
-            width: 100%;
-
-            min-width: 900px;
-
-            border-collapse: collapse;
-        }
-
-
-        th {
-
-            background: #F7F3E8;
-
-            color: #6D4C41;
-
-            padding: 16px 12px;
-
-            text-align: left;
-
-            border-bottom:
-                2px solid #E0D2C5;
-        }
-
-
-        td {
-
-            padding: 17px 12px;
-
-            border-bottom:
-                1px solid #EEE5DC;
-
-            vertical-align: middle;
-        }
-
-
-        tr:hover td {
-
-            background: #FCF9F3;
-        }
-
-
-        .status {
-
-            display: inline-block;
-
-            padding: 7px 14px;
-
-            border-radius: 20px;
-
-            font-size: 14px;
-        }
-
-
-        .status-active {
-
-            background: #E8F3E8;
-
-            color: #4E7A52;
-        }
-
-
-        .status-expired {
-
-            background: #F5E3E0;
-
-            color: #A34B3B;
-        }
-
-
-        .action-buttons {
-
-            display: flex;
-
-            gap: 7px;
-        }
-
-
-        .btn-view {
-
-            background: #795548;
-
-            color: white;
-        }
-
-
-        .btn-edit {
-
-            background: #8D6E63;
-
-            color: white;
-        }
-
-
-        .btn-delete {
-
-            background: #B45D4C;
-
-            color: white;
-        }
-
-
-        .btn-view:hover {
-
-            background: #5D4037;
-        }
-
-
-        .btn-edit:hover {
-
-            background: #6D4C41;
-        }
-
-
-        .btn-delete:hover {
-
-            background: #934737;
-        }
-
-
-        /* =========================
-           EMPTY
-        ========================= */
-
-        .empty-message {
-
-            text-align: center;
-
-            padding: 60px 20px;
-
-            color: #8D8178;
-
-            font-size: 18px;
-        }
-
-
-        /* =========================
-           MODAL
-        ========================= */
-
-        .modal-overlay {
-
-            display: none;
-
-            position: fixed;
-
-            z-index: 9999;
-
-            left: 0;
-            top: 0;
-
-            width: 100%;
-            height: 100%;
-
-            background:
-                rgba(0,0,0,0.55);
-
-            justify-content: center;
-
-            align-items: center;
-
-            padding: 20px;
-        }
-
-
-        .modal-overlay.show {
-
-            display: flex;
-        }
-
-
-        .modal {
-
-            background: white;
-
-            width: 100%;
-
-            max-width: 650px;
-
-            max-height: 90vh;
-
-            overflow-y: auto;
-
-            border-radius: 20px;
-
-            padding: 30px;
-
-            box-shadow:
-                0 15px 50px
-                rgba(0,0,0,0.25);
-        }
-
-
-        .modal h2 {
-
-            color: #6D4C41;
-
-            margin-top: 0;
-
-            margin-bottom: 25px;
-        }
-
-
-        .form-group {
-
-            margin-bottom: 18px;
-        }
-
-
-        .form-group label {
-
-            display: block;
-
-            margin-bottom: 7px;
-
-            font-weight: bold;
-
-            color: #6D4C41;
-        }
-
-
-        .form-control {
-
-            width: 100%;
-
-            padding: 12px 14px;
-
-            border: 1px solid #D7CCC8;
-
-            border-radius: 10px;
-
-            font-size: 16px;
-
-            outline: none;
-        }
-
-
-        .form-control:focus {
-
-            border-color: #795548;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(121,85,72,.1);
-        }
-
-
-        textarea.form-control {
-
-            min-height: 110px;
-
-            resize: vertical;
-        }
-
-
-        .modal-footer {
-
-            display: flex;
-
-            justify-content: flex-end;
-
-            gap: 10px;
-
-            margin-top: 25px;
-        }
-
-
-        .btn-cancel {
-
-            background: #E8E1D8;
-
-            color: #5D4037;
-        }
-
-
-        .detail-box {
-
-            background: #F7F3E8;
-
-            border-radius: 14px;
-
-            padding: 18px;
-        }
-
-
-        .detail-row {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            gap: 20px;
-
-            padding: 13px 0;
-
-            border-bottom:
-                1px solid #E0D2C5;
-        }
-
-
-        .detail-row:last-child {
-
-            border-bottom: none;
-        }
-
-
-        .detail-label {
-
-            font-weight: bold;
-
-            color: #795548;
-        }
-
-
-        .detail-value {
-
-            text-align: right;
-
-            word-break: break-word;
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 1200px) {
-
-            .sidebar {
-
-                width: 240px;
-            }
-
-            .main {
-
-                margin-left: 240px;
-
-                padding: 25px;
-            }
-
-            .summary {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-        }
-
-
-        @media (max-width: 800px) {
-
-            .sidebar {
-
-                position: relative;
-
-                width: 100%;
-
-                height: auto;
-
-                padding: 20px;
-            }
-
-            .main {
-
-                margin-left: 0;
-
-                padding: 20px;
-            }
-
-            .page-header {
-
-                flex-direction: column;
-
-                align-items: flex-start;
-            }
-
-            .header-buttons {
-
-                width: 100%;
-            }
-
-            .header-buttons .btn {
-
-                flex: 1;
-            }
-
-            .summary {
-
-                grid-template-columns: 1fr;
-            }
-
-            .search-row {
-
-                flex-direction: column;
-            }
-        }
-
-    </style>
+<link rel="stylesheet" href="admin.css">
 
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     SIDEBAR
-===================================================== -->
 
 <div class="sidebar">
 
     <div class="logo">
-
         🏡 Mon Bridge
-
         <span>Stay</span>
-
     </div>
-
 
     <div class="menu">
 
@@ -802,35 +29,30 @@
             📊 Dashboard
         </a>
 
-
         <a href="admin-rooms.html">
             🛏️ จัดการห้องพัก
         </a>
 
-
         <a href="admin-bookings.html">
             🗓️ การจอง
         </a>
-
 
         <a href="admin-promotions.html"
            class="active">
             🎁 โปรโมชั่น
         </a>
 
-
         <a href="admin-guests.html">
             👥 ผู้เข้าพัก
         </a>
-
 
         <a href="index.html">
             🌐 ดูหน้าเว็บไซต์
         </a>
 
-
-        <a href="admin.html">
-            🚪 กลับ Dashboard
+        <a href="index.html"
+           onclick="logoutAdmin()">
+            🚪 ออกจากระบบ
         </a>
 
     </div>
@@ -838,488 +60,321 @@
 </div>
 
 
+<main class="main">
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
+<div class="page-header">
 
-<div class="main">
+    <div class="page-header-left">
+
+        <h1>
+            🎁 จัดการโปรโมชั่น
+        </h1>
+
+        <p>
+            เพิ่ม แก้ไข และจัดการโปรโมชั่น
+        </p>
+
+    </div>
+
+    <div class="header-buttons">
+
+        <button
+            class="btn-main"
+            onclick="openPromotion()">
+
+            ＋ เพิ่มโปรโมชั่น
+
+        </button>
+
+        <button
+            class="btn-secondary"
+            onclick="renderPromotions()">
+
+            🔄 รีเฟรช
+
+        </button>
+
+    </div>
+
+</div>
 
 
-    <!-- HEADER -->
+<div class="summary">
 
-    <div class="page-header">
+    <div class="summary-card">
 
-        <div class="page-header-left">
-
-            <h1>
-                🎁 จัดการโปรโมชั่น
-            </h1>
-
-            <p>
-                เพิ่ม แก้ไข ค้นหา และจัดการโปรโมชั่นของ Mon Bridge Stay
-            </p>
-
+        <div id="total"
+             class="summary-number">
+            0
         </div>
 
-
-        <div class="header-buttons">
-
-            <button
-                type="button"
-                class="btn btn-primary"
-                id="addPromotionButton">
-
-                ➕ เพิ่มโปรโมชั่น
-
-            </button>
-
-
-            <button
-                type="button"
-                class="btn btn-refresh"
-                id="refreshButton">
-
-                🔄 รีเฟรช
-
-            </button>
-
+        <div class="summary-label">
+            🎁 โปรโมชั่นทั้งหมด
         </div>
 
     </div>
 
 
+    <div class="summary-card">
 
-    <!-- =================================================
-         SUMMARY
-    ================================================= -->
-
-    <div class="summary">
-
-
-        <div class="summary-card">
-
-            <div
-                class="summary-number"
-                id="totalCount">
-
-                0
-
-            </div>
-
-            <div class="summary-label">
-
-                🎁 โปรโมชั่นทั้งหมด
-
-            </div>
-
+        <div id="active"
+             class="summary-number">
+            0
         </div>
 
-
-        <div class="summary-card">
-
-            <div
-                class="summary-number"
-                id="activeCount">
-
-                0
-
-            </div>
-
-            <div class="summary-label">
-
-                🟢 โปรโมชั่นที่ใช้งาน
-
-            </div>
-
-        </div>
-
-
-        <div class="summary-card">
-
-            <div
-                class="summary-number"
-                id="searchCount">
-
-                0
-
-            </div>
-
-            <div class="summary-label">
-
-                🔎 ผลการค้นหา
-
-            </div>
-
+        <div class="summary-label">
+            🟢 เปิดใช้งาน
         </div>
 
     </div>
 
 
+    <div class="summary-card">
 
-    <!-- =================================================
-         SEARCH
-    ================================================= -->
-
-    <div class="search-box">
-
-        <div class="search-title">
-
-            🔎 ค้นหาโปรโมชั่น
-
+        <div id="inactive"
+             class="summary-number">
+            0
         </div>
 
+        <div class="summary-label">
+            🔴 ปิดใช้งาน
+        </div>
 
-        <div class="search-row">
+    </div>
+
+
+    <div class="summary-card">
+
+        <div id="searchCount"
+             class="summary-number">
+            0
+        </div>
+
+        <div class="summary-label">
+            🔎 ผลการค้นหา
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="panel">
+
+    <div class="search-row">
+
+        <input
+            id="search"
+            class="search-input"
+            placeholder="🔎 ค้นหาชื่อโปรโมชั่น รายละเอียด หรือส่วนลด">
+
+        <button
+            class="btn-secondary"
+            onclick="clearSearch()">
+
+            ✕ ล้าง
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="panel">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>โปรโมชั่น</th>
+<th>รายละเอียด</th>
+<th>ส่วนลด</th>
+<th>วันเริ่มต้น</th>
+<th>วันสิ้นสุด</th>
+<th>สถานะ</th>
+<th>จัดการ</th>
+
+</tr>
+
+</thead>
+
+<tbody id="table"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<div id="promoModal"
+     class="modal">
+
+<div class="modal-box">
+
+    <div class="modal-title">
+
+        <span id="modalTitle">
+            เพิ่มโปรโมชั่น
+        </span>
+
+    </div>
+
+
+    <div class="form-grid">
+
+        <div class="form-group">
+
+            <label>
+                ชื่อโปรโมชั่น
+            </label>
 
             <input
-                type="text"
-                id="searchInput"
-                class="search-input"
-                placeholder="ค้นหาชื่อโปรโมชั่น รหัสส่วนลด หรือรายละเอียด...">
+                id="name"
+                class="form-control">
+
+        </div>
 
 
-            <button
-                type="button"
-                id="clearSearch"
-                class="btn btn-clear">
+        <div class="form-group">
 
-                ✕ ล้าง
+            <label>
+                ส่วนลด
+            </label>
 
-            </button>
+            <input
+                id="discount"
+                class="form-control"
+                placeholder="เช่น 25%">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                รายละเอียด
+            </label>
+
+            <input
+                id="detail"
+                class="form-control">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                วันเริ่มต้น
+            </label>
+
+            <input
+                id="start"
+                type="date"
+                class="form-control">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                วันสิ้นสุด
+            </label>
+
+            <input
+                id="end"
+                type="date"
+                class="form-control">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                สถานะ
+            </label>
+
+            <select
+                id="status"
+                class="form-control">
+
+                <option value="active">
+                    เปิดใช้งาน
+                </option>
+
+                <option value="inactive">
+                    ปิดใช้งาน
+                </option>
+
+            </select>
 
         </div>
 
     </div>
 
 
+    <div class="modal-actions">
 
-    <!-- =================================================
-         TABLE
-    ================================================= -->
+        <button
+            class="btn-secondary"
+            onclick="closePromotion()">
 
-    <div class="promotion-box">
+            ยกเลิก
 
-        <div class="table-responsive">
+        </button>
 
-            <table>
+        <button
+            class="btn-main"
+            onclick="savePromotion()">
 
-                <thead>
+            💾 บันทึก
 
-                    <tr>
-
-                        <th>
-                            #
-                        </th>
-
-                        <th>
-                            ชื่อโปรโมชั่น
-                        </th>
-
-                        <th>
-                            รหัสส่วนลด
-                        </th>
-
-                        <th>
-                            ส่วนลด
-                        </th>
-
-                        <th>
-                            วันที่เริ่ม
-                        </th>
-
-                        <th>
-                            วันที่สิ้นสุด
-                        </th>
-
-                        <th>
-                            สถานะ
-                        </th>
-
-                        <th>
-                            จัดการ
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody id="promotionTable">
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     MODAL เพิ่ม / แก้ไข
-===================================================== -->
-
-<div
-    id="formModal"
-    class="modal-overlay">
-
-
-    <div class="modal">
-
-        <h2 id="formTitle">
-            ➕ เพิ่มโปรโมชั่น
-        </h2>
-
-
-        <form id="promotionForm">
-
-
-            <div class="form-group">
-
-                <label>
-                    ชื่อโปรโมชั่น
-                </label>
-
-                <input
-                    type="text"
-                    id="promotionName"
-                    class="form-control"
-                    placeholder="เช่น โปรโมชั่นพัก 2 คืน"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    รหัสส่วนลด
-                </label>
-
-                <input
-                    type="text"
-                    id="promotionCode"
-                    class="form-control"
-                    placeholder="เช่น MON10"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    ส่วนลด
-                </label>
-
-                <input
-                    type="text"
-                    id="promotionDiscount"
-                    class="form-control"
-                    placeholder="เช่น 10% หรือ 500 บาท"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    วันที่เริ่มโปรโมชั่น
-                </label>
-
-                <input
-                    type="date"
-                    id="promotionStart"
-                    class="form-control"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    วันที่สิ้นสุดโปรโมชั่น
-                </label>
-
-                <input
-                    type="date"
-                    id="promotionEnd"
-                    class="form-control"
-                    required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    รายละเอียด
-                </label>
-
-                <textarea
-                    id="promotionDescription"
-                    class="form-control"
-                    placeholder="รายละเอียดโปรโมชั่น"></textarea>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    สถานะ
-                </label>
-
-                <select
-                    id="promotionStatus"
-                    class="form-control">
-
-                    <option value="active">
-                        🟢 ใช้งาน
-                    </option>
-
-                    <option value="expired">
-                        🔴 ปิดใช้งาน
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="modal-footer">
-
-                <button
-                    type="button"
-                    class="btn btn-cancel"
-                    id="cancelFormButton">
-
-                    ยกเลิก
-
-                </button>
-
-
-                <button
-                    type="submit"
-                    class="btn btn-primary">
-
-                    💾 บันทึกโปรโมชั่น
-
-                </button>
-
-            </div>
-
-
-        </form>
+        </button>
 
     </div>
 
 </div>
 
-
-
-<!-- =====================================================
-     MODAL ดูรายละเอียด
-===================================================== -->
-
-<div
-    id="detailModal"
-    class="modal-overlay">
-
-
-    <div class="modal">
-
-        <h2>
-            👁️ รายละเอียดโปรโมชั่น
-        </h2>
-
-
-        <div
-            id="promotionDetail"
-            class="detail-box">
-
-        </div>
-
-
-        <div class="modal-footer">
-
-            <button
-                type="button"
-                class="btn btn-cancel"
-                id="closeDetailButton">
-
-                ปิด
-
-            </button>
-
-        </div>
-
-    </div>
-
 </div>
 
+
+<footer>
+© 2026 Mon Bridge Stay. All rights reserved.
+</footer>
+
+</main>
 
 
 <script>
 
-
-/* =====================================================
-   STORAGE
-===================================================== */
-
-const PROMOTION_KEY =
+const KEY =
     "monBridgePromotions";
 
+let editIndex = -1;
 
-let editingIndex = -1;
-
-
-
-/* =====================================================
-   อ่านโปรโมชั่น
-===================================================== */
 
 function getPromotions() {
 
     try {
 
-        const saved =
-            localStorage.getItem(
-                PROMOTION_KEY
+        const data =
+            JSON.parse(
+                localStorage.getItem(KEY) || "[]"
             );
 
+        return Array.isArray(data)
+            ? data
+            : [];
 
-        if (!saved) {
-
-            return [];
-
-        }
-
-
-        const data =
-            JSON.parse(saved);
-
-
-        if (!Array.isArray(data)) {
-
-            return [];
-
-        }
-
-
-        return data;
-
-    }
-
-    catch (error) {
-
-        console.error(error);
+    } catch {
 
         return [];
 
@@ -1328,337 +383,289 @@ function getPromotions() {
 }
 
 
-
-/* =====================================================
-   บันทึกโปรโมชั่น
-===================================================== */
-
 function savePromotions(data) {
 
     localStorage.setItem(
-        PROMOTION_KEY,
+        KEY,
         JSON.stringify(data)
     );
 
 }
 
 
+function esc(value) {
 
-/* =====================================================
-   Escape HTML
-===================================================== */
-
-function escapeHTML(value) {
-
-    if (
-        value === null ||
-        value === undefined
-    ) {
-
-        return "";
-
-    }
-
-
-    return String(value)
-
-        .replace(/&/g, "&amp;")
-
-        .replace(/</g, "&lt;")
-
-        .replace(/>/g, "&gt;")
-
-        .replace(/"/g, "&quot;")
-
-        .replace(/'/g, "&#039;");
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
-
-/* =====================================================
-   แสดงโปรโมชั่น
-===================================================== */
-
 function renderPromotions() {
 
-    const table =
-        document.getElementById(
-            "promotionTable"
-        );
-
-
-    const search =
-        document.getElementById(
-            "searchInput"
-        ).value
-         .trim()
-         .toLowerCase();
-
-
-    const promotions =
+    const all =
         getPromotions();
 
 
-    const filtered =
-        promotions.filter(
-            function(item) {
+    const keyword =
+        search.value
+        .trim()
+        .toLowerCase();
 
-                const text =
 
-                    (item.name || "") +
-                    " " +
-                    (item.code || "") +
-                    " " +
-                    (item.discount || "") +
-                    " " +
-                    (item.description || "");
-
-                return text
-                    .toLowerCase()
-                    .includes(search);
-
-            }
+    const list =
+        all.filter(
+            promotion =>
+            JSON.stringify(promotion)
+            .toLowerCase()
+            .includes(keyword)
         );
+
+
+    total.textContent =
+        all.length;
+
+
+    active.textContent =
+        all.filter(
+            p => p.status !== "inactive"
+        ).length;
+
+
+    inactive.textContent =
+        all.filter(
+            p => p.status === "inactive"
+        ).length;
+
+
+    searchCount.textContent =
+        list.length;
 
 
     table.innerHTML = "";
 
 
-    if (filtered.length === 0) {
+    if (!list.length) {
 
         table.innerHTML = `
 
-            <tr>
+        <tr>
 
-                <td
-                    colspan="8"
-                    class="empty-message">
+            <td colspan="7"
+                class="empty">
 
-                    ${
-                        promotions.length === 0
+                🎁 ยังไม่มีโปรโมชั่น
 
-                        ? "📭 ยังไม่มีโปรโมชั่นในระบบ"
+            </td>
 
-                        : "🔎 ไม่พบโปรโมชั่นที่ค้นหา"
+        </tr>`;
 
-                    }
-
-                </td>
-
-            </tr>
-
-        `;
+        return;
 
     }
 
 
-    filtered.forEach(
-        function(item) {
+    list.forEach(
+        promotion => {
+
+            const index =
+                all.indexOf(promotion);
 
 
-            const realIndex =
-                promotions.indexOf(item);
+            table.innerHTML += `
 
-
-            const statusClass =
-                item.status === "active"
-
-                ? "status-active"
-
-                : "status-expired";
-
-
-            const statusText =
-                item.status === "active"
-
-                ? "🟢 ใช้งาน"
-
-                : "🔴 ปิดใช้งาน";
-
-
-            const row =
-                document.createElement("tr");
-
-
-            row.innerHTML = `
+            <tr>
 
                 <td>
-                    #${realIndex + 1}
-                </td>
-
-
-                <td>
+                    🎁
                     <strong>
-                        ${escapeHTML(item.name)}
+                        ${esc(
+                            promotion.name || "-"
+                        )}
                     </strong>
                 </td>
 
-
                 <td>
-                    ${escapeHTML(item.code)}
+                    ${esc(
+                        promotion.detail || "-"
+                    )}
                 </td>
 
-
                 <td>
-                    ${escapeHTML(item.discount)}
+                    ${esc(
+                        promotion.discount || "-"
+                    )}
                 </td>
 
-
                 <td>
-                    ${escapeHTML(item.startDate)}
+                    ${esc(
+                        promotion.start || "-"
+                    )}
                 </td>
 
-
                 <td>
-                    ${escapeHTML(item.endDate)}
+                    ${esc(
+                        promotion.end || "-"
+                    )}
                 </td>
 
-
                 <td>
 
-                    <span class="status ${statusClass}">
+                    <span class="badge ${
+                        promotion.status === "inactive"
+                        ? "badge-red"
+                        : "badge-green"
+                    }">
 
-                        ${statusText}
+                        ${
+                            promotion.status === "inactive"
+                            ? "🔴 ปิดใช้งาน"
+                            : "🟢 เปิดใช้งาน"
+                        }
 
                     </span>
 
                 </td>
 
-
                 <td>
 
-                    <div class="action-buttons">
-
-
-                        <button
-                            type="button"
-                            class="btn btn-view"
-                            data-action="view"
-                            data-index="${realIndex}">
-
-                            👁️ ดู
-
-                        </button>
-
+                    <div class="actions">
 
                         <button
-                            type="button"
-                            class="btn btn-edit"
-                            data-action="edit"
-                            data-index="${realIndex}">
+                            class="btn-edit"
+                            onclick="editPromotion(${index})">
 
                             ✏️ แก้ไข
 
                         </button>
 
-
                         <button
-                            type="button"
-                            class="btn btn-delete"
-                            data-action="delete"
-                            data-index="${realIndex}">
+                            class="btn-danger"
+                            onclick="deletePromotion(${index})">
 
                             🗑️ ลบ
 
                         </button>
 
-
                     </div>
 
                 </td>
 
-            `;
-
-
-            table.appendChild(row);
+            </tr>`;
 
         }
     );
 
-
-    /* Dashboard */
-
-    document.getElementById(
-        "totalCount"
-    ).textContent =
-        promotions.length;
+}
 
 
-    document.getElementById(
-        "activeCount"
-    ).textContent =
+function openPromotion() {
 
-        promotions.filter(
-            function(item) {
+    editIndex = -1;
 
-                return item.status === "active";
+    modalTitle.textContent =
+        "เพิ่มโปรโมชั่น";
 
-            }
-        ).length;
+    name.value = "";
+    discount.value = "";
+    detail.value = "";
+    start.value = "";
+    end.value = "";
+    status.value = "active";
 
-
-    document.getElementById(
-        "searchCount"
-    ).textContent =
-        filtered.length;
+    promoModal.classList.add(
+        "show"
+    );
 
 }
 
 
+function editPromotion(index) {
 
-/* =====================================================
-   เปิดฟอร์มเพิ่ม
-===================================================== */
+    const promotion =
+        getPromotions()[index];
 
-function openAddForm() {
-
-    editingIndex = -1;
+    if (!promotion) return;
 
 
-    document.getElementById(
-        "formTitle"
-    ).textContent =
-        "➕ เพิ่มโปรโมชั่น";
+    editIndex = index;
+
+    modalTitle.textContent =
+        "แก้ไขโปรโมชั่น";
 
 
-    document.getElementById(
-        "promotionForm"
-    ).reset();
+    name.value =
+        promotion.name || "";
+
+    discount.value =
+        promotion.discount || "";
+
+    detail.value =
+        promotion.detail || "";
+
+    start.value =
+        promotion.start || "";
+
+    end.value =
+        promotion.end || "";
+
+    status.value =
+        promotion.status || "active";
 
 
-    document.getElementById(
-        "promotionStatus"
-    ).value =
-        "active";
-
-
-    document.getElementById(
-        "formModal"
-    ).classList.add("show");
+    promoModal.classList.add(
+        "show"
+    );
 
 }
 
 
+function closePromotion() {
 
-/* =====================================================
-   เปิดฟอร์มแก้ไข
-===================================================== */
+    promoModal.classList.remove(
+        "show"
+    );
 
-function openEditForm(index) {
+}
+
+
+function savePromotion() {
 
     const promotions =
         getPromotions();
 
 
-    const item =
-        promotions[index];
+    const promotion = {
+
+        name:
+            name.value.trim(),
+
+        discount:
+            discount.value.trim(),
+
+        detail:
+            detail.value.trim(),
+
+        start:
+            start.value,
+
+        end:
+            end.value,
+
+        status:
+            status.value
+
+    };
 
 
-    if (!item) {
+    if (!promotion.name) {
 
         alert(
-            "ไม่พบข้อมูลโปรโมชั่น"
+            "กรุณากรอกชื่อโปรโมชั่น"
         );
 
         return;
@@ -1666,352 +673,35 @@ function openEditForm(index) {
     }
 
 
-    editingIndex = index;
+    if (editIndex === -1) {
 
-
-    document.getElementById(
-        "formTitle"
-    ).textContent =
-        "✏️ แก้ไขโปรโมชั่น";
-
-
-    document.getElementById(
-        "promotionName"
-    ).value =
-        item.name || "";
-
-
-    document.getElementById(
-        "promotionCode"
-    ).value =
-        item.code || "";
-
-
-    document.getElementById(
-        "promotionDiscount"
-    ).value =
-        item.discount || "";
-
-
-    document.getElementById(
-        "promotionStart"
-    ).value =
-        item.startDate || "";
-
-
-    document.getElementById(
-        "promotionEnd"
-    ).value =
-        item.endDate || "";
-
-
-    document.getElementById(
-        "promotionDescription"
-    ).value =
-        item.description || "";
-
-
-    document.getElementById(
-        "promotionStatus"
-    ).value =
-        item.status || "active";
-
-
-    document.getElementById(
-        "formModal"
-    ).classList.add("show");
-
-}
-
-
-
-/* =====================================================
-   บันทึก
-===================================================== */
-
-document.getElementById(
-    "promotionForm"
-).addEventListener(
-    "submit",
-    function(event) {
-
-        event.preventDefault();
-
-
-        const name =
-            document.getElementById(
-                "promotionName"
-            ).value.trim();
-
-
-        const code =
-            document.getElementById(
-                "promotionCode"
-            ).value.trim();
-
-
-        const discount =
-            document.getElementById(
-                "promotionDiscount"
-            ).value.trim();
-
-
-        const startDate =
-            document.getElementById(
-                "promotionStart"
-            ).value;
-
-
-        const endDate =
-            document.getElementById(
-                "promotionEnd"
-            ).value;
-
-
-        const description =
-            document.getElementById(
-                "promotionDescription"
-            ).value.trim();
-
-
-        const status =
-            document.getElementById(
-                "promotionStatus"
-            ).value;
-
-
-        if (!name || !code || !discount) {
-
-            alert(
-                "กรุณากรอกข้อมูลให้ครบ"
-            );
-
-            return;
-
-        }
-
-
-        if (startDate > endDate) {
-
-            alert(
-                "วันที่สิ้นสุดต้องไม่ก่อนวันที่เริ่ม"
-            );
-
-            return;
-
-        }
-
-
-        const promotions =
-            getPromotions();
-
-
-        const promotion = {
-
-            name: name,
-
-            code: code,
-
-            discount: discount,
-
-            startDate: startDate,
-
-            endDate: endDate,
-
-            description: description,
-
-            status: status
-
-        };
-
-
-        /* เพิ่ม */
-
-        if (editingIndex === -1) {
-
-            promotions.push(
-                promotion
-            );
-
-            alert(
-                "✅ บันทึกโปรโมชั่นเรียบร้อยแล้ว"
-            );
-
-        }
-
-        /* แก้ไข */
-
-        else {
-
-            promotions[
-                editingIndex
-            ] = promotion;
-
-            alert(
-                "✅ แก้ไขโปรโมชั่นเรียบร้อยแล้ว"
-            );
-
-        }
-
-
-        /* สำคัญ */
-
-        savePromotions(
-            promotions
+        promotions.push(
+            promotion
         );
 
+    } else {
 
-        closeForm();
-
-
-        renderPromotions();
-
-    }
-);
-
-
-
-/* =====================================================
-   ดูรายละเอียด
-===================================================== */
-
-function viewPromotion(index) {
-
-    const promotions =
-        getPromotions();
-
-
-    const item =
-        promotions[index];
-
-
-    if (!item) {
-
-        alert(
-            "ไม่พบโปรโมชั่น"
-        );
-
-        return;
+        promotions[editIndex] =
+            promotion;
 
     }
 
 
-    const status =
-        item.status === "active"
+    savePromotions(
+        promotions
+    );
 
-        ? "🟢 ใช้งาน"
+    closePromotion();
 
-        : "🔴 ปิดใช้งาน";
-
-
-    document.getElementById(
-        "promotionDetail"
-    ).innerHTML = `
-
-        <div class="detail-row">
-
-            <span class="detail-label">
-                🎁 ชื่อโปรโมชั่น
-            </span>
-
-            <span class="detail-value">
-                ${escapeHTML(item.name)}
-            </span>
-
-        </div>
+    renderPromotions();
 
 
-        <div class="detail-row">
-
-            <span class="detail-label">
-                🏷️ รหัสส่วนลด
-            </span>
-
-            <span class="detail-value">
-                ${escapeHTML(item.code)}
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <span class="detail-label">
-                💰 ส่วนลด
-            </span>
-
-            <span class="detail-value">
-                ${escapeHTML(item.discount)}
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <span class="detail-label">
-                📅 วันที่เริ่ม
-            </span>
-
-            <span class="detail-value">
-                ${escapeHTML(item.startDate)}
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <span class="detail-label">
-                📅 วันที่สิ้นสุด
-            </span>
-
-            <span class="detail-value">
-                ${escapeHTML(item.endDate)}
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <span class="detail-label">
-                📝 รายละเอียด
-            </span>
-
-            <span class="detail-value">
-                ${escapeHTML(item.description || "-")}
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <span class="detail-label">
-                📌 สถานะ
-            </span>
-
-            <span class="detail-value">
-                ${status}
-            </span>
-
-        </div>
-
-    `;
-
-
-    document.getElementById(
-        "detailModal"
-    ).classList.add("show");
+    alert(
+        "บันทึกโปรโมชั่นเรียบร้อยแล้ว"
+    );
 
 }
 
-
-
-/* =====================================================
-   ลบโปรโมชั่น
-===================================================== */
 
 function deletePromotion(index) {
 
@@ -2019,38 +709,13 @@ function deletePromotion(index) {
         getPromotions();
 
 
-    const item =
-        promotions[index];
-
-
-    if (!item) {
-
-        alert(
-            "ไม่พบโปรโมชั่นที่ต้องการลบ"
-        );
-
+    if (!promotions[index])
         return;
 
-    }
 
-
-    const confirmed =
-        window.confirm(
-
-            "⚠️ ยืนยันการลบโปรโมชั่น\n\n" +
-
-            "ชื่อ: " +
-            item.name +
-
-            "\nรหัส: " +
-            item.code +
-
-            "\n\nข้อมูลนี้จะถูกลบออกจากระบบ"
-
-        );
-
-
-    if (!confirmed) {
+    if (!confirm(
+        "ต้องการลบโปรโมชั่นนี้ใช่หรือไม่?"
+    )) {
 
         return;
 
@@ -2067,278 +732,46 @@ function deletePromotion(index) {
         promotions
     );
 
-
     renderPromotions();
 
 
     alert(
-        "🗑️ ลบโปรโมชั่นเรียบร้อยแล้ว"
+        "ลบโปรโมชั่นเรียบร้อยแล้ว"
     );
 
 }
 
 
+function clearSearch() {
 
-/* =====================================================
-   EVENT DELEGATION
-   ทำให้ปุ่ม ดู / แก้ไข / ลบ กดได้แน่นอน
-===================================================== */
+    search.value = "";
 
-document.addEventListener(
-    "click",
-    function(event) {
-
-
-        const button =
-            event.target.closest(
-                "button[data-action]"
-            );
-
-
-        if (!button) {
-
-            return;
-
-        }
-
-
-        const action =
-            button.dataset.action;
-
-
-        const index =
-            Number(
-                button.dataset.index
-            );
-
-
-        if (
-            !Number.isInteger(index)
-        ) {
-
-            return;
-
-        }
-
-
-        if (action === "view") {
-
-            viewPromotion(index);
-
-        }
-
-
-        if (action === "edit") {
-
-            openEditForm(index);
-
-        }
-
-
-        if (action === "delete") {
-
-            deletePromotion(index);
-
-        }
-
-    }
-);
-
-
-
-/* =====================================================
-   เพิ่มโปรโมชั่น
-===================================================== */
-
-document.getElementById(
-    "addPromotionButton"
-).addEventListener(
-    "click",
-    openAddForm
-);
-
-
-
-/* =====================================================
-   ปิดฟอร์ม
-===================================================== */
-
-function closeForm() {
-
-    document.getElementById(
-        "formModal"
-    ).classList.remove("show");
+    renderPromotions();
 
 }
 
 
-document.getElementById(
-    "cancelFormButton"
-).addEventListener(
-    "click",
-    closeForm
-);
+function logoutAdmin() {
+
+    localStorage.removeItem(
+        "monBridgeAdmin"
+    );
+
+}
 
 
-
-/* =====================================================
-   ค้นหา
-===================================================== */
-
-document.getElementById(
-    "searchInput"
-).addEventListener(
+search.addEventListener(
     "input",
     renderPromotions
 );
 
 
-
-/* =====================================================
-   ล้างค้นหา
-===================================================== */
-
-document.getElementById(
-    "clearSearch"
-).addEventListener(
-    "click",
-    function() {
-
-        document.getElementById(
-            "searchInput"
-        ).value = "";
-
-
-        renderPromotions();
-
-
-        document.getElementById(
-            "searchInput"
-        ).focus();
-
-    }
-);
-
-
-
-/* =====================================================
-   รีเฟรช
-===================================================== */
-
-document.getElementById(
-    "refreshButton"
-).addEventListener(
-    "click",
-    function() {
-
-        renderPromotions();
-
-        alert(
-            "🔄 รีเฟรชข้อมูลโปรโมชั่นเรียบร้อยแล้ว"
-        );
-
-    }
-);
-
-
-
-/* =====================================================
-   ปิดรายละเอียด
-===================================================== */
-
-document.getElementById(
-    "closeDetailButton"
-).addEventListener(
-    "click",
-    function() {
-
-        document.getElementById(
-            "detailModal"
-        ).classList.remove("show");
-
-    }
-);
-
-
-
-/* =====================================================
-   คลิกนอก Modal
-===================================================== */
-
-document.querySelectorAll(
-    ".modal-overlay"
-).forEach(
-    function(modal) {
-
-        modal.addEventListener(
-            "click",
-            function(event) {
-
-                if (
-                    event.target === modal
-                ) {
-
-                    modal.classList.remove(
-                        "show"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-);
-
-
-
-/* =====================================================
-   ESC
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Escape"
-        ) {
-
-            document.querySelectorAll(
-                ".modal-overlay"
-            ).forEach(
-                function(modal) {
-
-                    modal.classList.remove(
-                        "show"
-                    );
-
-                }
-            );
-
-        }
-
-    }
-);
-
-
-
-/* =====================================================
-   โหลดหน้า
-===================================================== */
-
 document.addEventListener(
     "DOMContentLoaded",
-    function() {
-
-        renderPromotions();
-
-    }
+    renderPromotions
 );
 
 </script>
 
-
 </body>
-
 </html>
