@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 
@@ -65,7 +66,6 @@
             border: none;
             padding: 12px;
             border-radius: 10px;
-            font-weight: 600;
         }
 
         .btn-main:hover {
@@ -77,30 +77,46 @@
             border-radius: 10px;
         }
 
+        /* =========================
+           SUCCESS
+        ========================== */
+
         .success-box {
             display: none;
             background: #d1e7dd;
             color: #0f5132;
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 14px;
+            padding: 25px;
             margin-top: 25px;
         }
 
-        .booking-code {
-            font-size: 22px;
-            font-weight: bold;
-            color: #795548;
-        }
-
-        .summary-box {
-            background: #faf7f5;
-            border-radius: 12px;
-            padding: 18px;
+        .booking-detail {
+            background: #fff;
+            color: #4e342e;
+            border-radius: 15px;
+            padding: 25px;
             margin-top: 20px;
         }
 
-        .summary-box strong {
-            color: #5d4037;
+        .booking-detail p {
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .booking-code {
+            color: #795548;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .status-pending {
+            display: inline-block;
+            background: #fff3cd;
+            color: #856404;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
         }
 
         footer {
@@ -108,18 +124,6 @@
             color: white;
             margin-top: 50px;
             padding: 30px 0;
-        }
-
-        @media (max-width: 768px) {
-
-            .booking-container {
-                margin: 25px auto;
-            }
-
-            .booking-card {
-                padding: 22px;
-            }
-
         }
 
     </style>
@@ -130,9 +134,9 @@
 <body>
 
 
-<!-- =====================================================
+<!-- =========================
      NAVBAR
-====================================================== -->
+========================== -->
 
 <nav class="navbar bg-white shadow-sm">
 
@@ -158,9 +162,9 @@
 
 
 
-<!-- =====================================================
-     BOOKING FORM
-====================================================== -->
+<!-- =========================
+     BOOKING
+========================== -->
 
 <div class="container booking-container">
 
@@ -172,29 +176,25 @@
         <div class="text-center mb-4">
 
             <h1 class="booking-title">
-
                 🏠 จองห้องพัก
-
             </h1>
 
-            <p class="text-muted mb-0">
-
+            <p class="text-muted">
                 กรุณากรอกข้อมูลสำหรับการจองห้องพัก
-
             </p>
 
         </div>
 
 
 
-        <!-- =================================================
+        <!-- =========================
              FORM
-        ================================================== -->
+        ========================== -->
 
         <form id="bookingForm">
 
 
-            <!-- ชื่อผู้จอง -->
+            <!-- ชื่อ -->
 
             <div class="mb-4">
 
@@ -210,7 +210,6 @@
                        name="name"
                        class="form-control"
                        placeholder="กรุณากรอกชื่อ-นามสกุล"
-                       autocomplete="name"
                        required>
 
             </div>
@@ -233,15 +232,13 @@
                        name="phone"
                        class="form-control"
                        placeholder="เช่น 0812345678"
-                       inputmode="numeric"
                        pattern="[0-9]{10}"
                        maxlength="10"
+                       inputmode="numeric"
                        required>
 
                 <small class="text-muted">
-
                     กรุณากรอกเบอร์โทรศัพท์ 10 หลัก
-
                 </small>
 
             </div>
@@ -280,8 +277,8 @@
                         เบอมิซอินน์ รีสอร์ท
                     </option>
 
-                    <option value="ภูชมหมอก">
-                        ภูชมหมอก
+                    <option value="ภูชมหมอก รีสอร์ท">
+                        ภูชมหมอก รีสอร์ท
                     </option>
 
                     <option value="มาชิลล์ รีสอร์ท">
@@ -298,7 +295,7 @@
 
 
 
-            <!-- วันที่เข้าพัก -->
+            <!-- วันที่ -->
 
             <div class="mb-4">
 
@@ -314,6 +311,10 @@
                        name="date"
                        class="form-control"
                        required>
+
+                <small class="text-muted">
+                    สามารถเลือกได้ตั้งแต่วันนี้เป็นต้นไป
+                </small>
 
             </div>
 
@@ -340,18 +341,14 @@
                        required>
 
                 <small class="text-muted">
-
                     จำนวนผู้เข้าพัก 1–20 คน
-
                 </small>
 
             </div>
 
 
 
-            <!-- =================================================
-                 ปุ่มยืนยัน
-            ================================================== -->
+            <!-- BUTTON -->
 
             <button type="submit"
                     class="btn btn-main w-100">
@@ -365,22 +362,20 @@
 
 
 
-        <!-- =================================================
-             SUCCESS MESSAGE
-        ================================================== -->
+        <!-- =========================
+             SUCCESS
+        ========================== -->
 
         <div id="successMessage"
              class="success-box">
 
-
-            <h5 class="fw-bold mb-3">
+            <h4 class="mb-3">
 
                 ✅ ส่งข้อมูลการจองเรียบร้อยแล้ว
 
-            </h5>
+            </h4>
 
-
-            <p class="mb-2">
+            <p>
 
                 ขอบคุณสำหรับการจอง
                 ทางที่พักจะติดต่อกลับเพื่อยืนยันการจองอีกครั้ง
@@ -388,62 +383,71 @@
             </p>
 
 
-            <div class="summary-box">
+            <div class="booking-detail">
 
-                <p class="mb-2">
 
+                <p>
                     <strong>รหัสการจอง:</strong>
 
-                    <span id="bookingCode"
+                    <span id="resultCode"
                           class="booking-code">
-                    </span>
 
+                    </span>
                 </p>
 
 
-                <p class="mb-2">
-
+                <p>
                     <strong>ผู้จอง:</strong>
 
-                    <span id="summaryName">
+                    <span id="resultName">
                     </span>
-
                 </p>
 
 
-                <p class="mb-2">
+                <p>
+                    <strong>เบอร์โทร:</strong>
 
+                    <span id="resultPhone">
+                    </span>
+                </p>
+
+
+                <p>
                     <strong>ที่พัก:</strong>
 
-                    <span id="summaryRoom">
+                    <span id="resultRoom">
                     </span>
-
                 </p>
 
 
-                <p class="mb-2">
-
+                <p>
                     <strong>วันที่เข้าพัก:</strong>
 
-                    <span id="summaryDate">
+                    <span id="resultDate">
                     </span>
-
                 </p>
 
 
-                <p class="mb-0">
-
+                <p>
                     <strong>จำนวนผู้เข้าพัก:</strong>
 
-                    <span id="summaryGuests">
+                    <span id="resultGuests">
                     </span>
-
                     คน
+                </p>
+
+
+                <p>
+                    <strong>สถานะ:</strong>
+
+                    <span class="status-pending">
+                        ⏳ รอยืนยัน
+                    </span>
 
                 </p>
 
-            </div>
 
+            </div>
 
         </div>
 
@@ -454,9 +458,9 @@
 
 
 
-<!-- =====================================================
+<!-- =========================
      FOOTER
-====================================================== -->
+========================== -->
 
 <footer>
 
@@ -478,45 +482,71 @@
 
 
 
-<!-- =====================================================
-     JAVASCRIPT
-====================================================== -->
-
 <script>
 
 
 /* =====================================================
-   ตั้งค่าวันที่ขั้นต่ำเป็นวันนี้
+   ตั้งค่าวันต่ำสุด
+   ใช้วันที่เครื่องโดยตรง
+   ไม่แปลงผ่าน Date
 ===================================================== */
 
 const dateInput =
     document.getElementById("date");
 
 
-function setMinDate() {
+function getTodayString() {
 
-    const today = new Date();
+    const now = new Date();
 
     const year =
-        today.getFullYear();
+        now.getFullYear();
 
     const month =
-        String(today.getMonth() + 1)
+        String(now.getMonth() + 1)
         .padStart(2, "0");
 
     const day =
-        String(today.getDate())
+        String(now.getDate())
         .padStart(2, "0");
 
-    const todayString =
-        `${year}-${month}-${day}`;
-
-    dateInput.min = todayString;
+    return `${year}-${month}-${day}`;
 
 }
 
 
-setMinDate();
+dateInput.min =
+    getTodayString();
+
+
+
+/* =====================================================
+   แปลงวันที่จาก yyyy-mm-dd
+   เป็น dd/mm/yyyy
+   โดยไม่ใช้ new Date()
+   เพื่อป้องกันปีเพี้ยน
+===================================================== */
+
+function formatDate(dateString) {
+
+    if (!dateString) {
+        return "-";
+    }
+
+    const parts =
+        dateString.split("-");
+
+    if (parts.length !== 3) {
+        return dateString;
+    }
+
+    const year = parts[0];
+    const month = parts[1];
+    const day = parts[2];
+
+    return `${day}/${month}/${year}`;
+
+}
 
 
 
@@ -524,93 +554,26 @@ setMinDate();
    สร้างรหัสการจอง
 ===================================================== */
 
-function createBookingCode() {
-
-    const timestamp =
-        Date.now()
-        .toString()
-        .slice(-6);
+function generateBookingCode() {
 
     const random =
         Math.floor(
-            Math.random() * 90 + 10
+            10000000 +
+            Math.random() * 90000000
         );
 
-    return "MB" + timestamp + random;
+    return "MB" + random;
 
 }
 
 
 
 /* =====================================================
-   ดึงข้อมูลการจองเดิมจาก LocalStorage
-===================================================== */
-
-function getBookings() {
-
-    const savedBookings =
-        localStorage.getItem("monBridgeBookings");
-
-
-    if (!savedBookings) {
-
-        return [];
-
-    }
-
-
-    try {
-
-        const bookings =
-            JSON.parse(savedBookings);
-
-
-        if (Array.isArray(bookings)) {
-
-            return bookings;
-
-        }
-
-
-        return [];
-
-    } catch (error) {
-
-        console.error(
-            "ไม่สามารถอ่านข้อมูลการจองได้",
-            error
-        );
-
-        return [];
-
-    }
-
-}
-
-
-
-/* =====================================================
-   บันทึกข้อมูลการจอง
-===================================================== */
-
-function saveBookings(bookings) {
-
-    localStorage.setItem(
-        "monBridgeBookings",
-        JSON.stringify(bookings)
-    );
-
-}
-
-
-
-/* =====================================================
-   FORM SUBMIT
+   FORM
 ===================================================== */
 
 const bookingForm =
     document.getElementById("bookingForm");
-
 
 const successMessage =
     document.getElementById("successMessage");
@@ -623,120 +586,57 @@ bookingForm.addEventListener(
         event.preventDefault();
 
 
-        /* -----------------------------
-           รับค่าจากฟอร์ม
-        ----------------------------- */
+        /* =========================
+           อ่านข้อมูล
+        ========================== */
 
         const name =
-            document.getElementById("name")
+            document
+            .getElementById("name")
             .value
             .trim();
 
 
         const phone =
-            document.getElementById("phone")
+            document
+            .getElementById("phone")
             .value
             .trim();
 
 
         const room =
-            document.getElementById("room")
+            document
+            .getElementById("room")
             .value;
 
 
         const date =
-            document.getElementById("date")
+            document
+            .getElementById("date")
             .value;
 
 
         const guests =
-            document.getElementById("guests")
+            document
+            .getElementById("guests")
             .value;
 
 
 
-        /* -----------------------------
-           ตรวจสอบข้อมูล
-        ----------------------------- */
-
-        if (!name ||
-            !phone ||
-            !room ||
-            !date ||
-            !guests) {
-
-            alert(
-                "กรุณากรอกข้อมูลให้ครบถ้วน"
-            );
-
-            return;
-
-        }
-
-
-
-        /* -----------------------------
-           ตรวจสอบเบอร์โทร
-        ----------------------------- */
-
-        if (!/^[0-9]{10}$/.test(phone)) {
-
-            alert(
-                "กรุณากรอกเบอร์โทรศัพท์ 10 หลัก"
-            );
-
-            return;
-
-        }
-
-
-
-        /* -----------------------------
-           ตรวจสอบจำนวนผู้เข้าพัก
-        ----------------------------- */
-
-        const guestNumber =
-            Number(guests);
-
-
-        if (
-            guestNumber < 1 ||
-            guestNumber > 20
-        ) {
-
-            alert(
-                "จำนวนผู้เข้าพักต้องอยู่ระหว่าง 1–20 คน"
-            );
-
-            return;
-
-        }
-
-
-
-        /* -----------------------------
-           สร้างรหัสการจอง
-        ----------------------------- */
+        /* =========================
+           สร้างรหัส
+        ========================== */
 
         const bookingCode =
-            createBookingCode();
+            generateBookingCode();
 
 
 
-        /* -----------------------------
-           วันที่สร้างรายการ
-        ----------------------------- */
+        /* =========================
+           ข้อมูลการจอง
+        ========================== */
 
-        const createdAt =
-            new Date().toISOString();
-
-
-
-        /* -----------------------------
-           สร้าง Object การจอง
-        ----------------------------- */
-
-        const newBooking = {
+        const booking = {
 
             id: bookingCode,
 
@@ -750,83 +650,120 @@ bookingForm.addEventListener(
 
             date: date,
 
-            guests: guestNumber,
+            dateDisplay: formatDate(date),
+
+            guests: Number(guests),
 
             status: "pending",
 
-            createdAt: createdAt
+            statusText: "รอยืนยัน",
+
+            createdAt:
+                new Date().toISOString()
 
         };
 
 
 
-        /* -----------------------------
-           ดึงข้อมูลเดิม
-        ----------------------------- */
+        /* =================================================
+           ดึงข้อมูลเดิมจาก localStorage
+        ================================================== */
 
-        const bookings =
-            getBookings();
-
+        let bookings = [];
 
 
-        /* -----------------------------
-           เพิ่มรายการใหม่
-        ----------------------------- */
+        try {
 
-        bookings.push(
-            newBooking
-        );
+            const saved =
+                localStorage.getItem("bookings");
+
+            if (saved) {
+
+                bookings =
+                    JSON.parse(saved);
+
+            }
+
+            if (!Array.isArray(bookings)) {
+
+                bookings = [];
+
+            }
+
+        } catch (error) {
+
+            bookings = [];
+
+        }
 
 
 
-        /* -----------------------------
+        /* =========================
+           เพิ่มการจองใหม่
+        ========================== */
+
+        bookings.push(booking);
+
+
+
+        /* =================================================
            บันทึกข้อมูล
-        ----------------------------- */
 
-        saveBookings(
-            bookings
+           admin.html จะอ่านข้อมูลจาก
+           localStorage key = "bookings"
+        ================================================== */
+
+        localStorage.setItem(
+            "bookings",
+            JSON.stringify(bookings)
         );
 
 
 
-        /* -----------------------------
+        /* =========================
            แสดงผลการจอง
-        ----------------------------- */
+        ========================== */
 
-        document.getElementById(
-            "bookingCode"
-        ).textContent =
-            bookingCode;
-
-
-        document.getElementById(
-            "summaryName"
-        ).textContent =
-            name;
+        document
+            .getElementById("resultCode")
+            .textContent =
+            booking.code;
 
 
-        document.getElementById(
-            "summaryRoom"
-        ).textContent =
-            room;
+        document
+            .getElementById("resultName")
+            .textContent =
+            booking.name;
 
 
-        document.getElementById(
-            "summaryDate"
-        ).textContent =
-            formatThaiDate(date);
+        document
+            .getElementById("resultPhone")
+            .textContent =
+            booking.phone;
 
 
-        document.getElementById(
-            "summaryGuests"
-        ).textContent =
-            guestNumber;
+        document
+            .getElementById("resultRoom")
+            .textContent =
+            booking.room;
+
+
+        document
+            .getElementById("resultDate")
+            .textContent =
+            booking.dateDisplay;
+
+
+        document
+            .getElementById("resultGuests")
+            .textContent =
+            booking.guests;
 
 
 
-        /* -----------------------------
+        /* =========================
            ซ่อนฟอร์ม
-        ----------------------------- */
+        ========================== */
 
         bookingForm.style.display =
             "none";
@@ -836,66 +773,14 @@ bookingForm.addEventListener(
             "block";
 
 
-
-        /* -----------------------------
-           เลื่อนไปดูผลลัพธ์
-        ----------------------------- */
-
         successMessage.scrollIntoView({
             behavior: "smooth",
-            block: "center"
+            block: "start"
         });
 
 
-        console.log(
-            "บันทึกการจองแล้ว:",
-            newBooking
-        );
-
     }
 );
-
-
-
-/* =====================================================
-   แปลงวันที่เป็นรูปแบบไทย
-===================================================== */
-
-function formatThaiDate(dateString) {
-
-    if (!dateString) {
-
-        return "-";
-
-    }
-
-
-    const parts =
-        dateString.split("-");
-
-
-    if (parts.length !== 3) {
-
-        return dateString;
-
-    }
-
-
-    const year =
-        Number(parts[0]) + 543;
-
-
-    const month =
-        parts[1];
-
-
-    const day =
-        parts[2];
-
-
-    return `${day}/${month}/${year}`;
-
-}
 
 
 </script>
@@ -904,3 +789,4 @@ function formatThaiDate(dateString) {
 </body>
 
 </html>
+```
