@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 
@@ -80,9 +81,35 @@
             display: none;
             background: #d1e7dd;
             color: #0f5132;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 20px;
             margin-top: 20px;
+        }
+
+        .booking-code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #5d4037;
+        }
+
+        .booking-summary {
+            background: #faf7f5;
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 15px;
+        }
+
+        .booking-summary p {
+            margin-bottom: 8px;
+        }
+
+        .error-box {
+            display: none;
+            background: #f8d7da;
+            color: #842029;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
         }
 
         footer {
@@ -90,6 +117,18 @@
             color: white;
             margin-top: 50px;
             padding: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+
+            .booking-container {
+                margin: 25px auto;
+            }
+
+            .booking-card {
+                padding: 25px 20px;
+            }
+
         }
 
     </style>
@@ -153,7 +192,9 @@
         <form id="bookingForm">
 
 
-            <!-- ชื่อผู้จอง -->
+            <!-- =========================
+                 ชื่อผู้จอง
+            ========================== -->
 
             <div class="mb-4">
 
@@ -169,13 +210,16 @@
                        name="name"
                        class="form-control"
                        placeholder="กรุณากรอกชื่อ-นามสกุล"
+                       autocomplete="name"
                        required>
 
             </div>
 
 
 
-            <!-- เบอร์โทร -->
+            <!-- =========================
+                 เบอร์โทร
+            ========================== -->
 
             <div class="mb-4">
 
@@ -191,19 +235,24 @@
                        name="phone"
                        class="form-control"
                        placeholder="เช่น 0812345678"
+                       inputmode="numeric"
                        pattern="[0-9]{10}"
                        maxlength="10"
                        required>
 
                 <small class="text-muted">
+
                     กรุณากรอกเบอร์โทรศัพท์ 10 หลัก
+
                 </small>
 
             </div>
 
 
 
-            <!-- เลือกที่พัก -->
+            <!-- =========================
+                 เลือกที่พัก
+            ========================== -->
 
             <div class="mb-4">
 
@@ -253,7 +302,9 @@
 
 
 
-            <!-- วันที่เข้าพัก -->
+            <!-- =========================
+                 วันที่เข้าพัก
+            ========================== -->
 
             <div class="mb-4">
 
@@ -274,7 +325,9 @@
 
 
 
-            <!-- จำนวนคน -->
+            <!-- =========================
+                 จำนวนคน
+            ========================== -->
 
             <div class="mb-4">
 
@@ -295,14 +348,32 @@
                        required>
 
                 <small class="text-muted">
+
                     จำนวนผู้เข้าพัก 1–20 คน
+
                 </small>
 
             </div>
 
 
 
-            <!-- ปุ่มยืนยัน -->
+            <!-- =========================
+                 ERROR
+            ========================== -->
+
+            <div id="errorMessage"
+                 class="error-box">
+
+                ❌ ไม่สามารถบันทึกข้อมูลการจองได้
+                กรุณาลองใหม่อีกครั้ง
+
+            </div>
+
+
+
+            <!-- =========================
+                 SUBMIT
+            ========================== -->
 
             <button type="submit"
                     class="btn btn-main w-100">
@@ -317,22 +388,95 @@
 
 
         <!-- =========================
-             SUCCESS MESSAGE
+             SUCCESS
         ========================== -->
 
         <div id="successMessage"
              class="success-box">
 
-            <h5>
+            <h5 class="fw-bold mb-3">
+
                 ✅ ส่งข้อมูลการจองเรียบร้อยแล้ว
+
             </h5>
 
-            <p class="mb-0">
 
-                ขอบคุณสำหรับการจอง
-                ทางที่พักจะติดต่อกลับเพื่อยืนยันการจองอีกครั้ง
+            <p>
+
+                รหัสการจองของคุณคือ
 
             </p>
+
+
+            <div class="booking-code mb-3"
+                 id="bookingCode">
+
+                #001
+
+            </div>
+
+
+            <div class="booking-summary">
+
+                <p>
+                    👤 <strong>ผู้จอง:</strong>
+                    <span id="summaryName"></span>
+                </p>
+
+                <p>
+                    📞 <strong>เบอร์โทร:</strong>
+                    <span id="summaryPhone"></span>
+                </p>
+
+                <p>
+                    🏡 <strong>ที่พัก:</strong>
+                    <span id="summaryRoom"></span>
+                </p>
+
+                <p>
+                    📅 <strong>วันที่เข้าพัก:</strong>
+                    <span id="summaryDate"></span>
+                </p>
+
+                <p class="mb-0">
+                    👥 <strong>จำนวนผู้เข้าพัก:</strong>
+                    <span id="summaryGuests"></span> คน
+                </p>
+
+            </div>
+
+
+            <p class="mt-3 mb-0">
+
+                📌 สถานะการจอง:
+                <strong>รอยืนยัน</strong>
+
+                <br>
+
+                ทางที่พักจะตรวจสอบข้อมูล
+                และติดต่อกลับเพื่อยืนยันการจองอีกครั้ง
+
+            </p>
+
+
+            <div class="d-grid gap-2 mt-4">
+
+                <a href="index.html"
+                   class="btn btn-main">
+
+                    🏡 กลับหน้าเว็บไซต์
+
+                </a>
+
+                <button type="button"
+                        class="btn btn-outline-secondary"
+                        onclick="location.reload()">
+
+                    ➕ จองห้องพักอีกครั้ง
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -367,54 +511,396 @@
 
 
 
-<!-- =========================
-     JAVASCRIPT
-========================== -->
-
 <script>
 
-    // ป้องกันไม่ให้เลือกวันที่ผ่านมาแล้ว
+/* =====================================================
+   ตั้งค่าวันที่ขั้นต่ำเป็นวันนี้
+===================================================== */
 
-    const dateInput = document.getElementById("date");
+const dateInput =
+    document.getElementById("date");
 
-    const today = new Date();
+const today =
+    new Date();
 
-    const year = today.getFullYear();
+const year =
+    today.getFullYear();
 
-    const month = String(today.getMonth() + 1).padStart(2, "0");
+const month =
+    String(today.getMonth() + 1).padStart(2, "0");
 
-    const day = String(today.getDate()).padStart(2, "0");
+const day =
+    String(today.getDate()).padStart(2, "0");
 
-    const todayString = `${year}-${month}-${day}`;
+const todayString =
+    `${year}-${month}-${day}`;
 
-    dateInput.min = todayString;
-
-
-
-    // เมื่อกดปุ่มยืนยันการจอง
-
-    const bookingForm =
-        document.getElementById("bookingForm");
-
-    const successMessage =
-        document.getElementById("successMessage");
+dateInput.min =
+    todayString;
 
 
-    bookingForm.addEventListener("submit", function(event) {
+
+/* =====================================================
+   ถ้าหน้าก่อนหน้าส่งชื่อที่พักมา
+   เช่น booking.html?room=สามประสบ%20รีสอร์ท
+===================================================== */
+
+const urlParams =
+    new URLSearchParams(window.location.search);
+
+const selectedRoom =
+    urlParams.get("room");
+
+if (selectedRoom) {
+
+    const roomSelect =
+        document.getElementById("room");
+
+    const options =
+        Array.from(roomSelect.options);
+
+    const matchingOption =
+        options.find(option =>
+            option.value === selectedRoom
+        );
+
+    if (matchingOption) {
+
+        roomSelect.value =
+            selectedRoom;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   สร้างรหัสการจอง
+===================================================== */
+
+function generateBookingId() {
+
+    const bookings =
+        JSON.parse(
+            localStorage.getItem("monBridgeBookings") || "[]"
+        );
+
+    let nextNumber =
+        bookings.length + 1;
+
+    /*
+       ป้องกันกรณีมีการลบข้อมูล
+       แล้วรหัสซ้ำ
+    */
+
+    if (bookings.length > 0) {
+
+        const numbers =
+            bookings
+                .map(booking =>
+                    parseInt(
+                        String(booking.id)
+                            .replace("#", ""),
+                        10
+                    )
+                )
+                .filter(number =>
+                    !isNaN(number)
+                );
+
+        if (numbers.length > 0) {
+
+            nextNumber =
+                Math.max(...numbers) + 1;
+
+        }
+
+    }
+
+    return "#" +
+        String(nextNumber).padStart(3, "0");
+
+}
+
+
+
+/* =====================================================
+   FORM SUBMIT
+===================================================== */
+
+const bookingForm =
+    document.getElementById("bookingForm");
+
+const successMessage =
+    document.getElementById("successMessage");
+
+const errorMessage =
+    document.getElementById("errorMessage");
+
+
+bookingForm.addEventListener(
+    "submit",
+    function(event) {
 
         event.preventDefault();
 
-        successMessage.style.display = "block";
+        errorMessage.style.display = "none";
 
-        bookingForm.reset();
 
-        dateInput.min = todayString;
+        /* =========================
+           รับค่าจากฟอร์ม
+        ========================== */
+
+        const name =
+            document.getElementById("name")
+                .value.trim();
+
+        const phone =
+            document.getElementById("phone")
+                .value.trim();
+
+        const room =
+            document.getElementById("room")
+                .value;
+
+        const date =
+            document.getElementById("date")
+                .value;
+
+        const guests =
+            document.getElementById("guests")
+                .value;
+
+
+
+        /* =========================
+           ตรวจสอบข้อมูล
+        ========================== */
+
+        if (
+            !name ||
+            !phone ||
+            !room ||
+            !date ||
+            !guests
+        ) {
+
+            errorMessage.textContent =
+                "❌ กรุณากรอกข้อมูลให้ครบถ้วน";
+
+            errorMessage.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+        if (!/^[0-9]{10}$/.test(phone)) {
+
+            errorMessage.textContent =
+                "❌ กรุณากรอกเบอร์โทรศัพท์ 10 หลัก";
+
+            errorMessage.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+        if (parseInt(guests) < 1 ||
+            parseInt(guests) > 20) {
+
+            errorMessage.textContent =
+                "❌ จำนวนผู้เข้าพักต้องอยู่ระหว่าง 1–20 คน";
+
+            errorMessage.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+
+        /* =========================
+           สร้างข้อมูลการจอง
+        ========================== */
+
+        const booking = {
+
+            id: generateBookingId(),
+
+            name: name,
+
+            phone: phone,
+
+            room: room,
+
+            date: date,
+
+            guests: parseInt(guests),
+
+            status: "pending",
+
+            statusText: "รอยืนยัน",
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+
+        /* =========================
+           ดึงข้อมูลเดิม
+        ========================== */
+
+        let bookings = [];
+
+        try {
+
+            bookings =
+                JSON.parse(
+                    localStorage.getItem(
+                        "monBridgeBookings"
+                    ) || "[]"
+                );
+
+            if (!Array.isArray(bookings)) {
+
+                bookings = [];
+
+            }
+
+        } catch (error) {
+
+            bookings = [];
+
+        }
+
+
+
+        /* =========================
+           เพิ่มข้อมูลใหม่
+        ========================== */
+
+        bookings.push(booking);
+
+
+
+        /* =========================
+           บันทึกลง LocalStorage
+        ========================== */
+
+        try {
+
+            localStorage.setItem(
+                "monBridgeBookings",
+                JSON.stringify(bookings)
+            );
+
+        } catch (error) {
+
+            errorMessage.textContent =
+                "❌ ไม่สามารถบันทึกข้อมูลได้ กรุณาตรวจสอบการตั้งค่าเบราว์เซอร์";
+
+            errorMessage.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+
+        /* =========================
+           แสดงข้อมูลสำเร็จ
+        ========================== */
+
+        document.getElementById("bookingCode")
+            .textContent = booking.id;
+
+        document.getElementById("summaryName")
+            .textContent = booking.name;
+
+        document.getElementById("summaryPhone")
+            .textContent = booking.phone;
+
+        document.getElementById("summaryRoom")
+            .textContent = booking.room;
+
+        document.getElementById("summaryDate")
+            .textContent = formatThaiDate(
+                booking.date
+            );
+
+        document.getElementById("summaryGuests")
+            .textContent = booking.guests;
+
+
+
+        /* =========================
+           ซ่อนฟอร์ม
+        ========================== */
+
+        bookingForm.style.display =
+            "none";
+
+        successMessage.style.display =
+            "block";
+
 
         successMessage.scrollIntoView({
-            behavior: "smooth"
+            behavior: "smooth",
+            block: "center"
         });
 
-    });
+    }
+);
+
+
+
+/* =====================================================
+   แปลงวันที่เป็นภาษาไทย
+===================================================== */
+
+function formatThaiDate(dateString) {
+
+    const date =
+        new Date(dateString + "T00:00:00");
+
+    const day =
+        date.getDate();
+
+    const monthNames = [
+
+        "มกราคม",
+        "กุมภาพันธ์",
+        "มีนาคม",
+        "เมษายน",
+        "พฤษภาคม",
+        "มิถุนายน",
+        "กรกฎาคม",
+        "สิงหาคม",
+        "กันยายน",
+        "ตุลาคม",
+        "พฤศจิกายน",
+        "ธันวาคม"
+
+    ];
+
+    const month =
+        monthNames[date.getMonth()];
+
+    const year =
+        date.getFullYear() + 543;
+
+    return `${day} ${month} ${year}`;
+
+}
 
 </script>
 
@@ -422,3 +908,4 @@
 </body>
 
 </html>
+```
