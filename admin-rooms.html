@@ -15,9 +15,9 @@
 
 <style>
 
-/* =========================
+/* =====================================================
    พื้นฐาน
-========================= */
+===================================================== */
 
 body {
     margin: 0;
@@ -27,9 +27,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    Sidebar
-========================= */
+===================================================== */
 
 .sidebar {
     position: fixed;
@@ -40,6 +40,7 @@ body {
     background: #4E342E;
     color: white;
     padding: 30px 18px;
+    z-index: 1000;
 }
 
 .logo {
@@ -77,9 +78,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    เนื้อหา
-========================= */
+===================================================== */
 
 .main {
     margin-left: 300px;
@@ -87,9 +88,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    Header
-========================= */
+===================================================== */
 
 .page-header {
     background: white;
@@ -123,6 +124,8 @@ body {
     padding: 13px 22px;
     border-radius: 12px;
     font-size: 17px;
+    transition: 0.2s;
+    white-space: nowrap;
 }
 
 .btn-add:hover {
@@ -131,9 +134,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    ตาราง
-========================= */
+===================================================== */
 
 .room-box {
     background: white;
@@ -152,6 +155,7 @@ body {
     font-size: 17px;
     padding: 16px 12px;
     border-bottom: 2px solid #E0D2C5;
+    white-space: nowrap;
 }
 
 .table tbody td {
@@ -165,15 +169,16 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    สถานะ
-========================= */
+===================================================== */
 
 .status {
     display: inline-block;
     padding: 8px 15px;
     border-radius: 20px;
     font-size: 14px;
+    white-space: nowrap;
 }
 
 .status-open {
@@ -187,9 +192,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    ปุ่มจัดการ
-========================= */
+===================================================== */
 
 .btn-edit {
     background: #C8A27A;
@@ -198,6 +203,7 @@ body {
     padding: 9px 17px;
     border-radius: 10px;
     margin-right: 5px;
+    transition: 0.2s;
 }
 
 .btn-edit:hover {
@@ -211,6 +217,7 @@ body {
     border: none;
     padding: 9px 17px;
     border-radius: 10px;
+    transition: 0.2s;
 }
 
 .btn-delete:hover {
@@ -219,9 +226,102 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
+   Modal
+===================================================== */
+
+.modal-content {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: #795548;
+    color: white;
+    border: none;
+    padding: 18px 24px;
+}
+
+.modal-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.form-label {
+    color: #6D4C41;
+    font-weight: bold;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid #D8CEC4;
+    border-radius: 9px;
+    padding: 11px 13px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #795548;
+    box-shadow: 0 0 0 0.15rem rgba(121, 85, 72, 0.15);
+}
+
+.modal-footer {
+    padding: 18px 25px;
+    border-top: 1px solid #E5DED6;
+}
+
+.btn-save {
+    background: #795548;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 9px;
+}
+
+.btn-save:hover {
+    background: #5D4037;
+    color: white;
+}
+
+.btn-cancel {
+    background: #6C757D;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 9px;
+}
+
+.btn-cancel:hover {
+    background: #5A6268;
+    color: white;
+}
+
+
+/* =====================================================
    Responsive
-========================= */
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .sidebar {
+        width: 240px;
+    }
+
+    .main {
+        margin-left: 240px;
+        padding: 30px;
+    }
+
+    .page-header h1 {
+        font-size: 34px;
+    }
+
+}
 
 @media (max-width: 900px) {
 
@@ -247,6 +347,26 @@ body {
 
 }
 
+@media (max-width: 576px) {
+
+    .main {
+        padding: 15px;
+    }
+
+    .page-header {
+        padding: 25px;
+    }
+
+    .page-header h1 {
+        font-size: 30px;
+    }
+
+    .room-box {
+        padding: 15px;
+    }
+
+}
+
 </style>
 
 </head>
@@ -265,7 +385,6 @@ body {
         🏡 Mon Bridge
         <span>Stay</span>
     </div>
-
 
     <div class="menu">
 
@@ -310,7 +429,9 @@ body {
 <div class="main">
 
 
-    <!-- Header -->
+    <!-- =================================================
+         HEADER
+    ================================================== -->
 
     <div class="page-header">
 
@@ -326,9 +447,9 @@ body {
 
         </div>
 
-
         <button class="btn-add"
-                onclick="addRoom()">
+                type="button"
+                onclick="openAddRoomModal()">
 
             ➕ เพิ่มห้องพัก
 
@@ -337,7 +458,9 @@ body {
     </div>
 
 
-    <!-- ตารางห้องพัก -->
+    <!-- =================================================
+         ตารางห้องพัก
+    ================================================== -->
 
     <div class="room-box">
 
@@ -373,293 +496,7 @@ body {
 
                 </thead>
 
-
-                <tbody id="roomTable">
-
-
-                    <!-- ห้องที่ 1 -->
-
-                    <tr>
-
-                        <td>
-                            <strong>
-                                ภูชมหมอก รีสอร์ท
-                            </strong>
-                        </td>
-
-                        <td>
-                            1,500 - 3,000 บาท
-                        </td>
-
-                        <td>
-                            4 คน
-                        </td>
-
-                        <td>
-
-                            <span class="status status-open">
-                                เปิดให้จอง
-                            </span>
-
-                        </td>
-
-                        <td>
-
-                            <button class="btn-edit"
-                                    onclick="editRoom('ภูชมหมอก รีสอร์ท')">
-
-                                ✏️ แก้ไข
-
-                            </button>
-
-                            <button class="btn-delete"
-                                    onclick="deleteRoom(this, 'ภูชมหมอก รีสอร์ท')">
-
-                                🗑️ ลบ
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-
-                    <!-- ห้องที่ 2 -->
-
-                    <tr>
-
-                        <td>
-                            <strong>
-                                สามประสบรีสอร์ท
-                            </strong>
-                        </td>
-
-                        <td>
-                            1,126 บาท
-                        </td>
-
-                        <td>
-                            2 คน
-                        </td>
-
-                        <td>
-
-                            <span class="status status-open">
-                                เปิดให้จอง
-                            </span>
-
-                        </td>
-
-                        <td>
-
-                            <button class="btn-edit"
-                                    onclick="editRoom('สามประสบรีสอร์ท')">
-
-                                ✏️ แก้ไข
-
-                            </button>
-
-                            <button class="btn-delete"
-                                    onclick="deleteRoom(this, 'สามประสบรีสอร์ท')">
-
-                                🗑️ ลบ
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-
-                    <!-- ห้องที่ 3 -->
-
-                    <tr>
-
-                        <td>
-                            <strong>
-                                บ้านมอญนอนเล่น
-                            </strong>
-                        </td>
-
-                        <td>
-                            590 - 690 บาท
-                        </td>
-
-                        <td>
-                            2 คน
-                        </td>
-
-                        <td>
-
-                            <span class="status status-open">
-                                เปิดให้จอง
-                            </span>
-
-                        </td>
-
-                        <td>
-
-                            <button class="btn-edit"
-                                    onclick="editRoom('บ้านมอญนอนเล่น')">
-
-                                ✏️ แก้ไข
-
-                            </button>
-
-                            <button class="btn-delete"
-                                    onclick="deleteRoom(this, 'บ้านมอญนอนเล่น')">
-
-                                🗑️ ลบ
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-
-                    <!-- ห้องที่ 4 -->
-
-                    <tr>
-
-                        <td>
-                            <strong>
-                                สังขละวิลเลจ รีสอร์ท
-                            </strong>
-                        </td>
-
-                        <td>
-                            1,211 บาท
-                        </td>
-
-                        <td>
-                            4 คน
-                        </td>
-
-                        <td>
-
-                            <span class="status status-open">
-                                เปิดให้จอง
-                            </span>
-
-                        </td>
-
-                        <td>
-
-                            <button class="btn-edit"
-                                    onclick="editRoom('สังขละวิลเลจ รีสอร์ท')">
-
-                                ✏️ แก้ไข
-
-                            </button>
-
-                            <button class="btn-delete"
-                                    onclick="deleteRoom(this, 'สังขละวิลเลจ รีสอร์ท')">
-
-                                🗑️ ลบ
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-
-                    <!-- ห้องที่ 5 -->
-
-                    <tr>
-
-                        <td>
-                            <strong>
-                                มาชิลล์ รีสอร์ท
-                            </strong>
-                        </td>
-
-                        <td>
-                            583 - 700 บาท
-                        </td>
-
-                        <td>
-                            2 คน
-                        </td>
-
-                        <td>
-
-                            <span class="status status-open">
-                                เปิดให้จอง
-                            </span>
-
-                        </td>
-
-                        <td>
-
-                            <button class="btn-edit"
-                                    onclick="editRoom('มาชิลล์ รีสอร์ท')">
-
-                                ✏️ แก้ไข
-
-                            </button>
-
-                            <button class="btn-delete"
-                                    onclick="deleteRoom(this, 'มาชิลล์ รีสอร์ท')">
-
-                                🗑️ ลบ
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-
-                    <!-- ห้องที่ 6 -->
-
-                    <tr>
-
-                        <td>
-                            <strong>
-                                เบอมิซอินน์ รีสอร์ท
-                            </strong>
-                        </td>
-
-                        <td>
-                            1,000 บาท
-                        </td>
-
-                        <td>
-                            4 คน
-                        </td>
-
-                        <td>
-
-                            <span class="status status-open">
-                                เปิดให้จอง
-                            </span>
-
-                        </td>
-
-                        <td>
-
-                            <button class="btn-edit"
-                                    onclick="editRoom('เบอมิซอินน์ รีสอร์ท')">
-
-                                ✏️ แก้ไข
-
-                            </button>
-
-                            <button class="btn-delete"
-                                    onclick="deleteRoom(this, 'เบอมิซอินน์ รีสอร์ท')">
-
-                                🗑️ ลบ
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-
-                </tbody>
+                <tbody id="roomTable"></tbody>
 
             </table>
 
@@ -670,142 +507,857 @@ body {
 </div>
 
 
+<!-- =====================================================
+     MODAL เพิ่ม / แก้ไขห้องพัก
+===================================================== -->
+
+<div class="modal fade"
+     id="roomModal"
+     tabindex="-1"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title"
+                    id="roomModalTitle">
+
+                    🛏️ เพิ่มห้องพัก
+
+                </h5>
+
+                <button type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"
+                        aria-label="Close">
+                </button>
+
+            </div>
+
+
+            <form id="roomForm">
+
+                <div class="modal-body">
+
+                    <!-- ใช้เก็บ ID ตอนแก้ไข -->
+
+                    <input type="hidden"
+                           id="roomId">
+
+
+                    <div class="row g-3">
+
+
+                        <!-- ชื่อห้อง -->
+
+                        <div class="col-md-12">
+
+                            <label class="form-label">
+                                ชื่อห้องพัก
+                            </label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   id="roomName"
+                                   placeholder="เช่น ภูชมหมอก รีสอร์ท"
+                                   required>
+
+                        </div>
+
+
+                        <!-- ราคา -->
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                ราคา
+                            </label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   id="roomPrice"
+                                   placeholder="เช่น 1,500 - 3,000 บาท"
+                                   required>
+
+                        </div>
+
+
+                        <!-- จำนวนผู้เข้าพัก -->
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                จำนวนผู้เข้าพัก
+                            </label>
+
+                            <input type="number"
+                                   class="form-control"
+                                   id="roomGuests"
+                                   min="1"
+                                   placeholder="เช่น 4"
+                                   required>
+
+                        </div>
+
+
+                        <!-- สถานะ -->
+
+                        <div class="col-md-6">
+
+                            <label class="form-label">
+                                สถานะ
+                            </label>
+
+                            <select class="form-select"
+                                    id="roomStatus">
+
+                                <option value="open">
+                                    เปิดให้จอง
+                                </option>
+
+                                <option value="close">
+                                    ปิดให้จอง
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- รายละเอียด -->
+
+                        <div class="col-md-12">
+
+                            <label class="form-label">
+                                รายละเอียดห้องพัก
+                            </label>
+
+                            <textarea class="form-control"
+                                      id="roomDetail"
+                                      rows="3"
+                                      placeholder="รายละเอียดห้องพัก">
+                            </textarea>
+
+                        </div>
+
+
+                        <!-- สิ่งอำนวยความสะดวก -->
+
+                        <div class="col-md-12">
+
+                            <label class="form-label">
+                                สิ่งอำนวยความสะดวก
+                            </label>
+
+                            <textarea class="form-control"
+                                      id="roomFacilities"
+                                      rows="3"
+                                      placeholder="เช่น Wi-Fi, เครื่องปรับอากาศ, ทีวี">
+                            </textarea>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button type="button"
+                            class="btn-cancel"
+                            data-bs-dismiss="modal">
+
+                        ยกเลิก
+
+                    </button>
+
+                    <button type="submit"
+                            class="btn-save">
+
+                        💾 บันทึกห้องพัก
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Bootstrap -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <script>
 
-/* =========================
-   เพิ่มห้องพัก
-========================= */
+/* =====================================================
+   ตั้งค่า
+===================================================== */
 
-function addRoom() {
+const STORAGE_KEY = "monBridgeRooms";
 
-    const name = prompt("กรุณาใส่ชื่อห้องพัก");
 
-    if (!name) {
-        return;
+/* =====================================================
+   ห้องพักเริ่มต้น
+===================================================== */
+
+const defaultRooms = [
+
+    {
+        id: "room-1",
+        name: "ภูชมหมอก รีสอร์ท",
+        price: "1,500 - 3,000 บาท",
+        guests: 4,
+        status: "open",
+        detail: "",
+        facilities: ""
+    },
+
+    {
+        id: "room-2",
+        name: "สามประสบรีสอร์ท",
+        price: "1,126 บาท",
+        guests: 2,
+        status: "open",
+        detail: "",
+        facilities: ""
+    },
+
+    {
+        id: "room-3",
+        name: "บ้านมอญนอนเล่น",
+        price: "590 - 690 บาท",
+        guests: 2,
+        status: "open",
+        detail: "",
+        facilities: ""
+    },
+
+    {
+        id: "room-4",
+        name: "สังขละวิลเลจ รีสอร์ท",
+        price: "1,211 บาท",
+        guests: 4,
+        status: "open",
+        detail: "",
+        facilities: ""
+    },
+
+    {
+        id: "room-5",
+        name: "มาชิลล์ รีสอร์ท",
+        price: "583 - 700 บาท",
+        guests: 2,
+        status: "open",
+        detail: "",
+        facilities: ""
+    },
+
+    {
+        id: "room-6",
+        name: "เบอมิซอินน์ รีสอร์ท",
+        price: "1,000 บาท",
+        guests: 4,
+        status: "open",
+        detail: "",
+        facilities: ""
     }
 
-    const price = prompt("กรุณาใส่ราคา");
+];
 
-    if (!price) {
-        return;
+
+/* =====================================================
+   อ่านข้อมูลจาก localStorage
+===================================================== */
+
+function getRooms() {
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (!saved) {
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(defaultRooms)
+        );
+
+        return [...defaultRooms];
+
     }
 
-    const guests = prompt("กรุณาใส่จำนวนผู้เข้าพัก");
+    try {
 
-    if (!guests) {
+        return JSON.parse(saved);
+
+    } catch (error) {
+
+        console.error(
+            "ไม่สามารถอ่านข้อมูลห้องพักได้",
+            error
+        );
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(defaultRooms)
+        );
+
+        return [...defaultRooms];
+
+    }
+
+}
+
+
+/* =====================================================
+   บันทึกข้อมูล
+===================================================== */
+
+function saveRooms(rooms) {
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(rooms)
+    );
+
+}
+
+
+/* =====================================================
+   สร้าง ID
+===================================================== */
+
+function createRoomId() {
+
+    return "room-" +
+           Date.now() +
+           "-" +
+           Math.random()
+               .toString(36)
+               .substring(2, 8);
+
+}
+
+
+/* =====================================================
+   ป้องกัน HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    if (value === null || value === undefined) {
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =====================================================
+   แสดงห้องพัก
+===================================================== */
+
+function renderRooms() {
+
+    const table =
+        document.getElementById("roomTable");
+
+    const rooms = getRooms();
+
+    table.innerHTML = "";
+
+
+    if (rooms.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td colspan="5"
+                    style="
+                        text-align:center;
+                        padding:40px;
+                        color:#795548;
+                    ">
+
+                    🛏️ ยังไม่มีข้อมูลห้องพัก
+
+                </td>
+
+            </tr>
+
+        `;
+
         return;
+
     }
 
 
-    const table = document.getElementById("roomTable");
+    rooms.forEach(room => {
+
+        const row =
+            document.createElement("tr");
 
 
-    const row = document.createElement("tr");
+        const statusHTML =
+            room.status === "open"
 
+            ?
 
-    row.innerHTML = `
-
-        <td>
-            <strong>${name}</strong>
-        </td>
-
-        <td>
-            ${price}
-        </td>
-
-        <td>
-            ${guests} คน
-        </td>
-
-        <td>
-
+            `
             <span class="status status-open">
                 เปิดให้จอง
             </span>
+            `
 
-        </td>
+            :
 
-        <td>
-
-            <button class="btn-edit"
-                    onclick="editRoom('${name}')">
-
-                ✏️ แก้ไข
-
-            </button>
-
-            <button class="btn-delete"
-                    onclick="deleteRoom(this, '${name}')">
-
-                🗑️ ลบ
-
-            </button>
-
-        </td>
-
-    `;
+            `
+            <span class="status status-close">
+                ปิดให้จอง
+            </span>
+            `;
 
 
-    table.appendChild(row);
+        row.innerHTML = `
+
+            <td>
+
+                <strong>
+                    ${escapeHTML(room.name)}
+                </strong>
+
+            </td>
 
 
-    alert("เพิ่มห้องพักเรียบร้อยแล้ว");
+            <td>
+                ${escapeHTML(room.price)}
+            </td>
+
+
+            <td>
+                ${escapeHTML(room.guests)} คน
+            </td>
+
+
+            <td>
+                ${statusHTML}
+            </td>
+
+
+            <td>
+
+                <button
+                    type="button"
+                    class="btn-edit"
+                    onclick="editRoom('${room.id}')">
+
+                    ✏️ แก้ไข
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn-delete"
+                    onclick="deleteRoom('${room.id}')">
+
+                    🗑️ ลบ
+
+                </button>
+
+            </td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
 
 }
 
 
-/* =========================
-   แก้ไขห้องพัก
-========================= */
+/* =====================================================
+   Bootstrap Modal
+===================================================== */
 
-function editRoom(name) {
+let roomModal;
 
-    const newName = prompt(
-        "แก้ไขชื่อห้องพัก",
-        name
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        roomModal =
+            new bootstrap.Modal(
+                document.getElementById("roomModal")
+            );
+
+
+        renderRooms();
+
+
+        document
+            .getElementById("roomForm")
+            .addEventListener(
+                "submit",
+                saveRoom
+            );
+
+    }
+);
+
+
+/* =====================================================
+   เปิด Modal เพิ่มห้อง
+===================================================== */
+
+function openAddRoomModal() {
+
+    document
+        .getElementById("roomForm")
+        .reset();
+
+
+    document
+        .getElementById("roomId")
+        .value = "";
+
+
+    document
+        .getElementById("roomModalTitle")
+        .innerHTML =
+            "🛏️ เพิ่มห้องพัก";
+
+
+    document
+        .getElementById("roomStatus")
+        .value = "open";
+
+
+    roomModal.show();
+
+}
+
+
+/* =====================================================
+   บันทึก เพิ่ม / แก้ไข
+===================================================== */
+
+function saveRoom(event) {
+
+    event.preventDefault();
+
+
+    const id =
+        document
+            .getElementById("roomId")
+            .value;
+
+
+    const name =
+        document
+            .getElementById("roomName")
+            .value
+            .trim();
+
+
+    const price =
+        document
+            .getElementById("roomPrice")
+            .value
+            .trim();
+
+
+    const guests =
+        document
+            .getElementById("roomGuests")
+            .value;
+
+
+    const status =
+        document
+            .getElementById("roomStatus")
+            .value;
+
+
+    const detail =
+        document
+            .getElementById("roomDetail")
+            .value
+            .trim();
+
+
+    const facilities =
+        document
+            .getElementById("roomFacilities")
+            .value
+            .trim();
+
+
+    if (!name || !price || !guests) {
+
+        alert(
+            "กรุณากรอกข้อมูลที่จำเป็นให้ครบ"
+        );
+
+        return;
+
+    }
+
+
+    let rooms = getRooms();
+
+
+    /* ===============================================
+       แก้ไข
+    =============================================== */
+
+    if (id) {
+
+        const index =
+            rooms.findIndex(
+                room => room.id === id
+            );
+
+
+        if (index !== -1) {
+
+            rooms[index] = {
+
+                ...rooms[index],
+
+                name: name,
+                price: price,
+                guests: Number(guests),
+                status: status,
+                detail: detail,
+                facilities: facilities
+
+            };
+
+        }
+
+
+        saveRooms(rooms);
+
+        renderRooms();
+
+        roomModal.hide();
+
+
+        alert(
+            "แก้ไขข้อมูลห้องพักเรียบร้อยแล้ว 🎉"
+        );
+
+
+        return;
+
+    }
+
+
+    /* ===============================================
+       เพิ่มใหม่
+    =============================================== */
+
+    const newRoom = {
+
+        id: createRoomId(),
+
+        name: name,
+
+        price: price,
+
+        guests: Number(guests),
+
+        status: status,
+
+        detail: detail,
+
+        facilities: facilities
+
+    };
+
+
+    rooms.push(newRoom);
+
+
+    saveRooms(rooms);
+
+    renderRooms();
+
+    roomModal.hide();
+
+
+    alert(
+        "เพิ่มห้องพักเรียบร้อยแล้ว 🎉"
     );
 
-    if (!newName) {
+}
+
+
+/* =====================================================
+   แก้ไขห้องพัก
+===================================================== */
+
+function editRoom(id) {
+
+    const rooms = getRooms();
+
+
+    const room =
+        rooms.find(
+            item => item.id === id
+        );
+
+
+    if (!room) {
+
+        alert(
+            "ไม่พบข้อมูลห้องพัก"
+        );
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("roomId")
+        .value = room.id;
+
+
+    document
+        .getElementById("roomName")
+        .value = room.name || "";
+
+
+    document
+        .getElementById("roomPrice")
+        .value = room.price || "";
+
+
+    document
+        .getElementById("roomGuests")
+        .value = room.guests || "";
+
+
+    document
+        .getElementById("roomStatus")
+        .value =
+            room.status || "open";
+
+
+    document
+        .getElementById("roomDetail")
+        .value = room.detail || "";
+
+
+    document
+        .getElementById("roomFacilities")
+        .value =
+            room.facilities || "";
+
+
+    document
+        .getElementById("roomModalTitle")
+        .innerHTML =
+            "✏️ แก้ไขห้องพัก";
+
+
+    roomModal.show();
+
+}
+
+
+/* =====================================================
+   ลบห้องพัก
+===================================================== */
+
+function deleteRoom(id) {
+
+    const rooms = getRooms();
+
+
+    const room =
+        rooms.find(
+            item => item.id === id
+        );
+
+
+    if (!room) {
+
+        alert(
+            "ไม่พบข้อมูลห้องพัก"
+        );
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "ต้องการลบ \"" +
+            room.name +
+            "\" ใช่หรือไม่?"
+        );
+
+
+    if (!confirmDelete) {
         return;
     }
 
-    alert(
-        "แก้ไขข้อมูล \"" +
-        name +
-        "\" เป็น \"" +
-        newName +
-        "\" เรียบร้อยแล้ว"
-    );
 
-}
-
-
-/* =========================
-   ลบห้องพัก
-========================= */
-
-function deleteRoom(button, name) {
-
-    const confirmDelete = confirm(
-        "ต้องการลบ \"" +
-        name +
-        "\" ใช่หรือไม่?"
-    );
-
-
-    if (confirmDelete) {
-
-        button.closest("tr").remove();
-
-        alert(
-            "ลบ \"" +
-            name +
-            "\" เรียบร้อยแล้ว"
+    const newRooms =
+        rooms.filter(
+            item => item.id !== id
         );
 
-    }
+
+    saveRooms(newRooms);
+
+    renderRooms();
+
+
+    alert(
+        "ลบ \"" +
+        room.name +
+        "\" เรียบร้อยแล้ว 🗑️"
+    );
 
 }
+
+
+/* =====================================================
+   ป้องกันข้อมูลหายเมื่อเปิดหน้าใหม่
+===================================================== */
+
+window.addEventListener(
+    "storage",
+    function () {
+
+        renderRooms();
+
+    }
+);
 
 </script>
 
