@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>จัดการการจอง | Mon Bridge Stay</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+
+<style>
+
+/* =========================
+   พื้นฐาน
+========================= */
+
+body {
+    margin: 0;
+    background: #F7F3E8;
+    color: #3E3328;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   Sidebar
+========================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background: #4E342E;
+    color: white;
+    padding: 30px 18px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+.logo span {
+    display: block;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 16px 22px;
+    border-radius: 14px;
+    font-size: 19px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.menu a:hover {
+    background: #795548;
+}
+
+.menu a.active {
+    background: #806052;
+}
+
+
+/* =========================
+   Main
+========================= */
+
+.main {
+    margin-left: 300px;
+    padding: 45px;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.page-header {
+    background: white;
+    border-radius: 22px;
+    padding: 30px 40px;
+    margin-bottom: 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 5px 20px rgba(62, 51, 40, 0.08);
+}
+
+.page-header h1 {
+    margin: 0;
+    color: #6D4C41;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.page-header p {
+    margin: 8px 0 0;
+    font-size: 18px;
+}
+
+
+/* =========================
+   กล่องการจอง
+========================= */
+
+.booking-box {
+    background: white;
+    border-radius: 22px;
+    padding: 30px;
+
+    box-shadow: 0 5px 20px rgba(62, 51, 40, 0.08);
+}
+
+
+/* =========================
+   ตาราง
+========================= */
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background: #F7F3E8;
+    color: #6D4C41;
+
+    font-size: 16px;
+    padding: 16px 12px;
+
+    border-bottom: 2px solid #E0D2C5;
+}
+
+.table tbody td {
+    padding: 17px 12px;
+    vertical-align: middle;
+    font-size: 15px;
+}
+
+.table tbody tr:hover {
+    background: #FCF9F3;
+}
+
+
+/* =========================
+   สถานะ
+========================= */
+
+.status {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.status-confirmed {
+    background: #E7F3E8;
+    color: #4E7A52;
+}
+
+.status-pending {
+    background: #FFF1CC;
+    color: #9A7425;
+}
+
+.status-cancelled {
+    background: #F5E1DD;
+    color: #A64B3C;
+}
+
+
+/* =========================
+   ปุ่ม
+========================= */
+
+.btn-detail {
+    background: #795548;
+    color: white;
+    border: none;
+
+    padding: 8px 14px;
+    border-radius: 9px;
+}
+
+.btn-detail:hover {
+    background: #5D4037;
+    color: white;
+}
+
+.btn-confirm {
+    background: #6F8F72;
+    color: white;
+    border: none;
+
+    padding: 8px 14px;
+    border-radius: 9px;
+}
+
+.btn-confirm:hover {
+    background: #557259;
+    color: white;
+}
+
+.btn-delete {
+    background: #B45D4C;
+    color: white;
+    border: none;
+
+    padding: 8px 14px;
+    border-radius: 9px;
+}
+
+.btn-delete:hover {
+    background: #934737;
+    color: white;
+}
+
+
+/* =========================
+   กล่องสรุป
+========================= */
+
+.summary-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.summary-card {
+    background: #F7F3E8;
+    border-radius: 15px;
+    padding: 18px 25px;
+    min-width: 180px;
+}
+
+.summary-card strong {
+    display: block;
+    font-size: 28px;
+    color: #6D4C41;
+}
+
+.summary-card span {
+    color: #6D4C41;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .booking-box {
+        overflow-x: auto;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        🏡 Mon Bridge
+        <span>Stay</span>
+    </div>
+
+
+    <div class="menu">
+
+        <a href="admin.html">
+            📊 Dashboard
+        </a>
+
+        <a href="admin-rooms.html">
+            🛏️ จัดการห้องพัก
+        </a>
+
+        <a href="admin-bookings.html"
+           class="active">
+            🗓️ การจอง
+        </a>
+
+        <a href="admin-promotions.html">
+            🎁 โปรโมชั่น
+        </a>
+
+        <a href="admin-guests.html">
+            👥 ผู้เข้าพัก
+        </a>
+
+        <a href="index.html">
+            🌐 ดูหน้าเว็บไซต์
+        </a>
+
+        <a href="admin-login.html">
+            🚪 ออกจากระบบ
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="main">
+
+
+    <!-- Header -->
+
+    <div class="page-header">
+
+        <div>
+
+            <h1>
+                🗓️ จัดการการจอง
+            </h1>
+
+            <p>
+                ตรวจสอบ ยืนยัน และจัดการรายการจองของ Mon Bridge Stay
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         สรุปจำนวน
+    ================================================== -->
+
+    <div class="summary-row">
+
+
+        <div class="summary-card">
+
+            <strong id="totalBooking">
+                12
+            </strong>
+
+            <span>
+                📋 การจองทั้งหมด
+            </span>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <strong id="confirmedBooking">
+                8
+            </strong>
+
+            <span>
+                🟢 ยืนยันแล้ว
+            </span>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <strong id="pendingBooking">
+                3
+            </strong>
+
+            <span>
+                🟡 รอยืนยัน
+            </span>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <strong id="cancelledBooking">
+                1
+            </strong>
+
+            <span>
+                🔴 ยกเลิก
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ตารางการจอง
+    ================================================== -->
+
+    <div class="booking-box">
+
+        <div class="table-responsive">
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            รหัส
+                        </th>
+
+                        <th>
+                            ผู้เข้าพัก
+                        </th>
+
+                        <th>
+                            ที่พัก
+                        </th>
+
+                        <th>
+                            วันที่เข้าพัก
+                        </th>
+
+                        <th>
+                            วันที่ออก
+                        </th>
+
+                        <th>
+                            จำนวน
+                        </th>
+
+                        <th>
+                            ราคา
+                        </th>
+
+                        <th>
+                            สถานะ
+                        </th>
+
+                        <th>
+                            จัดการ
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="bookingTable">
+
+
+                    <!-- =================================================
+                         การจอง 001
+                    ================================================== -->
+
+                    <tr>
+
+                        <td>
+                            <strong>#001</strong>
+                        </td>
+
+                        <td>
+                            คุณสมชาย
+                        </td>
+
+                        <td>
+                            มาชิลล์ รีสอร์ท
+                        </td>
+
+                        <td>
+                            20/08/2026
+                        </td>
+
+                        <td>
+                            21/08/2026
+                        </td>
+
+                        <td>
+                            2 คน
+                        </td>
+
+                        <td>
+                            700 บาท
+                        </td>
+
+                        <td>
+
+                            <span class="status status-confirmed">
+                                ยืนยันแล้ว
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="btn-detail"
+                                    onclick="showDetail('#001')">
+
+                                👁️ ดู
+
+                            </button>
+
+                            <button class="btn-delete"
+                                    onclick="deleteBooking(this, '#001')">
+
+                                🗑️
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =================================================
+                         การจอง 002
+                    ================================================== -->
+
+                    <tr>
+
+                        <td>
+                            <strong>#002</strong>
+                        </td>
+
+                        <td>
+                            คุณสุดา
+                        </td>
+
+                        <td>
+                            บ้านมอญนอนเล่น
+                        </td>
+
+                        <td>
+                            22/08/2026
+                        </td>
+
+                        <td>
+                            24/08/2026
+                        </td>
+
+                        <td>
+                            2 คน
+                        </td>
+
+                        <td>
+                            1,380 บาท
+                        </td>
+
+                        <td>
+
+                            <span class="status status-pending">
+                                รอยืนยัน
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="btn-confirm"
+                                    onclick="confirmBooking(this)">
+
+                                ✓ ยืนยัน
+
+                            </button>
+
+                            <button class="btn-detail"
+                                    onclick="showDetail('#002')">
+
+                                👁️ ดู
+
+                            </button>
+
+                            <button class="btn-delete"
+                                    onclick="deleteBooking(this, '#002')">
+
+                                🗑️
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =================================================
+                         การจอง 003
+                    ================================================== -->
+
+                    <tr>
+
+                        <td>
+                            <strong>#003</strong>
+                        </td>
+
+                        <td>
+                            คุณนภัทร
+                        </td>
+
+                        <td>
+                            ภูชมหมอก รีสอร์ท
+                        </td>
+
+                        <td>
+                            25/08/2026
+                        </td>
+
+                        <td>
+                            27/08/2026
+                        </td>
+
+                        <td>
+                            4 คน
+                        </td>
+
+                        <td>
+                            3,000 บาท
+                        </td>
+
+                        <td>
+
+                            <span class="status status-pending">
+                                รอยืนยัน
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="btn-confirm"
+                                    onclick="confirmBooking(this)">
+
+                                ✓ ยืนยัน
+
+                            </button>
+
+                            <button class="btn-detail"
+                                    onclick="showDetail('#003')">
+
+                                👁️ ดู
+
+                            </button>
+
+                            <button class="btn-delete"
+                                    onclick="deleteBooking(this, '#003')">
+
+                                🗑️
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =================================================
+                         การจอง 004
+                    ================================================== -->
+
+                    <tr>
+
+                        <td>
+                            <strong>#004</strong>
+                        </td>
+
+                        <td>
+                            คุณวิภา
+                        </td>
+
+                        <td>
+                            สามประสบรีสอร์ท
+                        </td>
+
+                        <td>
+                            28/08/2026
+                        </td>
+
+                        <td>
+                            29/08/2026
+                        </td>
+
+                        <td>
+                            2 คน
+                        </td>
+
+                        <td>
+                            1,126 บาท
+                        </td>
+
+                        <td>
+
+                            <span class="status status-confirmed">
+                                ยืนยันแล้ว
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="btn-detail"
+                                    onclick="showDetail('#004')">
+
+                                👁️ ดู
+
+                            </button>
+
+                            <button class="btn-delete"
+                                    onclick="deleteBooking(this, '#004')">
+
+                                🗑️
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     JavaScript
+===================================================== -->
+
+<script>
+
+
+/* =========================
+   ดูรายละเอียด
+========================= */
+
+function showDetail(id) {
+
+    alert(
+        "รายละเอียดการจอง " +
+        id +
+        "\n\nสามารถเพิ่มข้อมูลเพิ่มเติมได้ในระบบฐานข้อมูลภายหลัง"
+    );
+
+}
+
+
+/* =========================
+   ยืนยันการจอง
+========================= */
+
+function confirmBooking(button) {
+
+    const row = button.closest("tr");
+
+    const status = row.querySelector(".status");
+
+    status.className =
+        "status status-confirmed";
+
+    status.textContent =
+        "ยืนยันแล้ว";
+
+
+    button.remove();
+
+
+    alert(
+        "ยืนยันการจองเรียบร้อยแล้ว"
+    );
+
+}
+
+
+/* =========================
+   ลบการจอง
+========================= */
+
+function deleteBooking(button, id) {
+
+    const confirmDelete = confirm(
+        "ต้องการลบรายการจอง " +
+        id +
+        " ใช่หรือไม่?"
+    );
+
+
+    if (confirmDelete) {
+
+        button.closest("tr").remove();
+
+        alert(
+            "ลบรายการจอง " +
+            id +
+            " เรียบร้อยแล้ว"
+        );
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
