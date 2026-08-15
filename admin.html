@@ -1,447 +1,368 @@
-```html
 <!DOCTYPE html>
+
 <html lang="th">
 
 <head>
 
-    <meta charset="UTF-8">
+```
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <title>ระบบหลังบ้าน | Mon Bridge Stay</title>
+<title>ระบบหลังบ้าน | Mon Bridge Stay</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
 
-    <style>
+<style>
 
-        body {
-            background: #F7F3E8;
-            color: #3E3328;
-            font-family: Arial, sans-serif;
-        }
+    body {
+        background: #F7F3E8;
+        color: #3E3328;
+        font-family: Arial, sans-serif;
+    }
 
-        /* =========================
-           Sidebar
-        ========================== */
+    .sidebar {
+        min-height: 100vh;
+        background: #4E342E;
+        color: white;
+        padding: 25px 15px;
+    }
+
+    .sidebar h4 {
+        color: white;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .sidebar .menu-item {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 13px 15px;
+        border-radius: 10px;
+        margin-bottom: 8px;
+        transition: .2s;
+    }
+
+    .sidebar .menu-item:hover,
+    .sidebar .menu-item.active {
+        background: #795548;
+        color: white;
+    }
+
+    .main-content {
+        padding: 30px;
+    }
+
+    .top-header {
+        background: white;
+        border-radius: 15px;
+        padding: 20px 25px;
+        box-shadow: 0 4px 15px rgba(62,51,40,.08);
+        margin-bottom: 25px;
+    }
+
+    .top-header h2 {
+        color: #5D4037;
+        font-weight: bold;
+    }
+
+    .dashboard-card {
+        background: white;
+        border: none;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(62,51,40,.08);
+        height: 100%;
+    }
+
+    .dashboard-icon {
+        font-size: 38px;
+        margin-bottom: 10px;
+    }
+
+    .dashboard-card h3 {
+        color: #5D4037;
+        font-weight: bold;
+    }
+
+    .dashboard-card p {
+        color: #777;
+        margin-bottom: 0;
+    }
+
+    .section-card {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(62,51,40,.08);
+        margin-top: 25px;
+    }
+
+    .section-card h4 {
+        color: #5D4037;
+        font-weight: bold;
+    }
+
+    .btn-main {
+        background: #795548;
+        color: white;
+        border: none;
+    }
+
+    .btn-main:hover {
+        background: #5D4037;
+        color: white;
+    }
+
+    .btn-outline-main {
+        border: 1px solid #795548;
+        color: #795548;
+    }
+
+    .btn-outline-main:hover {
+        background: #795548;
+        color: white;
+    }
+
+    .table {
+        vertical-align: middle;
+    }
+
+    .table thead {
+        background: #F7F3E8;
+    }
+
+    .table th {
+        color: #5D4037;
+    }
+
+    .status {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .status-active {
+        background: #E8F5E9;
+        color: #2E7D32;
+    }
+
+    .status-pending {
+        background: #FFF3CD;
+        color: #856404;
+    }
+
+    .status-cancel {
+        background: #F8D7DA;
+        color: #842029;
+    }
+
+    .empty-box {
+        text-align: center;
+        padding: 50px 20px;
+        color: #888;
+    }
+
+    .empty-box .icon {
+        font-size: 50px;
+        margin-bottom: 15px;
+    }
+
+    .booking-detail p {
+        margin-bottom: 10px;
+    }
+
+    .booking-detail strong {
+        color: #5D4037;
+    }
+
+    .modal-content {
+        border: none;
+        border-radius: 18px;
+    }
+
+    .modal-header {
+        background: #795548;
+        color: white;
+        border-radius: 18px 18px 0 0;
+    }
+
+    .modal-header .btn-close {
+        filter: brightness(0) invert(1);
+    }
+
+    .refresh-time {
+        font-size: 13px;
+        color: #888;
+    }
+
+    @media (max-width: 768px) {
 
         .sidebar {
-            min-height: 100vh;
-            background: #4E342E;
-            color: white;
-            padding: 25px 15px;
+            min-height: auto;
         }
-
-        .sidebar h4 {
-            color: white;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        .sidebar .menu-item {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 13px 15px;
-            border-radius: 10px;
-            margin-bottom: 8px;
-            transition: .2s;
-        }
-
-        .sidebar .menu-item:hover,
-        .sidebar .menu-item.active {
-            background: #795548;
-            color: white;
-        }
-
-        /* =========================
-           Main
-        ========================== */
 
         .main-content {
-            padding: 30px;
+            padding: 20px;
         }
-
-        .top-header {
-            background: white;
-            border-radius: 15px;
-            padding: 20px 25px;
-            box-shadow: 0 4px 15px rgba(62, 51, 40, .08);
-            margin-bottom: 25px;
-        }
-
-        .top-header h2 {
-            color: #5D4037;
-            font-weight: bold;
-        }
-
-        /* =========================
-           Dashboard
-        ========================== */
-
-        .dashboard-card {
-            background: white;
-            border: none;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(62, 51, 40, .08);
-            height: 100%;
-        }
-
-        .dashboard-icon {
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
-
-        .dashboard-card h3 {
-            color: #5D4037;
-            font-weight: bold;
-        }
-
-        .dashboard-card p {
-            color: #777;
-            margin-bottom: 0;
-        }
-
-        /* =========================
-           Section
-        ========================== */
-
-        .section-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(62, 51, 40, .08);
-            margin-top: 25px;
-        }
-
-        .section-card h4 {
-            color: #5D4037;
-            font-weight: bold;
-        }
-
-        /* =========================
-           Buttons
-        ========================== */
-
-        .btn-main {
-            background: #795548;
-            color: white;
-            border: none;
-        }
-
-        .btn-main:hover {
-            background: #5D4037;
-            color: white;
-        }
-
-        .btn-outline-main {
-            border: 1px solid #795548;
-            color: #795548;
-        }
-
-        .btn-outline-main:hover {
-            background: #795548;
-            color: white;
-        }
-
-        /* =========================
-           Table
-        ========================== */
 
         .table {
-            vertical-align: middle;
+            font-size: 14px;
         }
 
-        .table thead {
-            background: #F7F3E8;
-        }
+    }
 
-        .table th {
-            color: #5D4037;
-        }
-
-        /* =========================
-           Status
-        ========================== */
-
-        .status {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            display: inline-block;
-        }
-
-        .status-active {
-            background: #E8F5E9;
-            color: #2E7D32;
-        }
-
-        .status-pending {
-            background: #FFF3CD;
-            color: #856404;
-        }
-
-        .status-cancel {
-            background: #F8D7DA;
-            color: #842029;
-        }
-
-        /* =========================
-           Empty
-        ========================== */
-
-        .empty-box {
-            text-align: center;
-            padding: 45px 20px;
-            color: #777;
-        }
-
-        .empty-box .icon {
-            font-size: 45px;
-            margin-bottom: 10px;
-        }
-
-        /* =========================
-           Booking detail
-        ========================== */
-
-        .detail-item {
-            background: #faf7f5;
-            border-radius: 10px;
-            padding: 12px 15px;
-            margin-bottom: 10px;
-        }
-
-        .detail-item strong {
-            color: #5D4037;
-        }
-
-        /* =========================
-           Responsive
-        ========================== */
-
-        @media (max-width: 768px) {
-
-            .sidebar {
-                min-height: auto;
-            }
-
-            .main-content {
-                padding: 20px;
-            }
-
-        }
-
-    </style>
+</style>
+```
 
 </head>
 
-
 <body>
-
 
 <div class="container-fluid">
 
-    <div class="row">
+```
+<div class="row">
 
 
-        <!-- =====================================================
-             SIDEBAR
-        ====================================================== -->
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
 
-        <div class="col-md-3 col-lg-2 sidebar">
+    <div class="col-md-3 col-lg-2 sidebar">
 
-            <h4>
-                🏡 Mon Bridge Stay
-            </h4>
-
-
-            <a href="#dashboard"
-               class="menu-item active">
-
-                📊 Dashboard
-
-            </a>
+        <h4>
+            🏡 Mon Bridge Stay
+        </h4>
 
 
-            <a href="#rooms"
-               class="menu-item">
+        <a href="admin.html"
+           class="menu-item active">
 
-                🛏️ จัดการห้องพัก
+            📊 Dashboard
 
-            </a>
-
-
-            <a href="#bookings"
-               class="menu-item">
-
-                📅 การจอง
-
-            </a>
+        </a>
 
 
-            <a href="#promotions"
-               class="menu-item">
+        <a href="#rooms"
+           class="menu-item">
 
-                🎁 โปรโมชั่น
+            🛏️ จัดการห้องพัก
 
-            </a>
-
-
-            <a href="#customers"
-               class="menu-item">
-
-                👥 ผู้เข้าพัก
-
-            </a>
+        </a>
 
 
-            <a href="index.html"
-               class="menu-item">
+        <a href="#bookings"
+           class="menu-item">
 
-                🌐 ดูหน้าเว็บไซต์
+            📅 การจอง
 
-            </a>
+        </a>
 
 
-            <a href="login.html"
-               class="menu-item"
-               onclick="logoutAdmin()">
+        <a href="#promotions"
+           class="menu-item">
 
-                🚪 ออกจากระบบ
+            🎁 โปรโมชั่น
 
-            </a>
+        </a>
+
+
+        <a href="#customers"
+           class="menu-item">
+
+            👥 ผู้เข้าพัก
+
+        </a>
+
+
+        <a href="index.html"
+           class="menu-item">
+
+            🌐 ดูหน้าเว็บไซต์
+
+        </a>
+
+
+        <a href="login.html"
+           class="menu-item">
+
+            🚪 ออกจากระบบ
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <div class="col-md-9 col-lg-10 main-content">
+
+
+        <!-- HEADER -->
+
+        <div class="top-header">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+
+                <div>
+
+                    <h2 class="mb-1">
+                        📊 ระบบจัดการ Mon Bridge Stay
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        จัดการข้อมูลการจองและผู้เข้าพัก
+                    </p>
+
+                </div>
+
+
+                <button class="btn btn-main"
+                        onclick="loadBookings()">
+
+                    🔄 รีเฟรชข้อมูล
+
+                </button>
+
+            </div>
 
         </div>
 
 
 
-        <!-- =====================================================
-             MAIN
-        ====================================================== -->
+        <!-- =========================
+             DASHBOARD
+        ========================== -->
 
-        <div class="col-md-9 col-lg-10 main-content">
-
-
-            <!-- HEADER -->
-
-            <div class="top-header"
-                 id="dashboard">
-
-                <h2>
-                    📊 ระบบจัดการ Mon Bridge Stay
-                </h2>
-
-                <p class="text-muted mb-0">
-
-                    ยินดีต้อนรับเข้าสู่ระบบหลังบ้าน
-
-                </p>
-
-            </div>
+        <div class="row g-4">
 
 
+            <!-- ที่พัก -->
 
-            <!-- =================================================
-                 DASHBOARD
-            ================================================== -->
+            <div class="col-md-6 col-xl-3">
 
-            <div class="row g-4">
+                <div class="dashboard-card">
 
-
-                <!-- ห้องพัก -->
-
-                <div class="col-md-6 col-xl-3">
-
-                    <div class="dashboard-card">
-
-                        <div class="dashboard-icon">
-                            🛏️
-                        </div>
-
-                        <h3 id="totalRooms">
-                            6
-                        </h3>
-
-                        <p>
-                            ที่พักทั้งหมด
-                        </p>
-
+                    <div class="dashboard-icon">
+                        🛏️
                     </div>
 
-                </div>
+                    <h3>
+                        6
+                    </h3>
 
-
-
-                <!-- การจอง -->
-
-                <div class="col-md-6 col-xl-3">
-
-                    <div class="dashboard-card">
-
-                        <div class="dashboard-icon">
-                            📅
-                        </div>
-
-                        <h3 id="totalBookings">
-                            0
-                        </h3>
-
-                        <p>
-                            การจองทั้งหมด
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- ผู้เข้าพัก -->
-
-                <div class="col-md-6 col-xl-3">
-
-                    <div class="dashboard-card">
-
-                        <div class="dashboard-icon">
-                            👥
-                        </div>
-
-                        <h3 id="totalGuests">
-                            0
-                        </h3>
-
-                        <p>
-                            ผู้เข้าพัก
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- โปรโมชั่น -->
-
-                <div class="col-md-6 col-xl-3">
-
-                    <div class="dashboard-card">
-
-                        <div class="dashboard-icon">
-                            🎁
-                        </div>
-
-                        <h3>
-                            3
-                        </h3>
-
-                        <p>
-                            โปรโมชั่น
-                        </p>
-
-                    </div>
+                    <p>
+                        ที่พักทั้งหมด
+                    </p>
 
                 </div>
 
@@ -449,87 +370,23 @@
 
 
 
-            <!-- =================================================
-                 การจอง
-            ================================================== -->
+            <!-- การจอง -->
 
-            <div class="section-card"
-                 id="bookings">
+            <div class="col-md-6 col-xl-3">
 
-                <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="dashboard-card">
 
-                    <div>
-
-                        <h4 class="mb-1">
-                            📅 การจองล่าสุด
-                        </h4>
-
-                        <small class="text-muted">
-                            ข้อมูลจากแบบฟอร์มการจองของลูกค้า
-                        </small>
-
+                    <div class="dashboard-icon">
+                        📅
                     </div>
 
-                    <button class="btn btn-main"
-                            onclick="clearBookings()">
+                    <h3 id="bookingCount">
+                        0
+                    </h3>
 
-                        🗑️ ล้างข้อมูลการจอง
-
-                    </button>
-
-                </div>
-
-
-                <div class="table-responsive">
-
-                    <table class="table">
-
-                        <thead>
-
-                            <tr>
-
-                                <th>
-                                    รหัส
-                                </th>
-
-                                <th>
-                                    ผู้เข้าพัก
-                                </th>
-
-                                <th>
-                                    เบอร์โทร
-                                </th>
-
-                                <th>
-                                    ที่พัก
-                                </th>
-
-                                <th>
-                                    วันที่เข้าพัก
-                                </th>
-
-                                <th>
-                                    จำนวนคน
-                                </th>
-
-                                <th>
-                                    สถานะ
-                                </th>
-
-                                <th>
-                                    จัดการ
-                                </th>
-
-                            </tr>
-
-                        </thead>
-
-
-                        <tbody id="bookingTableBody">
-
-                        </tbody>
-
-                    </table>
+                    <p>
+                        การจองทั้งหมด
+                    </p>
 
                 </div>
 
@@ -537,996 +394,1243 @@
 
 
 
-            <!-- =================================================
-                 ห้องพัก
-            ================================================== -->
+            <!-- ผู้เข้าพัก -->
 
-            <div class="section-card"
-                 id="rooms">
+            <div class="col-md-6 col-xl-3">
 
-                <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="dashboard-card">
 
-                    <h4 class="mb-0">
-                        🛏️ จัดการห้องพัก
+                    <div class="dashboard-icon">
+                        👥
+                    </div>
+
+                    <h3 id="guestCount">
+                        0
+                    </h3>
+
+                    <p>
+                        ผู้เข้าพัก
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- รอยืนยัน -->
+
+            <div class="col-md-6 col-xl-3">
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-icon">
+                        ⏳
+                    </div>
+
+                    <h3 id="pendingCount">
+                        0
+                    </h3>
+
+                    <p>
+                        รอยืนยัน
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             BOOKINGS
+        ========================== -->
+
+        <div class="section-card"
+             id="bookings">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+
+                <div>
+
+                    <h4 class="mb-1">
+                        📅 การจองล่าสุด
                     </h4>
 
-                </div>
+                    <div class="refresh-time"
+                         id="refreshTime">
 
+                        -
 
-                <div class="table-responsive">
-
-                    <table class="table">
-
-                        <thead>
-
-                            <tr>
-
-                                <th>
-                                    ชื่อที่พัก
-                                </th>
-
-                                <th>
-                                    ราคา
-                                </th>
-
-                                <th>
-                                    สถานะ
-                                </th>
-
-                            </tr>
-
-                        </thead>
-
-
-                        <tbody>
-
-                            <tr>
-
-                                <td>
-                                    ภูชมหมอก รีสอร์ท
-                                </td>
-
-                                <td>
-                                    1,500 - 3,000 บาท
-                                </td>
-
-                                <td>
-
-                                    <span class="status status-active">
-                                        เปิดให้จอง
-                                    </span>
-
-                                </td>
-
-                            </tr>
-
-
-                            <tr>
-
-                                <td>
-                                    สามประสบ รีสอร์ท
-                                </td>
-
-                                <td>
-                                    1,126 - 3,000 บาท
-                                </td>
-
-                                <td>
-
-                                    <span class="status status-active">
-                                        เปิดให้จอง
-                                    </span>
-
-                                </td>
-
-                            </tr>
-
-
-                            <tr>
-
-                                <td>
-                                    บ้านมอญนอนเล่น
-                                </td>
-
-                                <td>
-                                    590 - 690 บาท
-                                </td>
-
-                                <td>
-
-                                    <span class="status status-active">
-                                        เปิดให้จอง
-                                    </span>
-
-                                </td>
-
-                            </tr>
-
-
-                            <tr>
-
-                                <td>
-                                    สังขละวิลเลจ รีสอร์ท
-                                </td>
-
-                                <td>
-                                    1,211 บาท
-                                </td>
-
-                                <td>
-
-                                    <span class="status status-active">
-                                        เปิดให้จอง
-                                    </span>
-
-                                </td>
-
-                            </tr>
-
-
-                            <tr>
-
-                                <td>
-                                    มาชิลล์ รีสอร์ท
-                                </td>
-
-                                <td>
-                                    583 - 700 บาท
-                                </td>
-
-                                <td>
-
-                                    <span class="status status-active">
-                                        เปิดให้จอง
-                                    </span>
-
-                                </td>
-
-                            </tr>
-
-
-                            <tr>
-
-                                <td>
-                                    เบอมิซอินน์ รีสอร์ท
-                                </td>
-
-                                <td>
-                                    1,000 บาท
-                                </td>
-
-                                <td>
-
-                                    <span class="status status-active">
-                                        เปิดให้จอง
-                                    </span>
-
-                                </td>
-
-                            </tr>
-
-                        </tbody>
-
-                    </table>
+                    </div>
 
                 </div>
+
+
+                <button class="btn btn-main"
+                        onclick="goToBooking()">
+
+                    + เพิ่มการจอง
+
+                </button>
 
             </div>
 
 
 
-            <!-- =================================================
-                 โปรโมชั่น
-            ================================================== -->
+            <div id="bookingTableContainer">
 
-            <div class="section-card"
-                 id="promotions">
-
-                <div class="d-flex justify-content-between align-items-center mb-3">
-
-                    <h4 class="mb-0">
-                        🎁 โปรโมชั่น
-                    </h4>
-
-                </div>
-
-
-                <div class="row g-3">
-
-
-                    <div class="col-md-4">
-
-                        <div class="border rounded-4 p-3">
-
-                            <h5>
-                                🔥 ลด 10%
-                            </h5>
-
-                            <p class="text-muted">
-                                จองห้องพักล่วงหน้า
-                            </p>
-
-                            <span class="status status-active">
-                                เปิดใช้งาน
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-md-4">
-
-                        <div class="border rounded-4 p-3">
-
-                            <h5>
-                                👨‍👩‍👧‍👦 Family Package
-                            </h5>
-
-                            <p class="text-muted">
-                                โปรโมชั่นสำหรับครอบครัว
-                            </p>
-
-                            <span class="status status-active">
-                                เปิดใช้งาน
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-md-4">
-
-                        <div class="border rounded-4 p-3">
-
-                            <h5>
-                                🌄 วันธรรมดา
-                            </h5>
-
-                            <p class="text-muted">
-                                ราคาพิเศษวันธรรมดา
-                            </p>
-
-                            <span class="status status-active">
-                                เปิดใช้งาน
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
+                <!-- JavaScript จะสร้างตารางตรงนี้ -->
 
             </div>
 
+        </div>
 
 
-            <!-- =================================================
-                 ผู้เข้าพัก
-            ================================================== -->
 
-            <div class="section-card"
-                 id="customers">
+        <!-- =========================
+             ROOMS
+        ========================== -->
 
-                <h4 class="mb-3">
-                    👥 ผู้เข้าพัก
+        <div class="section-card"
+             id="rooms">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                <h4 class="mb-0">
+                    🛏️ จัดการห้องพัก
                 </h4>
 
-                <div id="customerList">
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table class="table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                ชื่อที่พัก
+                            </th>
+
+                            <th>
+                                ราคา
+                            </th>
+
+                            <th>
+                                สถานะ
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                ภูชมหมอก รีสอร์ท
+                            </td>
+
+                            <td>
+                                1,500 - 3,000 บาท
+                            </td>
+
+                            <td>
+
+                                <span class="status status-active">
+                                    เปิดให้จอง
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                สามประสบ รีสอร์ท
+                            </td>
+
+                            <td>
+                                1,000 - 3,000 บาท
+                            </td>
+
+                            <td>
+
+                                <span class="status status-active">
+                                    เปิดให้จอง
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                มาชิลล์ รีสอร์ท
+                            </td>
+
+                            <td>
+                                583 - 700 บาท
+                            </td>
+
+                            <td>
+
+                                <span class="status status-active">
+                                    เปิดให้จอง
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             PROMOTIONS
+        ========================== -->
+
+        <div class="section-card"
+             id="promotions">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                <h4 class="mb-0">
+                    🎁 โปรโมชั่น
+                </h4>
+
+            </div>
+
+
+            <div class="row g-3">
+
+
+                <div class="col-md-4">
+
+                    <div class="border rounded-4 p-3">
+
+                        <h5>
+                            🔥 ลด 10%
+                        </h5>
+
+                        <p class="text-muted">
+                            จองห้องพักล่วงหน้า
+                        </p>
+
+                        <span class="status status-active">
+                            เปิดใช้งาน
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="border rounded-4 p-3">
+
+                        <h5>
+                            👨‍👩‍👧‍👦 Family Package
+                        </h5>
+
+                        <p class="text-muted">
+                            โปรโมชั่นสำหรับครอบครัว
+                        </p>
+
+                        <span class="status status-active">
+                            เปิดใช้งาน
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="border rounded-4 p-3">
+
+                        <h5>
+                            🌄 วันธรรมดา
+                        </h5>
+
+                        <p class="text-muted">
+                            ราคาพิเศษวันธรรมดา
+                        </p>
+
+                        <span class="status status-active">
+                            เปิดใช้งาน
+                        </span>
+
+                    </div>
 
                 </div>
 
             </div>
 
+        </div>
+
+
+
+        <!-- =========================
+             CUSTOMERS
+        ========================== -->
+
+        <div class="section-card"
+             id="customers">
+
+            <h4 class="mb-3">
+                👥 ผู้เข้าพัก
+            </h4>
+
+            <div id="customerContainer">
+
+            </div>
 
         </div>
+
 
     </div>
 
 </div>
+```
 
+</div>
 
-
-<!-- =====================================================
-     MODAL รายละเอียดการจอง
-====================================================== -->
+<!-- =========================
+     DETAIL MODAL
+========================== -->
 
 <div class="modal fade"
      id="bookingModal"
      tabindex="-1">
 
-    <div class="modal-dialog">
+```
+<div class="modal-dialog modal-dialog-centered">
 
-        <div class="modal-content">
+    <div class="modal-content">
 
-            <div class="modal-header">
+        <div class="modal-header">
 
-                <h5 class="modal-title">
-                    📋 รายละเอียดการจอง
-                </h5>
+            <h5 class="modal-title">
+                📋 รายละเอียดการจอง
+            </h5>
 
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal">
-                </button>
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+            </button>
 
-            </div>
-
-
-            <div class="modal-body"
-                 id="bookingDetail">
-
-            </div>
+        </div>
 
 
-            <div class="modal-footer">
+        <div class="modal-body">
 
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal">
-
-                    ปิด
-
-                </button>
+            <div id="bookingDetail"
+                 class="booking-detail">
 
             </div>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+
+                ปิด
+
+            </button>
 
         </div>
 
     </div>
 
 </div>
+```
 
-
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
 
-
 <script>
 
-/* =====================================================
-   ตรวจสอบการเข้าสู่ระบบ
-===================================================== */
+    /* =====================================================
+       STORAGE KEY
+    ===================================================== */
 
-const adminLoggedIn =
-    localStorage.getItem("adminLoggedIn");
-
-if (adminLoggedIn !== "true") {
-
-    window.location.href = "login.html";
-
-}
+    const BOOKING_STORAGE_KEY = "monBridgeBookings";
 
 
-/* =====================================================
-   โหลดข้อมูลการจอง
-===================================================== */
 
-function getBookings() {
+    /* =====================================================
+       โหลดข้อมูลเมื่อเปิดหน้า
+    ===================================================== */
 
-    try {
+    document.addEventListener("DOMContentLoaded", function () {
 
-        return JSON.parse(
-            localStorage.getItem("bookings")
-        ) || [];
+        loadBookings();
 
-    } catch (error) {
+    });
 
-        return [];
+
+
+    /* =====================================================
+       โหลดการจอง
+    ===================================================== */
+
+    function loadBookings() {
+
+        let bookings = getBookings();
+
+        renderBookings(bookings);
+
+        updateDashboard(bookings);
+
+        renderCustomers(bookings);
+
+        document.getElementById("refreshTime").textContent =
+            "อัปเดตล่าสุด: " + new Date().toLocaleString("th-TH");
 
     }
 
-}
 
 
-/* =====================================================
-   บันทึกข้อมูลการจอง
-===================================================== */
+    /* =====================================================
+       ดึงข้อมูลจาก localStorage
+    ===================================================== */
 
-function saveBookings(bookings) {
+    function getBookings() {
 
-    localStorage.setItem(
-        "bookings",
-        JSON.stringify(bookings)
-    );
+        try {
 
-}
+            const data =
+                localStorage.getItem(BOOKING_STORAGE_KEY);
 
+            if (!data) {
+                return [];
+            }
 
-/* =====================================================
-   สร้างรหัสการจอง
-===================================================== */
+            const bookings = JSON.parse(data);
 
-function generateBookingId() {
+            if (!Array.isArray(bookings)) {
+                return [];
+            }
 
-    return "MB" +
-        Date.now().toString().slice(-6);
+            return bookings;
 
-}
+        } catch (error) {
 
+            console.error("ไม่สามารถอ่านข้อมูลการจองได้", error);
 
-/* =====================================================
-   แสดงการจอง
-===================================================== */
+            return [];
 
-function renderBookings() {
+        }
 
-    const bookings = getBookings();
-
-    const tbody =
-        document.getElementById("bookingTableBody");
-
-    tbody.innerHTML = "";
+    }
 
 
-    if (bookings.length === 0) {
 
-        tbody.innerHTML = `
+    /* =====================================================
+       บันทึกข้อมูล
+    ===================================================== */
 
-            <tr>
+    function saveBookings(bookings) {
 
-                <td colspan="8">
+        localStorage.setItem(
+            BOOKING_STORAGE_KEY,
+            JSON.stringify(bookings)
+        );
 
-                    <div class="empty-box">
+    }
 
-                        <div class="icon">
-                            📭
-                        </div>
 
-                        <div>
-                            ยังไม่มีข้อมูลการจอง
-                        </div>
 
-                        <small>
-                            เมื่อมีลูกค้าจองห้องพัก
-                            รายการจะปรากฏที่นี่
-                        </small>
+    /* =====================================================
+       แสดงตารางการจอง
+    ===================================================== */
 
+    function renderBookings(bookings) {
+
+        const container =
+            document.getElementById("bookingTableContainer");
+
+
+        if (bookings.length === 0) {
+
+            container.innerHTML = `
+
+                <div class="empty-box">
+
+                    <div class="icon">
+                        📅
                     </div>
 
-                </td>
+                    <h5>
+                        ยังไม่มีรายการจอง
+                    </h5>
 
-            </tr>
+                    <p>
+                        เมื่อมีลูกค้าทำการจอง
+                        รายการจองจะแสดงที่นี่
+                    </p>
 
-        `;
+                    <button class="btn btn-main"
+                            onclick="goToBooking()">
 
-        updateDashboard();
+                        🏠 ไปหน้าจองห้องพัก
 
-        renderCustomers();
+                    </button>
 
-        return;
-
-    }
-
-
-    /*
-       แสดงรายการล่าสุดก่อน
-    */
-
-    bookings.sort(function(a, b) {
-
-        return new Date(b.createdAt) -
-               new Date(a.createdAt);
-
-    });
-
-
-    bookings.forEach(function(booking, index) {
-
-
-        const tr =
-            document.createElement("tr");
-
-
-        let statusClass =
-            "status-pending";
-
-
-        if (booking.status === "ยืนยันแล้ว") {
-
-            statusClass =
-                "status-active";
-
-        }
-
-
-        if (booking.status === "ยกเลิก") {
-
-            statusClass =
-                "status-cancel";
-
-        }
-
-
-        tr.innerHTML = `
-
-            <td>
-                <strong>
-                    #${booking.id}
-                </strong>
-            </td>
-
-            <td>
-                ${escapeHtml(booking.name)}
-            </td>
-
-            <td>
-                ${escapeHtml(booking.phone)}
-            </td>
-
-            <td>
-                ${escapeHtml(booking.room)}
-            </td>
-
-            <td>
-                ${formatDate(booking.date)}
-            </td>
-
-            <td>
-                ${booking.guests} คน
-            </td>
-
-            <td>
-
-                <span class="status ${statusClass}">
-                    ${escapeHtml(booking.status)}
-                </span>
-
-            </td>
-
-            <td>
-
-                <button
-                    class="btn btn-sm btn-outline-main"
-                    onclick="viewBooking(${index})">
-
-                    ดู
-
-                </button>
-
-                <button
-                    class="btn btn-sm btn-success"
-                    onclick="confirmBooking(${index})">
-
-                    ✓
-
-                </button>
-
-                <button
-                    class="btn btn-sm btn-danger"
-                    onclick="cancelBooking(${index})">
-
-                    ×
-
-                </button>
-
-            </td>
-
-        `;
-
-
-        tbody.appendChild(tr);
-
-    });
-
-
-    updateDashboard();
-
-    renderCustomers();
-
-}
-
-
-/* =====================================================
-   Dashboard
-===================================================== */
-
-function updateDashboard() {
-
-    const bookings =
-        getBookings();
-
-
-    document.getElementById("totalBookings")
-        .textContent =
-        bookings.length;
-
-
-    const totalGuests =
-        bookings.reduce(function(total, booking) {
-
-            return total +
-                Number(booking.guests || 0);
-
-        }, 0);
-
-
-    document.getElementById("totalGuests")
-        .textContent =
-        totalGuests;
-
-}
-
-
-/* =====================================================
-   ดูรายละเอียด
-===================================================== */
-
-function viewBooking(index) {
-
-    const bookings =
-        getBookings();
-
-    const booking =
-        bookings[index];
-
-
-    if (!booking) {
-        return;
-    }
-
-
-    const detail =
-        document.getElementById("bookingDetail");
-
-
-    detail.innerHTML = `
-
-        <div class="detail-item">
-
-            <strong>
-                รหัสการจอง
-            </strong>
-
-            <br>
-
-            #${escapeHtml(booking.id)}
-
-        </div>
-
-
-        <div class="detail-item">
-
-            <strong>
-                👤 ชื่อผู้จอง
-            </strong>
-
-            <br>
-
-            ${escapeHtml(booking.name)}
-
-        </div>
-
-
-        <div class="detail-item">
-
-            <strong>
-                📞 เบอร์โทรศัพท์
-            </strong>
-
-            <br>
-
-            ${escapeHtml(booking.phone)}
-
-        </div>
-
-
-        <div class="detail-item">
-
-            <strong>
-                🏡 ที่พัก
-            </strong>
-
-            <br>
-
-            ${escapeHtml(booking.room)}
-
-        </div>
-
-
-        <div class="detail-item">
-
-            <strong>
-                📅 วันที่เข้าพัก
-            </strong>
-
-            <br>
-
-            ${formatDate(booking.date)}
-
-        </div>
-
-
-        <div class="detail-item">
-
-            <strong>
-                👥 จำนวนผู้เข้าพัก
-            </strong>
-
-            <br>
-
-            ${booking.guests} คน
-
-        </div>
-
-
-        <div class="detail-item">
-
-            <strong>
-                📌 สถานะ
-            </strong>
-
-            <br>
-
-            ${escapeHtml(booking.status)}
-
-        </div>
-
-    `;
-
-
-    const modal =
-        new bootstrap.Modal(
-            document.getElementById("bookingModal")
-        );
-
-
-    modal.show();
-
-}
-
-
-/* =====================================================
-   ยืนยันการจอง
-===================================================== */
-
-function confirmBooking(index) {
-
-    const bookings =
-        getBookings();
-
-
-    if (!bookings[index]) {
-        return;
-    }
-
-
-    bookings[index].status =
-        "ยืนยันแล้ว";
-
-
-    saveBookings(bookings);
-
-    renderBookings();
-
-}
-
-
-/* =====================================================
-   ยกเลิกการจอง
-===================================================== */
-
-function cancelBooking(index) {
-
-    const bookings =
-        getBookings();
-
-
-    if (!bookings[index]) {
-        return;
-    }
-
-
-    const confirmCancel =
-        confirm(
-            "ต้องการยกเลิกการจองนี้หรือไม่?"
-        );
-
-
-    if (!confirmCancel) {
-        return;
-    }
-
-
-    bookings[index].status =
-        "ยกเลิก";
-
-
-    saveBookings(bookings);
-
-    renderBookings();
-
-}
-
-
-/* =====================================================
-   ล้างข้อมูลการจองทั้งหมด
-===================================================== */
-
-function clearBookings() {
-
-    const bookings =
-        getBookings();
-
-
-    if (bookings.length === 0) {
-
-        alert("ยังไม่มีข้อมูลการจอง");
-
-        return;
-
-    }
-
-
-    const confirmClear =
-        confirm(
-            "ต้องการลบข้อมูลการจองทั้งหมดหรือไม่?"
-        );
-
-
-    if (!confirmClear) {
-        return;
-    }
-
-
-    localStorage.removeItem("bookings");
-
-    renderBookings();
-
-}
-
-
-/* =====================================================
-   รายชื่อผู้เข้าพัก
-===================================================== */
-
-function renderCustomers() {
-
-    const bookings =
-        getBookings();
-
-
-    const container =
-        document.getElementById("customerList");
-
-
-    if (bookings.length === 0) {
-
-        container.innerHTML = `
-
-            <div class="empty-box">
-
-                <div class="icon">
-                    👥
                 </div>
 
-                ยังไม่มีข้อมูลผู้เข้าพัก
+            `;
+
+            return;
+
+        }
+
+
+
+        /* เรียงรายการล่าสุดก่อน */
+
+        bookings.sort(function(a, b) {
+
+            return (b.createdAt || 0) -
+                   (a.createdAt || 0);
+
+        });
+
+
+
+        let html = `
+
+            <div class="table-responsive">
+
+                <table class="table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>รหัส</th>
+
+                            <th>ผู้เข้าพัก</th>
+
+                            <th>ที่พัก</th>
+
+                            <th>วันที่เข้าพัก</th>
+
+                            <th>จำนวนคน</th>
+
+                            <th>สถานะ</th>
+
+                            <th>จัดการ</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+        `;
+
+
+
+        bookings.forEach(function(booking, index) {
+
+            const status =
+                booking.status || "pending";
+
+
+            let statusHtml = "";
+
+
+
+            if (status === "confirmed") {
+
+                statusHtml = `
+
+                    <span class="status status-active">
+                        ✅ ยืนยันแล้ว
+                    </span>
+
+                `;
+
+            } else if (status === "cancelled") {
+
+                statusHtml = `
+
+                    <span class="status status-cancel">
+                        ❌ ยกเลิก
+                    </span>
+
+                `;
+
+            } else {
+
+                statusHtml = `
+
+                    <span class="status status-pending">
+                        ⏳ รอยืนยัน
+                    </span>
+
+                `;
+
+            }
+
+
+
+            html += `
+
+                <tr>
+
+                    <td>
+                        <strong>
+                            ${escapeHtml(
+                                booking.id || ("#" + String(index + 1).padStart(3,"0"))
+                            )}
+                        </strong>
+                    </td>
+
+
+                    <td>
+                        ${escapeHtml(booking.name || "-")}
+                    </td>
+
+
+                    <td>
+                        ${escapeHtml(booking.room || "-")}
+                    </td>
+
+
+                    <td>
+                        ${formatDate(booking.date)}
+                    </td>
+
+
+                    <td>
+                        ${escapeHtml(String(booking.guests || "-"))} คน
+                    </td>
+
+
+                    <td>
+                        ${statusHtml}
+                    </td>
+
+
+                    <td>
+
+                        <div class="d-flex gap-1 flex-wrap">
+
+                            <button
+                                class="btn btn-sm btn-outline-main"
+                                onclick="viewBooking('${booking.id}')">
+
+                                👁️ ดู
+
+                            </button>
+
+
+                            ${
+                                status === "pending"
+                                ? `
+
+                                    <button
+                                        class="btn btn-sm btn-success"
+                                        onclick="confirmBooking('${booking.id}')">
+
+                                        ✅
+
+                                    </button>
+
+                                    <button
+                                        class="btn btn-sm btn-warning"
+                                        onclick="cancelBooking('${booking.id}')">
+
+                                        ❌
+
+                                    </button>
+
+                                `
+                                : ""
+                            }
+
+
+                            <button
+                                class="btn btn-sm btn-danger"
+                                onclick="deleteBooking('${booking.id}')">
+
+                                🗑️
+
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+
+
+        html += `
+
+                    </tbody>
+
+                </table>
 
             </div>
 
         `;
 
-        return;
+
+
+        container.innerHTML = html;
 
     }
 
 
-    container.innerHTML = "";
+
+    /* =====================================================
+       Dashboard
+    ===================================================== */
+
+    function updateDashboard(bookings) {
+
+        const total =
+            bookings.length;
 
 
-    bookings.forEach(function(booking) {
+        const guests =
+            bookings.reduce(function(total, booking) {
 
-        const item =
-            document.createElement("div");
+                if (booking.status === "cancelled") {
+                    return total;
+                }
+
+                return total +
+                    Number(booking.guests || 0);
+
+            }, 0);
 
 
-        item.className =
-            "detail-item";
+        const pending =
+            bookings.filter(function(booking) {
+
+                return !booking.status ||
+                       booking.status === "pending";
+
+            }).length;
 
 
-        item.innerHTML = `
 
-            <strong>
-                👤 ${escapeHtml(booking.name)}
-            </strong>
+        document.getElementById("bookingCount")
+            .textContent = total;
 
-            <br>
 
-            📞 ${escapeHtml(booking.phone)}
+        document.getElementById("guestCount")
+            .textContent = guests;
 
-            <br>
 
-            🏡 ${escapeHtml(booking.room)}
+        document.getElementById("pendingCount")
+            .textContent = pending;
 
-            <br>
+    }
 
-            📅 ${formatDate(booking.date)}
+
+
+    /* =====================================================
+       ดูรายละเอียด
+    ===================================================== */
+
+    function viewBooking(id) {
+
+        const bookings =
+            getBookings();
+
+
+        const booking =
+            bookings.find(function(item) {
+
+                return String(item.id) === String(id);
+
+            });
+
+
+        if (!booking) {
+
+            alert("ไม่พบข้อมูลการจอง");
+
+            return;
+
+        }
+
+
+
+        let statusText =
+            "⏳ รอยืนยัน";
+
+
+        if (booking.status === "confirmed") {
+
+            statusText =
+                "✅ ยืนยันแล้ว";
+
+        }
+
+
+        if (booking.status === "cancelled") {
+
+            statusText =
+                "❌ ยกเลิก";
+
+        }
+
+
+
+        const detail =
+            document.getElementById("bookingDetail");
+
+
+        detail.innerHTML = `
+
+            <p>
+                <strong>รหัสการจอง:</strong>
+                ${escapeHtml(booking.id || "-")}
+            </p>
+
+            <p>
+                <strong>ชื่อผู้จอง:</strong>
+                ${escapeHtml(booking.name || "-")}
+            </p>
+
+            <p>
+                <strong>เบอร์โทรศัพท์:</strong>
+                ${escapeHtml(booking.phone || "-")}
+            </p>
+
+            <p>
+                <strong>ที่พัก:</strong>
+                ${escapeHtml(booking.room || "-")}
+            </p>
+
+            <p>
+                <strong>วันที่เข้าพัก:</strong>
+                ${formatDate(booking.date)}
+            </p>
+
+            <p>
+                <strong>จำนวนผู้เข้าพัก:</strong>
+                ${escapeHtml(String(booking.guests || "-"))} คน
+            </p>
+
+            <p>
+                <strong>สถานะ:</strong>
+                ${statusText}
+            </p>
 
         `;
 
 
-        container.appendChild(item);
 
-    });
-
-}
-
-
-/* =====================================================
-   Format วันที่
-===================================================== */
-
-function formatDate(dateString) {
-
-    if (!dateString) {
-        return "-";
-    }
+        const modal =
+            new bootstrap.Modal(
+                document.getElementById("bookingModal")
+            );
 
 
-    const parts =
-        dateString.split("-");
-
-
-    if (parts.length !== 3) {
-        return dateString;
-    }
-
-
-    return `${parts[2]}/${parts[1]}/${parts[0]}`;
-
-}
-
-
-/* =====================================================
-   ป้องกัน HTML
-===================================================== */
-
-function escapeHtml(value) {
-
-    if (value === undefined ||
-        value === null) {
-
-        return "";
+        modal.show();
 
     }
 
 
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
 
-}
+    /* =====================================================
+       ยืนยันการจอง
+    ===================================================== */
+
+    function confirmBooking(id) {
+
+        const bookings =
+            getBookings();
 
 
-/* =====================================================
-   Logout
-===================================================== */
+        const booking =
+            bookings.find(function(item) {
 
-function logoutAdmin() {
+                return String(item.id) === String(id);
 
-    localStorage.removeItem(
-        "adminLoggedIn"
+            });
+
+
+        if (!booking) {
+            return;
+        }
+
+
+
+        const ok =
+            confirm(
+                "ต้องการยืนยันการจองของ " +
+                booking.name +
+                " ใช่หรือไม่?"
+            );
+
+
+        if (!ok) {
+            return;
+        }
+
+
+
+        booking.status =
+            "confirmed";
+
+
+        saveBookings(bookings);
+
+        loadBookings();
+
+    }
+
+
+
+    /* =====================================================
+       ยกเลิกการจอง
+    ===================================================== */
+
+    function cancelBooking(id) {
+
+        const bookings =
+            getBookings();
+
+
+        const booking =
+            bookings.find(function(item) {
+
+                return String(item.id) === String(id);
+
+            });
+
+
+        if (!booking) {
+            return;
+        }
+
+
+
+        const ok =
+            confirm(
+                "ต้องการยกเลิกการจองของ " +
+                booking.name +
+                " ใช่หรือไม่?"
+            );
+
+
+        if (!ok) {
+            return;
+        }
+
+
+
+        booking.status =
+            "cancelled";
+
+
+        saveBookings(bookings);
+
+        loadBookings();
+
+    }
+
+
+
+    /* =====================================================
+       ลบการจอง
+    ===================================================== */
+
+    function deleteBooking(id) {
+
+        const bookings =
+            getBookings();
+
+
+        const booking =
+            bookings.find(function(item) {
+
+                return String(item.id) === String(id);
+
+            });
+
+
+        if (!booking) {
+            return;
+        }
+
+
+
+        const ok =
+            confirm(
+                "ต้องการลบรายการจอง " +
+                (booking.name || "") +
+                " หรือไม่?"
+            );
+
+
+        if (!ok) {
+            return;
+        }
+
+
+
+        const newBookings =
+            bookings.filter(function(item) {
+
+                return String(item.id) !== String(id);
+
+            });
+
+
+        saveBookings(newBookings);
+
+        loadBookings();
+
+    }
+
+
+
+    /* =====================================================
+       ผู้เข้าพัก
+    ===================================================== */
+
+    function renderCustomers(bookings) {
+
+        const container =
+            document.getElementById("customerContainer");
+
+
+        const activeBookings =
+            bookings.filter(function(booking) {
+
+                return booking.status !== "cancelled";
+
+            });
+
+
+        if (activeBookings.length === 0) {
+
+            container.innerHTML = `
+
+                <div class="text-center text-muted py-4">
+
+                    👥 ยังไม่มีข้อมูลผู้เข้าพัก
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        let html = `
+
+            <div class="table-responsive">
+
+                <table class="table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ชื่อ</th>
+                            <th>เบอร์โทร</th>
+                            <th>ที่พัก</th>
+                            <th>วันที่เข้าพัก</th>
+                            <th>จำนวนคน</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+        `;
+
+
+
+        activeBookings.forEach(function(booking) {
+
+            html += `
+
+                <tr>
+
+                    <td>
+                        ${escapeHtml(booking.name || "-")}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(booking.phone || "-")}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(booking.room || "-")}
+                    </td>
+
+                    <td>
+                        ${formatDate(booking.date)}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(String(booking.guests || "-"))} คน
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+
+
+        html += `
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        `;
+
+
+
+        container.innerHTML = html;
+
+    }
+
+
+
+    /* =====================================================
+       ไปหน้า booking
+    ===================================================== */
+
+    function goToBooking() {
+
+        window.location.href =
+            "booking.html";
+
+    }
+
+
+
+    /* =====================================================
+       Format วันที่
+    ===================================================== */
+
+    function formatDate(dateString) {
+
+        if (!dateString) {
+            return "-";
+        }
+
+
+        const parts =
+            dateString.split("-");
+
+
+        if (parts.length !== 3) {
+            return escapeHtml(dateString);
+        }
+
+
+        return (
+            parts[2] +
+            "/" +
+            parts[1] +
+            "/" +
+            parts[0]
+        );
+
+    }
+
+
+
+    /* =====================================================
+       ป้องกัน HTML
+    ===================================================== */
+
+    function escapeHtml(value) {
+
+        if (value === null ||
+            value === undefined) {
+
+            return "";
+
+        }
+
+
+        return String(value)
+
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+
+    /* =====================================================
+       รับข้อมูลเมื่อ booking.html
+       เปิดในแท็บเดียวกัน/มีการเปลี่ยนแปลง storage
+    ===================================================== */
+
+    window.addEventListener(
+        "storage",
+        function(event) {
+
+            if (event.key === BOOKING_STORAGE_KEY) {
+
+                loadBookings();
+
+            }
+
+        }
     );
 
-}
-
-
-/* =====================================================
-   เริ่มต้นระบบ
-===================================================== */
-
-renderBookings();
-
 </script>
-
 
 </body>
 
 </html>
-```
