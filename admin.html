@@ -1,294 +1,127 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard | Mon Bridge Stay</title>
-
-<link rel="stylesheet" href="admin.css">
-
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#F7F3E8;color:#3E3328;font-family:Arial,sans-serif}
+.sidebar{position:fixed;left:0;top:0;width:300px;height:100vh;background:#4E342E;color:#fff;padding:30px 18px;overflow-y:auto;z-index:1000}
+.logo{font-size:28px;font-weight:bold;margin-bottom:35px;line-height:1.2}
+.logo span{display:block}
+.menu{display:flex;flex-direction:column;gap:8px}
+.menu a{color:#fff;text-decoration:none;padding:16px 22px;border-radius:14px;font-size:19px;font-weight:500;transition:.2s;display:block}
+.menu a:hover{background:#795548}
+.menu a.active{background:#806052}
+.main{margin-left:300px;padding:45px;min-height:100vh}
+.page-header{background:#fff;border-radius:22px;padding:30px 40px;margin-bottom:35px;box-shadow:0 5px 20px rgba(62,51,40,.08);display:flex;justify-content:space-between;align-items:center;gap:20px}
+.page-header-left{flex:1}
+.page-header h1{margin:0;color:#6D4C41;font-weight:bold;font-size:40px}
+.page-header p{margin:8px 0 0;font-size:18px}
+.header-buttons{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn-main{background:#806052;color:#fff;border:none;padding:13px 20px;border-radius:12px;font-size:16px;cursor:pointer}
+.btn-main:hover{background:#6D4C41}
+.btn-secondary{background:#E8E1D8;color:#5D4037;border:none;padding:13px 20px;border-radius:12px;cursor:pointer}
+.btn-danger{background:#B45D4C;color:#fff;border:none;padding:9px 15px;border-radius:10px;cursor:pointer}
+.btn-danger:hover{background:#934737}
+.btn-edit{background:#C9A27E;color:#fff;border:none;padding:9px 15px;border-radius:10px;cursor:pointer}
+.btn-view{background:#795548;color:#fff;border:none;padding:9px 15px;border-radius:10px;cursor:pointer}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;margin-bottom:35px}
+.summary-card{background:#fff;border-radius:22px;padding:25px 30px;min-height:130px;box-shadow:0 5px 20px rgba(62,51,40,.08)}
+.summary-number{font-size:34px;font-weight:bold;color:#795548;margin-bottom:8px}
+.summary-label{font-size:17px;color:#6D4C41}
+.panel{background:#fff;border-radius:22px;padding:30px;margin-bottom:25px;box-shadow:0 5px 20px rgba(62,51,40,.08)}
+.search-row{display:flex;gap:12px}
+.search-input,.form-control{flex:1;width:100%;padding:13px 16px;border:1px solid #D7CCC8;border-radius:12px;font-size:16px;outline:none}
+.search-input:focus,.form-control:focus{border-color:#795548;box-shadow:0 0 0 3px rgba(121,85,72,.12)}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:850px}
+th{background:#F7F3E8;color:#6D4C41;font-size:16px;padding:16px 12px;text-align:left;border-bottom:2px solid #E0D2C5;white-space:nowrap}
+td{padding:16px 12px;border-bottom:1px solid #E8E1D8;vertical-align:middle}
+tr:hover td{background:#FCF9F3}
+.actions{display:flex;gap:7px;flex-wrap:wrap}
+.badge{display:inline-block;padding:8px 13px;border-radius:20px;font-size:14px}
+.badge-green{background:#E8F3E8;color:#4E7A52}
+.badge-red{background:#F8E5E1;color:#A64B3C}
+.badge-yellow{background:#FFF1C9;color:#8A6A16}
+.empty{text-align:center;padding:50px;color:#8D8178;font-size:18px}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.form-group{display:flex;flex-direction:column;gap:7px}
+.form-group label{font-weight:bold;color:#6D4C41}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;justify-content:center;align-items:center;padding:20px}
+.modal.show{display:flex}
+.modal-box{background:#fff;width:100%;max-width:650px;max-height:90vh;overflow:auto;border-radius:20px;padding:30px}
+.modal-title{font-size:27px;font-weight:bold;color:#6D4C41;margin-bottom:20px}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+.detail{background:#F7F3E8;border-radius:14px;padding:18px}
+.detail-row{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid #E0D2C5}
+.detail-row:last-child{border-bottom:0}
+.detail-label{font-weight:bold;color:#795548}
+footer{text-align:center;color:#756960;padding:25px}
+@media(max-width:1200px){.sidebar{width:240px}.main{margin-left:240px;padding:25px}.summary{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){.sidebar{position:relative;width:100%;height:auto;padding:20px}.main{margin-left:0;padding:20px}.page-header{flex-direction:column;align-items:flex-start}.page-header h1{font-size:32px}.summary{grid-template-columns:1fr}.search-row{flex-direction:column}.form-grid{grid-template-columns:1fr}}
+</style>
 </head>
-
 <body>
 
-<!-- SIDEBAR -->
-
 <div class="sidebar">
-
-    <div class="logo">
-        🏡 Mon Bridge
-        <span>Stay</span>
-    </div>
-
-    <div class="menu">
-
-        <a href="admin.html" class="active">
-            📊 Dashboard
-        </a>
-
-        <a href="admin-rooms.html">
-            🛏️ จัดการห้องพัก
-        </a>
-
-        <a href="admin-bookings.html">
-            🗓️ การจอง
-        </a>
-
-        <a href="admin-promotions.html">
-            🎁 โปรโมชั่น
-        </a>
-
-        <a href="admin-guests.html">
-            👥 ผู้เข้าพัก
-        </a>
-
-        <a href="index.html">
-            🌐 ดูหน้าเว็บไซต์
-        </a>
-
-        <a href="index.html"
-           onclick="logoutAdmin()">
-            🚪 ออกจากระบบ
-        </a>
-
-    </div>
-
+  <div class="logo">🏡 Mon Bridge<span>Stay</span></div>
+  <div class="menu">
+    <a href="admin.html" class="active">📊 Dashboard</a>
+<a href="admin-rooms.html" class="">🛏️ จัดการห้องพัก</a>
+<a href="admin-bookings.html" class="">🗓️ การจอง</a>
+<a href="admin-promotions.html" class="">🎁 โปรโมชั่น</a>
+<a href="admin-guests.html" class="">👥 ผู้เข้าพัก</a>
+    <a href="index.html">🌐 ดูหน้าเว็บไซต์</a>
+    <a href="index.html" onclick="return leaveAdmin()">🚪 ออกจากระบบ</a>
+  </div>
 </div>
-
+<script>
+function leaveAdmin(){
+  try{localStorage.removeItem('monBridgeAdmin');}catch(e){}
+  return true;
+}
+</script>
 
 <main class="main">
 
-    <div class="page-header">
-
-        <div class="page-header-left">
-
-            <h1>
-                📊 Dashboard
-            </h1>
-
-            <p>
-                ภาพรวมการจัดการระบบ Mon Bridge Stay
-            </p>
-
-        </div>
-
-        <button
-            class="btn-main"
-            onclick="loadDashboard()">
-
-            🔄 รีเฟรช
-
-        </button>
-
-    </div>
-
-
-    <div class="summary">
-
-        <div class="summary-card">
-
-            <div
-                id="roomCount"
-                class="summary-number">
-
-                0
-
-            </div>
-
-            <div class="summary-label">
-                🛏️ ห้องพัก
-            </div>
-
-        </div>
-
-
-        <div class="summary-card">
-
-            <div
-                id="bookingCount"
-                class="summary-number">
-
-                0
-
-            </div>
-
-            <div class="summary-label">
-                🗓️ การจอง
-            </div>
-
-        </div>
-
-
-        <div class="summary-card">
-
-            <div
-                id="guestCount"
-                class="summary-number">
-
-                0
-
-            </div>
-
-            <div class="summary-label">
-                👥 ผู้เข้าพัก
-            </div>
-
-        </div>
-
-
-        <div class="summary-card">
-
-            <div
-                id="promotionCount"
-                class="summary-number">
-
-                0
-
-            </div>
-
-            <div class="summary-label">
-                🎁 โปรโมชั่น
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="panel">
-
-        <h2 style="color:#6D4C41;">
-            เมนูจัดการระบบ
-        </h2>
-
-        <p>
-            เลือกเมนูที่ต้องการจัดการ
-        </p>
-
-
-        <div class="header-buttons">
-
-            <button
-                class="btn-main"
-                onclick="location.href='admin-rooms.html'">
-
-                🛏️ จัดการห้องพัก
-
-            </button>
-
-
-            <button
-                class="btn-main"
-                onclick="location.href='admin-bookings.html'">
-
-                🗓️ จัดการการจอง
-
-            </button>
-
-
-            <button
-                class="btn-main"
-                onclick="location.href='admin-promotions.html'">
-
-                🎁 โปรโมชั่น
-
-            </button>
-
-
-            <button
-                class="btn-main"
-                onclick="location.href='admin-guests.html'">
-
-                👥 ผู้เข้าพัก
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <footer>
-        © 2026 Mon Bridge Stay. All rights reserved.
-    </footer>
-
+<div class="page-header">
+  <div class="page-header-left">
+    <h1>📊 Dashboard</h1>
+    <p>ภาพรวมการจัดการระบบ Mon Bridge Stay</p>
+  </div>
+  <div class="header-buttons"><button class="btn-main" onclick="refreshDashboard()">🔄 รีเฟรช</button></div>
+</div>
+<div class="summary">
+  <div class="summary-card"><div class="summary-number" id="roomsCount">0</div><div class="summary-label">🛏️ ห้องพัก</div></div>
+  <div class="summary-card"><div class="summary-number" id="bookingCount">0</div><div class="summary-label">🗓️ การจอง</div></div>
+  <div class="summary-card"><div class="summary-number" id="guestCount">0</div><div class="summary-label">👥 ผู้เข้าพัก</div></div>
+  <div class="summary-card"><div class="summary-number" id="promotionCount">0</div><div class="summary-label">🎁 โปรโมชั่น</div></div>
+</div>
+<div class="panel">
+  <h2 style="color:#6D4C41;margin-top:0">เมนูจัดการระบบ</h2>
+  <p>เลือกเมนูจาก Sidebar เพื่อเข้าสู่หน้าที่ต้องการ ทุกหน้าสามารถเปิดได้โดยตรงและไม่มีการบังคับไปหน้า admin-login.html</p>
+  <div class="header-buttons">
+    <button class="btn-main" onclick="location.href='admin-rooms.html'">🛏️ จัดการห้องพัก</button>
+    <button class="btn-main" onclick="location.href='admin-bookings.html'">🗓️ จัดการการจอง</button>
+    <button class="btn-main" onclick="location.href='admin-promotions.html'">🎁 จัดการโปรโมชั่น</button>
+    <button class="btn-main" onclick="location.href='admin-guests.html'">👥 จัดการผู้เข้าพัก</button>
+  </div>
+</div>
+
+<footer>© 2026 Mon Bridge Stay. All rights reserved.</footer>
 </main>
 
-
 <script>
-
-function getData(key) {
-
-    try {
-
-        const data =
-            JSON.parse(
-                localStorage.getItem(key) || "[]"
-            );
-
-        return Array.isArray(data)
-            ? data
-            : [];
-
-    } catch {
-
-        return [];
-
-    }
-
+const safeParse=(key)=>{try{const v=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(v)?v:[];}catch(e){return[];}};
+function refreshDashboard(){
+ document.getElementById("roomsCount").textContent=safeParse("monBridgeRooms").length;
+ document.getElementById("bookingCount").textContent=safeParse("monBridgeBookings").length;
+ document.getElementById("guestCount").textContent=safeParse("monBridgeGuests").length || safeParse("monBridgeUsers").length;
+ document.getElementById("promotionCount").textContent=safeParse("monBridgePromotions").length;
 }
-
-
-function loadDashboard() {
-
-    document.getElementById("roomCount")
-        .textContent =
-        getData("monBridgeRooms").length;
-
-
-    document.getElementById("bookingCount")
-        .textContent =
-        getData("monBridgeBookings").length;
-
-
-    const users =
-        getData("monBridgeUsers");
-
-    const guests =
-        getData("monBridgeGuests");
-
-
-    document.getElementById("guestCount")
-        .textContent =
-        guests.length || users.length;
-
-
-    document.getElementById("promotionCount")
-        .textContent =
-        getData("monBridgePromotions").length;
-
-}
-
-
-function logoutAdmin() {
-
-    localStorage.removeItem(
-        "monBridgeAdmin"
-    );
-
-}
-
-
-document.addEventListener(
-    "DOMContentLoaded",
-    loadDashboard
-);
-
+document.addEventListener("DOMContentLoaded",refreshDashboard);
 </script>
 
 </body>
