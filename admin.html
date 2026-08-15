@@ -3,293 +3,833 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <title>จัดการสมาชิก | Mon Bridge Stay</title>
+<title>จัดการสมาชิก | Mon Bridge Stay</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
 
-    <style>
+<style>
 
-        body {
-            background: #f8f9fa;
-            color: #4e342e;
-        }
+/* =====================================================
+   พื้นฐาน
+===================================================== */
 
-        /* =========================
-           NAVBAR
-        ========================== */
+* {
+    box-sizing: border-box;
+}
 
-        .navbar {
-            min-height: 60px;
-        }
+body {
 
-        .navbar-brand {
-            color: #795548 !important;
-            font-size: 24px;
-        }
+    margin: 0;
 
+    background: #F7F3E8;
 
-        /* =========================
-           CONTENT
-        ========================== */
+    color: #3E3328;
 
-        .admin-container {
+    font-family: Arial, sans-serif;
 
-            margin-top: 45px;
+}
 
-            margin-bottom: 60px;
 
-        }
+/* =====================================================
+   Sidebar
+===================================================== */
 
+.sidebar {
 
-        .page-title {
+    position: fixed;
 
-            color: #5d4037;
+    left: 0;
+    top: 0;
 
-            font-weight: bold;
+    width: 300px;
+    height: 100vh;
 
-            font-size: 36px;
+    background: #4E342E;
 
-        }
+    color: white;
 
+    padding: 30px 18px;
 
-        /* =========================
-           STAT CARD
-        ========================== */
+    overflow-y: auto;
 
-        .stat-card {
+}
 
-            background: white;
+.logo {
 
-            border-radius: 18px;
+    font-size: 28px;
 
-            padding: 28px;
+    font-weight: bold;
 
-            box-shadow:
-                0 5px 20px rgba(0,0,0,.08);
+    margin-bottom: 35px;
 
-            height: 100%;
+    line-height: 1.2;
 
-        }
+}
 
+.logo span {
 
-        .stat-icon {
+    display: block;
 
-            font-size: 42px;
+}
 
-            margin-bottom: 8px;
+.menu {
 
-        }
+    display: flex;
 
+    flex-direction: column;
 
-        .stat-label {
+    gap: 8px;
 
-            color: #795548;
+}
 
-            font-size: 17px;
+.menu a {
 
-        }
+    color: white;
 
+    text-decoration: none;
 
-        .stat-number {
+    padding: 16px 22px;
 
-            font-size: 30px;
+    border-radius: 14px;
 
-            font-weight: bold;
+    font-size: 19px;
 
-            color: #5d4037;
+    font-weight: 500;
 
-            margin-top: 5px;
+    transition: 0.2s;
 
-        }
+}
 
+.menu a:hover {
 
-        /* =========================
-           ADMIN CARD
-        ========================== */
+    background: #795548;
 
-        .admin-card {
+}
 
-            background: white;
+.menu a.active {
 
-            border-radius: 18px;
+    background: #806052;
 
-            padding: 30px;
+}
 
-            box-shadow:
-                0 5px 20px rgba(0,0,0,.08);
 
-        }
+/* =====================================================
+   Main
+===================================================== */
 
+.main {
 
-        /* =========================
-           SEARCH
-        ========================== */
+    margin-left: 300px;
 
-        .search-box {
+    padding: 45px;
 
-            border-radius: 10px;
+    min-height: 100vh;
 
-            padding: 13px 16px;
+}
 
-            border: 1px solid #ced4da;
 
-        }
+/* =====================================================
+   Header
+===================================================== */
 
+.page-header {
 
-        .search-box:focus {
+    background: white;
 
-            border-color: #795548;
+    border-radius: 22px;
 
-            box-shadow:
-                0 0 0 .2rem rgba(121,85,72,.15);
+    padding: 30px 40px;
 
-        }
+    margin-bottom: 35px;
 
+    box-shadow:
+        0 5px 20px rgba(62, 51, 40, 0.08);
 
-        /* =========================
-           TABLE
-        ========================== */
+    display: flex;
 
-        .table {
+    justify-content: space-between;
 
-            margin-bottom: 0;
+    align-items: center;
 
-        }
+    gap: 20px;
 
+}
 
-        .table thead th {
+.page-header-left {
 
-            background: #795548;
+    flex: 1;
 
-            color: white;
+}
 
-            border-color: #795548;
+.page-header h1 {
 
-            padding: 15px 12px;
+    margin: 0;
 
-            white-space: nowrap;
+    color: #6D4C41;
 
-        }
+    font-weight: bold;
 
+    font-size: 40px;
 
-        .table tbody td {
+}
 
-            padding: 14px 12px;
+.page-header p {
 
-            vertical-align: middle;
+    margin: 8px 0 0;
 
-        }
+    font-size: 18px;
 
+}
 
-        .table tbody tr:hover {
 
-            background: #faf7f5;
+/* =====================================================
+   ปุ่ม
+===================================================== */
 
-        }
+.header-buttons {
 
+    display: flex;
 
-        /* =========================
-           DELETE BUTTON
-        ========================== */
+    align-items: center;
 
-        .btn-delete {
+    gap: 10px;
 
-            color: #dc3545;
+    flex-shrink: 0;
 
-            background: white;
+}
 
-            border: 1px solid #dc3545;
+.btn-refresh {
 
-            border-radius: 8px;
+    background: #8D6E63;
 
-            padding: 6px 12px;
+    color: white;
 
-        }
+    border: none;
 
+    padding: 13px 20px;
 
-        .btn-delete:hover {
+    border-radius: 12px;
 
-            background: #dc3545;
+    font-size: 17px;
 
-            color: white;
+    cursor: pointer;
 
-        }
+    transition: 0.2s;
 
+}
 
-        /* =========================
-           EMPTY
-        ========================== */
+.btn-refresh:hover {
 
-        .empty-box {
+    background: #6D4C41;
 
-            text-align: center;
+}
 
-            padding: 60px 20px;
 
-            color: #777;
+/* =====================================================
+   Summary
+===================================================== */
 
-        }
+.summary {
 
+    display: grid;
 
-        .empty-icon {
+    grid-template-columns:
+        repeat(4, 1fr);
 
-            font-size: 65px;
+    gap: 25px;
 
-            margin-bottom: 15px;
+    margin-bottom: 35px;
 
-        }
+}
 
+.summary-card {
 
-        /* =========================
-           FOOTER
-        ========================== */
+    background: white;
 
-        footer {
+    border-radius: 22px;
 
-            background: #4e342e;
+    padding: 25px 30px;
 
-            color: white;
+    min-height: 130px;
 
-            padding: 25px 0;
+    box-shadow:
+        0 5px 20px rgba(62, 51, 40, 0.08);
 
-            margin-top: 80px;
+}
 
-        }
+.summary-number {
 
+    font-size: 34px;
 
-        /* =========================
-           RESPONSIVE
-        ========================== */
+    font-weight: bold;
 
-        @media (max-width: 768px) {
+    color: #795548;
 
-            .page-title {
+    margin-bottom: 8px;
 
-                font-size: 28px;
+}
 
-            }
+.summary-label {
 
-            .admin-card {
+    font-size: 17px;
 
-                padding: 18px;
+    color: #6D4C41;
 
-            }
+}
 
-            .navbar-brand {
 
-                font-size: 19px;
+/* =====================================================
+   Search
+===================================================== */
 
-            }
+.search-box {
 
-        }
+    background: white;
 
-    </style>
+    border-radius: 22px;
+
+    padding: 25px 30px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 5px 20px rgba(62, 51, 40, 0.08);
+
+}
+
+.search-title {
+
+    color: #6D4C41;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+
+}
+
+.search-row {
+
+    display: flex;
+
+    gap: 12px;
+
+}
+
+.search-input {
+
+    flex: 1;
+
+    width: 100%;
+
+    padding: 13px 16px;
+
+    border: 1px solid #D7CCC8;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    outline: none;
+
+}
+
+.search-input:focus {
+
+    border-color: #795548;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(121, 85, 72, 0.12);
+
+}
+
+.btn-clear {
+
+    background: #E8E1D8;
+
+    color: #5D4037;
+
+    border: none;
+
+    padding: 13px 20px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+}
+
+.btn-clear:hover {
+
+    background: #D7CCC8;
+
+}
+
+
+/* =====================================================
+   ตาราง
+===================================================== */
+
+.member-box {
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 5px 20px rgba(62, 51, 40, 0.08);
+
+}
+
+.table-responsive {
+
+    overflow-x: auto;
+
+}
+
+.table {
+
+    margin-bottom: 0;
+
+    min-width: 950px;
+
+}
+
+.table thead th {
+
+    background: #F7F3E8;
+
+    color: #6D4C41;
+
+    font-size: 17px;
+
+    padding: 16px 12px;
+
+    border-bottom:
+        2px solid #E0D2C5;
+
+    white-space: nowrap;
+
+}
+
+.table tbody td {
+
+    padding: 17px 12px;
+
+    vertical-align: middle;
+
+    font-size: 16px;
+
+    white-space: nowrap;
+
+}
+
+.table tbody tr:hover {
+
+    background: #FCF9F3;
+
+}
+
+
+/* =====================================================
+   สถานะ
+===================================================== */
+
+.status {
+
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+
+}
+
+.status-member {
+
+    background: #E8F3E8;
+
+    color: #4E7A52;
+
+}
+
+
+/* =====================================================
+   ปุ่มจัดการ
+===================================================== */
+
+.action-buttons {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+}
+
+.btn-view {
+
+    background: #795548;
+
+    color: white;
+
+    border: none;
+
+    padding: 9px 15px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+}
+
+.btn-view:hover {
+
+    background: #5D4037;
+
+}
+
+.btn-delete {
+
+    background: #B45D4C;
+
+    color: white;
+
+    border: none;
+
+    padding: 9px 15px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+
+}
+
+.btn-delete:hover {
+
+    background: #934737;
+
+    transform: scale(1.03);
+
+}
+
+.btn-delete:active {
+
+    transform: scale(0.96);
+
+}
+
+
+/* =====================================================
+   Empty
+===================================================== */
+
+.empty-message {
+
+    text-align: center;
+
+    padding: 60px 20px !important;
+
+    color: #8D8178;
+
+    font-size: 18px;
+
+}
+
+
+/* =====================================================
+   Modal
+===================================================== */
+
+.modal-overlay {
+
+    display: none;
+
+    position: fixed;
+
+    z-index: 9999;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        rgba(0, 0, 0, 0.55);
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+}
+
+.modal-overlay.show {
+
+    display: flex;
+
+}
+
+.custom-modal {
+
+    background: white;
+
+    width: 100%;
+
+    max-width: 600px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 15px 50px
+        rgba(0, 0, 0, 0.25);
+
+    animation: modalShow 0.2s ease;
+
+}
+
+@keyframes modalShow {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-15px)
+            scale(0.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+.modal-title {
+
+    color: #6D4C41;
+
+    font-size: 26px;
+
+    font-weight: bold;
+
+    margin-bottom: 25px;
+
+}
+
+.detail-box {
+
+    background: #F7F3E8;
+
+    border-radius: 14px;
+
+    padding: 18px;
+
+}
+
+.detail-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 12px 0;
+
+    border-bottom:
+        1px solid #E0D2C5;
+
+}
+
+.detail-row:last-child {
+
+    border-bottom: none;
+
+}
+
+.detail-label {
+
+    color: #795548;
+
+    font-weight: bold;
+
+}
+
+.detail-value {
+
+    text-align: right;
+
+    word-break: break-word;
+
+}
+
+.modal-footer-custom {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+}
+
+.btn-close-modal {
+
+    background: #E8E1D8;
+
+    color: #5D4037;
+
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+}
+
+.btn-close-modal:hover {
+
+    background: #D7CCC8;
+
+}
+
+
+/* =====================================================
+   Responsive
+===================================================== */
+
+@media (max-width: 1200px) {
+
+    .sidebar {
+
+        width: 240px;
+
+    }
+
+    .main {
+
+        margin-left: 240px;
+
+        padding: 25px;
+
+    }
+
+    .summary {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .sidebar {
+
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+        padding: 20px;
+
+    }
+
+    .main {
+
+        margin-left: 0;
+
+        padding: 20px;
+
+    }
+
+    .page-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+    .header-buttons {
+
+        width: 100%;
+
+    }
+
+    .btn-refresh {
+
+        width: 100%;
+
+    }
+
+    .summary {
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+    }
+
+    .search-row {
+
+        flex-direction: column;
+
+    }
+
+    .member-box {
+
+        padding: 15px;
+
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -298,947 +838,1115 @@
 
 
 <!-- =====================================================
-     NAVBAR
-====================================================== -->
+     SIDEBAR
+===================================================== -->
 
-<nav class="navbar bg-white shadow-sm">
+<div class="sidebar">
 
-    <div class="container">
+    <div class="logo">
+
+        🏡 Mon Bridge
+
+        <span>Stay</span>
+
+    </div>
 
 
-        <!-- LOGO -->
+    <div class="menu">
 
-        <a href="index.html"
-           class="navbar-brand fw-bold text-decoration-none">
+        <a href="admin.html"
+           class="active">
 
-            🏡 Mon Bridge Stay
+            📊 Dashboard
 
         </a>
 
 
+        <a href="admin-rooms.html">
 
-        <!-- ADMIN -->
+            🛏️ จัดการห้องพัก
 
-        <div class="d-flex align-items-center gap-2">
-
-
-            <span class="d-none d-md-inline">
-
-                👨‍💼 ผู้ดูแลระบบ
-
-            </span>
+        </a>
 
 
-            <button type="button"
-                    onclick="logoutAdmin()"
-                    class="btn btn-outline-danger">
+        <a href="admin-bookings.html">
 
-                🚪 ออกจากระบบ
+            🗓️ การจอง
 
-            </button>
+        </a>
 
 
-        </div>
+        <a href="admin-promotions.html">
+
+            🎁 โปรโมชั่น
+
+        </a>
 
 
-    </div>
+        <a href="admin-guests.html">
 
-</nav>
+            👥 ผู้เข้าพัก
 
-
-
-<!-- =====================================================
-     MAIN
-====================================================== -->
-
-<div class="container admin-container">
+        </a>
 
 
-    <!-- =================================================
-         TITLE
-    ================================================== -->
+        <a href="index.html">
 
-    <div class="mb-4">
+            🌐 ดูหน้าเว็บไซต์
 
-        <h1 class="page-title">
+        </a>
 
-            👥 จัดการสมาชิก
 
-        </h1>
+        <a href="admin-login.html">
 
-        <p class="text-muted mb-0">
+            🚪 ออกจากระบบ
 
-            ดูและจัดการข้อมูลสมาชิก Mon Bridge Stay
-
-        </p>
+        </a>
 
     </div>
-
-
-
-    <!-- =================================================
-         STATISTICS
-    ================================================== -->
-
-    <div class="row g-4 mb-4">
-
-
-        <!-- สมาชิกทั้งหมด -->
-
-        <div class="col-md-4">
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-
-                    👥
-
-                </div>
-
-                <div class="stat-label">
-
-                    สมาชิกทั้งหมด
-
-                </div>
-
-                <div id="totalUsers"
-                     class="stat-number">
-
-                    0
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ผลการค้นหา -->
-
-        <div class="col-md-4">
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-
-                    🔎
-
-                </div>
-
-                <div class="stat-label">
-
-                    ผลการค้นหา
-
-                </div>
-
-                <div id="searchCount"
-                     class="stat-number">
-
-                    0
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- สถานะ -->
-
-        <div class="col-md-4">
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-
-                    🟢
-
-                </div>
-
-                <div class="stat-label">
-
-                    สถานะระบบ
-
-                </div>
-
-                <div class="stat-number"
-                     style="font-size:22px;">
-
-                    ออนไลน์
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- =================================================
-         MEMBER MANAGEMENT
-    ================================================== -->
-
-    <div class="admin-card">
-
-
-        <!-- =================================================
-             SEARCH
-        ================================================== -->
-
-        <div class="row g-3 mb-4">
-
-
-            <div class="col-md-8">
-
-                <input
-                    type="text"
-                    id="searchInput"
-                    class="form-control search-box"
-                    placeholder="🔎 ค้นหาชื่อ นามสกุล อีเมล หรือเบอร์โทร..."
-                    autocomplete="off">
-
-            </div>
-
-
-            <div class="col-md-4">
-
-                <button
-                    type="button"
-                    onclick="clearSearch()"
-                    class="btn btn-outline-secondary w-100 py-2">
-
-                    ล้างการค้นหา
-
-                </button>
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- =================================================
-             TABLE
-        ================================================== -->
-
-        <div class="table-responsive">
-
-            <table class="table table-bordered table-hover">
-
-                <thead>
-
-                    <tr>
-
-                        <th style="width:60px;">
-                            #
-                        </th>
-
-                        <th>
-                            ชื่อ
-                        </th>
-
-                        <th>
-                            นามสกุล
-                        </th>
-
-                        <th>
-                            เบอร์โทร
-                        </th>
-
-                        <th>
-                            อีเมล
-                        </th>
-
-                        <th style="width:120px;">
-                            จัดการ
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody id="userTableBody">
-
-                </tbody>
-
-
-            </table>
-
-        </div>
-
-
-
-        <!-- =================================================
-             EMPTY
-        ================================================== -->
-
-        <div id="emptyBox"
-             class="empty-box"
-             style="display:none;">
-
-
-            <div class="empty-icon">
-
-                👥
-
-            </div>
-
-
-            <h5>
-
-                ไม่พบสมาชิก
-
-            </h5>
-
-
-            <p class="mb-0">
-
-                ยังไม่มีสมาชิกหรือไม่พบข้อมูลจากการค้นหา
-
-            </p>
-
-
-        </div>
-
-
-    </div>
-
 
 </div>
 
 
 
 <!-- =====================================================
-     FOOTER
-====================================================== -->
+     MAIN
+===================================================== -->
 
-<footer>
-
-    <div class="container text-center">
-
-        <h5>
-
-            🏡 Mon Bridge Stay
-
-        </h5>
+<div class="main">
 
 
-        <p class="mb-0">
+    <!-- HEADER -->
 
-            ระบบจัดการสมาชิก
+    <div class="page-header">
 
-        </p>
+        <div class="page-header-left">
+
+            <h1>
+
+                👥 จัดการสมาชิก
+
+            </h1>
+
+            <p>
+
+                ดู ค้นหา และจัดการข้อมูลสมาชิกของ Mon Bridge Stay
+
+            </p>
+
+        </div>
+
+
+        <div class="header-buttons">
+
+            <button
+                type="button"
+                class="btn-refresh"
+                id="refreshButton">
+
+                🔄 รีเฟรช
+
+            </button>
+
+        </div>
 
     </div>
 
-</footer>
+
+
+    <!-- =================================================
+         SUMMARY
+    ================================================= -->
+
+    <div class="summary">
+
+
+        <div class="summary-card">
+
+            <div
+                class="summary-number"
+                id="totalCount">
+
+                0
+
+            </div>
+
+            <div class="summary-label">
+
+                👥 สมาชิกทั้งหมด
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div
+                class="summary-number"
+                id="todayCount">
+
+                0
+
+            </div>
+
+            <div class="summary-label">
+
+                📅 จำนวนข้อมูลที่แสดง
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div
+                class="summary-number"
+                id="searchCount">
+
+                0
+
+            </div>
+
+            <div class="summary-label">
+
+                🔎 ผลการค้นหา
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div
+                class="summary-number">
+
+                🟢
+
+            </div>
+
+            <div class="summary-label">
+
+                ระบบสมาชิกทำงานปกติ
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         SEARCH
+    ================================================= -->
+
+    <div class="search-box">
+
+        <div class="search-title">
+
+            🔎 ค้นหาสมาชิก
+
+        </div>
+
+
+        <div class="search-row">
+
+            <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="ค้นหาจากชื่อ นามสกุล เบอร์โทร หรืออีเมล...">
+
+
+            <button
+                type="button"
+                id="clearSearch"
+                class="btn-clear">
+
+                ✕ ล้าง
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         TABLE
+    ================================================= -->
+
+    <div class="member-box">
+
+        <div class="table-responsive">
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ลำดับ</th>
+
+                        <th>ชื่อ-นามสกุล</th>
+
+                        <th>เบอร์โทรศัพท์</th>
+
+                        <th>อีเมล</th>
+
+                        <th>สถานะ</th>
+
+                        <th>จัดการ</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="userTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 
 <!-- =====================================================
-     JAVASCRIPT
-====================================================== -->
+     MODAL รายละเอียดสมาชิก
+===================================================== -->
+
+<div
+    id="detailModal"
+    class="modal-overlay">
+
+
+    <div class="custom-modal">
+
+
+        <div class="modal-title">
+
+            👤 รายละเอียดสมาชิก
+
+        </div>
+
+
+        <div
+            id="userDetail"
+            class="detail-box">
+
+        </div>
+
+
+        <div class="modal-footer-custom">
+
+            <button
+                type="button"
+                class="btn-close-modal"
+                id="closeDetailButton">
+
+                ปิด
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 
 <script>
 
-
 /* =====================================================
-   1. ตรวจสอบสิทธิ์ Admin
+   STORAGE
 ===================================================== */
 
-const adminStatus =
-    localStorage.getItem(
-        "monBridgeAdmin"
-    );
+const USERS_KEY = "monBridgeUsers";
 
 
-if (adminStatus !== "true") {
+/* =====================================================
+   อ่านสมาชิก
+===================================================== */
 
-    window.location.href =
-        "admin-login.html";
+function getUsers() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(USERS_KEY);
+
+
+        if (!saved) {
+
+            return [];
+
+        }
+
+
+        const users =
+            JSON.parse(saved);
+
+
+        if (!Array.isArray(users)) {
+
+            return [];
+
+        }
+
+
+        return users;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "ไม่สามารถอ่านข้อมูลสมาชิกได้",
+            error
+        );
+
+        return [];
+
+    }
 
 }
 
 
-
 /* =====================================================
-   2. โหลดสมาชิก
+   บันทึกสมาชิก
 ===================================================== */
 
-let users =
-    JSON.parse(
-        localStorage.getItem(
-            "monBridgeUsers"
-        )
-    ) || [];
+function saveUsers(users) {
 
+    localStorage.setItem(
+        USERS_KEY,
+        JSON.stringify(users)
+    );
+
+}
 
 
 /* =====================================================
-   3. Escape HTML
-   ป้องกันข้อมูลสมาชิกถูกตีความเป็น HTML
+   Escape HTML
 ===================================================== */
 
 function escapeHTML(value) {
 
-    return String(value ?? "")
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
         .replace(/&/g, "&amp;")
+
         .replace(/</g, "&lt;")
+
         .replace(/>/g, "&gt;")
+
         .replace(/"/g, "&quot;")
+
         .replace(/'/g, "&#039;");
 
 }
 
 
-
 /* =====================================================
-   4. แสดงสมาชิก
+   ชื่อเต็ม
 ===================================================== */
 
-function displayUsers(searchText = "") {
+function getFullName(user) {
+
+    return (
+
+        (user.firstName || "") +
+        " " +
+        (user.lastName || "")
+
+    ).trim();
+
+}
 
 
-    const tableBody =
-        document.getElementById(
-            "userTableBody"
-        );
+/* =====================================================
+   สร้างปุ่มจัดการ
+===================================================== */
+
+function getActionHTML(index) {
+
+    return `
+
+        <div class="action-buttons">
+
+            <button
+                type="button"
+                class="btn-view"
+                data-action="view"
+                data-index="${index}">
+
+                👁️ ดู
+
+            </button>
 
 
-    const emptyBox =
-        document.getElementById(
-            "emptyBox"
-        );
+            <button
+                type="button"
+                class="btn-delete"
+                data-action="delete"
+                data-index="${index}">
+
+                🗑️ ลบ
+
+            </button>
+
+        </div>
+
+    `;
+
+}
 
 
-    const totalUsers =
-        document.getElementById(
-            "totalUsers"
-        );
+/* =====================================================
+   แสดงสมาชิก
+===================================================== */
+
+function renderUsers() {
+
+    const table =
+        document.getElementById("userTable");
 
 
-    const searchCount =
-        document.getElementById(
-            "searchCount"
-        );
+    const users =
+        getUsers();
 
 
-    /* ล้างตารางก่อน */
-
-    tableBody.innerHTML = "";
-
+    const searchInput =
+        document.getElementById("searchInput");
 
 
-    /* =================================================
-       ค้นหา
-    ================================================= */
-
-    const search =
-        searchText
+    const keyword =
+        searchInput.value
             .trim()
             .toLowerCase();
 
 
+    /* ค้นหา */
+
     const filteredUsers =
-        users.filter(
-            function(user) {
+        users.filter(function(user) {
+
+            const fullName =
+                getFullName(user)
+                    .toLowerCase();
+
+            const phone =
+                String(user.phone || "")
+                    .toLowerCase();
+
+            const email =
+                String(user.email || "")
+                    .toLowerCase();
 
 
-                const firstName =
-                    String(
-                        user.firstName || ""
-                    ).toLowerCase();
+            return (
+
+                fullName.includes(keyword) ||
+
+                phone.includes(keyword) ||
+
+                email.includes(keyword)
+
+            );
+
+        });
 
 
-                const lastName =
-                    String(
-                        user.lastName || ""
-                    ).toLowerCase();
+    table.innerHTML = "";
 
 
-                const email =
-                    String(
-                        user.email || ""
-                    ).toLowerCase();
+    /* ไม่มีสมาชิก */
+
+    if (filteredUsers.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="6"
+                    class="empty-message">
+
+                    ${
+                        users.length === 0
+
+                        ? "📭 ยังไม่มีสมาชิกในระบบ"
+
+                        : "🔎 ไม่พบสมาชิกที่ค้นหา"
+
+                    }
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
 
 
-                const phone =
-                    String(
-                        user.phone || ""
-                    ).toLowerCase();
+    /* แสดงสมาชิก */
+
+    filteredUsers.forEach(function(user) {
 
 
-                const fullName =
-                    firstName +
-                    " " +
-                    lastName;
+        /*
+           สำคัญมาก
+
+           หาตำแหน่งจริงของสมาชิก
+           จาก users ตัวจริง
+
+           เพื่อให้ปุ่มลบไม่ลบผิดคน
+        */
+
+        const realIndex =
+            users.indexOf(user);
 
 
-                return (
-
-                    firstName.includes(search) ||
-
-                    lastName.includes(search) ||
-
-                    fullName.includes(search) ||
-
-                    email.includes(search) ||
-
-                    phone.includes(search)
-
-                );
-
-            }
-        );
+        const row =
+            document.createElement("tr");
 
 
+        row.innerHTML = `
 
-    /* =================================================
-       อัปเดตจำนวน
-    ================================================= */
+            <td>
 
-    totalUsers.textContent =
+                <strong>
+                    #${realIndex + 1}
+                </strong>
+
+            </td>
+
+
+            <td>
+
+                ${escapeHTML(
+                    getFullName(user)
+                )}
+
+            </td>
+
+
+            <td>
+
+                ${escapeHTML(
+                    user.phone || "-"
+                )}
+
+            </td>
+
+
+            <td>
+
+                ${escapeHTML(
+                    user.email || "-"
+                )}
+
+            </td>
+
+
+            <td>
+
+                <span class="status status-member">
+
+                    🟢 สมาชิก
+
+                </span>
+
+            </td>
+
+
+            <td>
+
+                ${getActionHTML(realIndex)}
+
+            </td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+
+    /* Dashboard */
+
+    document.getElementById(
+        "totalCount"
+    ).textContent =
         users.length;
 
 
-    searchCount.textContent =
+    document.getElementById(
+        "todayCount"
+    ).textContent =
         filteredUsers.length;
 
 
-
-    /* =================================================
-       ถ้าไม่มีข้อมูล
-    ================================================= */
-
-    if (
-        filteredUsers.length === 0
-    ) {
-
-        emptyBox.style.display =
-            "block";
-
-        return;
-
-    }
-
-
-    emptyBox.style.display =
-        "none";
-
-
-
-    /* =================================================
-       สร้างตาราง
-    ================================================= */
-
-    filteredUsers.forEach(
-        function(user, filteredIndex) {
-
-
-            /*
-                หาตำแหน่งจริงของสมาชิก
-                ใน Array users
-            */
-
-            const originalIndex =
-                users.indexOf(user);
-
-
-            const row =
-                document.createElement(
-                    "tr"
-                );
-
-
-
-            /* =================================================
-               สร้างช่องต่าง ๆ
-            ================================================= */
-
-            const numberCell =
-                document.createElement(
-                    "td"
-                );
-
-            numberCell.textContent =
-                filteredIndex + 1;
-
-
-
-            const firstNameCell =
-                document.createElement(
-                    "td"
-                );
-
-            firstNameCell.textContent =
-                user.firstName || "-";
-
-
-
-            const lastNameCell =
-                document.createElement(
-                    "td"
-                );
-
-            lastNameCell.textContent =
-                user.lastName || "-";
-
-
-
-            const phoneCell =
-                document.createElement(
-                    "td"
-                );
-
-            phoneCell.textContent =
-                user.phone || "-";
-
-
-
-            const emailCell =
-                document.createElement(
-                    "td"
-                );
-
-            emailCell.textContent =
-                user.email || "-";
-
-
-
-            /* =================================================
-               ปุ่มลบ
-            ================================================= */
-
-            const actionCell =
-                document.createElement(
-                    "td"
-                );
-
-
-            const deleteButton =
-                document.createElement(
-                    "button"
-                );
-
-
-            deleteButton.type =
-                "button";
-
-
-            deleteButton.className =
-                "btn btn-delete btn-sm";
-
-
-            deleteButton.textContent =
-                "🗑️ ลบ";
-
-
-            /*
-                ใช้ addEventListener
-                แทน onclick
-                เพื่อให้ปุ่มทำงานแน่นอน
-            */
-
-            deleteButton.addEventListener(
-                "click",
-                function() {
-
-                    deleteUser(
-                        originalIndex
-                    );
-
-                }
-            );
-
-
-            actionCell.appendChild(
-                deleteButton
-            );
-
-
-
-            /* =================================================
-               รวมแถว
-            ================================================= */
-
-            row.appendChild(
-                numberCell
-            );
-
-            row.appendChild(
-                firstNameCell
-            );
-
-            row.appendChild(
-                lastNameCell
-            );
-
-            row.appendChild(
-                phoneCell
-            );
-
-            row.appendChild(
-                emailCell
-            );
-
-            row.appendChild(
-                actionCell
-            );
-
-
-            tableBody.appendChild(
-                row
-            );
-
-        }
-    );
+    document.getElementById(
+        "searchCount"
+    ).textContent =
+        filteredUsers.length;
 
 }
 
 
-
 /* =====================================================
-   5. ค้นหา
+   ดูรายละเอียดสมาชิก
 ===================================================== */
 
-document
-    .getElementById(
-        "searchInput"
-    )
-    .addEventListener(
-        "input",
-        function() {
+function viewUser(index) {
 
-            displayUsers(
-                this.value
-            );
+    const users =
+        getUsers();
 
-        }
-    );
-
-
-
-/* =====================================================
-   6. ล้างการค้นหา
-===================================================== */
-
-function clearSearch() {
-
-
-    const searchInput =
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    searchInput.value = "";
-
-
-    displayUsers();
-
-}
-
-
-
-/* =====================================================
-   7. ลบสมาชิก
-===================================================== */
-
-function deleteUser(index) {
-
-
-    /*
-        โหลดข้อมูลใหม่จาก localStorage
-        เพื่อให้แน่ใจว่าใช้ข้อมูลล่าสุด
-    */
-
-    users =
-        JSON.parse(
-            localStorage.getItem(
-                "monBridgeUsers"
-            )
-        ) || [];
-
-
-
-    /* ตรวจสอบ index */
-
-    if (
-        index < 0 ||
-        index >= users.length
-    ) {
-
-        alert(
-            "❌ ไม่พบข้อมูลสมาชิก"
-        );
-
-        return;
-
-    }
-
-
-
-    /* สมาชิกที่จะลบ */
 
     const user =
         users[index];
 
 
+    if (!user) {
 
-    /* =================================================
-       ยืนยันการลบ
-    ================================================= */
-
-    const confirmDelete =
-        confirm(
-
-            "⚠️ ยืนยันการลบสมาชิก\n\n" +
-
-            "ชื่อ: " +
-            (user.firstName || "-") +
-            " " +
-            (user.lastName || "-") +
-
-            "\nอีเมล: " +
-            (user.email || "-") +
-
-            "\n\nหากลบแล้วจะไม่สามารถกู้คืนข้อมูลนี้ได้\n\n" +
-
-            "ต้องการลบหรือไม่?"
-
+        alert(
+            "ไม่พบข้อมูลสมาชิก"
         );
-
-
-
-    /* ถ้ายกเลิก */
-
-    if (!confirmDelete) {
 
         return;
 
     }
 
 
-
-    /* =================================================
-       เก็บ Email ของสมาชิกที่จะลบ
-    ================================================= */
-
-    const deletedEmail =
-        user.email;
+    const fullName =
+        getFullName(user);
 
 
-
-    /* =================================================
-       ลบออกจาก Array
-    ================================================= */
-
-    users.splice(
-        index,
-        1
-    );
+    document.getElementById(
+        "userDetail"
+    ).innerHTML = `
 
 
+        <div class="detail-row">
 
-    /* =================================================
-       บันทึกกลับ localStorage
-    ================================================= */
+            <span class="detail-label">
 
-    localStorage.setItem(
-        "monBridgeUsers",
-        JSON.stringify(users)
-    );
+                👤 ชื่อ-นามสกุล
+
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    fullName || "-"
+                )}
+
+            </span>
+
+        </div>
 
 
+        <div class="detail-row">
 
-    /* =================================================
-       ตรวจสอบสมาชิกที่กำลัง Login
-    ================================================= */
+            <span class="detail-label">
 
-    const currentUser =
-        JSON.parse(
-            localStorage.getItem(
-                "monBridgeCurrentUser"
-            )
-        );
+                📱 เบอร์โทรศัพท์
 
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    user.phone || "-"
+                )}
+
+            </span>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span class="detail-label">
+
+                📧 อีเมล
+
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    user.email || "-"
+                )}
+
+            </span>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span class="detail-label">
+
+                🔒 รหัสผ่าน
+
+            </span>
+
+            <span class="detail-value">
+
+                ••••••••
+
+            </span>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span class="detail-label">
+
+                🟢 สถานะ
+
+            </span>
+
+            <span class="detail-value">
+
+                สมาชิก
+
+            </span>
+
+        </div>
+
+    `;
+
+
+    document.getElementById(
+        "detailModal"
+    ).classList.add("show");
+
+}
+
+
+/* =====================================================
+   ลบสมาชิก
+===================================================== */
+
+function deleteUser(index) {
+
+    /*
+       อ่านข้อมูลใหม่ทุกครั้ง
+       ป้องกันข้อมูลเก่า
+    */
+
+    const users =
+        getUsers();
+
+
+    /* ตรวจสอบ index */
 
     if (
-        currentUser &&
-        currentUser.email ===
-        deletedEmail
+        !Number.isInteger(index) ||
+        index < 0 ||
+        index >= users.length
     ) {
 
-        localStorage.removeItem(
-            "monBridgeCurrentUser"
+        alert(
+            "ไม่พบสมาชิกที่ต้องการลบ"
         );
+
+        return;
 
     }
 
 
-
-    /* =================================================
-       โหลดข้อมูลใหม่
-    ================================================= */
-
-    const currentSearch =
-        document
-            .getElementById(
-                "searchInput"
-            )
-            .value;
+    const user =
+        users[index];
 
 
-    displayUsers(
-        currentSearch
-    );
+    const fullName =
+        getFullName(user);
 
 
+    /* ยืนยัน */
 
-    /* =================================================
-       แจ้งเตือน
-    ================================================= */
+    const confirmed =
+        window.confirm(
+
+            "⚠️ ยืนยันการลบสมาชิก\n\n" +
+
+            "ชื่อ: " +
+            (fullName || "-") +
+
+            "\nอีเมล: " +
+            (user.email || "-") +
+
+            "\n\n" +
+
+            "ข้อมูลสมาชิกจะถูกลบออกจากระบบ"
+
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    /*
+       ลบจาก Array
+    */
+
+    users.splice(index, 1);
+
+
+    /*
+       บันทึกกลับ localStorage
+    */
+
+    saveUsers(users);
+
+
+    /*
+       แสดงข้อมูลใหม่ทันที
+    */
+
+    renderUsers();
+
 
     alert(
-        "✅ ลบสมาชิกเรียบร้อยแล้ว"
+        "🗑️ ลบสมาชิกเรียบร้อยแล้ว"
     );
 
 }
 
 
-
 /* =====================================================
-   8. ออกจากระบบ Admin
+   EVENT CLICK
+   ใช้ Event Delegation
+   ปุ่มลบจะทำงานแน่นอน
 ===================================================== */
 
-function logoutAdmin() {
+document.addEventListener(
+    "click",
+    function(event) {
 
 
-    localStorage.removeItem(
-        "monBridgeAdmin"
-    );
+        /*
+           หา button ที่ถูกกด
+           แม้กดตรง icon หรือข้อความ
+        */
+
+        const button =
+            event.target.closest(
+                "button[data-action]"
+            );
 
 
-    window.location.href =
-        "admin-login.html";
+        if (!button) {
+
+            return;
+
+        }
+
+
+        const action =
+            button.dataset.action;
+
+
+        const index =
+            Number(
+                button.dataset.index
+            );
+
+
+        /* ดู */
+
+        if (action === "view") {
+
+            viewUser(index);
+
+            return;
+
+        }
+
+
+        /* ลบ */
+
+        if (action === "delete") {
+
+            deleteUser(index);
+
+            return;
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ค้นหา
+===================================================== */
+
+document.getElementById(
+    "searchInput"
+).addEventListener(
+    "input",
+    function() {
+
+        renderUsers();
+
+    }
+);
+
+
+/* =====================================================
+   ล้างการค้นหา
+===================================================== */
+
+document.getElementById(
+    "clearSearch"
+).addEventListener(
+    "click",
+    function() {
+
+        document.getElementById(
+            "searchInput"
+        ).value = "";
+
+
+        renderUsers();
+
+        document.getElementById(
+            "searchInput"
+        ).focus();
+
+    }
+);
+
+
+/* =====================================================
+   รีเฟรช
+===================================================== */
+
+document.getElementById(
+    "refreshButton"
+).addEventListener(
+    "click",
+    function() {
+
+        renderUsers();
+
+        alert(
+            "🔄 รีเฟรชข้อมูลสมาชิกเรียบร้อยแล้ว"
+        );
+
+    }
+);
+
+
+/* =====================================================
+   ปิด Modal
+===================================================== */
+
+function closeDetailModal() {
+
+    document.getElementById(
+        "detailModal"
+    ).classList.remove("show");
 
 }
 
 
+document.getElementById(
+    "closeDetailButton"
+).addEventListener(
+    "click",
+    closeDetailModal
+);
+
 
 /* =====================================================
-   9. แสดงข้อมูลเมื่อเปิดหน้า
+   คลิกด้านนอก Modal
 ===================================================== */
 
-displayUsers();
+document.getElementById(
+    "detailModal"
+).addEventListener(
+    "click",
+    function(event) {
 
+        if (
+            event.target === this
+        ) {
+
+            closeDetailModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ESC
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeDetailModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   โหลดหน้า
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        renderUsers();
+
+    }
+);
 
 </script>
 
@@ -1246,4 +1954,3 @@ displayUsers();
 </body>
 
 </html>
-```
