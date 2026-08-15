@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ระบบหลังบ้าน | Mon Bridge Stay</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+
+        /* =========================
+           พื้นฐาน
+        ========================= */
+
+        body {
+            background: #F7F3E8;
+            color: #3E3328;
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* =========================
+           Sidebar
+        ========================= */
+
+        .sidebar {
+            min-height: 100vh;
+            background: #4E342E;
+            color: white;
+            padding: 25px 15px;
+        }
+
+        .sidebar h4 {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .sidebar .menu-item {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 13px 15px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            transition: 0.2s;
+        }
+
+        .sidebar .menu-item:hover,
+        .sidebar .menu-item.active {
+            background: #795548;
+            color: white;
+        }
+
+
+        /* =========================
+           Main
+        ========================= */
+
+        .main-content {
+            padding: 30px;
+        }
+
+
+        /* =========================
+           Header
+        ========================= */
+
+        .top-header {
+            background: white;
+            border-radius: 15px;
+            padding: 20px 25px;
+            box-shadow: 0 4px 15px rgba(62, 51, 40, 0.08);
+            margin-bottom: 25px;
+        }
+
+        .top-header h2 {
+            color: #5D4037;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           Dashboard Cards
+        ========================= */
+
+        .dashboard-card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(62, 51, 40, 0.08);
+            height: 100%;
+        }
+
+        .dashboard-icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card h3 {
+            color: #5D4037;
+            font-weight: bold;
+        }
+
+        .dashboard-card p {
+            color: #777;
+            margin-bottom: 0;
+        }
+
+
+        /* =========================
+           Section
+        ========================= */
+
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(62, 51, 40, 0.08);
+            margin-top: 25px;
+        }
+
+        .section-card h4 {
+            color: #5D4037;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           Buttons
+        ========================= */
+
+        .btn-main {
+            background: #795548;
+            color: white;
+            border: none;
+        }
+
+        .btn-main:hover {
+            background: #5D4037;
+            color: white;
+        }
+
+        .btn-outline-main {
+            border: 1px solid #795548;
+            color: #795548;
+        }
+
+        .btn-outline-main:hover {
+            background: #795548;
+            color: white;
+        }
+
+
+        /* =========================
+           Table
+        ========================= */
+
+        .table {
+            vertical-align: middle;
+        }
+
+        .table thead {
+            background: #F7F3E8;
+        }
+
+        .table th {
+            color: #5D4037;
+        }
+
+
+        /* =========================
+           Status
+        ========================= */
+
+        .status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            display: inline-block;
+        }
+
+        .status-active {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .status-pending {
+            background: #FFF3CD;
+            color: #856404;
+        }
+
+
+        /* =========================
+           Responsive
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .sidebar {
+                min-height: auto;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <div class="col-md-3 col-lg-2 sidebar">
+
+            <h4>
+                🏡 Mon Bridge Stay
+            </h4>
+
+
+            <a href="admin.html"
+               class="menu-item active">
+
+                📊 Dashboard
+
+            </a>
+
+
+            <a href="#rooms"
+               class="menu-item">
+
+                🛏️ จัดการห้องพัก
+
+            </a>
+
+
+            <a href="#bookings"
+               class="menu-item">
+
+                📅 การจอง
+
+            </a>
+
+
+            <a href="#promotions"
+               class="menu-item">
+
+                🎁 โปรโมชั่น
+
+            </a>
+
+
+            <a href="#customers"
+               class="menu-item">
+
+                👥 ผู้เข้าพัก
+
+            </a>
+
+
+            <a href="index.html"
+               class="menu-item">
+
+                🌐 ดูหน้าเว็บไซต์
+
+            </a>
+
+
+            <a href="index.html"
+               class="menu-item">
+
+                🚪 ออกจากระบบ
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+        ====================================================== -->
+
+        <div class="col-md-9 col-lg-10 main-content">
+
+
+            <!-- HEADER -->
+
+            <div class="top-header">
+
+                <h2>
+                    📊 ระบบจัดการ Mon Bridge Stay
+                </h2>
+
+                <p class="text-muted mb-0">
+
+                    ยินดีต้อนรับเข้าสู่ระบบหลังบ้าน
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DASHBOARD
+            ================================================== -->
+
+            <div class="row g-4">
+
+
+                <!-- ห้องพัก -->
+
+                <div class="col-md-6 col-xl-3">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon">
+                            🛏️
+                        </div>
+
+                        <h3>
+                            6
+                        </h3>
+
+                        <p>
+                            ที่พักทั้งหมด
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- การจอง -->
+
+                <div class="col-md-6 col-xl-3">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon">
+                            📅
+                        </div>
+
+                        <h3>
+                            12
+                        </h3>
+
+                        <p>
+                            การจองทั้งหมด
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ผู้เข้าพัก -->
+
+                <div class="col-md-6 col-xl-3">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon">
+                            👥
+                        </div>
+
+                        <h3>
+                            25
+                        </h3>
+
+                        <p>
+                            ผู้เข้าพัก
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- โปรโมชั่น -->
+
+                <div class="col-md-6 col-xl-3">
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-icon">
+                            🎁
+                        </div>
+
+                        <h3>
+                            3
+                        </h3>
+
+                        <p>
+                            โปรโมชั่น
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 การจองล่าสุด
+            ================================================== -->
+
+            <div class="section-card"
+                 id="bookings">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h4 class="mb-0">
+                        📅 การจองล่าสุด
+                    </h4>
+
+                    <button class="btn btn-main">
+                        + เพิ่มการจอง
+                    </button>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    รหัส
+                                </th>
+
+                                <th>
+                                    ผู้เข้าพัก
+                                </th>
+
+                                <th>
+                                    ที่พัก
+                                </th>
+
+                                <th>
+                                    วันที่เข้าพัก
+                                </th>
+
+                                <th>
+                                    สถานะ
+                                </th>
+
+                                <th>
+                                    จัดการ
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <tr>
+
+                                <td>
+                                    #001
+                                </td>
+
+                                <td>
+                                    คุณสมชาย
+                                </td>
+
+                                <td>
+                                    มาชิลล์ รีสอร์ท
+                                </td>
+
+                                <td>
+                                    20/08/2026
+                                </td>
+
+                                <td>
+
+                                    <span class="status status-active">
+                                        ยืนยันแล้ว
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <button class="btn btn-sm btn-outline-main">
+                                        ดู
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <tr>
+
+                                <td>
+                                    #002
+                                </td>
+
+                                <td>
+                                    คุณสุดา
+                                </td>
+
+                                <td>
+                                    บ้านมอญนอนเล่น
+                                </td>
+
+                                <td>
+                                    22/08/2026
+                                </td>
+
+                                <td>
+
+                                    <span class="status status-pending">
+                                        รอยืนยัน
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <button class="btn btn-sm btn-outline-main">
+                                        ดู
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ห้องพัก
+            ================================================== -->
+
+            <div class="section-card"
+                 id="rooms">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h4 class="mb-0">
+                        🛏️ จัดการห้องพัก
+                    </h4>
+
+                    <button class="btn btn-main">
+                        + เพิ่มห้องพัก
+                    </button>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    ชื่อที่พัก
+                                </th>
+
+                                <th>
+                                    ราคา
+                                </th>
+
+                                <th>
+                                    สถานะ
+                                </th>
+
+                                <th>
+                                    จัดการ
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    ภูชมหมอก รีสอร์ท
+                                </td>
+
+                                <td>
+                                    1,500 - 3,000 บาท
+                                </td>
+
+                                <td>
+                                    <span class="status status-active">
+                                        เปิดให้จอง
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <button class="btn btn-sm btn-outline-main">
+                                        แก้ไข
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    สามประสบรีสอร์ท
+                                </td>
+
+                                <td>
+                                    1,126 บาท
+                                </td>
+
+                                <td>
+                                    <span class="status status-active">
+                                        เปิดให้จอง
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <button class="btn btn-sm btn-outline-main">
+                                        แก้ไข
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    มาชิลล์ รีสอร์ท
+                                </td>
+
+                                <td>
+                                    583 - 700 บาท
+                                </td>
+
+                                <td>
+                                    <span class="status status-active">
+                                        เปิดให้จอง
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <button class="btn btn-sm btn-outline-main">
+                                        แก้ไข
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 โปรโมชั่น
+            ================================================== -->
+
+            <div class="section-card"
+                 id="promotions">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h4 class="mb-0">
+                        🎁 โปรโมชั่น
+                    </h4>
+
+                    <button class="btn btn-main">
+                        + เพิ่มโปรโมชั่น
+                    </button>
+
+                </div>
+
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-4">
+
+                        <div class="border rounded-4 p-3">
+
+                            <h5>
+                                🔥 ลด 10%
+                            </h5>
+
+                            <p class="text-muted">
+                                จองห้องพักล่วงหน้า
+                            </p>
+
+                            <span class="status status-active">
+                                เปิดใช้งาน
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="border rounded-4 p-3">
+
+                            <h5>
+                                👨‍👩‍👧‍👦 Family Package
+                            </h5>
+
+                            <p class="text-muted">
+                                โปรโมชั่นสำหรับครอบครัว
+                            </p>
+
+                            <span class="status status-active">
+                                เปิดใช้งาน
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="border rounded-4 p-3">
+
+                            <h5>
+                                🌄 วันธรรมดา
+                            </h5>
+
+                            <p class="text-muted">
+                                ราคาพิเศษวันธรรมดา
+                            </p>
+
+                            <span class="status status-active">
+                                เปิดใช้งาน
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Bootstrap -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+
+</html>
