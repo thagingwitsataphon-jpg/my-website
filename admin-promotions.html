@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard | Mon Bridge Stay</title>
+<title>จัดการโปรโมชั่น | Mon Bridge Stay</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#F7F3E8;color:#3E3328;font-family:Arial,sans-serif}
@@ -68,10 +68,10 @@ footer{text-align:center;color:#756960;padding:25px}
 <div class="sidebar">
   <div class="logo">🏡 Mon Bridge<span>Stay</span></div>
   <div class="menu">
-    <a href="admin.html" class="active">📊 Dashboard</a>
+    <a href="admin.html" class="">📊 Dashboard</a>
 <a href="admin-rooms.html" class="">🛏️ จัดการห้องพัก</a>
 <a href="admin-bookings.html" class="">🗓️ การจอง</a>
-<a href="admin-promotions.html" class="">🎁 โปรโมชั่น</a>
+<a href="admin-promotions.html" class="active">🎁 โปรโมชั่น</a>
 <a href="admin-guests.html" class="">👥 ผู้เข้าพัก</a>
     <a href="index.html">🌐 ดูหน้าเว็บไซต์</a>
     <a href="index.html" onclick="return leaveAdmin()">🚪 ออกจากระบบ</a>
@@ -87,41 +87,46 @@ function leaveAdmin(){
 <main class="main">
 
 <div class="page-header">
-  <div class="page-header-left">
-    <h1>📊 Dashboard</h1>
-    <p>ภาพรวมการจัดการระบบ Mon Bridge Stay</p>
-  </div>
-  <div class="header-buttons"><button class="btn-main" onclick="refreshDashboard()">🔄 รีเฟรช</button></div>
+ <div class="page-header-left"><h1>🎁 จัดการโปรโมชั่น</h1><p>เพิ่ม แก้ไข และจัดการโปรโมชั่นของ Mon Bridge Stay</p></div>
+ <div class="header-buttons"><button class="btn-main" onclick="openPromotionModal()">＋ เพิ่มโปรโมชั่น</button><button class="btn-secondary" onclick="renderPromotions()">🔄 รีเฟรช</button></div>
 </div>
 <div class="summary">
-  <div class="summary-card"><div class="summary-number" id="roomsCount">0</div><div class="summary-label">🛏️ ห้องพัก</div></div>
-  <div class="summary-card"><div class="summary-number" id="bookingCount">0</div><div class="summary-label">🗓️ การจอง</div></div>
-  <div class="summary-card"><div class="summary-number" id="guestCount">0</div><div class="summary-label">👥 ผู้เข้าพัก</div></div>
-  <div class="summary-card"><div class="summary-number" id="promotionCount">0</div><div class="summary-label">🎁 โปรโมชั่น</div></div>
+ <div class="summary-card"><div class="summary-number" id="promoTotal">0</div><div class="summary-label">🎁 โปรโมชั่นทั้งหมด</div></div>
+ <div class="summary-card"><div class="summary-number" id="promoActive">0</div><div class="summary-label">🟢 โปรโมชั่นที่เปิดใช้งาน</div></div>
+ <div class="summary-card"><div class="summary-number" id="promoInactive">0</div><div class="summary-label">🔴 โปรโมชั่นที่ปิดใช้งาน</div></div>
+ <div class="summary-card"><div class="summary-number" id="promoSearchCount">0</div><div class="summary-label">🔎 ผลการค้นหา</div></div>
 </div>
-<div class="panel">
-  <h2 style="color:#6D4C41;margin-top:0">เมนูจัดการระบบ</h2>
-  <p>เลือกเมนูจาก Sidebar เพื่อเข้าสู่หน้าที่ต้องการ ทุกหน้าสามารถเปิดได้โดยตรงและไม่มีการบังคับไปหน้า admin-login.html</p>
-  <div class="header-buttons">
-    <button class="btn-main" onclick="location.href='admin-rooms.html'">🛏️ จัดการห้องพัก</button>
-    <button class="btn-main" onclick="location.href='admin-bookings.html'">🗓️ จัดการการจอง</button>
-    <button class="btn-main" onclick="location.href='admin-promotions.html'">🎁 จัดการโปรโมชั่น</button>
-    <button class="btn-main" onclick="location.href='admin-guests.html'">👥 จัดการผู้เข้าพัก</button>
-  </div>
+<div class="panel"><div class="search-row"><input id="promoSearch" class="search-input" placeholder="🔎 ค้นหาชื่อโปรโมชั่น รายละเอียด หรือส่วนลด..."><button class="btn-secondary" onclick="promoSearch.value='';renderPromotions()">✕ ล้าง</button></div></div>
+<div class="panel"><div class="table-wrap"><table><thead><tr><th>โปรโมชั่น</th><th>รายละเอียด</th><th>ส่วนลด</th><th>วันเริ่มต้น</th><th>วันสิ้นสุด</th><th>สถานะ</th><th>จัดการ</th></tr></thead><tbody id="promoTable"></tbody></table></div></div>
+<div class="modal" id="promoModal"><div class="modal-box"><div class="modal-title" id="promoModalTitle">เพิ่มโปรโมชั่น</div>
+<div class="form-grid">
+<div class="form-group"><label>ชื่อโปรโมชั่น</label><input id="promoName" class="form-control"></div>
+<div class="form-group"><label>ส่วนลด</label><input id="promoDiscount" class="form-control" placeholder="เช่น 25%"></div>
+<div class="form-group"><label>รายละเอียด</label><input id="promoDetail" class="form-control"></div>
+<div class="form-group"><label>วันเริ่มต้น</label><input id="promoStart" type="date" class="form-control"></div>
+<div class="form-group"><label>วันสิ้นสุด</label><input id="promoEnd" type="date" class="form-control"></div>
+<div class="form-group"><label>สถานะ</label><select id="promoStatus" class="form-control"><option value="active">เปิดใช้งาน</option><option value="inactive">ปิดใช้งาน</option></select></div>
 </div>
+<div class="modal-actions"><button class="btn-secondary" onclick="closePromotionModal()">ยกเลิก</button><button class="btn-main" onclick="savePromotion()">💾 บันทึก</button></div>
+</div></div>
 
 <footer>© 2026 Mon Bridge Stay. All rights reserved.</footer>
 </main>
 
 <script>
-const safeParse=(key)=>{try{const v=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(v)?v:[];}catch(e){return[];}};
-function refreshDashboard(){
- document.getElementById("roomsCount").textContent=safeParse("monBridgeRooms").length;
- document.getElementById("bookingCount").textContent=safeParse("monBridgeBookings").length;
- document.getElementById("guestCount").textContent=safeParse("monBridgeGuests").length || safeParse("monBridgeUsers").length;
- document.getElementById("promotionCount").textContent=safeParse("monBridgePromotions").length;
-}
-document.addEventListener("DOMContentLoaded",refreshDashboard);
+const PROMO_KEY="monBridgePromotions";let editingPromo=-1;
+function getPromotions(){try{let a=JSON.parse(localStorage.getItem(PROMO_KEY)||"[]");return Array.isArray(a)?a:[]}catch(e){return[]}}
+function savePromotions(a){localStorage.setItem(PROMO_KEY,JSON.stringify(a))}
+function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function renderPromotions(){let all=getPromotions(),q=promoSearch.value.trim().toLowerCase(),list=all.filter(p=>JSON.stringify(p).toLowerCase().includes(q));
+promoTotal.textContent=all.length;promoActive.textContent=all.filter(p=>p.status!=="inactive").length;promoInactive.textContent=all.filter(p=>p.status==="inactive").length;promoSearchCount.textContent=list.length;
+promoTable.innerHTML=list.length?list.map(p=>{let i=all.indexOf(p);return `<tr><td>🎁 <strong>${esc(p.name||"-")}</strong></td><td>${esc(p.detail||"-")}</td><td>${esc(p.discount||"-")}</td><td>${esc(p.start||"-")}</td><td>${esc(p.end||"-")}</td><td><span class="badge ${p.status==="inactive"?"badge-red":"badge-green"}">${p.status==="inactive"?"ปิดใช้งาน":"เปิดใช้งาน"}</span></td><td><div class="actions"><button class="btn-edit" onclick="editPromotion(${i})">✏️ แก้ไข</button><button class="btn-danger" onclick="deletePromotion(${i})">🗑️ ลบ</button></div></td></tr>`}).join(""):'<tr><td colspan="7" class="empty">🎁 ยังไม่มีโปรโมชั่น</td></tr>'}
+function openPromotionModal(i=-1){editingPromo=i;let p=i<0?{}:getPromotions()[i];promoModalTitle.textContent=i<0?"เพิ่มโปรโมชั่น":"แก้ไขโปรโมชั่น";promoName.value=p.name||"";promoDiscount.value=p.discount||"";promoDetail.value=p.detail||"";promoStart.value=p.start||"";promoEnd.value=p.end||"";promoStatus.value=p.status||"active";promoModal.classList.add("show")}
+function closePromotionModal(){promoModal.classList.remove("show")}
+function savePromotion(){let a=getPromotions(),p={name:promoName.value.trim(),discount:promoDiscount.value.trim(),detail:promoDetail.value.trim(),start:promoStart.value,end:promoEnd.value,status:promoStatus.value};if(!p.name){alert("กรุณากรอกชื่อโปรโมชั่น");return}if(editingPromo<0)a.push(p);else a[editingPromo]=p;savePromotions(a);closePromotionModal();renderPromotions();alert("บันทึกโปรโมชั่นเรียบร้อยแล้ว")}
+function editPromotion(i){openPromotionModal(i)}
+function deletePromotion(i){let a=getPromotions();if(!a[i])return;if(confirm("ต้องการลบโปรโมชั่นนี้ใช่หรือไม่?")){a.splice(i,1);savePromotions(a);renderPromotions();alert("ลบโปรโมชั่นเรียบร้อยแล้ว")}}
+promoSearch.addEventListener("input",renderPromotions);document.addEventListener("DOMContentLoaded",renderPromotions);
 </script>
 
 </body>
