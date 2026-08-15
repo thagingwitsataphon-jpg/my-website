@@ -111,6 +111,66 @@
             border-bottom: none;
         }
 
+        /* =========================
+           ปุ่มดูรายละเอียดเพิ่มเติม
+        ========================== */
+
+        .more-btn-wrapper {
+            text-align: center;
+            margin: 35px 0;
+        }
+
+        .more-btn {
+            background: white;
+            color: #795548;
+            border: 2px solid #795548;
+            border-radius: 50px;
+            padding: 12px 35px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all .3s ease;
+        }
+
+        .more-btn:hover {
+            background: #795548;
+            color: white;
+        }
+
+        .more-arrow {
+            display: inline-block;
+            margin-left: 8px;
+            transition: transform .3s ease;
+        }
+
+        .more-btn.open .more-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* =========================
+           ส่วนรายละเอียดเพิ่มเติม
+        ========================== */
+
+        #moreDetails {
+            display: none;
+        }
+
+        #moreDetails.show {
+            display: block;
+            animation: fadeIn .35s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         footer {
             background: #4e342e;
             color: white;
@@ -255,7 +315,7 @@
 
         </p>
 
-        <p>
+        <p class="mb-0">
 
             บริเวณโดยรอบเหมาะสำหรับการพักผ่อน
             และสามารถเดินทางไปยังตลาดและสถานที่ท่องเที่ยว
@@ -265,1049 +325,130 @@
 
     </div>
 
-    <!-- =========================
-     รายละเอียดห้องพัก
-========================== -->
-
-<div class="mt-5">
-
-    <h3 class="fw-bold mb-4"
-        style="color:#5d4037;">
-
-        🛏️ รายละเอียดห้องพัก
-
-    </h3>
 
 
     <!-- =========================
-         ห้องพักสำหรับ 2 ท่าน
+         รายละเอียดห้องพัก
     ========================== -->
 
-    <div class="mb-5">
+    <div class="mt-5">
 
-        <div class="p-4 rounded-4 mb-3"
-             style="background:#795548; color:white;">
+        <h3 class="fw-bold mb-4"
+            style="color:#5d4037;">
 
-            <h4 class="fw-bold mb-1">
+            🛏️ รายละเอียดห้องพัก
 
-                🛏️ ห้องพักสำหรับ 2 ท่าน
+        </h3>
 
-            </h4>
 
-            <p class="mb-0">
+        <!-- ห้องพักสำหรับ 2 ท่าน -->
 
-                ห้องพักสไตล์สตูดิโอ ขนาดประมาณ 20–24 ตร.ม.
-                พร้อมสิ่งอำนวยความสะดวกสำหรับการพักผ่อน
+        <div class="mb-5">
 
-            </p>
+            <div class="p-4 rounded-4 mb-3"
+                 style="background:#795548; color:white;">
 
-        </div>
+                <h4 class="fw-bold mb-1">
 
+                    🛏️ ห้องพักสำหรับ 2 ท่าน
 
-        <div class="row g-4">
+                </h4>
 
-            <!-- ห้องเตียงเดี่ยว -->
+                <p class="mb-0">
 
-            <div class="col-md-6">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            🛏️
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            ห้องเตียงเดี่ยว
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            ห้องพักสำหรับ 2 ท่าน
-                            พร้อมเตียงคิงไซส์ขนาด 6 ฟุต
-                            เหมาะสำหรับคู่รักหรือผู้ที่ต้องการ
-                            พักผ่อนอย่างสะดวกสบาย
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ห้องเตียงคู่ -->
-
-            <div class="col-md-6">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            🛌
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            ห้องเตียงคู่
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            ห้องพักสำหรับ 2 ท่าน
-                            พร้อมเตียงแยก เหมาะสำหรับเพื่อน
-                            หรือผู้เข้าพักที่ต้องการเตียงส่วนตัว
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-   
-    
-   <!-- =========================
-     สิ่งอำนวยความสะดวก
-========================== -->
-
-<div class="mt-5">
-
-    <h3 class="fw-bold mb-4"
-        style="color:#5d4037;">
-
-        ✨ สิ่งอำนวยความสะดวก
-
-    </h3>
-
-
-    <!-- =========================
-         ภายในห้องพัก
-    ========================== -->
-
-    <div class="mb-5">
-
-        <div class="p-4 rounded-4 mb-3"
-             style="background:#795548; color:white;">
-
-            <h4 class="fw-bold mb-1">
-
-                🛏️ สิ่งอำนวยความสะดวกภายในห้องพัก
-
-            </h4>
-
-            <p class="mb-0">
-
-                สิ่งอำนวยความสะดวกสำหรับการพักผ่อน
-                พร้อมความสะดวกสบายภายในห้องพัก
-
-            </p>
-
-        </div>
-
-
-        <div class="row g-4">
-
-            <!-- เครื่องปรับอากาศ -->
-
-            <div class="col-md-6">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            ❄️
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            เครื่องปรับอากาศ
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            เครื่องปรับอากาศ
-                            ให้ความเย็นสบายตลอดวัน
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- โทรทัศน์ -->
-
-            <div class="col-md-6">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            📺
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            โทรทัศน์
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            โทรทัศน์สำหรับความบันเทิง
-                            และการพักผ่อนภายในห้อง
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ตู้เย็นและกาน้ำร้อน -->
-
-            <div class="col-md-6">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            ☕
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            ตู้เย็นและกาน้ำร้อน
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            มีตู้เย็น กาน้ำร้อน
-                            พร้อมน้ำดื่มและมุมกาแฟให้บริการฟรี
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- เครื่องทำน้ำอุ่น -->
-
-            <div class="col-md-6">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            🚿
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            เครื่องทำน้ำอุ่น
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            เครื่องทำน้ำอุ่นภายในห้องน้ำส่วนตัว
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ระเบียงส่วนตัว -->
-
-            <div class="col-md-6">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            🌿
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            ระเบียงส่วนตัว
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            ห้องพักโซนอาคารมีระเบียงส่วนตัว
-                            พร้อมพื้นที่นั่งเล่นสำหรับพักผ่อน
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         ส่วนกลางและบริการ
-    ========================== -->
-
-    <div class="mb-5">
-
-        <div class="p-4 rounded-4 mb-3"
-             style="background:#795548; color:white;">
-
-            <h4 class="fw-bold mb-1">
-
-                🏡 สิ่งอำนวยความสะดวกและบริการส่วนกลาง
-
-            </h4>
-
-            <p class="mb-0">
-
-                บริการและสิ่งอำนวยความสะดวกสำหรับผู้เข้าพัก
-
-            </p>
-
-        </div>
-
-
-        <div class="row g-4">
-
-            <!-- Wi-Fi -->
-
-            <div class="col-md-6">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            📶
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            Wi-Fi ฟรี
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            บริการอินเทอร์เน็ตไร้สายฟรี
-                            ครอบคลุมทั่วบริเวณที่พัก
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ที่จอดรถ -->
-
-            <div class="col-md-6">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            🚗
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            ที่จอดรถ
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            มีพื้นที่จอดรถส่วนตัว
-                            พร้อมกล้องวงจรปิดดูแลความปลอดภัย
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- รับส่ง -->
-
-            <div class="col-md-6">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            🚐
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            บริการรับ-ส่ง
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            มีบริการรับ-ส่งฟรี
-                            จากท่ารถโดยสารในพื้นที่
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ชุดมอญ -->
-
-            <div class="col-md-6">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            👘
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            บริการชุดพื้นเมือง
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            มีบริการยืมชุดมอญและชุดสำหรับตักบาตร
-                            สำหรับถ่ายรูปและร่วมกิจกรรมยามเช้า
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-    <!-- =========================
-     กฎและเงื่อนไขการเข้าพัก
-========================== -->
-
-<div class="mt-5">
-
-    <h3 class="fw-bold mb-4"
-        style="color:#5d4037;">
-
-        📋 กฎและเงื่อนไขการเข้าพัก
-
-    </h3>
-
-
-    <div class="p-4 rounded-4 mb-3"
-         style="background:#795548; color:white;">
-
-        <h4 class="fw-bold mb-1">
-
-            🏡 กฎและเงื่อนไขหลักในการเข้าพัก
-
-        </h4>
-
-        <p class="mb-0">
-
-            กรุณาศึกษาเงื่อนไขก่อนเข้าพัก
-            เพื่อความสะดวกและการพักผ่อนที่ดีของผู้เข้าพักทุกท่าน
-
-        </p>
-
-    </div>
-
-
-    <div class="row g-4">
-
-
-        <!-- เช็คอิน / เช็คเอาท์ -->
-
-        <div class="col-md-6">
-
-            <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                <div class="card-body p-4">
-
-                    <div style="font-size:40px;">
-                        🕐
-                    </div>
-
-                    <h5 class="fw-bold mt-2"
-                        style="color:#5d4037;">
-
-                        เวลาเช็คอินและเช็คเอาท์
-
-                    </h5>
-
-                    <p class="text-muted mb-0">
-
-                        เช็คอินได้ตั้งแต่เวลา
-                        <strong>14:00 - 19:00 น.</strong>
-                        และเช็คเอาท์ก่อนเวลา
-                        <strong>11:00 น.</strong>
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- แจ้งเวลาเดินทาง -->
-
-        <div class="col-md-6">
-
-            <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                <div class="card-body p-4">
-
-                    <div style="font-size:40px;">
-                        📞
-                    </div>
-
-                    <h5 class="fw-bold mt-2"
-                        style="color:#5d4037;">
-
-                        การแจ้งเวลาเดินทาง
-
-                    </h5>
-
-                    <p class="text-muted mb-0">
-
-                        ผู้เข้าพักจะต้องแจ้งเวลา
-                        ที่คาดว่าจะเดินทางมาถึงโดยประมาณ
-                        ให้ทางรีสอร์ททราบล่วงหน้า
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- นโยบายเด็ก -->
-
-        <div class="col-md-6">
-
-            <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                <div class="card-body p-4">
-
-                    <div style="font-size:40px;">
-                        👨‍👩‍👧
-                    </div>
-
-                    <h5 class="fw-bold mt-2"
-                        style="color:#5d4037;">
-
-                        นโยบายเกี่ยวกับเด็ก
-
-                    </h5>
-
-                    <p class="text-muted mb-0">
-
-                        เด็กอายุต่ำกว่า 11 ปี
-                        สามารถพักร่วมกับผู้ปกครองได้
-                        ตามเงื่อนไขของห้องพัก
-                        ส่วนผู้ที่มีอายุ 11 ปีขึ้นไป
-                        จะถูกคิดเป็นราคาผู้ใหญ่
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- งานเลี้ยง -->
-
-        <div class="col-md-6">
-
-            <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                <div class="card-body p-4">
-
-                    <div style="font-size:40px;">
-                        🔇
-                    </div>
-
-                    <h5 class="fw-bold mt-2"
-                        style="color:#5d4037;">
-
-                        นโยบายงานเลี้ยง
-
-                    </h5>
-
-                    <p class="text-muted mb-0">
-
-                        <strong>ไม่อนุญาตให้จัดปาร์ตี้</strong>
-                        หรือสังสรรค์เสียงดัง
-                        ที่รบกวนผู้เข้าพักท่านอื่น
-                        ภายในบริเวณรีสอร์ท
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- สัตว์เลี้ยง -->
-
-        <div class="col-md-6">
-
-            <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                <div class="card-body p-4">
-
-                    <div style="font-size:40px;">
-                        🐶
-                    </div>
-
-                    <h5 class="fw-bold mt-2"
-                        style="color:#5d4037;">
-
-                        นโยบายสัตว์เลี้ยง
-
-                    </h5>
-
-                    <p class="text-muted mb-0">
-
-                        รองรับสัตว์เลี้ยงประเภท
-                        <strong>สุนัขหรือแมว</strong>
-                        น้ำหนักไม่เกิน
-                        <strong>10 กิโลกรัม</strong>
-                        ตามเงื่อนไข Pet Friendly
-                        ของทางที่พัก
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-    <!-- =========================
-     สถานที่ท่องเที่ยวใกล้เคียง
-========================== -->
-
-<div class="mt-5">
-
-    <h3 class="fw-bold mb-4"
-        style="color:#5d4037;">
-
-        📍 สถานที่ท่องเที่ยวใกล้เคียง
-
-    </h3>
-
-
-    <!-- =========================
-         จุดเช็คอินยอดนิยม
-    ========================== -->
-
-    <div class="mb-5">
-
-        <div class="p-4 rounded-4 mb-3"
-             style="background:#795548; color:white;">
-
-            <h4 class="fw-bold mb-1">
-
-                🌉 จุดเช็คอินยอดนิยมและวัฒนธรรม
-
-            </h4>
-
-            <p class="mb-0">
-
-                สัมผัสวิถีชีวิตชาวมอญ
-                สถานที่สำคัญ และแลนด์มาร์คชื่อดังของสังขละบุรี
-
-            </p>
-
-        </div>
-
-
-        <div class="row g-4">
-
-
-            <!-- สะพานมอญ -->
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            🌉
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            สะพานมอญ
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            สะพานอุตตมานุสรณ์
-                            จุดชมวิวแม่น้ำยอดนิยมของสังขละบุรี
-                            สามารถเดินชมวิว ซื้อของฝาก
-                            และร่วมกิจกรรมตักบาตรมอญ
-                            ในช่วงเช้า
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- เจดีย์พุทธคยา -->
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            🛕
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            เจดีย์พุทธคยาจำลอง
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            เจดีย์สีทองขนาดใหญ่
-                            โดดเด่นด้วยศิลปะแบบอินเดีย-มอญ
-                            บรรยากาศเงียบสงบ
-                            เหมาะสำหรับไหว้พระ ทำสมาธิ
-                            และถ่ายภาพ
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- วัดวังก์วิเวการาม -->
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            🙏
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            วัดวังก์วิเวการาม
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            วัดสำคัญและศูนย์รวมจิตใจ
-                            ของชาวสังขละบุรีและชาวมอญ
-                            มีสถาปัตยกรรมที่สวยงาม
-                            และเป็นสถานที่สำคัญทางวัฒนธรรม
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =========================
-         ล่องเรือชมเมืองบาดาล
-    ========================== -->
-
-    <div class="mb-5">
-
-        <div class="p-4 rounded-4 mb-3"
-             style="background:#795548; color:white;">
-
-            <h4 class="fw-bold mb-1">
-
-                🚤 ล่องเรือชมเมืองบาดาล
-
-            </h4>
-
-            <p class="mb-0">
-
-                สัมผัสบรรยากาศเมืองเก่าและวัดโบราณ
-                ด้วยการนั่งเรือชมสถานที่สำคัญกลางน้ำ
-
-            </p>
-
-        </div>
-
-
-        <div class="card border-0 shadow-sm rounded-4 mb-4">
-
-            <div class="card-body p-4">
-
-                <div style="font-size:40px;">
-                    🚤
-                </div>
-
-                <h5 class="fw-bold mt-2"
-                    style="color:#5d4037;">
-
-                    ล่องเรือชมวัดเก่าแก่
-
-                </h5>
-
-                <p class="text-muted mb-0">
-
-                    สามารถนั่งเรือหางยาวจากบริเวณสะพานมอญ
-                    เพื่อเดินทางไปชมเมืองบาดาลและวัดเก่าแก่
-                    โดยค่าบริการเรือประมาณ 500 บาทต่อลำ
-                    รองรับผู้โดยสารได้สูงสุดประมาณ 6 คน
+                    ห้องพักสไตล์สตูดิโอ ขนาดประมาณ 20–24 ตร.ม.
+                    พร้อมสิ่งอำนวยความสะดวกสำหรับการพักผ่อน
 
                 </p>
 
             </div>
 
+
+            <div class="row g-4">
+
+                <!-- ห้องเตียงเดี่ยว -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                        <div class="card-body p-4">
+
+                            <div style="font-size:40px;">
+                                🛏️
+                            </div>
+
+                            <h5 class="fw-bold mt-2"
+                                style="color:#5d4037;">
+
+                                ห้องเตียงเดี่ยว
+
+                            </h5>
+
+                            <p class="text-muted mb-0">
+
+                                ห้องพักสำหรับ 2 ท่าน
+                                พร้อมเตียงคิงไซส์ขนาด 6 ฟุต
+                                เหมาะสำหรับคู่รักหรือผู้ที่ต้องการ
+                                พักผ่อนอย่างสะดวกสบาย
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ห้องเตียงคู่ -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                        <div class="card-body p-4">
+
+                            <div style="font-size:40px;">
+                                🛌
+                            </div>
+
+                            <h5 class="fw-bold mt-2"
+                                style="color:#5d4037;">
+
+                                ห้องเตียงคู่
+
+                            </h5>
+
+                            <p class="text-muted mb-0">
+
+                                ห้องพักสำหรับ 2 ท่าน
+                                พร้อมเตียงแยก เหมาะสำหรับเพื่อน
+                                หรือผู้เข้าพักที่ต้องการเตียงส่วนตัว
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-
-        <div class="row g-4">
-
-
-            <!-- วัดวังก์วิเวการามเก่า -->
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            🌊
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            วัดวังก์วิเวการามเก่า
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            หรือที่รู้จักกันในชื่อ
-                            โบสถ์จมน้ำ เป็นหนึ่งในจุดเด่น
-                            ของเมืองบาดาลสังขละบุรี
-
-                            ในช่วงหน้าแล้งระดับน้ำจะลดลง
-                            ทำให้สามารถมองเห็นตัวโบสถ์
-                            และเดินเข้าไปชมได้
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- วัดศรีสุวรรณ -->
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            🏛️
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            วัดศรีสุวรรณเก่า
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            โบสถ์เก่าแก่ของชุมชนดั้งเดิม
-                            ที่ตั้งอยู่ในบริเวณเมืองบาดาล
-
-                            สามารถนั่งเรือไปชม
-                            บรรยากาศของโบราณสถานกลางน้ำ
-                            และถ่ายภาพได้อย่างสวยงาม
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- วัดสมเด็จ -->
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="card h-100 border-0 shadow-sm rounded-4">
-
-                    <div class="card-body p-4">
-
-                        <div style="font-size:40px;">
-                            🌳
-                        </div>
-
-                        <h5 class="fw-bold mt-2"
-                            style="color:#5d4037;">
-
-                            วัดสมเด็จเก่า
-
-                        </h5>
-
-                        <p class="text-muted mb-0">
-
-                            วัดเก่าแก่บนเนินเขา
-                            ที่ไม่ได้จมน้ำ
-                            รายล้อมด้วยต้นโพธิ์และต้นไทร
-
-                            ภายในมีพระพุทธรูป
-                            ให้ผู้มาเยือนได้สักการะ
-                            และสัมผัสบรรยากาศอันเงียบสงบ
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </div>
 
     </div>
 
-</div>
 
- <!-- =========================
+
+    <!-- =========================
          ราคา
+         ย้ายมาอยู่ใต้รายละเอียดห้องพัก
     ========================== -->
 
-    <div class="mb-5">
+    <div class="mb-4">
 
         <div class="p-4 rounded-4"
              style="background:#795548; color:white;">
@@ -1335,15 +476,19 @@
 
     </div>
 
-</div>
 
 
-    <!-- BOOKING -->
+    <!-- =========================
+         BOOKING
+         อยู่ใต้ราคา
+    ========================== -->
 
-    <div class="card detail-card p-4 text-center">
+    <div class="card detail-card p-4 text-center mb-5">
 
         <h3>
+
             🏠 สนใจเข้าพักที่มาชิลล์ รีสอร์ท?
+
         </h3>
 
         <p class="text-muted">
@@ -1358,6 +503,989 @@
             จองห้องพัก
 
         </a>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ปุ่มดูรายละเอียดเพิ่มเติม
+         ตั้งแต่ "สิ่งอำนวยความสะดวก" ลงไป
+    ====================================================== -->
+
+    <div class="more-btn-wrapper">
+
+        <button type="button"
+                class="more-btn"
+                id="moreBtn"
+                onclick="toggleDetails()">
+
+            <span id="moreBtnText">
+                ดูรายละเอียดเพิ่มเติม
+            </span>
+
+            <span class="more-arrow">
+                ▼
+            </span>
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         รายละเอียดเพิ่มเติม
+         เริ่มตั้งแต่สิ่งอำนวยความสะดวก
+    ====================================================== -->
+
+    <div id="moreDetails">
+
+
+        <!-- =========================
+             สิ่งอำนวยความสะดวก
+        ========================== -->
+
+        <div class="mt-5">
+
+            <h3 class="fw-bold mb-4"
+                style="color:#5d4037;">
+
+                ✨ สิ่งอำนวยความสะดวก
+
+            </h3>
+
+
+            <!-- ภายในห้องพัก -->
+
+            <div class="mb-5">
+
+                <div class="p-4 rounded-4 mb-3"
+                     style="background:#795548; color:white;">
+
+                    <h4 class="fw-bold mb-1">
+
+                        🛏️ สิ่งอำนวยความสะดวกภายในห้องพัก
+
+                    </h4>
+
+                    <p class="mb-0">
+
+                        สิ่งอำนวยความสะดวกสำหรับการพักผ่อน
+                        พร้อมความสะดวกสบายภายในห้องพัก
+
+                    </p>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    <!-- เครื่องปรับอากาศ -->
+
+                    <div class="col-md-6">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    ❄️
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    เครื่องปรับอากาศ
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    เครื่องปรับอากาศ
+                                    ให้ความเย็นสบายตลอดวัน
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- โทรทัศน์ -->
+
+                    <div class="col-md-6">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    📺
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    โทรทัศน์
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    โทรทัศน์สำหรับความบันเทิง
+                                    และการพักผ่อนภายในห้อง
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ตู้เย็นและกาน้ำร้อน -->
+
+                    <div class="col-md-6">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    ☕
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    ตู้เย็นและกาน้ำร้อน
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    มีตู้เย็น กาน้ำร้อน
+                                    พร้อมน้ำดื่มและมุมกาแฟให้บริการฟรี
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- เครื่องทำน้ำอุ่น -->
+
+                    <div class="col-md-6">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    🚿
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    เครื่องทำน้ำอุ่น
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    เครื่องทำน้ำอุ่นภายในห้องน้ำส่วนตัว
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ระเบียงส่วนตัว -->
+
+                    <div class="col-md-6">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    🌿
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    ระเบียงส่วนตัว
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    ห้องพักโซนอาคารมีระเบียงส่วนตัว
+                                    พร้อมพื้นที่นั่งเล่นสำหรับพักผ่อน
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 ส่วนกลางและบริการ
+            ========================== -->
+
+            <div class="mb-5">
+
+                <div class="p-4 rounded-4 mb-3"
+                     style="background:#795548; color:white;">
+
+                    <h4 class="fw-bold mb-1">
+
+                        🏡 สิ่งอำนวยความสะดวกและบริการส่วนกลาง
+
+                    </h4>
+
+                    <p class="mb-0">
+
+                        บริการและสิ่งอำนวยความสะดวกสำหรับผู้เข้าพัก
+
+                    </p>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    <!-- Wi-Fi -->
+
+                    <div class="col-md-6">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    📶
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    Wi-Fi ฟรี
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    บริการอินเทอร์เน็ตไร้สายฟรี
+                                    ครอบคลุมทั่วบริเวณที่พัก
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ที่จอดรถ -->
+
+                    <div class="col-md-6">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    🚗
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    ที่จอดรถ
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    มีพื้นที่จอดรถส่วนตัว
+                                    พร้อมกล้องวงจรปิดดูแลความปลอดภัย
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- รับส่ง -->
+
+                    <div class="col-md-6">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    🚐
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    บริการรับ-ส่ง
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    มีบริการรับ-ส่งฟรี
+                                    จากท่ารถโดยสารในพื้นที่
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ชุดมอญ -->
+
+                    <div class="col-md-6">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    👘
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    บริการชุดพื้นเมือง
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    มีบริการยืมชุดมอญและชุดสำหรับตักบาตร
+                                    สำหรับถ่ายรูปและร่วมกิจกรรมยามเช้า
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             กฎและเงื่อนไขการเข้าพัก
+        ========================== -->
+
+        <div class="mt-5">
+
+            <h3 class="fw-bold mb-4"
+                style="color:#5d4037;">
+
+                📋 กฎและเงื่อนไขการเข้าพัก
+
+            </h3>
+
+
+            <div class="p-4 rounded-4 mb-3"
+                 style="background:#795548; color:white;">
+
+                <h4 class="fw-bold mb-1">
+
+                    🏡 กฎและเงื่อนไขหลักในการเข้าพัก
+
+                </h4>
+
+                <p class="mb-0">
+
+                    กรุณาศึกษาเงื่อนไขก่อนเข้าพัก
+                    เพื่อความสะดวกและการพักผ่อนที่ดีของผู้เข้าพักทุกท่าน
+
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <!-- เช็คอิน / เช็คเอาท์ -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                        <div class="card-body p-4">
+
+                            <div style="font-size:40px;">
+                                🕐
+                            </div>
+
+                            <h5 class="fw-bold mt-2"
+                                style="color:#5d4037;">
+
+                                เวลาเช็คอินและเช็คเอาท์
+
+                            </h5>
+
+                            <p class="text-muted mb-0">
+
+                                เช็คอินได้ตั้งแต่เวลา
+                                <strong>14:00 - 19:00 น.</strong>
+                                และเช็คเอาท์ก่อนเวลา
+                                <strong>11:00 น.</strong>
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- แจ้งเวลาเดินทาง -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                        <div class="card-body p-4">
+
+                            <div style="font-size:40px;">
+                                📞
+                            </div>
+
+                            <h5 class="fw-bold mt-2"
+                                style="color:#5d4037;">
+
+                                การแจ้งเวลาเดินทาง
+
+                            </h5>
+
+                            <p class="text-muted mb-0">
+
+                                ผู้เข้าพักจะต้องแจ้งเวลา
+                                ที่คาดว่าจะเดินทางมาถึงโดยประมาณ
+                                ให้ทางรีสอร์ททราบล่วงหน้า
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- นโยบายเด็ก -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                        <div class="card-body p-4">
+
+                            <div style="font-size:40px;">
+                                👨‍👩‍👧
+                            </div>
+
+                            <h5 class="fw-bold mt-2"
+                                style="color:#5d4037;">
+
+                                นโยบายเกี่ยวกับเด็ก
+
+                            </h5>
+
+                            <p class="text-muted mb-0">
+
+                                เด็กอายุต่ำกว่า 11 ปี
+                                สามารถพักร่วมกับผู้ปกครองได้
+                                ตามเงื่อนไขของห้องพัก
+                                ส่วนผู้ที่มีอายุ 11 ปีขึ้นไป
+                                จะถูกคิดเป็นราคาผู้ใหญ่
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- งานเลี้ยง -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                        <div class="card-body p-4">
+
+                            <div style="font-size:40px;">
+                                🔇
+                            </div>
+
+                            <h5 class="fw-bold mt-2"
+                                style="color:#5d4037;">
+
+                                นโยบายงานเลี้ยง
+
+                            </h5>
+
+                            <p class="text-muted mb-0">
+
+                                <strong>ไม่อนุญาตให้จัดปาร์ตี้</strong>
+                                หรือสังสรรค์เสียงดัง
+                                ที่รบกวนผู้เข้าพักท่านอื่น
+                                ภายในบริเวณรีสอร์ท
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- สัตว์เลี้ยง -->
+
+                <div class="col-md-6">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                        <div class="card-body p-4">
+
+                            <div style="font-size:40px;">
+                                🐶
+                            </div>
+
+                            <h5 class="fw-bold mt-2"
+                                style="color:#5d4037;">
+
+                                นโยบายสัตว์เลี้ยง
+
+                            </h5>
+
+                            <p class="text-muted mb-0">
+
+                                รองรับสัตว์เลี้ยงประเภท
+                                <strong>สุนัขหรือแมว</strong>
+                                น้ำหนักไม่เกิน
+                                <strong>10 กิโลกรัม</strong>
+                                ตามเงื่อนไข Pet Friendly
+                                ของทางที่พัก
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             สถานที่ท่องเที่ยวใกล้เคียง
+        ========================== -->
+
+        <div class="mt-5">
+
+            <h3 class="fw-bold mb-4"
+                style="color:#5d4037;">
+
+                📍 สถานที่ท่องเที่ยวใกล้เคียง
+
+            </h3>
+
+
+            <!-- จุดเช็คอินยอดนิยม -->
+
+            <div class="mb-5">
+
+                <div class="p-4 rounded-4 mb-3"
+                     style="background:#795548; color:white;">
+
+                    <h4 class="fw-bold mb-1">
+
+                        🌉 จุดเช็คอินยอดนิยมและวัฒนธรรม
+
+                    </h4>
+
+                    <p class="mb-0">
+
+                        สัมผัสวิถีชีวิตชาวมอญ
+                        สถานที่สำคัญ และแลนด์มาร์คชื่อดังของสังขละบุรี
+
+                    </p>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    <!-- สะพานมอญ -->
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    🌉
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    สะพานมอญ
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    สะพานอุตตมานุสรณ์
+                                    จุดชมวิวแม่น้ำยอดนิยมของสังขละบุรี
+                                    สามารถเดินชมวิว ซื้อของฝาก
+                                    และร่วมกิจกรรมตักบาตรมอญ
+                                    ในช่วงเช้า
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- เจดีย์พุทธคยา -->
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    🛕
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    เจดีย์พุทธคยาจำลอง
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    เจดีย์สีทองขนาดใหญ่
+                                    โดดเด่นด้วยศิลปะแบบอินเดีย-มอญ
+                                    บรรยากาศเงียบสงบ
+                                    เหมาะสำหรับไหว้พระ ทำสมาธิ
+                                    และถ่ายภาพ
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- วัดวังก์วิเวการาม -->
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    🙏
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    วัดวังก์วิเวการาม
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    วัดสำคัญและศูนย์รวมจิตใจ
+                                    ของชาวสังขละบุรีและชาวมอญ
+                                    มีสถาปัตยกรรมที่สวยงาม
+                                    และเป็นสถานที่สำคัญทางวัฒนธรรม
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ล่องเรือชมเมืองบาดาล -->
+
+            <div class="mb-5">
+
+                <div class="p-4 rounded-4 mb-3"
+                     style="background:#795548; color:white;">
+
+                    <h4 class="fw-bold mb-1">
+
+                        🚤 ล่องเรือชมเมืองบาดาล
+
+                    </h4>
+
+                    <p class="mb-0">
+
+                        สัมผัสบรรยากาศเมืองเก่าและวัดโบราณ
+                        ด้วยการนั่งเรือชมสถานที่สำคัญกลางน้ำ
+
+                    </p>
+
+                </div>
+
+
+                <div class="card border-0 shadow-sm rounded-4 mb-4">
+
+                    <div class="card-body p-4">
+
+                        <div style="font-size:40px;">
+                            🚤
+                        </div>
+
+                        <h5 class="fw-bold mt-2"
+                            style="color:#5d4037;">
+
+                            ล่องเรือชมวัดเก่าแก่
+
+                        </h5>
+
+                        <p class="text-muted mb-0">
+
+                            สามารถนั่งเรือหางยาวจากบริเวณสะพานมอญ
+                            เพื่อเดินทางไปชมเมืองบาดาลและวัดเก่าแก่
+                            โดยค่าบริการเรือประมาณ 500 บาทต่อลำ
+                            รองรับผู้โดยสารได้สูงสุดประมาณ 6 คน
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    <!-- วัดวังก์วิเวการามเก่า -->
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    🌊
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    วัดวังก์วิเวการามเก่า
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    หรือที่รู้จักกันในชื่อ
+                                    โบสถ์จมน้ำ เป็นหนึ่งในจุดเด่น
+                                    ของเมืองบาดาลสังขละบุรี
+
+                                    ในช่วงหน้าแล้งระดับน้ำจะลดลง
+                                    ทำให้สามารถมองเห็นตัวโบสถ์
+                                    และเดินเข้าไปชมได้
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- วัดศรีสุวรรณ -->
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    🏛️
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    วัดศรีสุวรรณเก่า
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    โบสถ์เก่าแก่ของชุมชนดั้งเดิม
+                                    ที่ตั้งอยู่ในบริเวณเมืองบาดาล
+
+                                    สามารถนั่งเรือไปชม
+                                    บรรยากาศของโบราณสถานกลางน้ำ
+                                    และถ่ายภาพได้อย่างสวยงาม
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- วัดสมเด็จ -->
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                            <div class="card-body p-4">
+
+                                <div style="font-size:40px;">
+                                    🌳
+                                </div>
+
+                                <h5 class="fw-bold mt-2"
+                                    style="color:#5d4037;">
+
+                                    วัดสมเด็จเก่า
+
+                                </h5>
+
+                                <p class="text-muted mb-0">
+
+                                    วัดเก่าแก่บนเนินเขา
+                                    ที่ไม่ได้จมน้ำ
+                                    รายล้อมด้วยต้นโพธิ์และต้นไทร
+
+                                    ภายในมีพระพุทธรูป
+                                    ให้ผู้มาเยือนได้สักการะ
+                                    และสัมผัสบรรยากาศอันเงียบสงบ
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ปุ่มซ่อนรายละเอียดด้านล่าง -->
+
+        <div class="more-btn-wrapper">
+
+            <button type="button"
+                    class="more-btn"
+                    onclick="toggleDetails()">
+
+                <span>
+                    ซ่อนรายละเอียด
+                </span>
+
+                <span class="more-arrow"
+                      style="transform:rotate(180deg);">
+
+                    ▼
+
+                </span>
+
+            </button>
+
+        </div>
+
 
     </div>
 
@@ -1385,6 +1513,62 @@
     </div>
 
 </footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+function toggleDetails() {
+
+    const details = document.getElementById("moreDetails");
+    const button = document.getElementById("moreBtn");
+    const buttonText = document.getElementById("moreBtnText");
+
+    if (details.classList.contains("show")) {
+
+        details.classList.remove("show");
+
+        button.classList.remove("open");
+
+        buttonText.textContent = "ดูรายละเอียดเพิ่มเติม";
+
+        // เลื่อนกลับไปบริเวณปุ่ม
+        setTimeout(function() {
+
+            button.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }, 100);
+
+    } else {
+
+        details.classList.add("show");
+
+        button.classList.add("open");
+
+        buttonText.textContent = "ซ่อนรายละเอียด";
+
+        // เลื่อนไปยังรายละเอียดที่เปิด
+        setTimeout(function() {
+
+            details.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }, 150);
+
+    }
+
+}
+
+</script>
 
 
 </body>
