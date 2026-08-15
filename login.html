@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 
@@ -231,12 +232,18 @@
 
 
 
-        <!-- ข้อความผิดพลาด -->
+        <!-- =========================
+             ERROR
+        ========================== -->
 
         <div id="errorBox"
              class="error-box">
 
-            <strong>⚠️ ไม่สามารถสมัครสมาชิกได้</strong>
+            <strong>
+
+                ⚠️ ไม่สามารถสมัครสมาชิกได้
+
+            </strong>
 
             <div id="errorMessage"></div>
 
@@ -304,8 +311,9 @@
                 <input type="tel"
                        id="phone"
                        class="form-control"
-                       placeholder="กรอกเบอร์โทรศัพท์"
+                       placeholder="กรอกเบอร์โทรศัพท์ 10 หลัก"
                        maxlength="10"
+                       inputmode="numeric"
                        required>
 
             </div>
@@ -325,7 +333,7 @@
                 <input type="email"
                        id="email"
                        class="form-control"
-                       placeholder="กรอกอีเมล"
+                       placeholder="กรอกอีเมลของคุณ"
                        required>
 
             </div>
@@ -347,7 +355,7 @@
                     <input type="password"
                            id="password"
                            class="form-control"
-                           placeholder="ตั้งรหัสผ่านของคุณ"
+                           placeholder="ตั้งรหัสผ่านอย่างน้อย 6 ตัว"
                            minlength="6"
                            required>
 
@@ -361,8 +369,6 @@
 
                 </div>
 
-
-                <!-- ตรวจสอบรหัสผ่าน -->
 
                 <div id="passwordCheck"
                      class="password-check invalid">
@@ -427,13 +433,17 @@
 
 
 
-        <!-- สำเร็จ -->
+        <!-- =========================
+             SUCCESS
+        ========================== -->
 
         <div id="successBox"
              class="success-box">
 
             <strong>
+
                 ✅ สมัครสมาชิกสำเร็จ
+
             </strong>
 
             <br>
@@ -442,13 +452,15 @@
 
             <br>
 
-            กำลังไปหน้าเข้าสู่ระบบ...
+            กำลังเข้าสู่โปรไฟล์ของคุณ...
 
         </div>
 
 
 
-        <!-- เข้าสู่ระบบ -->
+        <!-- =========================
+             LOGIN
+        ========================== -->
 
         <div class="text-center mt-4">
 
@@ -557,33 +569,43 @@ function togglePassword(inputId, button) {
 
 
 /* =========================
-   ตรวจสอบรหัสผ่าน
+   ช่องรหัสผ่าน
 ========================= */
 
 const password =
     document.getElementById("password");
 
+
 const confirmPassword =
     document.getElementById("confirmPassword");
 
+
 const passwordCheck =
     document.getElementById("passwordCheck");
+
 
 const confirmCheck =
     document.getElementById("confirmCheck");
 
 
 
-password.addEventListener("input", checkPassword);
+password.addEventListener(
+    "input",
+    checkPassword
+);
 
-confirmPassword.addEventListener("input", checkPassword);
+
+confirmPassword.addEventListener(
+    "input",
+    checkPassword
+);
 
 
 
 function checkPassword() {
 
 
-    /* ตรวจจำนวนตัวอักษร */
+    /* ตรวจความยาว */
 
     if (password.value.length >= 6) {
 
@@ -616,7 +638,10 @@ function checkPassword() {
     }
 
 
-    if (password.value === confirmPassword.value) {
+    if (
+        password.value ===
+        confirmPassword.value
+    ) {
 
         confirmCheck.textContent =
             "✅ รหัสผ่านตรงกัน";
@@ -644,228 +669,272 @@ function checkPassword() {
 
 document
     .getElementById("registerForm")
-    .addEventListener("submit", function(event) {
+    .addEventListener(
+        "submit",
+        function(event) {
 
-        event.preventDefault();
-
-
-
-        /* ซ่อนข้อความเดิม */
-
-        document
-            .getElementById("errorBox")
-            .style.display = "none";
+            event.preventDefault();
 
 
+            /* ซ่อน Error */
 
-        /* รับค่าจากฟอร์ม */
-
-        const firstName =
             document
-                .getElementById("firstName")
-                .value
-                .trim();
-
-
-        const lastName =
-            document
-                .getElementById("lastName")
-                .value
-                .trim();
-
-
-        const phone =
-            document
-                .getElementById("phone")
-                .value
-                .trim();
-
-
-        const email =
-            document
-                .getElementById("email")
-                .value
-                .trim()
-                .toLowerCase();
-
-
-        const password =
-            document
-                .getElementById("password")
-                .value;
-
-
-        const confirmPassword =
-            document
-                .getElementById("confirmPassword")
-                .value;
+                .getElementById("errorBox")
+                .style.display = "none";
 
 
 
-        /* =========================
-           ตรวจเบอร์โทร
-        ========================== */
+            /* =========================
+               รับข้อมูล
+            ========================== */
 
-        const phonePattern =
-            /^[0-9]{10}$/;
+            const firstName =
+                document
+                    .getElementById("firstName")
+                    .value
+                    .trim();
 
 
-        if (!phonePattern.test(phone)) {
+            const lastName =
+                document
+                    .getElementById("lastName")
+                    .value
+                    .trim();
 
-            showError(
-                "กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง 10 หลัก"
+
+            const phone =
+                document
+                    .getElementById("phone")
+                    .value
+                    .trim();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            const confirmPassword =
+                document
+                    .getElementById("confirmPassword")
+                    .value;
+
+
+
+            /* =========================
+               ตรวจเบอร์โทร
+            ========================== */
+
+            const phonePattern =
+                /^[0-9]{10}$/;
+
+
+            if (
+                !phonePattern.test(phone)
+            ) {
+
+                showError(
+                    "กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง 10 หลัก"
+                );
+
+                return;
+
+            }
+
+
+
+            /* =========================
+               ตรวจรหัสผ่าน
+            ========================== */
+
+            if (
+                password.length < 6
+            ) {
+
+                showError(
+                    "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร"
+                );
+
+                return;
+
+            }
+
+
+
+            /* =========================
+               ตรวจรหัสผ่าน
+            ========================== */
+
+            if (
+                password !==
+                confirmPassword
+            ) {
+
+                showError(
+                    "รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน"
+                );
+
+                return;
+
+            }
+
+
+
+            /* =========================
+               ดึงสมาชิกเดิม
+            ========================== */
+
+            let users =
+                JSON.parse(
+                    localStorage.getItem(
+                        "monBridgeUsers"
+                    )
+                ) || [];
+
+
+
+            /* =========================
+               ตรวจอีเมลซ้ำ
+            ========================== */
+
+            const emailExists =
+                users.some(
+                    function(user) {
+
+                        return (
+                            user.email ===
+                            email
+                        );
+
+                    }
+                );
+
+
+            if (emailExists) {
+
+                showError(
+                    "อีเมลนี้มีผู้สมัครสมาชิกแล้ว กรุณาใช้อีเมลอื่น"
+                );
+
+                return;
+
+            }
+
+
+
+            /* =========================
+               สร้างสมาชิกใหม่
+            ========================== */
+
+            const newUser = {
+
+                firstName:
+                    firstName,
+
+                lastName:
+                    lastName,
+
+                phone:
+                    phone,
+
+                email:
+                    email,
+
+                password:
+                    password
+
+            };
+
+
+
+            /* =========================
+               บันทึกสมาชิก
+            ========================== */
+
+            users.push(newUser);
+
+
+            localStorage.setItem(
+                "monBridgeUsers",
+                JSON.stringify(users)
             );
 
-            return;
-
-        }
 
 
+            /* =========================
+               เข้าสู่ระบบอัตโนมัติ
+            ========================== */
 
-        /* =========================
-           ตรวจรหัสผ่าน
-        ========================== */
-
-        if (password.length < 6) {
-
-            showError(
-                "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร"
+            localStorage.setItem(
+                "monBridgeCurrentUser",
+                JSON.stringify(newUser)
             );
 
-            return;
-
-        }
 
 
+            /* =========================
+               ซ่อนฟอร์ม
+            ========================== */
 
-        /* =========================
-           ตรวจรหัสผ่านตรงกัน
-        ========================== */
+            document
+                .getElementById("registerForm")
+                .style.display = "none";
 
-        if (password !== confirmPassword) {
 
-            showError(
-                "รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน"
+            /* =========================
+               แสดงสำเร็จ
+            ========================== */
+
+            document
+                .getElementById("successBox")
+                .style.display = "block";
+
+
+
+            /* =========================
+               ไปหน้าโปรไฟล์
+            ========================== */
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        "profile.html";
+
+                },
+                1000
             );
 
-            return;
-
         }
-
-
-
-        /* =========================
-           ดึงข้อมูลสมาชิกเดิม
-        ========================== */
-
-        let users =
-            JSON.parse(
-                localStorage.getItem("monBridgeUsers")
-            ) || [];
-
-
-
-        /* =========================
-           ตรวจอีเมลซ้ำ
-        ========================== */
-
-        const emailExists =
-            users.some(function(user) {
-
-                return user.email === email;
-
-            });
-
-
-        if (emailExists) {
-
-            showError(
-                "อีเมลนี้มีผู้สมัครสมาชิกแล้ว กรุณาใช้อีเมลอื่น"
-            );
-
-            return;
-
-        }
-
-
-
-        /* =========================
-           สร้างข้อมูลสมาชิก
-        ========================== */
-
-        const newUser = {
-
-            firstName: firstName,
-
-            lastName: lastName,
-
-            phone: phone,
-
-            email: email,
-
-            password: password
-
-        };
-
-
-
-        /* =========================
-           บันทึกสมาชิก
-        ========================== */
-
-        users.push(newUser);
-
-
-        localStorage.setItem(
-            "monBridgeUsers",
-            JSON.stringify(users)
-        );
-
-
-
-        /* =========================
-           แสดงสมัครสำเร็จ
-        ========================== */
-
-        document
-            .getElementById("registerForm")
-            .style.display = "none";
-
-
-        document
-            .getElementById("successBox")
-            .style.display = "block";
-
-
-
-        /* =========================
-           ไปหน้า Login
-        ========================== */
-
-        setTimeout(function() {
-
-            window.location.href = "login.html";
-
-        }, 1800);
-
-    });
+    );
 
 
 
 /* =========================
-   แสดงข้อความผิดพลาด
+   แสดง Error
 ========================= */
 
 function showError(message) {
 
     document
         .getElementById("errorMessage")
-        .textContent = message;
+        .textContent =
+            message;
 
 
     document
         .getElementById("errorBox")
-        .style.display = "block";
+        .style.display =
+            "block";
 
 
     window.scrollTo({
