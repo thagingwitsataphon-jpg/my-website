@@ -150,6 +150,50 @@
             padding: 30px 0;
         }
 
+        /* =========================
+           ดูเพิ่มเติม
+        ========================== */
+
+        .more-section {
+            display: none;
+        }
+
+        .more-section.show {
+            display: block;
+            animation: fadeInMore .3s ease;
+        }
+
+        .more-toggle-wrap {
+            text-align: center;
+            margin: 10px 0 30px;
+        }
+
+        .more-toggle {
+            border: 1px solid #795548;
+            background: white;
+            color: #795548;
+            border-radius: 999px;
+            padding: 10px 28px;
+            font-weight: 600;
+            transition: .2s ease;
+        }
+
+        .more-toggle:hover {
+            background: #795548;
+            color: white;
+        }
+
+        @keyframes fadeInMore {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Mobile */
 
         @media (max-width: 768px) {
@@ -753,6 +797,95 @@
 
      </div>
 
+
+    <!-- =========================
+         PRICE
+    ========================== -->
+
+       <!-- =========================
+         PRICE
+    ========================== -->
+
+    <div class="card detail-card p-4 mb-4">
+
+        <h3>
+            💰 ราคา
+        </h3>
+
+        <div class="price">
+            1,200 บาท/คืน
+        </div>
+
+        <p class="text-muted">
+
+            ราคาสามารถเปลี่ยนแปลงได้ตามช่วงเวลา
+            วันหยุด และประเภทห้อง
+
+        </p>
+
+        <div class="mt-3">
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- =========================
+         BOOKING
+    ========================== -->
+
+    <!-- =========================
+         BOOKING
+    ========================== -->
+
+    <div class="card detail-card p-4 text-center">
+
+        <h3>
+            🏠 สนใจเข้าพักที่สามประสบ รีสอร์ท?
+        </h3>
+
+        <p class="text-muted">
+
+            ตรวจสอบห้องว่างและทำการจองได้เลย
+
+        </p>
+
+        <a href="booking.html"
+           class="btn btn-main btn-lg px-5">
+
+            จองห้องพัก
+
+        </a>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+    <!-- =========================
+         ปุ่มดูเพิ่มเติม
+    ========================== -->
+
+    <div class="more-toggle-wrap">
+        <button type="button"
+                class="more-toggle"
+                id="moreToggle"
+                aria-expanded="false"
+                aria-controls="moreDetails">
+            <span id="moreToggleText">ดูเพิ่มเติม</span>
+            <span id="moreToggleIcon">⌄</span>
+        </button>
+    </div>
+
+    <div id="moreDetails" class="more-section">
 
     <!-- =========================
      สิ่งอำนวยความสะดวก
@@ -1381,67 +1514,15 @@
 
     </div>
 
-       <!-- =========================
-         PRICE
-    ========================== -->
-
-    <div class="card detail-card p-4 mb-4">
-
-        <h3>
-            💰 ราคา
-        </h3>
-
-        <div class="price">
-            1,200 บาท/คืน
-        </div>
-
-        <p class="text-muted">
-
-            ราคาสามารถเปลี่ยนแปลงได้ตามช่วงเวลา
-            วันหยุด และประเภทห้อง
-
-        </p>
-
-        <div class="mt-3">
-
-            </a>
-
-        </div>
-
-    </div>
 
 
-    <!-- =========================
-         BOOKING
-    ========================== -->
 
-    <div class="card detail-card p-4 text-center">
 
-        <h3>
-            🏠 สนใจเข้าพักที่สามประสบ รีสอร์ท?
-        </h3>
-
-        <p class="text-muted">
-
-            ตรวจสอบห้องว่างและทำการจองได้เลย
-
-        </p>
-
-        <a href="booking.html"
-           class="btn btn-main btn-lg px-5">
-
-            จองห้องพัก
-
-        </a>
-
-    </div>
-
+<!-- =====    </div>
 
 </div>
 
-
-
-<!-- =========================
+====================
      FOOTER
 ========================== -->
 
@@ -1464,10 +1545,25 @@
 </footer>
 
 
-</body>
 
-</html>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.getElementById("moreToggle");
+        const details = document.getElementById("moreDetails");
+        const text = document.getElementById("moreToggleText");
+        const icon = document.getElementById("moreToggleIcon");
 
+        if (!toggle || !details) return;
+
+        toggle.addEventListener("click", function () {
+            const isOpen = details.classList.toggle("show");
+
+            toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            text.textContent = isOpen ? "ซ่อนรายละเอียด" : "ดูเพิ่มเติม";
+            icon.textContent = isOpen ? "⌃" : "⌄";
+        });
+    });
+</script>
 
 </body>
 
