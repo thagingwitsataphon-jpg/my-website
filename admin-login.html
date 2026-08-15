@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 
@@ -8,7 +9,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>เข้าสู่ระบบผู้ดูแล | Mon Bridge Stay</title>
+    <title>จัดการสมาชิก | Mon Bridge Stay</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet">
@@ -16,118 +17,131 @@
     <style>
 
         body {
-            margin: 0;
-            min-height: 100vh;
-            background: #F7F3E8;
-            color: #3E3328;
-            font-family: Arial, sans-serif;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #f8f9fa;
         }
 
-
-        .login-wrapper {
-            width: 100%;
-            max-width: 430px;
-            padding: 20px;
-        }
-
-
-        .login-card {
-            background: white;
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 8px 30px rgba(62, 51, 40, 0.12);
-        }
-
-
-        .logo {
-            width: 75px;
-            height: 75px;
-
-            margin: 0 auto 15px;
-
-            border-radius: 50%;
-
-            background: #795548;
-            color: white;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 38px;
-        }
-
-
-        h2 {
-            color: #5D4037;
-            font-weight: bold;
-        }
-
-
-        .subtitle {
-            color: #777;
-            font-size: 14px;
-        }
-
-
-        .form-label {
-            color: #5D4037;
-            font-weight: 600;
-        }
-
-
-        .form-control {
-            border-radius: 10px;
-            padding: 12px;
-            border: 1px solid #ddd;
-        }
-
-
-        .form-control:focus {
-            border-color: #795548;
-            box-shadow: 0 0 0 0.2rem rgba(121, 85, 72, 0.15);
-        }
-
-
-        .btn-login {
-            background: #795548;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 12px;
-            font-weight: bold;
-        }
-
-
-        .btn-login:hover {
-            background: #5D4037;
-            color: white;
-        }
-
-
-        .back-link {
+        .navbar-brand {
             color: #795548;
-            text-decoration: none;
-            font-size: 14px;
         }
 
+        .admin-container {
 
-        .back-link:hover {
-            color: #5D4037;
+            margin-top: 40px;
+
+            margin-bottom: 60px;
+
         }
 
+        .admin-card {
 
-        .notice {
-            background: #F7F3E8;
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+
+        }
+
+        .page-title {
+
+            color: #5d4037;
+
+            font-weight: bold;
+
+        }
+
+        .stat-card {
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,.07);
+
+        }
+
+        .stat-icon {
+
+            font-size: 35px;
+
+        }
+
+        .stat-number {
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            color: #5d4037;
+
+        }
+
+        .search-box {
+
             border-radius: 10px;
+
             padding: 12px;
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6D5A4D;
+
+        }
+
+        .table th {
+
+            background: #795548;
+
+            color: white;
+
+            white-space: nowrap;
+
+        }
+
+        .table td {
+
+            vertical-align: middle;
+
+        }
+
+        .empty-box {
+
+            text-align: center;
+
+            padding: 40px;
+
+            color: #777;
+
+        }
+
+        .btn-delete {
+
+            color: #dc3545;
+
+            border: 1px solid #dc3545;
+
+            background: white;
+
+        }
+
+        .btn-delete:hover {
+
+            color: white;
+
+            background: #dc3545;
+
+        }
+
+        footer {
+
+            background: #4e342e;
+
+            color: white;
+
+            padding: 25px 0;
+
+            margin-top: 80px;
+
         }
 
     </style>
@@ -138,175 +152,679 @@
 <body>
 
 
-<div class="login-wrapper">
+<!-- =========================
+     NAVBAR
+========================== -->
+
+<nav class="navbar bg-white shadow-sm">
+
+    <div class="container">
+
+        <a href="index.html"
+           class="navbar-brand fw-bold">
+
+            🏡 Mon Bridge Stay
+
+        </a>
 
 
-    <div class="login-card">
+        <div>
+
+            <span class="me-3">
+
+                👨‍💼 ผู้ดูแลระบบ
+
+            </span>
 
 
-        <!-- LOGO -->
+            <button onclick="logoutAdmin()"
+                    class="btn btn-outline-danger">
 
-        <div class="logo">
-            🏡
-        </div>
-
-
-        <!-- TITLE -->
-
-        <div class="text-center mb-4">
-
-            <h2>
-                Mon Bridge Stay
-            </h2>
-
-            <p class="subtitle mb-0">
-                ระบบจัดการสำหรับผู้ดูแล
-            </p>
-
-        </div>
-
-
-        <!-- LOGIN FORM -->
-
-        <form onsubmit="loginAdmin(event)">
-
-
-            <!-- USERNAME -->
-
-            <div class="mb-3">
-
-                <label class="form-label">
-                    👤 ชื่อผู้ใช้งาน
-                </label>
-
-                <input type="text"
-                       id="username"
-                       class="form-control"
-                       placeholder="กรอกชื่อผู้ใช้งาน"
-                       required>
-
-            </div>
-
-
-            <!-- PASSWORD -->
-
-            <div class="mb-3">
-
-                <label class="form-label">
-                    🔒 รหัสผ่าน
-                </label>
-
-                <input type="password"
-                       id="password"
-                       class="form-control"
-                       placeholder="กรอกรหัสผ่าน"
-                       required>
-
-            </div>
-
-
-            <!-- REMEMBER -->
-
-            <div class="form-check mb-4">
-
-                <input class="form-check-input"
-                       type="checkbox"
-                       id="remember">
-
-                <label class="form-check-label"
-                       for="remember">
-
-                    จดจำการเข้าสู่ระบบ
-
-                </label>
-
-            </div>
-
-
-            <!-- BUTTON -->
-
-            <button type="submit"
-                    class="btn btn-login w-100">
-
-                🔐 เข้าสู่ระบบ
+                🚪 ออกจากระบบ
 
             </button>
 
+        </div>
 
-        </form>
+    </div>
+
+</nav>
 
 
-        <!-- ERROR -->
 
-        <div id="loginError"
-             class="alert alert-danger mt-3 d-none">
+<!-- =========================
+     ADMIN CONTENT
+========================== -->
 
-            ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง
+<div class="container admin-container">
+
+
+    <!-- TITLE -->
+
+    <div class="mb-4">
+
+        <h2 class="page-title">
+
+            👥 จัดการสมาชิก
+
+        </h2>
+
+        <p class="text-muted">
+
+            ดูและจัดการข้อมูลสมาชิก Mon Bridge Stay
+
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         STAT
+    ========================== -->
+
+    <div class="row g-3 mb-4">
+
+
+        <div class="col-md-4">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <div class="text-muted">
+
+                    สมาชิกทั้งหมด
+
+                </div>
+
+                <div id="totalUsers"
+                     class="stat-number">
+
+                    0
+
+                </div>
+
+            </div>
 
         </div>
 
 
-        <!-- NOTICE -->
+        <div class="col-md-4">
 
-        <div class="notice text-center">
+            <div class="stat-card">
 
-            🔐 หน้านี้สำหรับผู้ดูแลเว็บไซต์ Mon Bridge Stay
+                <div class="stat-icon">
+                    🔎
+                </div>
+
+                <div class="text-muted">
+
+                    ผลการค้นหา
+
+                </div>
+
+                <div id="searchCount"
+                     class="stat-number">
+
+                    0
+
+                </div>
+
+            </div>
 
         </div>
 
 
-        <!-- BACK -->
+        <div class="col-md-4">
 
-        <div class="text-center mt-4">
+            <div class="stat-card">
 
-            <a href="index.html"
-               class="back-link">
+                <div class="stat-icon">
+                    🟢
+                </div>
 
-                ← กลับไปหน้าเว็บไซต์
+                <div class="text-muted">
 
-            </a>
+                    สถานะระบบ
+
+                </div>
+
+                <div class="stat-number"
+                     style="font-size:20px;">
+
+                    ออนไลน์
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         MEMBER TABLE
+    ========================== -->
+
+    <div class="admin-card">
+
+
+        <!-- SEARCH -->
+
+        <div class="row mb-4">
+
+            <div class="col-md-8">
+
+                <input type="text"
+                       id="searchInput"
+                       class="form-control search-box"
+                       placeholder="🔎 ค้นหาชื่อ นามสกุล อีเมล หรือเบอร์โทร...">
+
+            </div>
+
+            <div class="col-md-4 mt-2 mt-md-0">
+
+                <button onclick="clearSearch()"
+                        class="btn btn-outline-secondary w-100 py-2">
+
+                    ล้างการค้นหา
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            #
+                        </th>
+
+                        <th>
+                            ชื่อ
+                        </th>
+
+                        <th>
+                            นามสกุล
+                        </th>
+
+                        <th>
+                            เบอร์โทร
+                        </th>
+
+                        <th>
+                            อีเมล
+                        </th>
+
+                        <th>
+                            จัดการ
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="userTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- EMPTY -->
+
+        <div id="emptyBox"
+             class="empty-box"
+             style="display:none;">
+
+            <div style="font-size:50px;">
+                👥
+            </div>
+
+            <h5>
+
+                ไม่พบสมาชิก
+
+            </h5>
+
+            <p>
+
+                ยังไม่มีสมาชิกหรือไม่พบข้อมูลจากการค้นหา
+
+            </p>
 
         </div>
 
 
     </div>
 
+
 </div>
+
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    <div class="container text-center">
+
+        <h5>
+
+            🏡 Mon Bridge Stay
+
+        </h5>
+
+        <p class="mb-0">
+
+            ระบบจัดการสมาชิก
+
+        </p>
+
+    </div>
+
+</footer>
+
 
 
 <script>
 
-function loginAdmin(event) {
 
-    event.preventDefault();
+/* =========================
+   ตรวจสอบ Admin
+========================= */
+
+const isAdmin =
+    localStorage.getItem(
+        "monBridgeAdmin"
+    );
 
 
-    const username =
-        document.getElementById("username").value;
+if (isAdmin !== "true") {
 
-    const password =
-        document.getElementById("password").value;
+    window.location.href =
+        "admin-login.html";
+
+}
 
 
-    /*
-       ข้อมูลทดลองสำหรับระบบต้นแบบ
-       ยังไม่ใช่ระบบรักษาความปลอดภัยจริง
-    */
 
-    if (username === "admin" && password === "1234") {
+/* =========================
+   โหลดสมาชิก
+========================= */
 
-        window.location.href = "admin.html";
+let users =
+    JSON.parse(
+        localStorage.getItem(
+            "monBridgeUsers"
+        )
+    ) || [];
 
-    } else {
 
-        document
-            .getElementById("loginError")
-            .classList
-            .remove("d-none");
+
+/* =========================
+   แสดงสมาชิก
+========================= */
+
+function displayUsers(
+    searchText = ""
+) {
+
+
+    const tableBody =
+        document.getElementById(
+            "userTableBody"
+        );
+
+
+    const emptyBox =
+        document.getElementById(
+            "emptyBox"
+        );
+
+
+    tableBody.innerHTML = "";
+
+
+
+    /* =========================
+       กรองข้อมูล
+    ========================== */
+
+    const search =
+        searchText
+            .toLowerCase()
+            .trim();
+
+
+    const filteredUsers =
+        users.filter(
+            function(user) {
+
+                const text =
+                    (
+                        user.firstName +
+                        " " +
+                        user.lastName +
+                        " " +
+                        user.email +
+                        " " +
+                        user.phone
+                    )
+                    .toLowerCase();
+
+
+                return text.includes(
+                    search
+                );
+
+            }
+        );
+
+
+
+    /* จำนวน */
+
+    document
+        .getElementById(
+            "totalUsers"
+        )
+        .textContent =
+            users.length;
+
+
+    document
+        .getElementById(
+            "searchCount"
+        )
+        .textContent =
+            filteredUsers.length;
+
+
+
+    /* ไม่มีสมาชิก */
+
+    if (
+        filteredUsers.length === 0
+    ) {
+
+        emptyBox.style.display =
+            "block";
+
+        return;
 
     }
 
+
+    emptyBox.style.display =
+        "none";
+
+
+
+    /* =========================
+       สร้างตาราง
+    ========================== */
+
+    filteredUsers.forEach(
+        function(user, index) {
+
+
+            const originalIndex =
+                users.indexOf(user);
+
+
+            const row =
+                document.createElement(
+                    "tr"
+                );
+
+
+            row.innerHTML = `
+
+                <td>
+                    ${index + 1}
+                </td>
+
+                <td>
+                    ${escapeHTML(user.firstName)}
+                </td>
+
+                <td>
+                    ${escapeHTML(user.lastName)}
+                </td>
+
+                <td>
+                    ${escapeHTML(user.phone)}
+                </td>
+
+                <td>
+                    ${escapeHTML(user.email)}
+                </td>
+
+                <td>
+
+                    <button
+                        onclick="deleteUser(${originalIndex})"
+                        class="btn btn-delete btn-sm">
+
+                        🗑️ ลบ
+
+                    </button>
+
+                </td>
+
+            `;
+
+
+            tableBody.appendChild(
+                row
+            );
+
+        }
+    );
+
 }
+
+
+
+/* =========================
+   ค้นหา
+========================= */
+
+document
+    .getElementById(
+        "searchInput"
+    )
+    .addEventListener(
+        "input",
+        function() {
+
+            displayUsers(
+                this.value
+            );
+
+        }
+    );
+
+
+
+/* =========================
+   ล้างการค้นหา
+========================= */
+
+function clearSearch() {
+
+    document
+        .getElementById(
+            "searchInput"
+        )
+        .value = "";
+
+
+    displayUsers();
+
+}
+
+
+
+/* =========================
+   ลบสมาชิก
+========================= */
+
+function deleteUser(index) {
+
+
+    const user =
+        users[index];
+
+
+    if (!user) {
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "ต้องการลบสมาชิก " +
+            user.firstName +
+            " " +
+            user.lastName +
+            " ใช่หรือไม่?"
+        );
+
+
+    if (!confirmDelete) {
+
+        return;
+
+    }
+
+
+
+    /* ลบ */
+
+    users.splice(
+        index,
+        1
+    );
+
+
+    /* บันทึกใหม่ */
+
+    localStorage.setItem(
+        "monBridgeUsers",
+        JSON.stringify(users)
+    );
+
+
+
+    /* ถ้าคนที่ลบเป็นสมาชิกปัจจุบัน
+       ให้ Logout ออกด้วย */
+
+    const currentUser =
+        JSON.parse(
+            localStorage.getItem(
+                "monBridgeCurrentUser"
+            )
+        );
+
+
+    if (
+        currentUser &&
+        currentUser.email === user.email
+    ) {
+
+        localStorage.removeItem(
+            "monBridgeCurrentUser"
+        );
+
+    }
+
+
+
+    /* แสดงตารางใหม่ */
+
+    displayUsers(
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .value
+    );
+
+
+
+    alert(
+        "ลบสมาชิกเรียบร้อยแล้ว"
+    );
+
+}
+
+
+
+/* =========================
+   Logout Admin
+========================= */
+
+function logoutAdmin() {
+
+    localStorage.removeItem(
+        "monBridgeAdmin"
+    );
+
+
+    window.location.href =
+        "admin-login.html";
+
+}
+
+
+
+/* =========================
+   ป้องกัน HTML แปลกปลอม
+========================= */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+/* =========================
+   เริ่มต้น
+========================= */
+
+displayUsers();
 
 </script>
 
@@ -314,3 +832,4 @@ function loginAdmin(event) {
 </body>
 
 </html>
+```
