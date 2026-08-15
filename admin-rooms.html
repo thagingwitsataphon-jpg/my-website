@@ -32,29 +32,27 @@ body {
 
 
 /* =====================================================
-   SIDEBAR
+   Sidebar
 ===================================================== */
 
 .sidebar {
     position: fixed;
     left: 0;
     top: 0;
-    width: 190px;
+    width: 260px;
     height: 100vh;
-
     background: #4E342E;
     color: white;
-
-    padding: 24px 12px;
-
+    padding: 28px 18px;
     overflow-y: auto;
+    z-index: 1000;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
-    margin-bottom: 28px;
-    padding-left: 8px;
+    margin-bottom: 35px;
+    line-height: 1.2;
 }
 
 .logo span {
@@ -64,20 +62,16 @@ body {
 .menu {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
 .menu a {
     color: white;
     text-decoration: none;
-
-    padding: 13px 14px;
-
-    border-radius: 12px;
-
-    font-size: 16px;
+    padding: 15px 18px;
+    border-radius: 14px;
+    font-size: 18px;
     font-weight: 500;
-
     transition: 0.2s;
 }
 
@@ -91,160 +85,128 @@ body {
 
 
 /* =====================================================
-   MAIN
+   Main
 ===================================================== */
 
 .main {
-    margin-left: 190px;
-    padding: 28px 34px;
+    margin-left: 260px;
+    padding: 30px;
+    min-height: 100vh;
 }
 
 
 /* =====================================================
-   HEADER
+   Header
 ===================================================== */
 
 .page-header {
     background: white;
-
-    border-radius: 20px;
-
-    padding: 24px 30px;
-
-    margin-bottom: 28px;
-
-    box-shadow:
-        0 5px 20px rgba(62, 51, 40, 0.08);
+    border-radius: 22px;
+    padding: 28px 38px;
+    margin-bottom: 30px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     gap: 20px;
+
+    box-shadow: 0 5px 20px rgba(62, 51, 40, 0.08);
 }
 
 .page-header h1 {
     margin: 0;
-
     color: #6D4C41;
-
     font-weight: bold;
-
-    font-size: 34px;
+    font-size: 38px;
 }
 
 .page-header p {
-    margin: 7px 0 0;
-
-    font-size: 16px;
+    margin: 8px 0 0;
+    font-size: 18px;
 }
 
-.btn-add {
+.btn-refresh {
     background: #795548;
     color: white;
-
     border: none;
-
-    padding: 11px 18px;
-
+    padding: 12px 20px;
     border-radius: 11px;
-
     font-size: 16px;
-
-    white-space: nowrap;
+    cursor: pointer;
 }
 
-.btn-add:hover {
+.btn-refresh:hover {
     background: #5D4037;
-    color: white;
 }
 
 
 /* =====================================================
-   STATISTICS
+   Statistics
 ===================================================== */
 
 .stats {
     display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 18px;
-
-    margin-bottom: 28px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-bottom: 30px;
 }
 
 .stat-card {
     background: white;
+    border-radius: 20px;
+    padding: 24px 28px;
 
-    border-radius: 18px;
-
-    padding: 22px 25px;
-
-    box-shadow:
-        0 5px 20px rgba(62, 51, 40, 0.07);
+    box-shadow: 0 5px 20px rgba(62, 51, 40, 0.07);
 }
 
 .stat-number {
     font-size: 34px;
-
     font-weight: bold;
-
     color: #6D4C41;
-
-    margin-bottom: 7px;
+    margin-bottom: 6px;
 }
 
 .stat-label {
+    font-size: 17px;
     color: #795548;
-
-    font-size: 16px;
 }
 
-.dot {
+.stat-dot {
     display: inline-block;
-
-    width: 17px;
-    height: 17px;
-
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-
-    margin-right: 7px;
-
-    vertical-align: -2px;
+    margin-right: 8px;
+    vertical-align: -3px;
 }
 
-.dot-green {
-    background: #4DD58B;
+.dot-all {
+    background: #D9A441;
 }
 
-.dot-yellow {
-    background: #F2C94C;
+.dot-confirmed {
+    background: #4DD487;
 }
 
-.dot-red {
-    background: #EF476F;
+.dot-pending {
+    background: #E7B73E;
 }
 
-.dot-brown {
-    background: #795548;
+.dot-cancelled {
+    background: #E84768;
 }
 
 
 /* =====================================================
-   TABLE
+   Booking Box
 ===================================================== */
 
 .booking-box {
     background: white;
+    border-radius: 22px;
+    padding: 28px;
 
-    border-radius: 20px;
-
-    padding: 26px;
-
-    box-shadow:
-        0 5px 20px rgba(62, 51, 40, 0.08);
+    box-shadow: 0 5px 20px rgba(62, 51, 40, 0.08);
 }
 
 .table-responsive {
@@ -253,34 +215,24 @@ body {
 
 .table {
     margin-bottom: 0;
-
     min-width: 1050px;
 }
 
 .table thead th {
     background: #F7F3E8;
-
     color: #6D4C41;
-
     font-size: 16px;
-
-    padding: 14px 12px;
-
-    border-bottom:
-        2px solid #E0D2C5;
-
+    padding: 15px 12px;
+    border-bottom: 2px solid #E0D2C5;
     white-space: nowrap;
 }
 
 .table tbody td {
-    padding: 15px 12px;
-
+    padding: 17px 12px;
     vertical-align: middle;
-
-    font-size: 15px;
-
-    border-bottom:
-        1px solid #E1E1E1;
+    font-size: 16px;
+    white-space: nowrap;
+    border-bottom: 1px solid #E1E1E1;
 }
 
 .table tbody tr:hover {
@@ -289,265 +241,289 @@ body {
 
 
 /* =====================================================
-   STATUS
+   Booking Code
+===================================================== */
+
+.booking-code {
+    font-weight: bold;
+    color: #4E342E;
+}
+
+
+/* =====================================================
+   Status
 ===================================================== */
 
 .status {
     display: inline-block;
-
-    padding: 8px 14px;
-
+    padding: 8px 15px;
     border-radius: 20px;
-
-    font-size: 13px;
-
+    font-size: 14px;
     white-space: nowrap;
 }
 
 .status-confirmed {
-    background: #E5F3E8;
+    background: #E8F3E8;
     color: #4E7A52;
 }
 
 .status-pending {
-    background: #FFF2D5;
-    color: #A06D12;
+    background: #FFF0C9;
+    color: #9A7417;
 }
 
 .status-cancelled {
-    background: #F6E1DE;
+    background: #F5E3E0;
     color: #A64B3C;
 }
 
 
 /* =====================================================
-   BUTTONS
+   Action Buttons
 ===================================================== */
 
+.action-buttons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
 .btn-confirm {
-    background: #719678;
-
+    background: #719575;
     color: white;
-
     border: none;
-
-    padding: 8px 12px;
-
-    border-radius: 9px;
-
-    margin-right: 4px;
-
-    font-size: 14px;
+    padding: 9px 15px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .btn-confirm:hover {
-    background: #5B7F62;
-
+    background: #5E8062;
     color: white;
 }
 
 .btn-view {
     background: #795548;
-
     color: white;
-
     border: none;
-
-    padding: 8px 12px;
-
-    border-radius: 9px;
-
-    margin-right: 4px;
-
-    font-size: 14px;
+    padding: 9px 16px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .btn-view:hover {
     background: #5D4037;
-
-    color: white;
-}
-
-.btn-edit {
-    background: #C8A27A;
-
-    color: white;
-
-    border: none;
-
-    padding: 8px 12px;
-
-    border-radius: 9px;
-
-    margin-right: 4px;
-
-    font-size: 14px;
-}
-
-.btn-edit:hover {
-    background: #B38D67;
-
-    color: white;
-}
-
-.btn-cancel {
-    background: #D68B78;
-
-    color: white;
-
-    border: none;
-
-    padding: 8px 12px;
-
-    border-radius: 9px;
-
-    margin-right: 4px;
-
-    font-size: 14px;
-}
-
-.btn-cancel:hover {
-    background: #B86E5D;
-
     color: white;
 }
 
 .btn-delete {
     background: #B45D4C;
-
     color: white;
-
     border: none;
-
-    padding: 8px 12px;
-
-    border-radius: 9px;
-
-    font-size: 14px;
+    padding: 9px 16px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .btn-delete:hover {
     background: #934737;
-
     color: white;
 }
 
 
 /* =====================================================
-   MODAL
-===================================================== */
-
-.modal-content {
-    border: none;
-
-    border-radius: 18px;
-
-    overflow: hidden;
-}
-
-.modal-header {
-    background: #795548;
-
-    color: white;
-
-    border: none;
-
-    padding: 18px 22px;
-}
-
-.modal-title {
-    font-weight: bold;
-}
-
-.modal-body {
-    padding: 24px;
-}
-
-.modal-footer {
-    padding: 15px 22px;
-
-    border-top:
-        1px solid #E5DED6;
-}
-
-.form-label {
-    color: #6D4C41;
-
-    font-weight: bold;
-
-    margin-bottom: 6px;
-}
-
-.form-control,
-.form-select {
-    border-radius: 9px;
-
-    border: 1px solid #D7DDE2;
-
-    padding: 10px 12px;
-}
-
-.form-control:focus,
-.form-select:focus {
-    border-color: #A1887F;
-
-    box-shadow:
-        0 0 0 3px rgba(121, 85, 72, 0.12);
-}
-
-
-/* =====================================================
-   DETAIL
-===================================================== */
-
-.detail-row {
-    display: grid;
-
-    grid-template-columns: 150px 1fr;
-
-    gap: 15px;
-
-    padding: 10px 0;
-
-    border-bottom:
-        1px solid #EEE7DF;
-}
-
-.detail-label {
-    color: #795548;
-
-    font-weight: bold;
-}
-
-.detail-value {
-    color: #333;
-}
-
-
-/* =====================================================
-   EMPTY
+   Empty
 ===================================================== */
 
 .empty-row {
     text-align: center;
-
     padding: 45px !important;
-
-    color: #8D8178;
-
-    font-size: 16px;
+    color: #8A7A70;
+    font-size: 17px;
 }
 
 
 /* =====================================================
-   RESPONSIVE
+   Modal
+===================================================== */
+
+.modal-overlay {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    z-index: 9999;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.booking-modal {
+    width: 100%;
+    max-width: 650px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow: 0 15px 45px rgba(0,0,0,0.25);
+
+    overflow: hidden;
+
+    animation: modalShow 0.2s ease;
+}
+
+@keyframes modalShow {
+
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.modal-header-custom {
+    background: #795548;
+    color: white;
+
+    padding: 18px 22px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header-custom h3 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-body-custom {
+    padding: 25px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.detail-item {
+    background: #F7F3E8;
+    padding: 14px 16px;
+    border-radius: 12px;
+}
+
+.detail-item.full {
+    grid-column: 1 / -1;
+}
+
+.detail-label {
+    font-size: 13px;
+    color: #8A7165;
+    margin-bottom: 5px;
+}
+
+.detail-value {
+    font-size: 17px;
+    font-weight: 600;
+    color: #4E342E;
+}
+
+.modal-footer-custom {
+    padding: 16px 22px;
+    border-top: 1px solid #E5DDD5;
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-close-modal {
+    background: #777;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-confirm-modal {
+    background: #719575;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   Toast
+===================================================== */
+
+.toast-message {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    background: #4E342E;
+    color: white;
+
+    padding: 14px 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    pointer-events: none;
+
+    transition: 0.25s;
+
+    z-index: 10000;
+}
+
+.toast-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+   Responsive
 ===================================================== */
 
 @media (max-width: 1100px) {
 
     .stats {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }
@@ -556,21 +532,17 @@ body {
 
     .sidebar {
         position: relative;
-
         width: 100%;
-
         height: auto;
     }
 
     .main {
         margin-left: 0;
-
         padding: 18px;
     }
 
     .page-header {
         flex-direction: column;
-
         align-items: flex-start;
     }
 
@@ -580,24 +552,16 @@ body {
 
 }
 
+@media (max-width: 600px) {
 
-/* =====================================================
-   SCROLLBAR
-===================================================== */
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
 
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
+    .detail-item.full {
+        grid-column: auto;
+    }
 
-::-webkit-scrollbar-thumb {
-    background: #BCAAA4;
-
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #F7F3E8;
 }
 
 </style>
@@ -656,7 +620,6 @@ body {
 </div>
 
 
-
 <!-- =====================================================
      MAIN
 ===================================================== -->
@@ -664,7 +627,9 @@ body {
 <div class="main">
 
 
-    <!-- HEADER -->
+    <!-- =================================================
+         HEADER
+    ================================================= -->
 
     <div class="page-header">
 
@@ -681,15 +646,14 @@ body {
         </div>
 
 
-        <button class="btn-add"
-                onclick="openAddBooking()">
+        <button class="btn-refresh"
+                onclick="refreshBookings()">
 
-            ➕ เพิ่มการจอง
+            🔄 รีเฟรช
 
         </button>
 
     </div>
-
 
 
     <!-- =================================================
@@ -699,16 +663,18 @@ body {
     <div class="stats">
 
 
+        <!-- ทั้งหมด -->
+
         <div class="stat-card">
 
             <div class="stat-number"
-                 id="totalCount">
+                 id="totalBookings">
                 0
             </div>
 
             <div class="stat-label">
 
-                <span class="dot dot-brown"></span>
+                <span class="stat-dot dot-all"></span>
 
                 การจองทั้งหมด
 
@@ -717,16 +683,18 @@ body {
         </div>
 
 
+        <!-- ยืนยันแล้ว -->
+
         <div class="stat-card">
 
             <div class="stat-number"
-                 id="confirmedCount">
+                 id="confirmedBookings">
                 0
             </div>
 
             <div class="stat-label">
 
-                <span class="dot dot-green"></span>
+                <span class="stat-dot dot-confirmed"></span>
 
                 ยืนยันแล้ว
 
@@ -735,16 +703,18 @@ body {
         </div>
 
 
+        <!-- รอยืนยัน -->
+
         <div class="stat-card">
 
             <div class="stat-number"
-                 id="pendingCount">
+                 id="pendingBookings">
                 0
             </div>
 
             <div class="stat-label">
 
-                <span class="dot dot-yellow"></span>
+                <span class="stat-dot dot-pending"></span>
 
                 รอยืนยัน
 
@@ -753,16 +723,18 @@ body {
         </div>
 
 
+        <!-- ยกเลิก -->
+
         <div class="stat-card">
 
             <div class="stat-number"
-                 id="cancelledCount">
+                 id="cancelledBookings">
                 0
             </div>
 
             <div class="stat-label">
 
-                <span class="dot dot-red"></span>
+                <span class="stat-dot dot-cancelled"></span>
 
                 ยกเลิก
 
@@ -770,9 +742,7 @@ body {
 
         </div>
 
-
     </div>
-
 
 
     <!-- =================================================
@@ -843,248 +813,165 @@ body {
 </div>
 
 
-
-<!-- =====================================================
-     ADD / EDIT MODAL
-===================================================== -->
-
-<div class="modal fade"
-     id="bookingModal"
-     tabindex="-1">
-
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-
-        <div class="modal-content">
-
-
-            <div class="modal-header">
-
-                <h5 class="modal-title"
-                    id="bookingModalTitle">
-
-                    ➕ เพิ่มการจอง
-
-                </h5>
-
-                <button type="button"
-                        class="btn-close btn-close-white"
-                        data-bs-dismiss="modal">
-                </button>
-
-            </div>
-
-
-            <div class="modal-body">
-
-                <form id="bookingForm">
-
-                    <input type="hidden"
-                           id="bookingId">
-
-
-                    <div class="row g-3">
-
-
-                        <div class="col-md-6">
-
-                            <label class="form-label">
-                                ชื่อผู้เข้าพัก
-                            </label>
-
-                            <input type="text"
-                                   id="guestName"
-                                   class="form-control"
-                                   required>
-
-                        </div>
-
-
-                        <div class="col-md-6">
-
-                            <label class="form-label">
-                                ที่พัก
-                            </label>
-
-                            <input type="text"
-                                   id="roomName"
-                                   class="form-control"
-                                   required>
-
-                        </div>
-
-
-                        <div class="col-md-4">
-
-                            <label class="form-label">
-                                วันที่เข้าพัก
-                            </label>
-
-                            <input type="date"
-                                   id="checkIn"
-                                   class="form-control"
-                                   required>
-
-                        </div>
-
-
-                        <div class="col-md-4">
-
-                            <label class="form-label">
-                                วันที่ออก
-                            </label>
-
-                            <input type="date"
-                                   id="checkOut"
-                                   class="form-control"
-                                   required>
-
-                        </div>
-
-
-                        <div class="col-md-4">
-
-                            <label class="form-label">
-                                จำนวนผู้เข้าพัก
-                            </label>
-
-                            <input type="number"
-                                   id="guests"
-                                   class="form-control"
-                                   min="1"
-                                   required>
-
-                        </div>
-
-
-                        <div class="col-md-6">
-
-                            <label class="form-label">
-                                ราคา
-                            </label>
-
-                            <input type="number"
-                                   id="price"
-                                   class="form-control"
-                                   min="0"
-                                   required>
-
-                        </div>
-
-
-                        <div class="col-md-6">
-
-                            <label class="form-label">
-                                สถานะ
-                            </label>
-
-                            <select id="status"
-                                    class="form-select">
-
-                                <option value="pending">
-                                    รอยืนยัน
-                                </option>
-
-                                <option value="confirmed">
-                                    ยืนยันแล้ว
-                                </option>
-
-                                <option value="cancelled">
-                                    ยกเลิก
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                    </div>
-
-                </form>
-
-            </div>
-
-
-            <div class="modal-footer">
-
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal">
-
-                    ยกเลิก
-
-                </button>
-
-
-                <button type="button"
-                        class="btn"
-                        style="
-                            background:#795548;
-                            color:white;
-                        "
-                        onclick="saveBooking()">
-
-                    💾 บันทึกการจอง
-
-                </button>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
 <!-- =====================================================
      DETAIL MODAL
 ===================================================== -->
 
-<div class="modal fade"
-     id="detailModal"
-     tabindex="-1">
-
-    <div class="modal-dialog modal-md modal-dialog-centered">
-
-        <div class="modal-content">
+<div id="detailModal"
+     class="modal-overlay"
+     onclick="closeModalOutside(event)">
 
 
-            <div class="modal-header">
+    <div class="booking-modal">
 
-                <h5 class="modal-title">
 
-                    👁️ รายละเอียดการจอง
+        <div class="modal-header-custom">
 
-                </h5>
+            <h3>
+                📋 รายละเอียดการจอง
+            </h3>
 
-                <button type="button"
-                        class="btn-close btn-close-white"
-                        data-bs-dismiss="modal">
-                </button>
+            <button class="modal-close"
+                    onclick="closeDetailModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div class="modal-body-custom">
+
+            <div class="detail-grid">
+
+
+                <div class="detail-item">
+
+                    <div class="detail-label">
+                        รหัสการจอง
+                    </div>
+
+                    <div class="detail-value"
+                         id="detailCode">
+                    </div>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <div class="detail-label">
+                        สถานะ
+                    </div>
+
+                    <div class="detail-value"
+                         id="detailStatus">
+                    </div>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <div class="detail-label">
+                        ผู้เข้าพัก
+                    </div>
+
+                    <div class="detail-value"
+                         id="detailGuest">
+                    </div>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <div class="detail-label">
+                        จำนวนผู้เข้าพัก
+                    </div>
+
+                    <div class="detail-value"
+                         id="detailGuests">
+                    </div>
+
+                </div>
+
+
+                <div class="detail-item full">
+
+                    <div class="detail-label">
+                        ที่พัก
+                    </div>
+
+                    <div class="detail-value"
+                         id="detailRoom">
+                    </div>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <div class="detail-label">
+                        วันที่เข้าพัก
+                    </div>
+
+                    <div class="detail-value"
+                         id="detailCheckin">
+                    </div>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <div class="detail-label">
+                        วันที่ออก
+                    </div>
+
+                    <div class="detail-value"
+                         id="detailCheckout">
+                    </div>
+
+                </div>
+
+
+                <div class="detail-item full">
+
+                    <div class="detail-label">
+                        ราคา
+                    </div>
+
+                    <div class="detail-value"
+                         id="detailPrice">
+                    </div>
+
+                </div>
+
 
             </div>
 
-
-            <div class="modal-body"
-                 id="detailContent">
-
-            </div>
+        </div>
 
 
-            <div class="modal-footer">
+        <div class="modal-footer-custom">
 
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal">
+            <button class="btn-close-modal"
+                    onclick="closeDetailModal()">
 
-                    ปิด
+                ปิด
 
-                </button>
+            </button>
 
-            </div>
 
+            <button id="modalConfirmButton"
+                    class="btn-confirm-modal"
+                    onclick="confirmFromModal()">
+
+                ✓ ยืนยันการจอง
+
+            </button>
 
         </div>
 
@@ -1093,21 +980,24 @@ body {
 </div>
 
 
+<!-- =====================================================
+     TOAST
+===================================================== -->
 
-<!-- Bootstrap -->
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
-
+<div id="toast"
+     class="toast-message">
+</div>
 
 
 <script>
 
 /* =====================================================
-   STORAGE
+   ตั้งค่า
 ===================================================== */
 
 const STORAGE_KEY = "monBridgeBookings";
+
+let currentBookingId = null;
 
 
 /* =====================================================
@@ -1118,76 +1008,45 @@ const defaultBookings = [
 
     {
         id: "001",
-
         guest: "คุณสมชาย",
-
         room: "มาชิลล์ รีสอร์ท",
-
-        checkIn: "2026-08-20",
-
-        checkOut: "2026-08-21",
-
+        checkin: "20/08/2026",
+        checkout: "21/08/2026",
         guests: 2,
-
         price: 700,
-
         status: "confirmed"
     },
 
-
     {
         id: "002",
-
         guest: "คุณสุดา",
-
         room: "บ้านมอญนอนเล่น",
-
-        checkIn: "2026-08-22",
-
-        checkOut: "2026-08-24",
-
+        checkin: "22/08/2026",
+        checkout: "24/08/2026",
         guests: 2,
-
         price: 1380,
-
         status: "pending"
     },
-
 
     {
         id: "003",
-
-        guest: "คุณณัทร",
-
+        guest: "คุณนภัทร",
         room: "ภูชมหมอก รีสอร์ท",
-
-        checkIn: "2026-08-25",
-
-        checkOut: "2026-08-27",
-
+        checkin: "25/08/2026",
+        checkout: "27/08/2026",
         guests: 4,
-
         price: 3000,
-
         status: "pending"
     },
 
-
     {
         id: "004",
-
         guest: "คุณวิภา",
-
         room: "สามประสบรีสอร์ท",
-
-        checkIn: "2026-08-28",
-
-        checkOut: "2026-08-29",
-
+        checkin: "28/08/2026",
+        checkout: "29/08/2026",
         guests: 2,
-
         price: 1126,
-
         status: "confirmed"
     }
 
@@ -1200,8 +1059,7 @@ const defaultBookings = [
 
 function loadBookings() {
 
-    const saved =
-        localStorage.getItem(STORAGE_KEY);
+    const saved = localStorage.getItem(STORAGE_KEY);
 
     if (!saved) {
 
@@ -1214,20 +1072,31 @@ function loadBookings() {
 
     }
 
+
     try {
 
-        return JSON.parse(saved);
+        const data = JSON.parse(saved);
+
+        if (Array.isArray(data)) {
+            return data;
+        }
 
     } catch (error) {
 
-        localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(defaultBookings)
+        console.error(
+            "ไม่สามารถอ่านข้อมูลการจองได้",
+            error
         );
 
-        return [...defaultBookings];
-
     }
+
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(defaultBookings)
+    );
+
+    return [...defaultBookings];
 
 }
 
@@ -1247,90 +1116,84 @@ function saveBookings(bookings) {
 
 
 /* =====================================================
-   วันที่
+   Escape HTML
 ===================================================== */
 
-function formatDate(dateString) {
+function escapeHTML(value) {
 
-    if (!dateString) {
-        return "-";
-    }
+    const div = document.createElement("div");
 
-    const parts =
-        dateString.split("-");
+    div.textContent = value ?? "";
 
-    if (parts.length !== 3) {
-        return dateString;
-    }
-
-    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    return div.innerHTML;
 
 }
 
 
 /* =====================================================
-   ราคา
+   รูปแบบราคา
 ===================================================== */
 
 function formatPrice(price) {
 
-    return Number(price || 0)
-        .toLocaleString("th-TH") + " บาท";
+    return Number(price).toLocaleString("th-TH") + " บาท";
 
 }
 
 
 /* =====================================================
-   สถานะ
+   ชื่อสถานะ
 ===================================================== */
 
-function getStatus(status) {
+function getStatusText(status) {
 
     if (status === "confirmed") {
-
-        return {
-
-            text: "ยืนยันแล้ว",
-
-            className: "status-confirmed"
-
-        };
-
+        return "ยืนยันแล้ว";
     }
 
+    if (status === "pending") {
+        return "รอยืนยัน";
+    }
 
     if (status === "cancelled") {
-
-        return {
-
-            text: "ยกเลิก",
-
-            className: "status-cancelled"
-
-        };
-
+        return "ยกเลิก";
     }
 
-
-    return {
-
-        text: "รอยืนยัน",
-
-        className: "status-pending"
-
-    };
+    return "-";
 
 }
 
 
 /* =====================================================
-   แสดงตาราง
+   Class สถานะ
+===================================================== */
+
+function getStatusClass(status) {
+
+    if (status === "confirmed") {
+        return "status-confirmed";
+    }
+
+    if (status === "pending") {
+        return "status-pending";
+    }
+
+    if (status === "cancelled") {
+        return "status-cancelled";
+    }
+
+    return "";
+
+}
+
+
+/* =====================================================
+   แสดงข้อมูลทั้งหมด
 ===================================================== */
 
 function renderBookings() {
 
-    const bookings =
-        loadBookings();
+    const bookings = loadBookings();
 
     const table =
         document.getElementById("bookingTable");
@@ -1338,6 +1201,10 @@ function renderBookings() {
 
     table.innerHTML = "";
 
+
+    /* -----------------------------------------------
+       ไม่มีข้อมูล
+    ----------------------------------------------- */
 
     if (bookings.length === 0) {
 
@@ -1356,17 +1223,18 @@ function renderBookings() {
 
         `;
 
-        updateStatistics([]);
+        updateStats([]);
 
         return;
 
     }
 
 
-    bookings.forEach(booking => {
+    /* -----------------------------------------------
+       สร้างแต่ละแถว
+    ----------------------------------------------- */
 
-        const status =
-            getStatus(booking.status);
+    bookings.forEach(function(booking) {
 
 
         const row =
@@ -1376,96 +1244,117 @@ function renderBookings() {
         row.innerHTML = `
 
             <td>
-                <strong>
+
+                <span class="booking-code">
+
                     #${escapeHTML(booking.id)}
-                </strong>
-            </td>
 
-            <td>
-                ${escapeHTML(booking.guest)}
-            </td>
-
-            <td>
-                ${escapeHTML(booking.room)}
-            </td>
-
-            <td>
-                ${formatDate(booking.checkIn)}
-            </td>
-
-            <td>
-                ${formatDate(booking.checkOut)}
-            </td>
-
-            <td>
-                ${booking.guests} คน
-            </td>
-
-            <td>
-                ${formatPrice(booking.price)}
-            </td>
-
-            <td>
-
-                <span class="status ${status.className}">
-                    ${status.text}
                 </span>
 
             </td>
 
+
             <td>
 
-                ${booking.status === "pending" ? `
+                ${escapeHTML(booking.guest)}
+
+            </td>
+
+
+            <td>
+
+                ${escapeHTML(booking.room)}
+
+            </td>
+
+
+            <td>
+
+                ${escapeHTML(booking.checkin)}
+
+            </td>
+
+
+            <td>
+
+                ${escapeHTML(booking.checkout)}
+
+            </td>
+
+
+            <td>
+
+                ${escapeHTML(booking.guests)} คน
+
+            </td>
+
+
+            <td>
+
+                ${formatPrice(booking.price)}
+
+            </td>
+
+
+            <td>
+
+                <span class="status ${getStatusClass(booking.status)}">
+
+                    ${getStatusText(booking.status)}
+
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <div class="action-buttons">
+
+
+                    ${
+                        booking.status === "pending"
+
+                        ?
+
+                        `
+
+                        <button
+                            class="btn-confirm"
+                            onclick="confirmBooking('${booking.id}')">
+
+                            ✓ ยืนยัน
+
+                        </button>
+
+                        `
+
+                        :
+
+                        ""
+
+                    }
+
 
                     <button
-                        class="btn-confirm"
-                        onclick="confirmBooking('${booking.id}')">
+                        class="btn-view"
+                        onclick="viewBooking('${booking.id}')">
 
-                        ✓ ยืนยัน
+                        👁️ ดู
 
                     </button>
 
-                ` : ""}
-
-
-                <button
-                    class="btn-view"
-                    onclick="viewBooking('${booking.id}')">
-
-                    👁️ ดู
-
-                </button>
-
-
-                <button
-                    class="btn-edit"
-                    onclick="editBooking('${booking.id}')">
-
-                    ✏️ แก้ไข
-
-                </button>
-
-
-                ${booking.status !== "cancelled" ? `
 
                     <button
-                        class="btn-cancel"
-                        onclick="cancelBooking('${booking.id}')">
+                        class="btn-delete"
+                        onclick="deleteBooking('${booking.id}')">
 
-                        ✕ ยกเลิก
+                        🗑️
 
                     </button>
 
-                ` : ""}
 
-
-                <button
-                    class="btn-delete"
-                    onclick="deleteBooking('${booking.id}')">
-
-                    🗑️ ลบ
-
-                </button>
+                </div>
 
             </td>
 
@@ -1477,400 +1366,59 @@ function renderBookings() {
     });
 
 
-    updateStatistics(bookings);
+    updateStats(bookings);
 
 }
 
 
 /* =====================================================
-   ตัวเลขสรุป
+   อัปเดตตัวเลขด้านบน
 ===================================================== */
 
-function updateStatistics(bookings) {
+function updateStats(bookings) {
 
     const total =
         bookings.length;
 
 
     const confirmed =
-        bookings.filter(
-            item => item.status === "confirmed"
-        ).length;
+        bookings.filter(function(booking) {
+
+            return booking.status === "confirmed";
+
+        }).length;
 
 
     const pending =
-        bookings.filter(
-            item => item.status === "pending"
-        ).length;
+        bookings.filter(function(booking) {
+
+            return booking.status === "pending";
+
+        }).length;
 
 
     const cancelled =
-        bookings.filter(
-            item => item.status === "cancelled"
-        ).length;
+        bookings.filter(function(booking) {
 
+            return booking.status === "cancelled";
 
-    document.getElementById(
-        "totalCount"
-    ).textContent = total;
+        }).length;
 
 
-    document.getElementById(
-        "confirmedCount"
-    ).textContent = confirmed;
+    document.getElementById("totalBookings")
+        .textContent = total;
 
 
-    document.getElementById(
-        "pendingCount"
-    ).textContent = pending;
+    document.getElementById("confirmedBookings")
+        .textContent = confirmed;
 
 
-    document.getElementById(
-        "cancelledCount"
-    ).textContent = cancelled;
+    document.getElementById("pendingBookings")
+        .textContent = pending;
 
-}
 
-
-/* =====================================================
-   เพิ่มการจอง
-===================================================== */
-
-function openAddBooking() {
-
-    document.getElementById(
-        "bookingForm"
-    ).reset();
-
-
-    document.getElementById(
-        "bookingId"
-    ).value = "";
-
-
-    document.getElementById(
-        "bookingModalTitle"
-    ).textContent =
-        "➕ เพิ่มการจอง";
-
-
-    document.getElementById(
-        "status"
-    ).value = "pending";
-
-
-    const modal =
-        new bootstrap.Modal(
-            document.getElementById(
-                "bookingModal"
-            )
-        );
-
-
-    modal.show();
-
-}
-
-
-/* =====================================================
-   บันทึก
-===================================================== */
-
-function saveBooking() {
-
-    const form =
-        document.getElementById(
-            "bookingForm"
-        );
-
-
-    if (!form.checkValidity()) {
-
-        form.reportValidity();
-
-        return;
-
-    }
-
-
-    const id =
-        document.getElementById(
-            "bookingId"
-        ).value;
-
-
-    const guest =
-        document.getElementById(
-            "guestName"
-        ).value.trim();
-
-
-    const room =
-        document.getElementById(
-            "roomName"
-        ).value.trim();
-
-
-    const checkIn =
-        document.getElementById(
-            "checkIn"
-        ).value;
-
-
-    const checkOut =
-        document.getElementById(
-            "checkOut"
-        ).value;
-
-
-    const guests =
-        Number(
-            document.getElementById(
-                "guests"
-            ).value
-        );
-
-
-    const price =
-        Number(
-            document.getElementById(
-                "price"
-            ).value
-        );
-
-
-    const status =
-        document.getElementById(
-            "status"
-        ).value;
-
-
-    if (checkOut < checkIn) {
-
-        alert(
-            "วันที่ออกต้องไม่ก่อนวันที่เข้าพัก"
-        );
-
-        return;
-
-    }
-
-
-    const bookings =
-        loadBookings();
-
-
-    if (id) {
-
-        const index =
-            bookings.findIndex(
-                item => item.id === id
-            );
-
-
-        if (index !== -1) {
-
-            bookings[index] = {
-
-                id,
-
-                guest,
-
-                room,
-
-                checkIn,
-
-                checkOut,
-
-                guests,
-
-                price,
-
-                status
-
-            };
-
-        }
-
-
-        saveBookings(bookings);
-
-        renderBookings();
-
-
-        bootstrap.Modal
-            .getInstance(
-                document.getElementById(
-                    "bookingModal"
-                )
-            )
-            .hide();
-
-
-        alert(
-            "แก้ไขการจองเรียบร้อยแล้ว 🎉"
-        );
-
-
-        return;
-
-    }
-
-
-    const newBooking = {
-
-        id: generateBookingId(bookings),
-
-        guest,
-
-        room,
-
-        checkIn,
-
-        checkOut,
-
-        guests,
-
-        price,
-
-        status
-
-    };
-
-
-    bookings.push(newBooking);
-
-
-    saveBookings(bookings);
-
-    renderBookings();
-
-
-    bootstrap.Modal
-        .getInstance(
-            document.getElementById(
-                "bookingModal"
-            )
-        )
-        .hide();
-
-
-    alert(
-        "เพิ่มการจองเรียบร้อยแล้ว 🎉"
-    );
-
-}
-
-
-/* =====================================================
-   สร้างรหัสใหม่
-===================================================== */
-
-function generateBookingId(bookings) {
-
-    if (bookings.length === 0) {
-        return "001";
-    }
-
-
-    const numbers =
-        bookings.map(item =>
-            parseInt(item.id, 10) || 0
-        );
-
-
-    const max =
-        Math.max(...numbers);
-
-
-    return String(max + 1)
-        .padStart(3, "0");
-
-}
-
-
-/* =====================================================
-   แก้ไข
-===================================================== */
-
-function editBooking(id) {
-
-    const bookings =
-        loadBookings();
-
-
-    const booking =
-        bookings.find(
-            item => item.id === id
-        );
-
-
-    if (!booking) {
-
-        alert(
-            "ไม่พบข้อมูลการจอง"
-        );
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "bookingId"
-    ).value = booking.id;
-
-
-    document.getElementById(
-        "guestName"
-    ).value = booking.guest;
-
-
-    document.getElementById(
-        "roomName"
-    ).value = booking.room;
-
-
-    document.getElementById(
-        "checkIn"
-    ).value = booking.checkIn;
-
-
-    document.getElementById(
-        "checkOut"
-    ).value = booking.checkOut;
-
-
-    document.getElementById(
-        "guests"
-    ).value = booking.guests;
-
-
-    document.getElementById(
-        "price"
-    ).value = booking.price;
-
-
-    document.getElementById(
-        "status"
-    ).value = booking.status;
-
-
-    document.getElementById(
-        "bookingModalTitle"
-    ).textContent =
-        "✏️ แก้ไขการจอง #" + booking.id;
-
-
-    const modal =
-        new bootstrap.Modal(
-            document.getElementById(
-                "bookingModal"
-            )
-        );
-
-
-    modal.show();
+    document.getElementById("cancelledBookings")
+        .textContent = cancelled;
 
 }
 
@@ -1881,36 +1429,60 @@ function editBooking(id) {
 
 function confirmBooking(id) {
 
-    const bookings =
-        loadBookings();
+    const bookings = loadBookings();
 
 
     const booking =
-        bookings.find(
-            item => item.id === id
-        );
+        bookings.find(function(item) {
+
+            return item.id === id;
+
+        });
 
 
     if (!booking) {
+
         return;
+
     }
 
 
-    const answer =
+    if (booking.status === "confirmed") {
+
+        showToast("รายการนี้ยืนยันแล้ว");
+
+        return;
+
+    }
+
+
+    if (booking.status === "cancelled") {
+
+        showToast("รายการนี้ถูกยกเลิกแล้ว");
+
+        return;
+
+    }
+
+
+    const confirmed =
         confirm(
-            `ต้องการยืนยันการจอง #${id}\n\n` +
-            `ผู้เข้าพัก: ${booking.guest}\n` +
-            `ที่พัก: ${booking.room}`
+
+            "ต้องการยืนยันการจอง #" +
+            booking.id +
+            " ใช่หรือไม่?"
+
         );
 
 
-    if (!answer) {
+    if (!confirmed) {
+
         return;
+
     }
 
 
-    booking.status =
-        "confirmed";
+    booking.status = "confirmed";
 
 
     saveBookings(bookings);
@@ -1918,108 +1490,10 @@ function confirmBooking(id) {
     renderBookings();
 
 
-    alert(
-        "ยืนยันการจองเรียบร้อยแล้ว ✅"
-    );
-
-}
-
-
-/* =====================================================
-   ยกเลิกการจอง
-===================================================== */
-
-function cancelBooking(id) {
-
-    const bookings =
-        loadBookings();
-
-
-    const booking =
-        bookings.find(
-            item => item.id === id
-        );
-
-
-    if (!booking) {
-        return;
-    }
-
-
-    const answer =
-        confirm(
-            `ต้องการยกเลิกการจอง #${id} ใช่หรือไม่?\n\n` +
-            `ผู้เข้าพัก: ${booking.guest}`
-        );
-
-
-    if (!answer) {
-        return;
-    }
-
-
-    booking.status =
-        "cancelled";
-
-
-    saveBookings(bookings);
-
-    renderBookings();
-
-
-    alert(
-        "ยกเลิกการจองเรียบร้อยแล้ว"
-    );
-
-}
-
-
-/* =====================================================
-   ลบการจอง
-===================================================== */
-
-function deleteBooking(id) {
-
-    const bookings =
-        loadBookings();
-
-
-    const booking =
-        bookings.find(
-            item => item.id === id
-        );
-
-
-    if (!booking) {
-        return;
-    }
-
-
-    const answer =
-        confirm(
-            `ต้องการลบการจอง #${id} ออกจากระบบใช่หรือไม่?\n\n` +
-            `ผู้เข้าพัก: ${booking.guest}`
-        );
-
-
-    if (!answer) {
-        return;
-    }
-
-
-    const newBookings =
-        bookings.filter(
-            item => item.id !== id
-        );
-
-
-    saveBookings(newBookings);
-
-    renderBookings();
-
-
-    alert(
-        "ลบการจองเรียบร้อยแล้ว 🗑️"
+    showToast(
+        "ยืนยันการจอง #" +
+        booking.id +
+        " เรียบร้อยแล้ว ✓"
     );
 
 }
@@ -2031,168 +1505,280 @@ function deleteBooking(id) {
 
 function viewBooking(id) {
 
-    const bookings =
-        loadBookings();
+    const bookings = loadBookings();
 
 
     const booking =
-        bookings.find(
-            item => item.id === id
-        );
+        bookings.find(function(item) {
+
+            return item.id === id;
+
+        });
 
 
     if (!booking) {
+
         return;
+
     }
 
 
-    const status =
-        getStatus(
-            booking.status
+    currentBookingId = id;
+
+
+    document.getElementById("detailCode")
+        .textContent = "#" + booking.id;
+
+
+    document.getElementById("detailGuest")
+        .textContent = booking.guest;
+
+
+    document.getElementById("detailRoom")
+        .textContent = booking.room;
+
+
+    document.getElementById("detailCheckin")
+        .textContent = booking.checkin;
+
+
+    document.getElementById("detailCheckout")
+        .textContent = booking.checkout;
+
+
+    document.getElementById("detailGuests")
+        .textContent = booking.guests + " คน";
+
+
+    document.getElementById("detailPrice")
+        .textContent = formatPrice(booking.price);
+
+
+    const statusElement =
+        document.getElementById("detailStatus");
+
+
+    statusElement.textContent =
+        getStatusText(booking.status);
+
+
+    statusElement.className =
+        "detail-value " +
+        getStatusClass(booking.status);
+
+
+    const confirmButton =
+        document.getElementById(
+            "modalConfirmButton"
         );
 
 
-    document.getElementById(
-        "detailContent"
-    ).innerHTML = `
+    if (booking.status === "pending") {
 
-        <div class="detail-row">
+        confirmButton.style.display =
+            "inline-block";
 
-            <div class="detail-label">
-                รหัสการจอง
-            </div>
+    } else {
 
-            <div class="detail-value">
-                #${escapeHTML(booking.id)}
-            </div>
+        confirmButton.style.display =
+            "none";
 
-        </div>
+    }
 
 
-        <div class="detail-row">
-
-            <div class="detail-label">
-                ผู้เข้าพัก
-            </div>
-
-            <div class="detail-value">
-                ${escapeHTML(booking.guest)}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                ที่พัก
-            </div>
-
-            <div class="detail-value">
-                ${escapeHTML(booking.room)}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                วันที่เข้าพัก
-            </div>
-
-            <div class="detail-value">
-                ${formatDate(booking.checkIn)}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                วันที่ออก
-            </div>
-
-            <div class="detail-value">
-                ${formatDate(booking.checkOut)}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                จำนวนผู้เข้าพัก
-            </div>
-
-            <div class="detail-value">
-                ${booking.guests} คน
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                ราคา
-            </div>
-
-            <div class="detail-value">
-                ${formatPrice(booking.price)}
-            </div>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <div class="detail-label">
-                สถานะ
-            </div>
-
-            <div class="detail-value">
-
-                <span class="status ${status.className}">
-                    ${status.text}
-                </span>
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    const modal =
-        new bootstrap.Modal(
-            document.getElementById(
-                "detailModal"
-            )
-        );
-
-
-    modal.show();
+    document.getElementById("detailModal")
+        .classList.add("show");
 
 }
 
 
 /* =====================================================
-   ป้องกัน HTML แปลกปลอม
+   ยืนยันจาก Modal
 ===================================================== */
 
-function escapeHTML(value) {
+function confirmFromModal() {
 
-    return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    if (!currentBookingId) {
+
+        return;
+
+    }
+
+
+    const id =
+        currentBookingId;
+
+
+    closeDetailModal();
+
+
+    confirmBooking(id);
 
 }
+
+
+/* =====================================================
+   ปิด Modal
+===================================================== */
+
+function closeDetailModal() {
+
+    document.getElementById("detailModal")
+        .classList.remove("show");
+
+
+    currentBookingId = null;
+
+}
+
+
+/* =====================================================
+   คลิกด้านนอก Modal
+===================================================== */
+
+function closeModalOutside(event) {
+
+    if (
+        event.target ===
+        document.getElementById("detailModal")
+    ) {
+
+        closeDetailModal();
+
+    }
+
+}
+
+
+/* =====================================================
+   ลบรายการ
+===================================================== */
+
+function deleteBooking(id) {
+
+    const bookings = loadBookings();
+
+
+    const booking =
+        bookings.find(function(item) {
+
+            return item.id === id;
+
+        });
+
+
+    if (!booking) {
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+
+            "ต้องการลบรายการจอง #" +
+            booking.id +
+            " ของ " +
+            booking.guest +
+            " ใช่หรือไม่?\n\n" +
+            "เมื่อลบแล้วรายการนี้จะหายออกจากระบบ"
+
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    const newBookings =
+        bookings.filter(function(item) {
+
+            return item.id !== id;
+
+        });
+
+
+    saveBookings(newBookings);
+
+    renderBookings();
+
+
+    showToast(
+        "ลบรายการจอง #" +
+        booking.id +
+        " เรียบร้อยแล้ว 🗑️"
+    );
+
+}
+
+
+/* =====================================================
+   รีเฟรช
+===================================================== */
+
+function refreshBookings() {
+
+    renderBookings();
+
+    showToast(
+        "รีเฟรชข้อมูลเรียบร้อยแล้ว 🔄"
+    );
+
+}
+
+
+/* =====================================================
+   Toast
+===================================================== */
+
+let toastTimer;
+
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById("toast");
+
+
+    toast.textContent = message;
+
+
+    toast.classList.add("show");
+
+
+    clearTimeout(toastTimer);
+
+
+    toastTimer =
+        setTimeout(function() {
+
+            toast.classList.remove("show");
+
+        }, 2500);
+
+}
+
+
+/* =====================================================
+   ปิด Modal ด้วย ESC
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeDetailModal();
+
+        }
+
+    }
+);
 
 
 /* =====================================================
@@ -2201,7 +1787,7 @@ function escapeHTML(value) {
 
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
+    function() {
 
         renderBookings();
 
