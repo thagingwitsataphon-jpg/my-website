@@ -1,133 +1,174 @@
+```html
 <!DOCTYPE html>
-
 <html lang="th">
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<title>เข้าสู่ระบบ | Mon Bridge Stay</title>
+    <title>สมัครสมาชิก | Mon Bridge Stay</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 
-<style>
+    <style>
 
-    body {
-        background: #f8f9fa;
-    }
+        body {
+            background: #f8f9fa;
+        }
 
-    .navbar-brand {
-        color: #795548;
-    }
+        .navbar-brand {
+            color: #795548;
+        }
 
-    .login-box {
+        .register-box {
 
-        max-width: 450px;
+            max-width: 500px;
 
-        margin: 70px auto;
+            margin: 60px auto;
 
-        background: white;
+            background: white;
 
-        padding: 35px;
+            padding: 35px;
 
-        border-radius: 18px;
+            border-radius: 18px;
 
-        box-shadow: 0 5px 20px rgba(0,0,0,.10);
+            box-shadow: 0 5px 20px rgba(0,0,0,.10);
 
-    }
+        }
 
-    .login-title {
+        .register-title {
 
-        color: #5d4037;
+            color: #5d4037;
 
-        font-weight: bold;
+            font-weight: bold;
 
-    }
+        }
 
-    .btn-main {
+        .btn-main {
 
-        background: #795548;
+            background: #795548;
 
-        color: white;
+            color: white;
 
-        border: none;
+            border: none;
 
-    }
+        }
 
-    .btn-main:hover {
+        .btn-main:hover {
 
-        background: #5d4037;
+            background: #5d4037;
 
-        color: white;
+            color: white;
 
-    }
+        }
 
-    .form-control {
+        .form-control {
 
-        border-radius: 10px;
+            border-radius: 10px;
 
-        padding: 12px;
+            padding: 12px;
 
-    }
+        }
 
-    .forgot-box {
+        .password-box {
 
-        display: none;
+            position: relative;
 
-        background: #faf7f5;
+        }
 
-        border-radius: 12px;
+        .password-toggle {
 
-        padding: 20px;
+            position: absolute;
 
-        margin-top: 20px;
+            right: 12px;
 
-    }
+            top: 50%;
 
-    .forgot-box.show {
+            transform: translateY(-50%);
 
-        display: block;
+            border: none;
 
-    }
+            background: transparent;
 
-    .success-box {
+            cursor: pointer;
 
-        display: none;
+        }
 
-        background: #d1e7dd;
+        .password-check {
 
-        color: #0f5132;
+            font-size: 14px;
 
-        border-radius: 10px;
+            margin-top: 8px;
 
-        padding: 15px;
+        }
 
-        margin-top: 15px;
+        .valid {
 
-    }
+            color: #198754;
 
-    footer {
+        }
 
-        background: #4e342e;
+        .invalid {
 
-        color: white;
+            color: #dc3545;
 
-        padding: 25px 0;
+        }
 
-        margin-top: 80px;
+        .success-box {
 
-    }
+            display: none;
 
-</style>
-```
+            background: #d1e7dd;
+
+            color: #0f5132;
+
+            border-radius: 10px;
+
+            padding: 15px;
+
+            margin-top: 15px;
+
+        }
+
+        .error-box {
+
+            display: none;
+
+            background: #f8d7da;
+
+            color: #842029;
+
+            border-radius: 10px;
+
+            padding: 15px;
+
+            margin-bottom: 20px;
+
+        }
+
+        footer {
+
+            background: #4e342e;
+
+            color: white;
+
+            padding: 25px 0;
+
+            margin-top: 80px;
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
+
 
 <!-- =========================
      NAVBAR
@@ -135,175 +176,55 @@
 
 <nav class="navbar bg-white shadow-sm">
 
-```
-<div class="container">
+    <div class="container">
 
-    <a class="navbar-brand fw-bold"
-       href="index.html">
+        <a class="navbar-brand fw-bold"
+           href="index.html">
 
-        🏡 Mon Bridge Stay
+            🏡 Mon Bridge Stay
 
-    </a>
+        </a>
 
 
-    <a href="index.html"
-       class="btn btn-outline-secondary">
+        <a href="index.html"
+           class="btn btn-outline-secondary">
 
-        🏠 หน้าแรก
+            🏠 หน้าแรก
 
-    </a>
+        </a>
 
-</div>
-```
+    </div>
 
 </nav>
 
+
+
 <!-- =========================
-     LOGIN
+     REGISTER
 ========================== -->
 
 <div class="container">
 
-```
-<div class="login-box">
+    <div class="register-box">
 
 
-    <div class="text-center mb-4">
+        <!-- หัวข้อ -->
 
-        <div style="font-size:55px;">
-            🔐
-        </div>
+        <div class="text-center mb-4">
 
-        <h2 class="login-title">
-            เข้าสู่ระบบ
-        </h2>
-
-        <p class="text-muted">
-            เข้าสู่ระบบ Mon Bridge Stay
-        </p>
-
-    </div>
-
-
-
-    <!-- =========================
-         LOGIN FORM
-    ========================== -->
-
-    <form id="loginForm">
-
-
-        <!-- อีเมล -->
-
-        <div class="mb-3">
-
-            <label class="form-label">
-
-                📧 อีเมล
-
-            </label>
-
-            <input type="email"
-                   id="loginEmail"
-                   class="form-control"
-                   placeholder="กรอกอีเมลของคุณ"
-                   required>
-
-        </div>
-
-
-
-        <!-- รหัสผ่าน -->
-
-        <div class="mb-3">
-
-            <label class="form-label">
-
-                🔒 รหัสผ่าน
-
-            </label>
-
-            <input type="password"
-                   id="loginPassword"
-                   class="form-control"
-                   placeholder="กรอกรหัสผ่าน"
-                   required>
-
-        </div>
-
-
-
-        <!-- จดจำ + ลืมรหัส -->
-
-        <div class="d-flex justify-content-between align-items-center mb-4">
-
-            <div class="form-check">
-
-                <input class="form-check-input"
-                       type="checkbox"
-                       id="remember">
-
-                <label class="form-check-label"
-                       for="remember">
-
-                    จดจำการเข้าสู่ระบบ
-
-                </label>
-
+            <div style="font-size:55px;">
+                📝
             </div>
 
+            <h2 class="register-title">
 
-            <a href="javascript:void(0)"
-               onclick="showForgotPassword()"
-               style="color:#795548;">
+                สมัครสมาชิก
 
-                ลืมรหัสผ่าน?
+            </h2>
 
-            </a>
+            <p class="text-muted">
 
-        </div>
-
-
-
-        <!-- ปุ่มเข้าสู่ระบบ -->
-
-        <button type="submit"
-                class="btn btn-main w-100 py-2">
-
-            🔑 เข้าสู่ระบบ
-
-        </button>
-
-
-    </form>
-
-
-
-    <!-- =========================
-         FORGOT PASSWORD
-    ========================== -->
-
-    <div id="forgotBox"
-         class="forgot-box">
-
-
-        <div class="text-center mb-3">
-
-            <div style="font-size:40px;">
-                🔑
-            </div>
-
-            <h5 style="color:#5d4037;"
-                class="fw-bold">
-
-                ลืมรหัสผ่าน?
-
-            </h5>
-
-            <p class="text-muted mb-0">
-
-                กรอกอีเมลที่ใช้สมัครสมาชิก
-                เพื่อขอรีเซ็ตรหัสผ่าน
+                สร้างบัญชี Mon Bridge Stay
 
             </p>
 
@@ -311,39 +232,194 @@
 
 
 
-        <form id="forgotForm">
+        <!-- ข้อความผิดพลาด -->
 
+        <div id="errorBox"
+             class="error-box">
+
+            <strong>⚠️ ไม่สามารถสมัครสมาชิกได้</strong>
+
+            <div id="errorMessage"></div>
+
+        </div>
+
+
+
+        <!-- =========================
+             REGISTER FORM
+        ========================== -->
+
+        <form id="registerForm">
+
+
+            <!-- ชื่อ -->
 
             <div class="mb-3">
 
                 <label class="form-label">
 
-                    📧 อีเมลที่สมัครสมาชิก
+                    👤 ชื่อ
 
                 </label>
 
-                <input type="email"
-                       id="forgotEmail"
+                <input type="text"
+                       id="firstName"
                        class="form-control"
-                       placeholder="กรอกอีเมลของคุณ"
+                       placeholder="กรอกชื่อ"
                        required>
 
             </div>
 
 
+
+            <!-- นามสกุล -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    👤 นามสกุล
+
+                </label>
+
+                <input type="text"
+                       id="lastName"
+                       class="form-control"
+                       placeholder="กรอกนามสกุล"
+                       required>
+
+            </div>
+
+
+
+            <!-- เบอร์โทร -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    📱 เบอร์โทรศัพท์
+
+                </label>
+
+                <input type="tel"
+                       id="phone"
+                       class="form-control"
+                       placeholder="กรอกเบอร์โทรศัพท์"
+                       maxlength="10"
+                       required>
+
+            </div>
+
+
+
+            <!-- อีเมล -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    📧 อีเมล
+
+                </label>
+
+                <input type="email"
+                       id="email"
+                       class="form-control"
+                       placeholder="กรอกอีเมล"
+                       required>
+
+            </div>
+
+
+
+            <!-- รหัสผ่าน -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    🔒 ตั้งรหัสผ่าน
+
+                </label>
+
+                <div class="password-box">
+
+                    <input type="password"
+                           id="password"
+                           class="form-control"
+                           placeholder="ตั้งรหัสผ่านของคุณ"
+                           minlength="6"
+                           required>
+
+                    <button type="button"
+                            class="password-toggle"
+                            onclick="togglePassword('password', this)">
+
+                        👁️
+
+                    </button>
+
+                </div>
+
+
+                <!-- ตรวจสอบรหัสผ่าน -->
+
+                <div id="passwordCheck"
+                     class="password-check invalid">
+
+                    ❌ รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ยืนยันรหัสผ่าน -->
+
+            <div class="mb-4">
+
+                <label class="form-label">
+
+                    🔐 ยืนยันรหัสผ่าน
+
+                </label>
+
+                <div class="password-box">
+
+                    <input type="password"
+                           id="confirmPassword"
+                           class="form-control"
+                           placeholder="กรอกรหัสผ่านอีกครั้ง"
+                           required>
+
+                    <button type="button"
+                            class="password-toggle"
+                            onclick="togglePassword('confirmPassword', this)">
+
+                        👁️
+
+                    </button>
+
+                </div>
+
+
+                <div id="confirmCheck"
+                     class="password-check">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ปุ่มสมัคร -->
+
             <button type="submit"
-                    class="btn btn-main w-100">
+                    class="btn btn-main w-100 py-2">
 
-                📩 ส่งคำขอรีเซ็ตรหัสผ่าน
-
-            </button>
-
-
-            <button type="button"
-                    onclick="hideForgotPassword()"
-                    class="btn btn-outline-secondary w-100 mt-2">
-
-                ← กลับเข้าสู่ระบบ
+                📝 สมัครสมาชิก
 
             </button>
 
@@ -352,74 +428,73 @@
 
 
 
-        <!-- SUCCESS -->
+        <!-- สำเร็จ -->
 
-        <div id="forgotSuccess"
+        <div id="successBox"
              class="success-box">
 
             <strong>
-                ✅ ส่งคำขอเรียบร้อยแล้ว
+                ✅ สมัครสมาชิกสำเร็จ
             </strong>
 
             <br>
 
-            ระบบได้รับคำขอรีเซ็ตรหัสผ่านแล้ว
-            กรุณาตรวจสอบอีเมลของคุณ
+            บัญชีของคุณถูกบันทึกเรียบร้อยแล้ว
+
+            <br>
+
+            กำลังไปหน้าเข้าสู่ระบบ...
+
+        </div>
+
+
+
+        <!-- เข้าสู่ระบบ -->
+
+        <div class="text-center mt-4">
+
+            <span class="text-muted">
+
+                มีบัญชีอยู่แล้ว?
+
+            </span>
+
+
+            <a href="login.html"
+               style="color:#795548; font-weight:bold;">
+
+                เข้าสู่ระบบ
+
+            </a>
+
+        </div>
+
+
+
+        <hr class="my-4">
+
+
+
+        <!-- กลับหน้าแรก -->
+
+        <div class="text-center">
+
+            <a href="index.html"
+               class="text-decoration-none"
+               style="color:#795548;">
+
+                ← กลับหน้าแรก
+
+            </a>
 
         </div>
 
 
     </div>
 
-
-
-    <!-- =========================
-         REGISTER
-    ========================== -->
-
-    <div class="text-center mt-4">
-
-        <span class="text-muted">
-
-            ยังไม่มีบัญชี?
-
-        </span>
-
-
-        <a href="register.html"
-           style="color:#795548; font-weight:bold;">
-
-            สมัครสมาชิก
-
-        </a>
-
-    </div>
-
-
-
-    <hr class="my-4">
-
-
-
-    <!-- กลับหน้าแรก -->
-
-    <div class="text-center">
-
-        <a href="index.html"
-           class="text-decoration-none"
-           style="color:#795548;">
-
-            ← กลับหน้าแรก
-
-        </a>
-
-    </div>
-
-
 </div>
 
 
-</div>
 
 <!-- =========================
      FOOTER
@@ -427,23 +502,25 @@
 
 <footer>
 
-```
-<div class="container text-center">
+    <div class="container text-center">
 
-    <h5>
-        🏡 Mon Bridge Stay
-    </h5>
+        <h5>
 
-    <p class="mb-0">
+            🏡 Mon Bridge Stay
 
-        เว็บไซต์แนะนำที่พักและสถานที่ท่องเที่ยวสังขละบุรี
+        </h5>
 
-    </p>
+        <p class="mb-0">
 
-</div>
+            เว็บไซต์แนะนำที่พักและสถานที่ท่องเที่ยวสังขละบุรี
 
+        </p>
+
+    </div>
 
 </footer>
+
+
 
 <!-- =========================
      JAVASCRIPT
@@ -453,143 +530,359 @@
 
 
 /* =========================
-   แสดงช่องลืมรหัสผ่าน
+   แสดง / ซ่อนรหัสผ่าน
 ========================= */
 
-function showForgotPassword() {
+function togglePassword(inputId, button) {
 
-    document
-        .getElementById("forgotBox")
-        .classList
-        .add("show");
+    const input =
+        document.getElementById(inputId);
 
-    document
-        .getElementById("forgotBox")
-        .scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
+
+    if (input.type === "password") {
+
+        input.type = "text";
+
+        button.textContent = "🙈";
+
+    } else {
+
+        input.type = "password";
+
+        button.textContent = "👁️";
+
+    }
 
 }
 
 
 
 /* =========================
-   ซ่อนช่องลืมรหัสผ่าน
+   ตรวจสอบรหัสผ่าน
 ========================= */
 
-function hideForgotPassword() {
+const password =
+    document.getElementById("password");
 
-    document
-        .getElementById("forgotBox")
-        .classList
-        .remove("show");
+const confirmPassword =
+    document.getElementById("confirmPassword");
 
-    document
-        .getElementById("forgotForm")
-        .reset();
+const passwordCheck =
+    document.getElementById("passwordCheck");
 
-    document
-        .getElementById("forgotSuccess")
-        .style.display = "none";
+const confirmCheck =
+    document.getElementById("confirmCheck");
+
+
+
+password.addEventListener("input", checkPassword);
+
+confirmPassword.addEventListener("input", checkPassword);
+
+
+
+function checkPassword() {
+
+
+    /* ตรวจจำนวนตัวอักษร */
+
+    if (password.value.length >= 6) {
+
+        passwordCheck.textContent =
+            "✅ รหัสผ่านมีความยาวอย่างน้อย 6 ตัวอักษร";
+
+        passwordCheck.className =
+            "password-check valid";
+
+    } else {
+
+        passwordCheck.textContent =
+            "❌ รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร";
+
+        passwordCheck.className =
+            "password-check invalid";
+
+    }
+
+
+
+    /* ตรวจรหัสผ่านตรงกัน */
+
+    if (confirmPassword.value === "") {
+
+        confirmCheck.textContent = "";
+
+        return;
+
+    }
+
+
+    if (password.value === confirmPassword.value) {
+
+        confirmCheck.textContent =
+            "✅ รหัสผ่านตรงกัน";
+
+        confirmCheck.className =
+            "password-check valid";
+
+    } else {
+
+        confirmCheck.textContent =
+            "❌ รหัสผ่านไม่ตรงกัน";
+
+        confirmCheck.className =
+            "password-check invalid";
+
+    }
 
 }
 
 
 
 /* =========================
-   ส่งคำขอลืมรหัสผ่าน
+   สมัครสมาชิก
 ========================= */
 
 document
-    .getElementById("forgotForm")
+    .getElementById("registerForm")
     .addEventListener("submit", function(event) {
 
         event.preventDefault();
 
 
-        const email =
+
+        /* ซ่อนข้อความเดิม */
+
+        document
+            .getElementById("errorBox")
+            .style.display = "none";
+
+
+
+        /* รับค่าจากฟอร์ม */
+
+        const firstName =
             document
-                .getElementById("forgotEmail")
+                .getElementById("firstName")
                 .value
                 .trim();
 
 
-        if (!email) {
+        const lastName =
+            document
+                .getElementById("lastName")
+                .value
+                .trim();
+
+
+        const phone =
+            document
+                .getElementById("phone")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
+
+
+        const confirmPassword =
+            document
+                .getElementById("confirmPassword")
+                .value;
+
+
+
+        /* =========================
+           ตรวจเบอร์โทร
+        ========================== */
+
+        const phonePattern =
+            /^[0-9]{10}$/;
+
+
+        if (!phonePattern.test(phone)) {
+
+            showError(
+                "กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง 10 หลัก"
+            );
 
             return;
 
         }
 
 
-        /*
-           ระบบต้นแบบ
 
-           ตอนนี้ยังไม่ได้เชื่อม
-           ระบบส่งอีเมลจริง
+        /* =========================
+           ตรวจรหัสผ่าน
+        ========================== */
 
-           เมื่อมี Backend สามารถนำ
-           email ตัวนี้ไปตรวจสอบสมาชิก
-           และส่งลิงก์รีเซ็ตรหัสผ่านได้
-        */
+        if (password.length < 6) {
+
+            showError(
+                "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร"
+            );
+
+            return;
+
+        }
+
+
+
+        /* =========================
+           ตรวจรหัสผ่านตรงกัน
+        ========================== */
+
+        if (password !== confirmPassword) {
+
+            showError(
+                "รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน"
+            );
+
+            return;
+
+        }
+
+
+
+        /* =========================
+           ดึงข้อมูลสมาชิกเดิม
+        ========================== */
+
+        let users =
+            JSON.parse(
+                localStorage.getItem("monBridgeUsers")
+            ) || [];
+
+
+
+        /* =========================
+           ตรวจอีเมลซ้ำ
+        ========================== */
+
+        const emailExists =
+            users.some(function(user) {
+
+                return user.email === email;
+
+            });
+
+
+        if (emailExists) {
+
+            showError(
+                "อีเมลนี้มีผู้สมัครสมาชิกแล้ว กรุณาใช้อีเมลอื่น"
+            );
+
+            return;
+
+        }
+
+
+
+        /* =========================
+           สร้างข้อมูลสมาชิก
+        ========================== */
+
+        const newUser = {
+
+            firstName: firstName,
+
+            lastName: lastName,
+
+            phone: phone,
+
+            email: email,
+
+            password: password
+
+        };
+
+
+
+        /* =========================
+           บันทึกสมาชิก
+        ========================== */
+
+        users.push(newUser);
+
+
+        localStorage.setItem(
+            "monBridgeUsers",
+            JSON.stringify(users)
+        );
+
+
+
+        /* =========================
+           แสดงสมัครสำเร็จ
+        ========================== */
+
+        document
+            .getElementById("registerForm")
+            .style.display = "none";
 
 
         document
-            .getElementById("forgotSuccess")
+            .getElementById("successBox")
             .style.display = "block";
 
 
-        document
-            .getElementById("forgotForm")
-            .reset();
+
+        /* =========================
+           ไปหน้า Login
+        ========================== */
+
+        setTimeout(function() {
+
+            window.location.href = "login.html";
+
+        }, 1800);
 
     });
 
 
 
 /* =========================
-   LOGIN
+   แสดงข้อความผิดพลาด
 ========================= */
 
-document
-    .getElementById("loginForm")
-    .addEventListener("submit", function(event) {
+function showError(message) {
 
-        event.preventDefault();
-
-
-        const email =
-            document
-                .getElementById("loginEmail")
-                .value
-                .trim();
+    document
+        .getElementById("errorMessage")
+        .textContent = message;
 
 
-        const password =
-            document
-                .getElementById("loginPassword")
-                .value;
+    document
+        .getElementById("errorBox")
+        .style.display = "block";
 
 
-        /*
-           ส่วนนี้สามารถเชื่อมกับ
-           ระบบสมาชิกที่ทำไว้ภายหลังได้
-        */
+    window.scrollTo({
 
+        top: 0,
 
-        if (email && password) {
-
-            alert(
-                "เข้าสู่ระบบเรียบร้อยแล้ว"
-            );
-
-        }
+        behavior: "smooth"
 
     });
 
+}
 
 </script>
+
 
 </body>
 
 </html>
+```
