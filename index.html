@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mon Bridge Stay | ที่พักใกล้สะพานมอญ</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        /* =========================
+           พื้นฐานเว็บไซต์
+        ========================= */
+
+        body {
+            background: #F7F3E8;
+            color: #3E3328;
+            font-family: Arial, sans-serif;
+        }
+
+        /* =========================
+           Navbar
+        ========================= */
+
+        .navbar {
+            background: #ffffff !important;
+        }
+
+        .navbar-brand {
+            color: #2F5D50 !important;
+            font-size: 22px;
+        }
+
+        .nav-link {
+            color: #3E3328 !important;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #2F5D50 !important;
+        }
+
+        /* =========================
+           Hero
+        ========================= */
+
+        .hero {
+            background-image: url("images/6.1-ที่เที่ยวสังขละบุรี.webp");
+            background-size: cover;
+            background-position: center;
+            height: 450px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 100px 50px;
+        }
+
+        /* =========================
+           Search Box
+        ========================= */
+
+        .search-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(47, 93, 80, 0.15);
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* =========================
+           ปุ่ม
+        ========================= */
+
+        .btn-main {
+            background: #2F5D50;
+            color: white;
+            border: none;
+        }
+
+        .btn-main:hover {
+            background: #24483E;
+            color: white;
+        }
+
+        /* =========================
+           หัวข้อ
+        ========================= */
+
+        .section-title {
+            color: #2F5D50;
+            font-weight: bold;
+        }
+
+        /* =========================
+           Card ที่พัก
+        ========================= */
+
+        .card-room {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(62, 51, 40, 0.10);
+        }
+
+        .card-room:hover {
+            transform: translateY(-5px);
+        }
+
+        .room-img {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        /* =========================
+           ราคา
+        ========================= */
+
+        .text-primary {
+            color: #8B6F47 !important;
+        }
+
+        /* =========================
+           สถานที่ท่องเที่ยว
+        ========================= */
+
+        .attraction-card {
+            border: none;
+            border-radius: 15px;
+            background: white;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(62, 51, 40, 0.08);
+            transition: 0.3s;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* =========================
+           Footer
+        ========================= */
+
+        footer {
+            background: #2F5D50 !important;
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="index.html">
+            🏡 Mon Bridge Stay
+        </a>
+
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="menu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        หน้าแรก
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="rooms.html">
+                        ที่พัก
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="attractions.html">
+                        สถานที่เที่ยว
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="promotion.html">
+                        โปรโมชั่น
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">
+                        ติดต่อเรา
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">
+                        👤 เข้าสู่ระบบ
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<div class="container mt-4">
+
+    <div class="hero">
+
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+
+            <h1 class="display-5 fw-bold">
+                ที่พักใกล้สะพานมอญ
+            </h1>
+
+            <p class="lead">
+                จองที่พักง่าย ๆ เที่ยวสังขละบุรีอย่างสบายใจ
+            </p>
+
+            <a href="rooms.html"
+               class="btn btn-light btn-lg">
+
+                🏡 ดูที่พัก
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<div class="container">
+
+    <div class="search-box">
+
+        <div class="row g-3">
+
+
+            <div class="col-md-3">
+
+                <label class="form-label">
+                    วันที่เข้าพัก
+                </label>
+
+                <input type="date"
+                       class="form-control">
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <label class="form-label">
+                    วันที่ออก
+                </label>
+
+                <input type="date"
+                       class="form-control">
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <label class="form-label">
+                    จำนวนผู้เข้าพัก
+                </label>
+
+                <select class="form-select">
+
+                    <option>1 คน</option>
+                    <option>2 คน</option>
+                    <option>3 คน</option>
+                    <option>4 คน</option>
+                    <option>5 คน</option>
+                    <option>6 คน</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="col-md-3 d-grid">
+
+                <label class="form-label">
+                    &nbsp;
+                </label>
+
+                <a href="rooms.html"
+                   class="btn btn-main">
+
+                    🔍 ค้นหาห้องพัก
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ที่พักแนะนำ
+===================================================== -->
+
+<div class="container mt-5">
+
+    <h2 class="section-title mb-2">
+        🏡 ที่พักแนะนำใกล้สะพานมอญ
+    </h2>
+
+    <p class="text-muted mb-4">
+        เลือกที่พักที่เหมาะกับการเดินทางของคุณ
+    </p>
+
+
+    <div class="row">
+
+
+        <!-- =================================================
+             1. ภูชมหมอก รีสอร์ท
+        ================================================== -->
+
+        <div class="col-md-6 col-lg-4 mb-4">
+
+            <div class="card card-room h-100">
+
+                <img src="1.webp"
+                     class="card-img-top room-img"
+                     alt="ภูชมหมอก รีสอร์ท">
+
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold">
+                        ภูชมหมอก รีสอร์ท
+                    </h5>
+
+                    <p class="text-muted">
+                        📍 อ.สังขละบุรี จ.กาญจนบุรี
+                    </p>
+
+                    <p>
+                        ⭐ ที่พักบรรยากาศดี
+                        เหมาะสำหรับครอบครัวและกลุ่มเพื่อน
+                    </p>
+
+                    <h5 class="text-primary">
+                        เริ่มต้น 1,500 - 3,000 บาท / คืน
+                    </h5>
+
+                    <a href="samprasop.html"
+                       class="btn btn-main w-100 mt-2">
+
+                        ดูรายละเอียด
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             2. สามประสบรีสอร์ท
+        ================================================== -->
+
+        <div class="col-md-6 col-lg-4 mb-4">
+
+            <div class="card card-room h-100">
+
+                <img src="images/2.jpg"
+                     class="card-img-top room-img"
+                     alt="สามประสบรีสอร์ท">
+
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold">
+                        สามประสบรีสอร์ท
+                    </h5>
+
+                    <p class="text-muted">
+                        📍 ใกล้สะพานมอญ
+                    </p>
+
+                    <p>
+                        🌿 บรรยากาศเงียบสงบ
+                        เหมาะสำหรับการพักผ่อน
+                    </p>
+
+                    <h5 class="text-primary">
+                        ราคาเริ่มต้น 1,126 บาท / คืน
+                    </h5>
+
+                    <a href="mon-riverside.html"
+                       class="btn btn-main w-100 mt-2">
+
+                        ดูรายละเอียด
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             3. บ้านมอญนอนเล่น
+        ================================================== -->
+
+        <div class="col-md-6 col-lg-4 mb-4">
+
+            <div class="card card-room h-100">
+
+                <img src="images/3.jpg"
+                     class="card-img-top room-img"
+                     alt="บ้านมอญนอนเล่น">
+
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold">
+                        บ้านมอญนอนเล่น
+                    </h5>
+
+                    <p class="text-muted">
+                        📍 ใกล้สะพานมอญ
+                    </p>
+
+                    <p>
+                        🌉 ที่พักบรรยากาศดี
+                        เหมาะสำหรับการท่องเที่ยว
+                    </p>
+
+                    <h5 class="text-primary">
+                        ราคาเริ่มต้น 590 -690 บาท / คืน
+                    </h5>
+
+                    <a href="mon-bridge-resort.html"
+                       class="btn btn-main w-100 mt-2">
+
+                        ดูรายละเอียด
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =================================================
+             4. สังขละวิลเลจ รีสอร์ท
+        ================================================== -->
+
+        <div class="col-md-6 col-lg-4 mb-4">
+
+            <div class="card card-room h-100">
+
+                <img src="images/3.jpg"
+                     class="card-img-top room-img"
+                     alt="สังขละวิลเลจ รีสอร์ท">
+
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold">
+                        สังขละวิลเลจ รีสอร์ท
+                    </h5>
+
+                    <p class="text-muted">
+                        📍 ใกล้สะพานมอญ
+                    </p>
+
+                    <p>
+                        🌉 ที่พักบรรยากาศดี
+                        เหมาะสำหรับการท่องเที่ยว
+                    </p>
+
+                    <h5 class="text-primary">
+                        ราคาเริ่มต้น 1,211 บาท / คืน
+                    </h5>
+
+                    <a href="sangkhlaburi-village.html"
+                       class="btn btn-main w-100 mt-2">
+
+                        ดูรายละเอียด
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =================================================
+             5. มาชิลล์ รีสอร์ท
+        ================================================== -->
+
+        <div class="col-md-6 col-lg-4 mb-4">
+
+            <div class="card card-room h-100">
+
+                <img src="images/3.jpg"
+                     class="card-img-top room-img"
+                     alt="มาชิลล์ รีสอร์ท">
+
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold">
+                        มาชิลล์ รีสอร์ท
+                    </h5>
+
+                    <p class="text-muted">
+                        📍 ใกล้สะพานมอญ
+                    </p>
+
+                    <p>
+                        🌉 ที่พักบรรยากาศดี
+                        เหมาะสำหรับการท่องเที่ยว
+                    </p>
+
+                    <h5 class="text-primary">
+                        ราคาเริ่มต้น  583 - 700  บาท / คืน
+                    </h5>
+
+                    <a href="mon-bridge-home.html"
+                       class="btn btn-main w-100 mt-2">
+
+                        ดูรายละเอียด
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =================================================
+             6. เบอมิซอินน์ รีสอร์ท
+        ================================================== -->
+
+        <div class="col-md-6 col-lg-4 mb-4">
+
+            <div class="card card-room h-100">
+
+                <img src="images/3.jpg"
+                     class="card-img-top room-img"
+                     alt="เบอมิซอินน์ รีสอร์ท">
+
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold">
+                        เบอมิซอินน์ รีสอร์ท
+                    </h5>
+
+                    <p class="text-muted">
+                        📍 ใกล้สะพานมอญ
+                    </p>
+
+                    <p>
+                        🌉 ที่พักบรรยากาศดี
+                        เหมาะสำหรับการท่องเที่ยว
+                    </p>
+
+                    <h5 class="text-primary">
+                        ราคาเริ่มต้น 1,000 บาท / คืน
+                    </h5>
+
+                    <a href="sangkhlaburi-lakeview.html"
+                       class="btn btn-main w-100 mt-2">
+
+                        ดูรายละเอียด
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+<!-- =====================================================
+     สถานที่ท่องเที่ยว
+===================================================== -->
+
+<div class="container mt-5 mb-5">
+
+    <h2 class="section-title mb-4">
+        📍 สถานที่ท่องเที่ยวใกล้เคียง
+    </h2>
+
+
+    <div class="row text-center">
+
+
+        <!-- สะพานมอญ -->
+
+        <div class="col-md-6 col-lg-3 mb-4">
+
+            <div class="attraction-card h-100">
+
+                <h5>
+                    🌉 สะพานมอญ
+                </h5>
+
+                <p>
+                    จุดท่องเที่ยวสำคัญของสังขละบุรี
+                </p>
+
+                <a href="attractions.html"
+                   class="btn btn-outline-success">
+
+                    ดูรายละเอียด
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- เมืองบาดาล -->
+
+        <div class="col-md-6 col-lg-3 mb-4">
+
+            <div class="attraction-card h-100">
+
+                <h5>
+                    🏞️ เมืองบาดาล
+                </h5>
+
+                <p>
+                    สถานที่ท่องเที่ยวทางประวัติศาสตร์
+                </p>
+
+                <a href="attractions.html"
+                   class="btn btn-outline-success">
+
+                    ดูรายละเอียด
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- วัดวังก์วิเวการาม -->
+
+        <div class="col-md-6 col-lg-3 mb-4">
+
+            <div class="attraction-card h-100">
+
+                <h5>
+                    🛕 วัดวังก์วิเวการาม
+                </h5>
+
+                <p>
+                    วัดสำคัญของชุมชนชาวสังขละบุรี
+                </p>
+
+                <a href="attractions.html"
+                   class="btn btn-outline-success">
+
+                    ดูรายละเอียด
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- เจดีย์พุทธคยา -->
+
+        <div class="col-md-6 col-lg-3 mb-4">
+
+            <div class="attraction-card h-100">
+
+                <h5>
+                    🕌 เจดีย์พุทธคยา
+                </h5>
+
+                <p>
+                    สถานที่สำคัญทางศาสนา
+                </p>
+
+                <a href="attractions.html"
+                   class="btn btn-outline-success">
+
+                    ดูรายละเอียด
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="text-center p-4">
+
+    <h5>
+        🏡 Mon Bridge Stay
+    </h5>
+
+    <p>
+        เว็บไซต์จองที่พักใกล้สะพานมอญ
+        อ.สังขละบุรี จ.กาญจนบุรี
+    </p>
+
+    <div>
+
+        <a href="index.html"
+           class="text-white text-decoration-none me-3">
+            หน้าแรก
+        </a>
+
+        <a href="rooms.html"
+           class="text-white text-decoration-none me-3">
+            ที่พัก
+        </a>
+
+        <a href="contact.html"
+           class="text-white text-decoration-none">
+            ติดต่อเรา
+        </a>
+
+    </div>
+
+    <hr>
+
+    <small>
+        © 2026 Mon Bridge Stay
+    </small>
+
+</footer>
+
+
+<!-- Bootstrap JavaScript -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+</html>

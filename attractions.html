@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>สถานที่ท่องเที่ยว | Mon Bridge Stay</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+
+    <style>
+
+        body {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+
+        /* Navbar */
+
+        .navbar-brand {
+            color: #795548;
+        }
+
+
+        /* หัวข้อ */
+
+        .page-title {
+            color: #4e342e;
+            font-weight: bold;
+        }
+
+
+        /* Card */
+
+        .attraction-card {
+
+            background: white;
+
+            border: none;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+
+            height: 100%;
+
+            transition: .2s;
+
+        }
+
+
+        .attraction-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow: 0 8px 20px rgba(0,0,0,.12);
+
+        }
+
+
+        /* ส่วนด้านบนของ Card */
+
+        .attraction-header {
+
+            height: 160px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #efebe9;
+
+            font-size: 70px;
+
+        }
+
+
+        .attraction-body {
+
+            padding: 25px;
+
+        }
+
+
+        .attraction-title {
+
+            color: #5d4037;
+
+            font-weight: bold;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .location {
+
+            color: #777;
+
+            font-size: 15px;
+
+        }
+
+
+        .highlight {
+
+            background: #f8f9fa;
+
+            border-radius: 10px;
+
+            padding: 10px 12px;
+
+            margin-top: 15px;
+
+        }
+
+
+        /* ปุ่ม */
+
+        .btn-main {
+
+            background: #795548;
+
+            color: white;
+
+            border: none;
+
+        }
+
+
+        .btn-main:hover {
+
+            background: #5d4037;
+
+            color: white;
+
+        }
+
+
+        .btn-map {
+
+            border-color: #795548;
+
+            color: #795548;
+
+        }
+
+
+        .btn-map:hover {
+
+            background: #795548;
+
+            color: white;
+
+        }
+
+
+        /* กล่องแนะนำ */
+
+        .travel-box {
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            margin-top: 20px;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,.06);
+
+        }
+
+
+        /* Footer */
+
+        footer {
+
+            background: #4e342e;
+
+            color: white;
+
+            margin-top: 60px;
+
+            padding: 30px 0;
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================== -->
+
+<nav class="navbar bg-white shadow-sm">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold"
+           href="index.html">
+
+            🏡 Mon Bridge Stay
+
+        </a>
+
+
+        <div>
+
+            <a href="rooms.html"
+               class="btn btn-outline-secondary me-2">
+
+                🏨 ห้องพัก
+
+            </a>
+
+
+            <a href="booking.html"
+               class="btn btn-main">
+
+                🏠 จองห้องพัก
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     MAIN
+========================== -->
+
+<div class="container mt-5 mb-5">
+
+
+    <!-- หัวข้อ -->
+
+    <div class="mb-4">
+
+        <h1 class="page-title">
+
+            📍 สถานที่ท่องเที่ยวใกล้เคียง
+
+        </h1>
+
+        <p class="text-muted">
+
+            แนะนำสถานที่ท่องเที่ยวและจุดสำคัญ
+            ที่น่าสนใจในสังขละบุรี
+
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         ATTRACTIONS
+    ========================== -->
+
+    <div class="row g-4">
+
+
+
+        <!-- =========================
+             สะพานมอญ
+        ========================== -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="attraction-card">
+
+
+                <div class="attraction-header">
+
+                    🌉
+
+                </div>
+
+
+                <div class="attraction-body">
+
+                    <h4 class="attraction-title">
+
+                        สะพานมอญ
+
+                    </h4>
+
+
+                    <p>
+
+                        สะพานไม้ชื่อดังของอำเภอสังขละบุรี
+                        เหมาะสำหรับชมบรรยากาศยามเช้า
+                        และสัมผัสวิถีชีวิตของชุมชน
+
+                    </p>
+
+
+                    <div class="location">
+
+                        📍 สังขละบุรี จังหวัดกาญจนบุรี
+
+                    </div>
+
+
+                    <div class="highlight">
+
+                        ⭐ จุดเด่น:
+                        ชมวิวแม่น้ำและวิถีชุมชน
+
+                    </div>
+
+
+                    <div class="d-flex gap-2 mt-3">
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=สะพานมอญ+สังขละบุรี"
+                           target="_blank"
+                           class="btn btn-map flex-fill">
+
+                            🗺️ ดูแผนที่
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             เมืองบาดาล
+        ========================== -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="attraction-card">
+
+
+                <div class="attraction-header">
+
+                    🏞️
+
+                </div>
+
+
+                <div class="attraction-body">
+
+                    <h4 class="attraction-title">
+
+                        เมืองบาดาล
+
+                    </h4>
+
+
+                    <p>
+
+                        โบราณสถานที่จมอยู่ใต้น้ำ
+                        และสามารถชมได้ในช่วงที่ระดับน้ำลด
+
+                    </p>
+
+
+                    <div class="location">
+
+                        📍 บริเวณอ่างเก็บน้ำเขื่อนวชิราลงกรณ
+
+                    </div>
+
+
+                    <div class="highlight">
+
+                        ⭐ จุดเด่น:
+                        ชมซากวัดเก่าและเรื่องราวของเมืองเดิม
+
+                    </div>
+
+
+                    <div class="d-flex gap-2 mt-3">
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=เมืองบาดาล+สังขละบุรี"
+                           target="_blank"
+                           class="btn btn-map flex-fill">
+
+                            🗺️ ดูแผนที่
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             วัดวังก์วิเวการาม
+        ========================== -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="attraction-card">
+
+
+                <div class="attraction-header">
+
+                    🛕 
+
+                </div>
+
+
+                <div class="attraction-body">
+
+                    <h4 class="attraction-title">
+
+                        วัดวังก์วิเวการาม
+
+                    </h4>
+
+
+                    <p>
+
+                        วัดสำคัญของชุมชนสังขละบุรี
+                        เป็นสถานที่ที่มีความสำคัญ
+                        ทางศาสนาและวัฒนธรรม
+
+                    </p>
+
+
+                    <div class="location">
+
+                        📍 ตำบลหนองลู อำเภอสังขละบุรี
+
+                    </div>
+
+
+                    <div class="highlight">
+
+                        ⭐ จุดเด่น:
+                        ศึกษาวัฒนธรรมและสถาปัตยกรรม
+
+                    </div>
+
+
+                    <div class="d-flex gap-2 mt-3">
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=วัดวังก์วิเวการาม+สังขละบุรี"
+                           target="_blank"
+                           class="btn btn-map flex-fill">
+
+                            🗺️ ดูแผนที่
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             เจดีย์พุทธคยา
+        ========================== -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="attraction-card">
+
+
+                <div class="attraction-header">
+
+                    🕌
+
+                </div>
+
+
+                <div class="attraction-body">
+
+                    <h4 class="attraction-title">
+
+                        เจดีย์พุทธคยา
+
+                    </h4>
+
+
+                    <p>
+
+                        เจดีย์สีทองที่เป็นจุดสำคัญ
+                        ของสังขละบุรี
+                        เหมาะสำหรับชมสถาปัตยกรรม
+                        และถ่ายภาพ
+
+                    </p>
+
+
+                    <div class="location">
+
+                        📍 ใกล้วัดวังก์วิเวการาม
+
+                    </div>
+
+
+                    <div class="highlight">
+
+                        ⭐ จุดเด่น:
+                        สถาปัตยกรรมและบรรยากาศทางศาสนา
+
+                    </div>
+
+
+                    <div class="d-flex gap-2 mt-3">
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=เจดีย์พุทธคยา+สังขละบุรี"
+                           target="_blank"
+                           class="btn btn-map flex-fill">
+
+                            🗺️ ดูแผนที่
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             ด่านเจดีย์สามองค์
+        ========================== -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="attraction-card">
+
+
+                <div class="attraction-header">
+
+                    🛕 
+
+                </div>
+
+
+                <div class="attraction-body">
+
+                    <h4 class="attraction-title">
+
+                        ด่านเจดีย์สามองค์
+
+                    </h4>
+
+
+                    <p>
+
+                        จุดท่องเที่ยวสำคัญบริเวณชายแดน
+                        และเป็นสถานที่ที่มีเรื่องราว
+                        ทางประวัติศาสตร์
+
+                    </p>
+
+
+                    <div class="location">
+
+                        📍 อำเภอสังขละบุรี
+
+                    </div>
+
+
+                    <div class="highlight">
+
+                        ⭐ จุดเด่น:
+                        ชมพื้นที่ชายแดนและเรียนรู้ประวัติศาสตร์
+
+                    </div>
+
+
+                    <div class="d-flex gap-2 mt-3">
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=ด่านเจดีย์สามองค์"
+                           target="_blank"
+                           class="btn btn-map flex-fill">
+
+                            🗺️ ดูแผนที่
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             จุดชมวิวป้อมปี่
+        ========================== -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="attraction-card">
+
+
+                <div class="attraction-header">
+
+                    🌄
+
+                </div>
+
+
+                <div class="attraction-body">
+
+                    <h4 class="attraction-title">
+
+                        จุดชมวิวป้อมปี่
+
+                    </h4>
+
+
+                    <p>
+
+                        จุดชมวิวธรรมชาติ
+                        เหมาะสำหรับพักผ่อน
+                        ชมวิวภูเขาและผืนน้ำ
+
+                    </p>
+
+
+                    <div class="location">
+
+                        📍 อำเภอสังขละบุรี
+
+                    </div>
+
+
+                    <div class="highlight">
+
+                        ⭐ จุดเด่น:
+                        ชมธรรมชาติและวิวอ่างเก็บน้ำ
+
+                    </div>
+
+
+                    <div class="d-flex gap-2 mt-3">
+
+                        <a href="https://www.google.com/maps/search/?api=1&query=จุดชมวิวป้อมปี่"
+                           target="_blank"
+                           class="btn btn-map flex-fill">
+
+                            🗺️ ดูแผนที่
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         TRAVEL RECOMMENDATION
+    ========================== -->
+
+    <div class="travel-box mt-5">
+
+        <h3 class="fw-bold"
+            style="color:#5d4037;">
+
+            💡 แนะนำการท่องเที่ยว
+
+        </h3>
+
+
+        <p>
+
+            หากเดินทางมาสังขละบุรี
+            สามารถวางแผนเที่ยวสถานที่ต่าง ๆ
+            ได้หลายแห่งภายในทริปเดียว
+
+        </p>
+
+
+        <ul>
+
+            <li>
+                🌅 ช่วงเช้า แนะนำเที่ยวสะพานมอญ
+            </li>
+
+            <li>
+                🛕 เที่ยววัดวังก์วิเวการาม
+                และเจดีย์พุทธคยา
+            </li>
+
+            <li>
+                🏞️ เที่ยวเมืองบาดาล
+                โดยตรวจสอบระดับน้ำก่อนเดินทาง
+            </li>
+
+            <li>
+                🌄 ช่วงเย็น สามารถเดินทางไปชมธรรมชาติ
+                และจุดชมวิว
+            </li>
+
+        </ul>
+
+    </div>
+
+
+
+    <!-- =========================
+         BOOKING
+    ========================== -->
+
+    <div class="text-center mt-5">
+
+    <h3 class="fw-bold">
+
+        🏡 ขอบคุณที่เยี่ยมชม Mon Bridge Stay
+
+    </h3>
+
+    <p class="text-muted">
+
+        กลับไปดูข้อมูลอื่น ๆ ของเว็บไซต์ได้ที่หน้าแรก
+
+    </p>
+
+
+    <a href="index.html"
+       class="btn btn-main btn-lg px-5">
+
+        🏠 กลับหน้าแรก
+
+    </a>
+
+</div>
+
+</footer>
+
+
+</body>
+
+</html>

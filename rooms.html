@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ห้องพัก | Mon Bridge Stay</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+
+    <style>
+
+        /* =========================
+           BODY
+        ========================== */
+
+        body {
+
+            background: #f8f5f2;
+
+            color: #333;
+
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+
+            background: white;
+
+        }
+
+        .navbar-brand {
+
+            color: #6d4c41;
+
+        }
+
+        .navbar-brand:hover {
+
+            color: #4e342e;
+
+        }
+
+
+        /* =========================
+           PAGE HEADER
+        ========================== */
+
+        .page-header {
+
+            background: linear-gradient(
+                135deg,
+                #795548,
+                #a1887f
+            );
+
+            color: white;
+
+            padding: 45px 20px;
+
+            border-radius: 0 0 30px 30px;
+
+            text-align: center;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,.10);
+
+        }
+
+        .page-header h1 {
+
+            font-weight: bold;
+
+        }
+
+        .page-header p {
+
+            margin-bottom: 0;
+
+            opacity: .9;
+
+        }
+
+
+        /* =========================
+           ROOM CARD
+        ========================== */
+
+        .card {
+
+            border: none;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+
+            height: 100%;
+
+            background: white;
+
+            transition: .25s;
+
+        }
+
+        .card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow: 0 10px 25px rgba(0,0,0,.13);
+
+        }
+
+
+        /* =========================
+           ROOM IMAGE
+        ========================== */
+
+        .room-img {
+
+            height: 220px;
+
+            width: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+        /* =========================
+           ROOM TITLE
+        ========================== */
+
+        .room-title {
+
+            font-weight: bold;
+
+            font-size: 20px;
+
+            color: #5d4037;
+
+        }
+
+
+        /* =========================
+           ROOM INFORMATION
+        ========================== */
+
+        .room-info {
+
+            color: #666;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* =========================
+           PRICE
+        ========================== */
+
+        .price {
+
+            color: #795548;
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================== */
+
+        .btn-main {
+    background-color: #795548 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 10px;
+    padding: 11px;
+    font-weight: bold;
+}
+
+.btn-main:hover {
+    background-color: #5d4037 !important;
+    color: #ffffff !important;
+}
+
+.btn-main:focus,
+.btn-main:active {
+    background-color: #5d4037 !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+
+            background: #4e342e;
+
+            color: white;
+
+            margin-top: 70px;
+
+            padding: 35px 0;
+
+        }
+
+        footer h5 {
+
+            font-weight: bold;
+
+        }
+
+        footer p {
+
+            margin-bottom: 0;
+
+            opacity: .85;
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================== -->
+
+<nav class="navbar shadow-sm">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold"
+           href="index.html">
+
+            🏡 Mon Bridge Stay
+
+        </a>
+
+
+        <a href="index.html"
+           class="btn btn-outline-secondary">
+
+            🏠 หน้าแรก
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HEADER
+========================== -->
+
+<div class="page-header">
+
+    <div class="container">
+
+        <div style="font-size: 50px;">
+            🏨
+        </div>
+
+        <h1>
+            ห้องพักทั้งหมด
+        </h1>
+
+        <p>
+            เลือกห้องพักที่เหมาะกับการเดินทางของคุณ
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     ROOM LIST
+========================== -->
+
+<div class="container mt-5">
+
+    <div class="row g-4">
+
+
+
+        <!-- =========================
+             ห้องที่ 1
+        ========================== -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card">
+
+                <img src="images/1.webp"
+                     class="room-img"
+                     alt="สามประสบ รีสอร์ท">
+
+
+                <div class="card-body">
+
+                    <h5 class="room-title">
+
+                        สามประสบ รีสอร์ท
+
+                    </h5>
+
+
+                    <p class="room-info">
+
+                        📍 ห่างสะพานมอญ 300–770 เมตร
+
+                    </p>
+
+
+                    <p class="room-info">
+
+                        ⭐ 4.2
+
+                    </p>
+
+
+                    <p class="room-info">
+
+                        🌊 ห้องพักบรรยากาศริมน้ำ
+
+                    </p>
+
+
+                    <h4 class="price">
+
+                        1,200 บาท/คืน
+
+                    </h4>
+
+
+                    <a href="mon-riverside.html"
+                       class="btn btn-main w-100">
+
+                        ดูรายละเอียด
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             ห้องที่ 2
+        ========================== -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card">
+
+                <img src="images/2.jpg"
+                     class="room-img"
+                     alt="บ้านมอญนอนเล่น">
+
+
+                <div class="card-body">
+
+                    <h5 class="room-title">
+
+                        บ้านมอญนอนเล่น
+
+                    </h5>
+
+
+                    <p class="room-info">
+
+                        📍 ห่างสะพานมอญ 100 เมตร
+
+                    </p>
+
+
+                    <p class="room-info">
+
+                        ⭐ 4.9
+
+                    </p>
+
+
+                    <p class="room-info">
+
+                        🌉 บรรยากาศวิถีชีวิตชาวมอญ
+
+                    </p>
+
+
+                    <h4 class="price">
+
+                        590–690 บาท/คืน
+
+                    </h4>
+
+
+                    <a href="mon-bridge-resort.html"
+                       class="btn btn-main w-100">
+
+                        ดูรายละเอียด
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             ห้องที่ 3
+        ========================== -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card">
+
+                <img src="images/4.webp"
+                     class="room-img"
+                     alt="เบอมิซอินน์ รีสอร์ท">
+
+
+                <div class="card-body">
+
+                    <h5 class="room-title">
+
+                        เบอมิซอินน์ รีสอร์ท
+
+                    </h5>
+
+
+                    <p class="room-info">
+
+                        📍 ห่างสะพานมอญ 200 เมตร
+
+                    </p>
+
+
+                    <p class="room-info">
+
+                        ⭐ 3.3
+
+                    </p>
+
+
+                    <p class="room-info">
+
+                        🏞️ ห้องพักวิวแม่น้ำ
+
+                    </p>
+
+
+                    <h4 class="price">
+
+                        400 บาท/คืน
+
+                    </h4>
+
+
+                    <a href="sangkhlaburi-lakeview.html"
+                       class="btn btn-main w-100">
+
+                        ดูรายละเอียด
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             ห้องที่ 4
+        ========================== -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card">
+
+                <img src="images/3.jpg"
+                     class="room-img"
+                     alt="ภูชมหมอก">
+
+
+                <div class="card-body">
+
+                    <h5 class="room-title">
+
+                        ภูชมหมอก
+
+                    </h5>
+
+
+                    <p class="room-info">
+
+                        📍 ห่างสะพานมอญ 1.6 กิโลเมตร
+
+                    </p>
+
+
+                    <p class="room-info">
+
+                        ⭐ 4.5
+
+                    </p>
+
+
+                    <p class="room-info">
+
+                        ⛰️ ลุ้นชมทะเลหมอก
+
+                    </p>
+
+
+                    <h4 class="price">
+
+                        1,000–3,000 บาท/คืน
+
+                    </h4>
+
+
+                    <a href="samprasop.html"
+                       class="btn btn-main w-100">
+
+                        ดูรายละเอียด
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             ห้องที่ 5
+        ========================== -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card">
+
+                <img src="images/8.webp"
+                     class="room-img"
+                     alt="มาชิลล์ รีสอร์ท">
+
+
+                <div class="card-body">
+
+                    <h5 class="room-title">
+
+                        มาชิลล์ รีสอร์ท
+
+                    </h5>
+
+
+                    <p class="room-info">
+
+                        📍 ห่างสะพานมอญ 500 เมตร
+
+                    </p>
+
+
+                    <p class="room-info">
+
+                        ⭐ 4.0
+
+                    </p>
+
+
+                    <p class="room-info">
+
+                        🌿 ใกล้สะพานมอญและตลาดกลางคืน
+
+                    </p>
+
+
+                    <h4 class="price">
+
+                        487 บาท/คืน
+
+                    </h4>
+
+
+                    <a href="mon-bridge-home.html"
+                       class="btn btn-main w-100">
+
+                        ดูรายละเอียด
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             ห้องที่ 6
+        ========================== -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card">
+
+                <img src="images/5.jpg"
+                     class="room-img"
+                     alt="สังขละวิลเลจ รีสอร์ท">
+
+
+                <div class="card-body">
+
+                    <h5 class="room-title">
+
+                        สังขละวิลเลจ รีสอร์ท
+
+                    </h5>
+
+
+                    <p class="room-info">
+
+                        📍 ใกล้สะพานมอญ
+
+                    </p>
+
+
+                    <p class="room-info">
+
+                        ⭐ 4.4
+
+                    </p>
+
+
+                    <p class="room-info">
+
+                        🏡 เหมาะสำหรับกลุ่มเดินทาง
+
+                    </p>
+
+
+                    <h4 class="price">
+
+                        950–1,150 บาท/คืน
+
+                    </h4>
+
+
+                    <a href="sangkhlaburi-village.html"
+                       class="btn btn-main w-100">
+
+                        ดูรายละเอียด
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    <div class="container text-center">
+
+        <h5>
+
+            🏡 Mon Bridge Stay
+
+        </h5>
+
+        <p>
+
+            เว็บไซต์แนะนำที่พักและสถานที่ท่องเที่ยวสังขละบุรี
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
