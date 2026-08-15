@@ -1,709 +1,146 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>จัดการห้องพัก | Mon Bridge Stay</title>
-
-<link rel="stylesheet" href="admin.css">
-
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#F7F3E8;color:#3E3328;font-family:Arial,sans-serif}
+.sidebar{position:fixed;left:0;top:0;width:300px;height:100vh;background:#4E342E;color:#fff;padding:30px 18px;overflow-y:auto;z-index:1000}
+.logo{font-size:28px;font-weight:bold;margin-bottom:35px;line-height:1.2}
+.logo span{display:block}
+.menu{display:flex;flex-direction:column;gap:8px}
+.menu a{color:#fff;text-decoration:none;padding:16px 22px;border-radius:14px;font-size:19px;font-weight:500;transition:.2s;display:block}
+.menu a:hover{background:#795548}
+.menu a.active{background:#806052}
+.main{margin-left:300px;padding:45px;min-height:100vh}
+.page-header{background:#fff;border-radius:22px;padding:30px 40px;margin-bottom:35px;box-shadow:0 5px 20px rgba(62,51,40,.08);display:flex;justify-content:space-between;align-items:center;gap:20px}
+.page-header-left{flex:1}
+.page-header h1{margin:0;color:#6D4C41;font-weight:bold;font-size:40px}
+.page-header p{margin:8px 0 0;font-size:18px}
+.header-buttons{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn-main{background:#806052;color:#fff;border:none;padding:13px 20px;border-radius:12px;font-size:16px;cursor:pointer}
+.btn-main:hover{background:#6D4C41}
+.btn-secondary{background:#E8E1D8;color:#5D4037;border:none;padding:13px 20px;border-radius:12px;cursor:pointer}
+.btn-danger{background:#B45D4C;color:#fff;border:none;padding:9px 15px;border-radius:10px;cursor:pointer}
+.btn-danger:hover{background:#934737}
+.btn-edit{background:#C9A27E;color:#fff;border:none;padding:9px 15px;border-radius:10px;cursor:pointer}
+.btn-view{background:#795548;color:#fff;border:none;padding:9px 15px;border-radius:10px;cursor:pointer}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;margin-bottom:35px}
+.summary-card{background:#fff;border-radius:22px;padding:25px 30px;min-height:130px;box-shadow:0 5px 20px rgba(62,51,40,.08)}
+.summary-number{font-size:34px;font-weight:bold;color:#795548;margin-bottom:8px}
+.summary-label{font-size:17px;color:#6D4C41}
+.panel{background:#fff;border-radius:22px;padding:30px;margin-bottom:25px;box-shadow:0 5px 20px rgba(62,51,40,.08)}
+.search-row{display:flex;gap:12px}
+.search-input,.form-control{flex:1;width:100%;padding:13px 16px;border:1px solid #D7CCC8;border-radius:12px;font-size:16px;outline:none}
+.search-input:focus,.form-control:focus{border-color:#795548;box-shadow:0 0 0 3px rgba(121,85,72,.12)}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:850px}
+th{background:#F7F3E8;color:#6D4C41;font-size:16px;padding:16px 12px;text-align:left;border-bottom:2px solid #E0D2C5;white-space:nowrap}
+td{padding:16px 12px;border-bottom:1px solid #E8E1D8;vertical-align:middle}
+tr:hover td{background:#FCF9F3}
+.actions{display:flex;gap:7px;flex-wrap:wrap}
+.badge{display:inline-block;padding:8px 13px;border-radius:20px;font-size:14px}
+.badge-green{background:#E8F3E8;color:#4E7A52}
+.badge-red{background:#F8E5E1;color:#A64B3C}
+.badge-yellow{background:#FFF1C9;color:#8A6A16}
+.empty{text-align:center;padding:50px;color:#8D8178;font-size:18px}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.form-group{display:flex;flex-direction:column;gap:7px}
+.form-group label{font-weight:bold;color:#6D4C41}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;justify-content:center;align-items:center;padding:20px}
+.modal.show{display:flex}
+.modal-box{background:#fff;width:100%;max-width:650px;max-height:90vh;overflow:auto;border-radius:20px;padding:30px}
+.modal-title{font-size:27px;font-weight:bold;color:#6D4C41;margin-bottom:20px}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+.detail{background:#F7F3E8;border-radius:14px;padding:18px}
+.detail-row{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid #E0D2C5}
+.detail-row:last-child{border-bottom:0}
+.detail-label{font-weight:bold;color:#795548}
+footer{text-align:center;color:#756960;padding:25px}
+@media(max-width:1200px){.sidebar{width:240px}.main{margin-left:240px;padding:25px}.summary{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){.sidebar{position:relative;width:100%;height:auto;padding:20px}.main{margin-left:0;padding:20px}.page-header{flex-direction:column;align-items:flex-start}.page-header h1{font-size:32px}.summary{grid-template-columns:1fr}.search-row{flex-direction:column}.form-grid{grid-template-columns:1fr}}
+</style>
 </head>
-
 <body>
 
 <div class="sidebar">
-
-    <div class="logo">
-        🏡 Mon Bridge
-        <span>Stay</span>
-    </div>
-
-    <div class="menu">
-
-        <a href="admin.html">
-            📊 Dashboard
-        </a>
-
-        <a href="admin-rooms.html"
-           class="active">
-            🛏️ จัดการห้องพัก
-        </a>
-
-        <a href="admin-bookings.html">
-            🗓️ การจอง
-        </a>
-
-        <a href="admin-promotions.html">
-            🎁 โปรโมชั่น
-        </a>
-
-        <a href="admin-guests.html">
-            👥 ผู้เข้าพัก
-        </a>
-
-        <a href="index.html">
-            🌐 ดูหน้าเว็บไซต์
-        </a>
-
-        <a href="index.html"
-           onclick="logoutAdmin()">
-            🚪 ออกจากระบบ
-        </a>
-
-    </div>
-
+  <div class="logo">🏡 Mon Bridge<span>Stay</span></div>
+  <div class="menu">
+    <a href="admin.html" class="">📊 Dashboard</a>
+<a href="admin-rooms.html" class="active">🛏️ จัดการห้องพัก</a>
+<a href="admin-bookings.html" class="">🗓️ การจอง</a>
+<a href="admin-promotions.html" class="">🎁 โปรโมชั่น</a>
+<a href="admin-guests.html" class="">👥 ผู้เข้าพัก</a>
+    <a href="index.html">🌐 ดูหน้าเว็บไซต์</a>
+    <a href="index.html" onclick="return leaveAdmin()">🚪 ออกจากระบบ</a>
+  </div>
 </div>
-
+<script>
+function leaveAdmin(){
+  try{localStorage.removeItem('monBridgeAdmin');}catch(e){}
+  return true;
+}
+</script>
 
 <main class="main">
 
 <div class="page-header">
-
-    <div class="page-header-left">
-
-        <h1>
-            🛏️ จัดการห้องพัก
-        </h1>
-
-        <p>
-            เพิ่ม แก้ไข ลบ และตรวจสอบข้อมูลห้องพัก
-        </p>
-
-    </div>
-
-    <div class="header-buttons">
-
-        <button
-            class="btn-main"
-            onclick="openRoom()">
-
-            ＋ เพิ่มห้องพัก
-
-        </button>
-
-        <button
-            class="btn-secondary"
-            onclick="renderRooms()">
-
-            🔄 รีเฟรช
-
-        </button>
-
-    </div>
-
+ <div class="page-header-left"><h1>🛏️ จัดการห้องพัก</h1><p>เพิ่ม แก้ไข ลบ และตรวจสอบข้อมูลห้องพัก</p></div>
+ <div class="header-buttons"><button class="btn-main" onclick="openRoomModal()">＋ เพิ่มห้องพัก</button><button class="btn-secondary" onclick="renderRooms()">🔄 รีเฟรช</button></div>
 </div>
-
-
 <div class="summary">
-
-    <div class="summary-card">
-
-        <div id="total"
-             class="summary-number">
-            0
-        </div>
-
-        <div class="summary-label">
-            🛏️ ห้องทั้งหมด
-        </div>
-
-    </div>
-
-
-    <div class="summary-card">
-
-        <div id="available"
-             class="summary-number">
-            0
-        </div>
-
-        <div class="summary-label">
-            🟢 พร้อมให้จอง
-        </div>
-
-    </div>
-
-
-    <div class="summary-card">
-
-        <div id="unavailable"
-             class="summary-number">
-            0
-        </div>
-
-        <div class="summary-label">
-            🔴 ไม่พร้อม
-        </div>
-
-    </div>
-
-
-    <div class="summary-card">
-
-        <div id="searchCount"
-             class="summary-number">
-            0
-        </div>
-
-        <div class="summary-label">
-            🔎 ผลการค้นหา
-        </div>
-
-    </div>
-
+ <div class="summary-card"><div class="summary-number" id="roomTotal">0</div><div class="summary-label">🛏️ ห้องทั้งหมด</div></div>
+ <div class="summary-card"><div class="summary-number" id="roomAvailable">0</div><div class="summary-label">🟢 พร้อมให้จอง</div></div>
+ <div class="summary-card"><div class="summary-number" id="roomUnavailable">0</div><div class="summary-label">🔴 ไม่พร้อม</div></div>
+ <div class="summary-card"><div class="summary-number" id="roomSearchCount">0</div><div class="summary-label">🔎 ผลการค้นหา</div></div>
 </div>
-
-
 <div class="panel">
-
-    <div class="search-row">
-
-        <input
-            id="search"
-            class="search-input"
-            placeholder="🔎 ค้นหาชื่อห้อง ประเภท หรือราคา">
-
-        <button
-            class="btn-secondary"
-            onclick="clearSearch()">
-
-            ✕ ล้าง
-
-        </button>
-
-    </div>
-
+ <div class="search-row"><input id="roomSearch" class="search-input" placeholder="🔎 ค้นหาชื่อห้อง ประเภท หรือราคา..."><button class="btn-secondary" onclick="document.getElementById('roomSearch').value='';renderRooms()">✕ ล้าง</button></div>
 </div>
+<div class="panel"><div class="table-wrap"><table><thead><tr><th>รหัส</th><th>ชื่อห้อง</th><th>ประเภท</th><th>ราคา/คืน</th><th>สถานะ</th><th>จัดการ</th></tr></thead><tbody id="roomTable"></tbody></table></div></div>
+<div class="modal" id="roomModal"><div class="modal-box">
+ <div class="modal-title" id="roomModalTitle">เพิ่มห้องพัก</div>
+ <div class="form-grid">
+  <div class="form-group"><label>รหัสห้อง</label><input id="roomId" class="form-control"></div>
+  <div class="form-group"><label>ชื่อห้อง</label><input id="roomName" class="form-control"></div>
+  <div class="form-group"><label>ประเภท</label><input id="roomType" class="form-control" placeholder="เช่น Deluxe"></div>
+  <div class="form-group"><label>ราคา/คืน</label><input id="roomPrice" type="number" class="form-control"></div>
+  <div class="form-group"><label>สถานะ</label><select id="roomStatus" class="form-control"><option value="available">พร้อมให้จอง</option><option value="unavailable">ไม่พร้อม</option></select></div>
+ </div>
+ <div class="modal-actions"><button class="btn-secondary" onclick="closeRoomModal()">ยกเลิก</button><button class="btn-main" onclick="saveRoom()">💾 บันทึก</button></div>
+</div></div>
 
-
-<div class="panel">
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>รหัส</th>
-<th>ชื่อห้อง</th>
-<th>ประเภท</th>
-<th>ราคา/คืน</th>
-<th>สถานะ</th>
-<th>จัดการ</th>
-
-</tr>
-
-</thead>
-
-<tbody id="roomTable"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
-
-<div id="roomModal"
-     class="modal">
-
-<div class="modal-box">
-
-    <div class="modal-title">
-        <span id="modalTitle">
-            เพิ่มห้องพัก
-        </span>
-    </div>
-
-
-    <div class="form-grid">
-
-        <div class="form-group">
-
-            <label>รหัสห้อง</label>
-
-            <input
-                id="roomId"
-                class="form-control">
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>ชื่อห้อง</label>
-
-            <input
-                id="roomName"
-                class="form-control">
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>ประเภท</label>
-
-            <input
-                id="roomType"
-                class="form-control">
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>ราคา/คืน</label>
-
-            <input
-                id="roomPrice"
-                type="number"
-                class="form-control">
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>สถานะ</label>
-
-            <select
-                id="roomStatus"
-                class="form-control">
-
-                <option value="available">
-                    พร้อมให้จอง
-                </option>
-
-                <option value="unavailable">
-                    ไม่พร้อม
-                </option>
-
-            </select>
-
-        </div>
-
-    </div>
-
-
-    <div class="modal-actions">
-
-        <button
-            class="btn-secondary"
-            onclick="closeRoom()">
-
-            ยกเลิก
-
-        </button>
-
-        <button
-            class="btn-main"
-            onclick="saveRoom()">
-
-            💾 บันทึก
-
-        </button>
-
-    </div>
-
-</div>
-
-</div>
-
-
-<footer>
-© 2026 Mon Bridge Stay. All rights reserved.
-</footer>
-
+<footer>© 2026 Mon Bridge Stay. All rights reserved.</footer>
 </main>
 
-
 <script>
-
-const KEY =
-    "monBridgeRooms";
-
-let editIndex = -1;
-
-
-function getRooms() {
-
-    try {
-
-        const data =
-            JSON.parse(
-                localStorage.getItem(KEY) || "[]"
-            );
-
-        return Array.isArray(data)
-            ? data
-            : [];
-
-    } catch {
-
-        return [];
-
-    }
-
+const ROOM_KEY="monBridgeRooms"; let editingRoom=-1;
+function getRooms(){try{let a=JSON.parse(localStorage.getItem(ROOM_KEY)||"[]");return Array.isArray(a)?a:[]}catch(e){return[]}}
+function saveRooms(a){localStorage.setItem(ROOM_KEY,JSON.stringify(a))}
+function renderRooms(){
+ const all=getRooms(), q=document.getElementById("roomSearch").value.trim().toLowerCase();
+ const list=all.filter(r=>[r.id,r.name,r.type,r.price,r.status].join(" ").toLowerCase().includes(q));
+ document.getElementById("roomTotal").textContent=all.length;
+ document.getElementById("roomAvailable").textContent=all.filter(r=>r.status!=="unavailable").length;
+ document.getElementById("roomUnavailable").textContent=all.filter(r=>r.status==="unavailable").length;
+ document.getElementById("roomSearchCount").textContent=list.length;
+ const tb=document.getElementById("roomTable"); tb.innerHTML="";
+ if(!list.length){tb.innerHTML='<tr><td colspan="6" class="empty">📭 ไม่พบข้อมูลห้องพัก</td></tr>';return}
+ list.forEach(r=>{
+   const i=all.indexOf(r);
+   tb.innerHTML+=`<tr><td><strong>#${esc(r.id||i+1)}</strong></td><td>${esc(r.name||"-")}</td><td>${esc(r.type||"-")}</td><td>${Number(r.price||0).toLocaleString()} บาท</td><td><span class="badge ${r.status==="unavailable"?"badge-red":"badge-green"}">${r.status==="unavailable"?"🔴 ไม่พร้อม":"🟢 พร้อมให้จอง"}</span></td><td><div class="actions"><button class="btn-edit" onclick="editRoom(${i})">✏️ แก้ไข</button><button class="btn-danger" onclick="deleteRoom(${i})">🗑️ ลบ</button></div></td></tr>`;
+ });
 }
-
-
-function saveRooms(data) {
-
-    localStorage.setItem(
-        KEY,
-        JSON.stringify(data)
-    );
-
-}
-
-
-function esc(value) {
-
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-function renderRooms() {
-
-    const all =
-        getRooms();
-
-    const keyword =
-        document.getElementById("search")
-        .value
-        .trim()
-        .toLowerCase();
-
-
-    const list =
-        all.filter(room => {
-
-            return (
-                String(room.id || "")
-                + " " +
-                String(room.name || "")
-                + " " +
-                String(room.type || "")
-                + " " +
-                String(room.price || "")
-            )
-            .toLowerCase()
-            .includes(keyword);
-
-        });
-
-
-    total.textContent =
-        all.length;
-
-    available.textContent =
-        all.filter(
-            r => r.status !== "unavailable"
-        ).length;
-
-    unavailable.textContent =
-        all.filter(
-            r => r.status === "unavailable"
-        ).length;
-
-    searchCount.textContent =
-        list.length;
-
-
-    roomTable.innerHTML = "";
-
-
-    if (!list.length) {
-
-        roomTable.innerHTML = `
-        <tr>
-            <td colspan="6"
-                class="empty">
-                🛏️ ไม่พบข้อมูลห้องพัก
-            </td>
-        </tr>`;
-
-        return;
-
-    }
-
-
-    list.forEach(room => {
-
-        const index =
-            all.indexOf(room);
-
-
-        roomTable.innerHTML += `
-
-        <tr>
-
-            <td>
-                <strong>
-                    #${esc(room.id || index + 1)}
-                </strong>
-            </td>
-
-            <td>
-                ${esc(room.name || "-")}
-            </td>
-
-            <td>
-                ${esc(room.type || "-")}
-            </td>
-
-            <td>
-                ${Number(room.price || 0)
-                    .toLocaleString()}
-                บาท
-            </td>
-
-            <td>
-
-                <span class="badge ${
-                    room.status === "unavailable"
-                    ? "badge-red"
-                    : "badge-green"
-                }">
-
-                    ${
-                        room.status === "unavailable"
-                        ? "🔴 ไม่พร้อม"
-                        : "🟢 พร้อมให้จอง"
-                    }
-
-                </span>
-
-            </td>
-
-            <td>
-
-                <div class="actions">
-
-                    <button
-                        class="btn-edit"
-                        onclick="editRoom(${index})">
-
-                        ✏️ แก้ไข
-
-                    </button>
-
-                    <button
-                        class="btn-danger"
-                        onclick="deleteRoom(${index})">
-
-                        🗑️ ลบ
-
-                    </button>
-
-                </div>
-
-            </td>
-
-        </tr>`;
-
-    });
-
-}
-
-
-function openRoom() {
-
-    editIndex = -1;
-
-    modalTitle.textContent =
-        "เพิ่มห้องพัก";
-
-    roomId.value = "";
-    roomName.value = "";
-    roomType.value = "";
-    roomPrice.value = "";
-    roomStatus.value = "available";
-
-    roomModal.classList.add("show");
-
-}
-
-
-function editRoom(index) {
-
-    const room =
-        getRooms()[index];
-
-    if (!room) return;
-
-    editIndex = index;
-
-    modalTitle.textContent =
-        "แก้ไขห้องพัก";
-
-    roomId.value =
-        room.id || "";
-
-    roomName.value =
-        room.name || "";
-
-    roomType.value =
-        room.type || "";
-
-    roomPrice.value =
-        room.price || "";
-
-    roomStatus.value =
-        room.status || "available";
-
-    roomModal.classList.add("show");
-
-}
-
-
-function closeRoom() {
-
-    roomModal.classList.remove(
-        "show"
-    );
-
-}
-
-
-function saveRoom() {
-
-    const rooms =
-        getRooms();
-
-
-    const room = {
-
-        id:
-            roomId.value.trim(),
-
-        name:
-            roomName.value.trim(),
-
-        type:
-            roomType.value.trim(),
-
-        price:
-            roomPrice.value,
-
-        status:
-            roomStatus.value
-
-    };
-
-
-    if (!room.name) {
-
-        alert(
-            "กรุณากรอกชื่อห้อง"
-        );
-
-        return;
-
-    }
-
-
-    if (editIndex === -1) {
-
-        rooms.push(room);
-
-    } else {
-
-        rooms[editIndex] =
-            room;
-
-    }
-
-
-    saveRooms(rooms);
-
-    closeRoom();
-
-    renderRooms();
-
-    alert(
-        "บันทึกข้อมูลห้องพักเรียบร้อยแล้ว"
-    );
-
-}
-
-
-function deleteRoom(index) {
-
-    const rooms =
-        getRooms();
-
-    const room =
-        rooms[index];
-
-    if (!room) return;
-
-
-    if (!confirm(
-        "ต้องการลบห้องพักนี้ใช่หรือไม่?"
-    )) {
-
-        return;
-
-    }
-
-
-    rooms.splice(index,1);
-
-    saveRooms(rooms);
-
-    renderRooms();
-
-    alert(
-        "ลบห้องพักเรียบร้อยแล้ว"
-    );
-
-}
-
-
-function clearSearch() {
-
-    search.value = "";
-
-    renderRooms();
-
-}
-
-
-search.addEventListener(
-    "input",
-    renderRooms
-);
-
-
-function logoutAdmin() {
-
-    localStorage.removeItem(
-        "monBridgeAdmin"
-    );
-
-}
-
-
-document.addEventListener(
-    "DOMContentLoaded",
-    renderRooms
-);
-
+function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function openRoomModal(i=-1){editingRoom=i;document.getElementById("roomModalTitle").textContent=i<0?"เพิ่มห้องพัก":"แก้ไขห้องพัก";let r=i<0?{}:getRooms()[i];["id","name","type","price","status"].forEach(k=>document.getElementById("room"+k.charAt(0).toUpperCase()+k.slice(1)).value=r[k]??(k==="status"?"available":""));document.getElementById("roomModal").classList.add("show")}
+function closeRoomModal(){document.getElementById("roomModal").classList.remove("show")}
+function saveRoom(){let a=getRooms();let r={id:roomId.value.trim(),name:roomName.value.trim(),type:roomType.value.trim(),price:Number(roomPrice.value||0),status:roomStatus.value};if(!r.name){alert("กรุณากรอกชื่อห้องพัก");return}if(editingRoom<0)a.push(r);else a[editingRoom]=r;saveRooms(a);closeRoomModal();renderRooms();alert("บันทึกข้อมูลห้องพักเรียบร้อยแล้ว")}
+function editRoom(i){openRoomModal(i)}
+function deleteRoom(i){let a=getRooms(),r=a[i];if(!r)return;if(confirm("ต้องการลบห้อง "+(r.name||"")+" ใช่หรือไม่?")){a.splice(i,1);saveRooms(a);renderRooms();alert("ลบห้องพักเรียบร้อยแล้ว")}}
+document.getElementById("roomSearch").addEventListener("input",renderRooms);
+document.addEventListener("DOMContentLoaded",renderRooms);
 </script>
 
 </body>
