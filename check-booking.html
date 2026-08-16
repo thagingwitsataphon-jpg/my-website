@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>ตรวจสอบการจอง | Mon Bridge Stay</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+body{
+    margin:0;
+    background:#F7F3E8;
+    color:#3E3328;
+    font-family:Arial,sans-serif;
+}
+
+.container{
+    max-width:650px;
+    margin:60px auto;
+    padding:20px;
+}
+
+.card{
+    background:#fff;
+    border-radius:22px;
+    padding:35px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+h1{
+    color:#6D4C41;
+    text-align:center;
+}
+
+.subtitle{
+    text-align:center;
+    color:#756960;
+    margin-bottom:30px;
+}
+
+.input{
+    width:100%;
+    padding:14px;
+    border:1px solid #D7CCC8;
+    border-radius:12px;
+    font-size:17px;
+    box-sizing:border-box;
+}
+
+.btn{
+    width:100%;
+    margin-top:15px;
+    padding:14px;
+    border:0;
+    border-radius:12px;
+    background:#795548;
+    color:#fff;
+    font-size:17px;
+    cursor:pointer;
+}
+
+.result{
+    display:none;
+    margin-top:25px;
+    background:#F7F3E8;
+    border-radius:16px;
+    padding:25px;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:12px 0;
+    border-bottom:1px solid #E0D2C5;
+}
+
+.row:last-child{
+    border-bottom:0;
+}
+
+.label{
+    font-weight:bold;
+    color:#795548;
+}
+
+.status{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.pending{
+    background:#FFF1C9;
+    color:#8A6A16;
+}
+
+.confirmed{
+    background:#E8F3E8;
+    color:#4E7A52;
+}
+
+.cancelled{
+    background:#F8E5E1;
+    color:#A64B3C;
+}
+
+.error{
+    display:none;
+    margin-top:20px;
+    padding:15px;
+    border-radius:12px;
+    background:#F8E5E1;
+    color:#A64B3C;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>
+🔎 ตรวจสอบการจอง
+</h1>
+
+<p class="subtitle">
+กรอกรหัสการจองเพื่อตรวจสอบสถานะ
+</p>
+
+<input
+    id="bookingCode"
+    class="input"
+    placeholder="เช่น MB27417319">
+
+<button
+    class="btn"
+    onclick="checkBooking()">
+
+🔎 ตรวจสอบสถานะ
+
+</button>
+
+
+<div
+    id="error"
+    class="error">
+
+ไม่พบรหัสการจองนี้
+
+</div>
+
+
+<div
+    id="result"
+    class="result">
+
+<div class="row">
+
+<span class="label">
+รหัสการจอง
+</span>
+
+<span id="resultCode">
+-
+</span>
+
+</div>
+
+
+<div class="row">
+
+<span class="label">
+ผู้จอง
+</span>
+
+<span id="resultName">
+-
+</span>
+
+</div>
+
+
+<div class="row">
+
+<span class="label">
+เบอร์โทร
+</span>
+
+<span id="resultPhone">
+-
+</span>
+
+</div>
+
+
+<div class="row">
+
+<span class="label">
+ที่พัก
+</span>
+
+<span id="resultRoom">
+-
+</span>
+
+</div>
+
+
+<div class="row">
+
+<span class="label">
+วันที่เข้าพัก
+</span>
+
+<span id="resultDate">
+-
+</span>
+
+</div>
+
+
+<div class="row">
+
+<span class="label">
+จำนวนผู้เข้าพัก
+</span>
+
+<span id="resultGuests">
+-
+</span>
+
+</div>
+
+
+<div class="row">
+
+<span class="label">
+สถานะ
+</span>
+
+<span id="resultStatus">
+-
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const SUPABASE_URL =
+    "ใส่ Project URL ของคุณตรงนี้";
+
+const SUPABASE_KEY =
+    "ใส่ Publishable key หรือ anon key ของคุณตรงนี้";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+async function checkBooking(){
+
+    const code =
+        document
+        .getElementById(
+            "bookingCode"
+        )
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+    const error =
+        document.getElementById(
+            "error"
+        );
+
+
+    result.style.display =
+        "none";
+
+    error.style.display =
+        "none";
+
+
+    if(!code){
+
+        error.textContent =
+            "กรุณากรอกรหัสการจอง";
+
+        error.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    const {
+        data,
+        error: dbError
+    } =
+        await supabaseClient
+            .from("bookings")
+            .select("*")
+            .eq(
+                "booking_code",
+                code
+            )
+            .maybeSingle();
+
+
+    if(dbError){
+
+        console.error(
+            dbError
+        );
+
+        error.textContent =
+            "ไม่สามารถตรวจสอบข้อมูลได้";
+
+        error.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    if(!data){
+
+        error.textContent =
+            "ไม่พบรหัสการจองนี้";
+
+        error.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    document
+        .getElementById(
+            "resultCode"
+        )
+        .textContent =
+        data.booking_code;
+
+
+    document
+        .getElementById(
+            "resultName"
+        )
+        .textContent =
+        data.name;
+
+
+    document
+        .getElementById(
+            "resultPhone"
+        )
+        .textContent =
+        data.phone;
+
+
+    document
+        .getElementById(
+            "resultRoom"
+        )
+        .textContent =
+        data.room;
+
+
+    document
+        .getElementById(
+            "resultDate"
+        )
+        .textContent =
+        formatDate(
+            data.check_in
+        );
+
+
+    document
+        .getElementById(
+            "resultGuests"
+        )
+        .textContent =
+        data.guests + " คน";
+
+
+    const status =
+        document.getElementById(
+            "resultStatus"
+        );
+
+
+    if(
+        data.status ===
+        "confirmed"
+    ){
+
+        status.textContent =
+            "🟢 ยืนยันแล้ว";
+
+        status.className =
+            "status confirmed";
+
+    }
+    else if(
+        data.status ===
+        "cancelled"
+    ){
+
+        status.textContent =
+            "🔴 ยกเลิก";
+
+        status.className =
+            "status cancelled";
+
+    }
+    else{
+
+        status.textContent =
+            "🟡 รอยืนยัน";
+
+        status.className =
+            "status pending";
+
+    }
+
+
+    result.style.display =
+        "block";
+
+}
+
+
+function formatDate(date){
+
+    if(!date){
+
+        return "-";
+
+    }
+
+
+    const parts =
+        date.split("-");
+
+
+    if(parts.length !== 3){
+
+        return date;
+
+    }
+
+
+    return `
+        ${parts[2]}/${parts[1]}/${parts[0]}
+    `.trim();
+
+}
+
+</script>
+
+</body>
+
+</html>
