@@ -10,200 +10,1786 @@
 
     <title>โปรไฟล์ของฉัน | Mon Bridge Stay</title>
 
+
+    <!-- Bootstrap -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet">
 
+
+    <!-- Supabase -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
     <style>
 
+        /* =====================================================
+           BODY
+        ===================================================== */
+
         body {
-            background: #f8f9fa;
+
+            background: #f8f5f2;
+
+            color: #333;
+
+            min-height: 100vh;
+
         }
 
-        .profile-box {
-            max-width: 550px;
-            margin: 60px auto;
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
             background: white;
-            padding: 35px;
-            border-radius: 18px;
-            box-shadow: 0 5px 20px rgba(0,0,0,.10);
+
         }
+
+
+        .navbar-brand {
+
+            color: #795548 !important;
+
+            font-weight: bold;
+
+            font-size: 20px;
+
+        }
+
+
+        .navbar-brand:hover {
+
+            color: #5d4037 !important;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .profile-header {
+
+            background: linear-gradient(
+                135deg,
+                #795548,
+                #a1887f
+            );
+
+            color: white;
+
+            padding: 45px 20px;
+
+            border-radius: 0 0 30px 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,.10);
+
+        }
+
+
+        .profile-header-icon {
+
+            font-size: 55px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .profile-header h1 {
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .profile-header p {
+
+            margin-bottom: 0;
+
+            opacity: .9;
+
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .profile-container {
+
+            max-width: 1000px;
+
+            margin: 40px auto;
+
+        }
+
+
+        /* =====================================================
+           CARD
+        ===================================================== */
+
+        .profile-card {
+
+            background: white;
+
+            border: none;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,.08);
+
+            margin-bottom: 30px;
+
+        }
+
+
+        /* =====================================================
+           PROFILE TITLE
+        ===================================================== */
+
+        .section-title {
+
+            color: #5d4037;
+
+            font-weight: bold;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .section-subtitle {
+
+            color: #777;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* =====================================================
+           PROFILE ICON
+        ===================================================== */
 
         .profile-icon {
-            font-size: 70px;
+
+            width: 95px;
+
+            height: 95px;
+
+            border-radius: 50%;
+
+            background: #f3e9e4;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 50px;
+
+            margin: 0 auto 20px;
+
         }
 
-        .profile-title {
-            color: #5d4037;
-            font-weight: bold;
-        }
+
+        /* =====================================================
+           MEMBER INFO
+        ===================================================== */
 
         .info-box {
+
             background: #faf7f5;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 12px;
+
+            border-radius: 14px;
+
+            padding: 17px 20px;
+
+            margin-bottom: 14px;
+
+            border: 1px solid #eee5e1;
+
         }
+
+
+        .info-label {
+
+            color: #795548;
+
+            font-weight: bold;
+
+            font-size: 15px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .info-value {
+
+            color: #333;
+
+            font-size: 16px;
+
+            word-break: break-word;
+
+        }
+
+
+        /* =====================================================
+           BOOKING SECTION
+        ===================================================== */
+
+        .booking-section-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .refresh-btn {
+
+            border: 1px solid #795548;
+
+            color: #795548;
+
+            background: white;
+
+            border-radius: 10px;
+
+            padding: 9px 16px;
+
+            font-weight: 600;
+
+        }
+
+
+        .refresh-btn:hover {
+
+            background: #795548;
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           BOOKING CARD
+        ===================================================== */
+
+        .booking-card {
+
+            background: #fff;
+
+            border: 1px solid #eee5e1;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            margin-bottom: 20px;
+
+            transition: .25s;
+
+        }
+
+
+        .booking-card:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,.08);
+
+        }
+
+
+        /* =====================================================
+           BOOKING TOP
+        ===================================================== */
+
+        .booking-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            padding-bottom: 18px;
+
+            border-bottom: 1px solid #eee;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .booking-code {
+
+            color: #795548;
+
+            font-weight: bold;
+
+            font-size: 21px;
+
+        }
+
+
+        .booking-room {
+
+            font-size: 20px;
+
+            color: #5d4037;
+
+            font-weight: bold;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        /* =====================================================
+           BOOKING INFO GRID
+        ===================================================== */
+
+        .booking-info {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 14px;
+
+        }
+
+
+        .booking-info-box {
+
+            background: #faf7f5;
+
+            padding: 14px 16px;
+
+            border-radius: 12px;
+
+        }
+
+
+        .booking-info-label {
+
+            color: #777;
+
+            font-size: 13px;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .booking-info-value {
+
+            color: #4e342e;
+
+            font-weight: 600;
+
+            font-size: 15px;
+
+        }
+
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        .status {
+
+            display: inline-block;
+
+            padding: 7px 15px;
+
+            border-radius: 30px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+        }
+
+
+        .status-pending {
+
+            background: #fff3cd;
+
+            color: #856404;
+
+        }
+
+
+        .status-confirmed {
+
+            background: #d1e7dd;
+
+            color: #0f5132;
+
+        }
+
+
+        .status-cancelled {
+
+            background: #f8d7da;
+
+            color: #842029;
+
+        }
+
+
+        .status-unknown {
+
+            background: #e2e3e5;
+
+            color: #41464b;
+
+        }
+
+
+        /* =====================================================
+           EMPTY
+        ===================================================== */
+
+        .empty-booking {
+
+            text-align: center;
+
+            background: #faf7f5;
+
+            border: 2px dashed #dfd2cb;
+
+            border-radius: 18px;
+
+            padding: 45px 20px;
+
+        }
+
+
+        .empty-icon {
+
+            font-size: 55px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .empty-booking h4 {
+
+            color: #5d4037;
+
+            font-weight: bold;
+
+        }
+
+
+        .empty-booking p {
+
+            color: #777;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        /* =====================================================
+           LOADING
+        ===================================================== */
+
+        .loading-box {
+
+            text-align: center;
+
+            padding: 40px 20px;
+
+            color: #795548;
+
+        }
+
+
+        .spinner {
+
+            width: 40px;
+
+            height: 40px;
+
+            border: 4px solid #eadfd9;
+
+            border-top-color: #795548;
+
+            border-radius: 50%;
+
+            animation:
+                spin .8s linear infinite;
+
+            margin: 0 auto 15px;
+
+        }
+
+
+        @keyframes spin {
+
+            to {
+
+                transform: rotate(360deg);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        .error-box {
+
+            display: none;
+
+            background: #f8d7da;
+
+            color: #842029;
+
+            border-radius: 14px;
+
+            padding: 18px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
 
         .btn-main {
+
             background: #795548;
+
             color: white;
+
             border: none;
+
+            border-radius: 10px;
+
+            padding: 11px 20px;
+
+            font-weight: bold;
+
         }
 
+
         .btn-main:hover {
+
             background: #5d4037;
+
             color: white;
+
+        }
+
+
+        .btn-outline-main {
+
+            border: 1px solid #795548;
+
+            color: #795548;
+
+            background: white;
+
+            border-radius: 10px;
+
+            padding: 10px 20px;
+
+            font-weight: bold;
+
+        }
+
+
+        .btn-outline-main:hover {
+
+            background: #795548;
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            background: #4e342e;
+
+            color: white;
+
+            margin-top: 60px;
+
+            padding: 35px 0;
+
+        }
+
+
+        footer h5 {
+
+            font-weight: bold;
+
+        }
+
+
+        footer p {
+
+            margin-bottom: 0;
+
+            opacity: .85;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 767px) {
+
+            .profile-header {
+
+                padding: 35px 15px;
+
+            }
+
+
+            .profile-header h1 {
+
+                font-size: 28px;
+
+            }
+
+
+            .profile-card {
+
+                padding: 22px 17px;
+
+            }
+
+
+            .booking-info {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .booking-card {
+
+                padding: 20px;
+
+            }
+
+
+            .booking-code {
+
+                font-size: 18px;
+
+            }
+
+
+            .booking-room {
+
+                font-size: 18px;
+
+            }
+
+
+            .booking-top {
+
+                align-items: flex-start;
+
+            }
+
         }
 
     </style>
 
 </head>
 
+
 <body>
 
-<nav class="navbar bg-white shadow-sm">
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar shadow-sm">
 
     <div class="container">
 
-        <a class="navbar-brand fw-bold"
-           href="index.html"
-           style="color:#795548;">
+        <a class="navbar-brand"
+           href="index.html">
 
             🏡 Mon Bridge Stay
 
         </a>
 
-        <button onclick="logout()"
-                class="btn btn-outline-danger">
 
-            ออกจากระบบ
+        <div class="d-flex gap-2">
 
-        </button>
+            <a href="index.html"
+               class="btn btn-outline-secondary">
+
+                🏠 หน้าแรก
+
+            </a>
+
+
+            <button type="button"
+                    onclick="logout()"
+                    class="btn btn-outline-danger">
+
+                ออกจากระบบ
+
+            </button>
+
+        </div>
 
     </div>
 
 </nav>
 
 
-<div class="container">
 
-    <div class="profile-box">
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-        <div class="text-center mb-4">
+<div class="profile-header">
 
-            <div class="profile-icon">
-                👤
-            </div>
+    <div class="container">
 
-            <h2 class="profile-title">
-                โปรไฟล์ของฉัน
-            </h2>
+        <div class="profile-header-icon">
 
-            <p class="text-muted">
-                ข้อมูลสมาชิก Mon Bridge Stay
-            </p>
+            👤
 
         </div>
 
 
-        <div class="info-box">
+        <h1>
 
-            <strong>👤 ชื่อ - นามสกุล</strong>
+            โปรไฟล์ของฉัน
 
-            <div id="name"
-                 class="mt-1">
-            </div>
-
-        </div>
+        </h1>
 
 
-        <div class="info-box">
+        <p>
 
-            <strong>📱 เบอร์โทรศัพท์</strong>
+            จัดการข้อมูลสมาชิกและตรวจสอบการจองของคุณ
 
-            <div id="phone"
-                 class="mt-1">
-            </div>
-
-        </div>
-
-
-        <div class="info-box">
-
-            <strong>📧 อีเมล</strong>
-
-            <div id="email"
-                 class="mt-1">
-            </div>
-
-        </div>
-
-
-        <div class="text-center mt-4">
-
-            <a href="index.html"
-               class="btn btn-main px-4">
-
-                🏠 กลับหน้าแรก
-
-            </a>
-
-        </div>
+        </p>
 
     </div>
 
 </div>
 
 
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="container profile-container">
+
+
+    <!-- =================================================
+         PROFILE INFORMATION
+    ================================================== -->
+
+    <div class="profile-card">
+
+        <div class="text-center">
+
+            <div class="profile-icon">
+
+                👤
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                ข้อมูลสมาชิก
+
+            </h2>
+
+
+            <p class="section-subtitle">
+
+                ข้อมูลสมาชิก Mon Bridge Stay
+
+            </p>
+
+        </div>
+
+
+
+        <div class="row">
+
+
+            <div class="col-md-6">
+
+                <div class="info-box">
+
+                    <div class="info-label">
+
+                        👤 ชื่อ - นามสกุล
+
+                    </div>
+
+
+                    <div id="name"
+                         class="info-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6">
+
+                <div class="info-box">
+
+                    <div class="info-label">
+
+                        📱 เบอร์โทรศัพท์
+
+                    </div>
+
+
+                    <div id="phone"
+                         class="info-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-12">
+
+                <div class="info-box">
+
+                    <div class="info-label">
+
+                        📧 อีเมล
+
+                    </div>
+
+
+                    <div id="email"
+                         class="info-value">
+
+                        -
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         BOOKING
+    ================================================== -->
+
+    <div class="profile-card">
+
+
+        <div class="booking-section-header">
+
+            <div>
+
+                <h2 class="section-title">
+
+                    📋 การจองของฉัน
+
+                </h2>
+
+
+                <p class="section-subtitle mb-0">
+
+                    รายการจองห้องพักของคุณ
+
+                </p>
+
+            </div>
+
+
+            <button type="button"
+                    onclick="loadBookings()"
+                    class="refresh-btn">
+
+                🔄 รีเฟรชข้อมูล
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ERROR -->
+
+        <div id="errorBox"
+             class="error-box">
+
+        </div>
+
+
+
+        <!-- BOOKING LIST -->
+
+        <div id="bookingList">
+
+
+            <div class="loading-box">
+
+                <div class="spinner"></div>
+
+                <div>
+
+                    กำลังโหลดข้อมูลการจอง...
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         ACTION BUTTONS
+    ================================================== -->
+
+    <div class="text-center mb-4">
+
+        <a href="rooms.html"
+           class="btn btn-main me-2">
+
+            🏨 ดูห้องพัก
+
+        </a>
+
+
+        <a href="history.html"
+           class="btn btn-outline-main">
+
+            📋 ประวัติการจอง
+
+        </a>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container text-center">
+
+        <h5>
+
+            🏡 Mon Bridge Stay
+
+        </h5>
+
+
+        <p>
+
+            เว็บไซต์แนะนำที่พักและสถานที่ท่องเที่ยวสังขละบุรี
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script>
 
 
-// ตรวจสอบว่ามีสมาชิกเข้าสู่ระบบหรือไม่
+/* =====================================================
+   SUPABASE
+===================================================== */
 
-const currentUser =
-    JSON.parse(
-        localStorage.getItem("monBridgeCurrentUser")
+const SUPABASE_URL =
+    "https://nnliayqdzfypnzztjvsi.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_1qPjT_zybkweIYWzlTceYQ_lTj0RurS";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
     );
 
 
-// ถ้ายังไม่ได้เข้าสู่ระบบ
-// ให้กลับไปหน้า Login
+
+/* =====================================================
+   CURRENT USER
+===================================================== */
+
+const currentUser =
+    JSON.parse(
+        localStorage.getItem(
+            "monBridgeCurrentUser"
+        )
+    );
+
+
+
+/* =====================================================
+   ตรวจสอบ Login
+===================================================== */
 
 if (!currentUser) {
 
-    window.location.href = "login.html";
+    window.location.href =
+        "login.html";
 
 }
 
 
-// แสดงข้อมูลสมาชิก
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const nameElement =
+    document.getElementById("name");
+
+
+const phoneElement =
+    document.getElementById("phone");
+
+
+const emailElement =
+    document.getElementById("email");
+
+
+const bookingList =
+    document.getElementById("bookingList");
+
+
+const errorBox =
+    document.getElementById("errorBox");
+
+
+
+/* =====================================================
+   แสดงข้อมูลสมาชิก
+===================================================== */
 
 if (currentUser) {
 
-    document.getElementById("name").textContent =
-        currentUser.firstName + " " +
-        currentUser.lastName;
+
+    const fullName =
+        [
+            currentUser.firstName,
+            currentUser.lastName
+        ]
+        .filter(Boolean)
+        .join(" ");
 
 
-    document.getElementById("phone").textContent =
-        currentUser.phone;
+    nameElement.textContent =
+        fullName || "-";
 
 
-    document.getElementById("email").textContent =
-        currentUser.email;
+    phoneElement.textContent =
+        currentUser.phone || "-";
+
+
+    emailElement.textContent =
+        currentUser.email || "-";
+
 
 }
 
 
-// ออกจากระบบ
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
+
+function formatDate(dateString) {
+
+    if (!dateString) {
+
+        return "-";
+
+    }
+
+
+    const parts =
+        dateString.split("-");
+
+
+    if (parts.length !== 3) {
+
+        return dateString;
+
+    }
+
+
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+
+}
+
+
+
+/* =====================================================
+   FORMAT STATUS
+===================================================== */
+
+function getStatusHTML(status) {
+
+
+    if (status === "confirmed") {
+
+        return `
+            <span class="status status-confirmed">
+                ✅ ยืนยันแล้ว
+            </span>
+        `;
+
+    }
+
+
+    if (status === "cancelled") {
+
+        return `
+            <span class="status status-cancelled">
+                ❌ ยกเลิก
+            </span>
+        `;
+
+    }
+
+
+    if (status === "pending") {
+
+        return `
+            <span class="status status-pending">
+                ⏳ รอยืนยัน
+            </span>
+        `;
+
+    }
+
+
+    return `
+        <span class="status status-unknown">
+            ${escapeHTML(status || "ไม่ระบุสถานะ")}
+        </span>
+    `;
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+   ป้องกันข้อมูลจากฐานข้อมูลถูกนำไปแทรก HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    if (value === null ||
+        value === undefined) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+/* =====================================================
+   แสดง Error
+===================================================== */
+
+function showError(message) {
+
+    errorBox.textContent =
+        "❌ " + message;
+
+
+    errorBox.style.display =
+        "block";
+
+}
+
+
+
+/* =====================================================
+   ซ่อน Error
+===================================================== */
+
+function hideError() {
+
+    errorBox.style.display =
+        "none";
+
+}
+
+
+
+/* =====================================================
+   LOAD BOOKINGS
+===================================================== */
+
+async function loadBookings() {
+
+
+    if (!currentUser) {
+
+        return;
+
+    }
+
+
+    hideError();
+
+
+    bookingList.innerHTML = `
+
+        <div class="loading-box">
+
+            <div class="spinner"></div>
+
+            <div>
+
+                กำลังโหลดข้อมูลการจอง...
+
+            </div>
+
+        </div>
+
+    `;
+
+
+
+    try {
+
+
+        /*
+           ใช้เบอร์โทรศัพท์ของสมาชิก
+           เป็นตัวค้นหาการจอง
+        */
+
+        const phone =
+            String(
+                currentUser.phone || ""
+            ).trim();
+
+
+
+        if (!phone) {
+
+            bookingList.innerHTML = `
+
+                <div class="empty-booking">
+
+                    <div class="empty-icon">
+
+                        📱
+
+                    </div>
+
+                    <h4>
+
+                        ไม่พบเบอร์โทรศัพท์ของสมาชิก
+
+                    </h4>
+
+                    <p>
+
+                        ไม่สามารถค้นหาการจองของคุณได้
+                        เนื่องจากไม่มีเบอร์โทรศัพท์ในข้อมูลสมาชิก
+
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        /*
+           ดึงข้อมูลจาก Supabase
+
+           ตาราง:
+           bookings
+
+           ค้นหาจาก:
+           phone
+        */
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+
+            .from("bookings")
+
+            .select(
+                "booking_code,name,phone,room,check_in,guests,status"
+            )
+
+            .eq(
+                "phone",
+                phone
+            )
+
+            .order(
+                "check_in",
+                {
+                    ascending: false
+                }
+            );
+
+
+
+        if (error) {
+
+            console.error(
+                "Load bookings error:",
+                error
+            );
+
+            throw error;
+
+        }
+
+
+
+        /*
+           ไม่มีข้อมูล
+        */
+
+        if (!data ||
+            data.length === 0) {
+
+
+            bookingList.innerHTML = `
+
+                <div class="empty-booking">
+
+                    <div class="empty-icon">
+
+                        🏨
+
+                    </div>
+
+                    <h4>
+
+                        ยังไม่มีการจอง
+
+                    </h4>
+
+                    <p>
+
+                        คุณยังไม่มีรายการจองห้องพัก
+                        สามารถเลือกห้องพักและทำการจองได้เลย
+
+                    </p>
+
+
+                    <a href="rooms.html"
+                       class="btn btn-main">
+
+                        🏨 เลือกห้องพัก
+
+                    </a>
+
+                </div>
+
+            `;
+
+
+            return;
+
+        }
+
+
+
+        /*
+           มีข้อมูล
+        */
+
+        bookingList.innerHTML =
+            data
+            .map(
+                booking =>
+                    createBookingCard(
+                        booking
+                    )
+            )
+            .join("");
+
+
+    } catch (error) {
+
+
+        console.error(
+            error
+        );
+
+
+        bookingList.innerHTML = `
+
+            <div class="empty-booking">
+
+                <div class="empty-icon">
+
+                    ⚠️
+
+                </div>
+
+                <h4>
+
+                    ไม่สามารถโหลดข้อมูลการจองได้
+
+                </h4>
+
+                <p>
+
+                    กรุณาตรวจสอบการเชื่อมต่อ
+                    หรือลองกดปุ่มรีเฟรชอีกครั้ง
+
+                </p>
+
+                <button
+                    type="button"
+                    onclick="loadBookings()"
+                    class="btn btn-main">
+
+                    🔄 ลองอีกครั้ง
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        showError(
+            "ไม่สามารถดึงข้อมูลการจองจาก Supabase ได้"
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   CREATE BOOKING CARD
+===================================================== */
+
+function createBookingCard(booking) {
+
+
+    const bookingCode =
+        escapeHTML(
+            booking.booking_code
+        );
+
+
+    const room =
+        escapeHTML(
+            booking.room
+        );
+
+
+    const guests =
+        escapeHTML(
+            booking.guests
+        );
+
+
+    const status =
+        getStatusHTML(
+            booking.status
+        );
+
+
+    return `
+
+        <div class="booking-card">
+
+
+            <!-- TOP -->
+
+            <div class="booking-top">
+
+
+                <div>
+
+                    <div
+                        style="
+                            color:#777;
+                            font-size:13px;
+                            margin-bottom:4px;
+                        "
+                    >
+
+                        รหัสการจอง
+
+                    </div>
+
+
+                    <div class="booking-code">
+
+                        ${bookingCode || "-"}
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    ${status}
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ROOM -->
+
+            <div class="booking-room">
+
+                🏡 ${room || "-"}
+
+            </div>
+
+
+
+            <!-- INFORMATION -->
+
+            <div class="booking-info">
+
+
+                <div class="booking-info-box">
+
+                    <div class="booking-info-label">
+
+                        📅 วันที่เข้าพัก
+
+                    </div>
+
+
+                    <div class="booking-info-value">
+
+                        ${
+                            formatDate(
+                                booking.check_in
+                            )
+                        }
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="booking-info-box">
+
+                    <div class="booking-info-label">
+
+                        👥 จำนวนผู้เข้าพัก
+
+                    </div>
+
+
+                    <div class="booking-info-value">
+
+                        ${guests || "-"} คน
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="booking-info-box">
+
+                    <div class="booking-info-label">
+
+                        👤 ผู้จอง
+
+                    </div>
+
+
+                    <div class="booking-info-value">
+
+                        ${
+                            escapeHTML(
+                                booking.name
+                            ) || "-"
+                        }
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="booking-info-box">
+
+                    <div class="booking-info-label">
+
+                        📱 เบอร์โทรศัพท์
+
+                    </div>
+
+
+                    <div class="booking-info-value">
+
+                        ${
+                            escapeHTML(
+                                booking.phone
+                            ) || "-"
+                        }
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
 
 function logout() {
+
 
     localStorage.removeItem(
         "monBridgeCurrentUser"
     );
 
-    window.location.href = "login.html";
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+/* =====================================================
+   LOAD เมื่อเปิดหน้า
+===================================================== */
+
+if (currentUser) {
+
+    loadBookings();
 
 }
 
