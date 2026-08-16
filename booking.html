@@ -666,6 +666,9 @@ bookingForm.addEventListener(
 
         /* =================================================
            ดึงข้อมูลเดิมจาก localStorage
+
+           ใช้ key = bookings
+           ซึ่งเป็น key เดียวกับ admin-bookings.html
         ================================================== */
 
         let bookings = [];
@@ -708,8 +711,8 @@ bookingForm.addEventListener(
         /* =================================================
            บันทึกข้อมูล
 
-           admin.html จะอ่านข้อมูลจาก
-           localStorage key = "bookings"
+           admin-bookings.html
+           จะอ่านจาก localStorage key = bookings
         ================================================== */
 
         localStorage.setItem(
@@ -773,8 +776,11 @@ bookingForm.addEventListener(
 
 
         successMessage.scrollIntoView({
+
             behavior: "smooth",
+
             block: "start"
+
         });
 
 
@@ -788,4 +794,3 @@ bookingForm.addEventListener(
 </body>
 
 </html>
-```
