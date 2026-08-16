@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
 
 <meta charset="UTF-8">
@@ -11,418 +12,395 @@
 
 <style>
 
-*{
-    box-sizing:border-box
+* {
+    box-sizing: border-box;
 }
 
-body{
-    margin:0;
-    background:#F7F3E8;
-    color:#3E3328;
-    font-family:Arial,sans-serif
+body {
+    margin: 0;
+    background: #F7F3E8;
+    color: #3E3328;
+    font-family: Arial, sans-serif;
 }
 
-.sidebar{
-    position:fixed;
-    left:0;
-    top:0;
-    width:300px;
-    height:100vh;
-    background:#4E342E;
-    color:#fff;
-    padding:30px 18px;
-    overflow-y:auto;
-    z-index:1000
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background: #4E342E;
+    color: #fff;
+    padding: 30px 18px;
+    overflow-y: auto;
+    z-index: 1000;
 }
 
-.logo{
-    font-size:28px;
-    font-weight:bold;
-    margin-bottom:35px;
-    line-height:1.2
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 35px;
+    line-height: 1.2;
 }
 
-.logo span{
-    display:block
+.logo span {
+    display: block;
 }
 
-.menu{
-    display:flex;
-    flex-direction:column;
-    gap:8px
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.menu a{
-    color:#fff;
-    text-decoration:none;
-    padding:16px 22px;
-    border-radius:14px;
-    font-size:19px;
-    font-weight:500;
-    transition:.2s;
-    display:block
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 22px;
+    border-radius: 14px;
+    font-size: 19px;
+    font-weight: 500;
+    transition: .2s;
+    display: block;
 }
 
-.menu a:hover{
-    background:#795548
+.menu a:hover {
+    background: #795548;
 }
 
-.menu a.active{
-    background:#806052
+.menu a.active {
+    background: #806052;
 }
 
-.main{
-    margin-left:300px;
-    padding:45px;
-    min-height:100vh
+.main {
+    margin-left: 300px;
+    padding: 45px;
+    min-height: 100vh;
 }
 
-.page-header{
-    background:#fff;
-    border-radius:22px;
-    padding:30px 40px;
-    margin-bottom:35px;
-    box-shadow:0 5px 20px rgba(62,51,40,.08);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px
+.page-header {
+    background: #fff;
+    border-radius: 22px;
+    padding: 30px 40px;
+    margin-bottom: 35px;
+    box-shadow: 0 5px 20px rgba(62,51,40,.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
-.page-header-left{
-    flex:1
+.page-header-left {
+    flex: 1;
 }
 
-.page-header h1{
-    margin:0;
-    color:#6D4C41;
-    font-weight:bold;
-    font-size:40px
+.page-header h1 {
+    margin: 0;
+    color: #6D4C41;
+    font-weight: bold;
+    font-size: 40px;
 }
 
-.page-header p{
-    margin:8px 0 0;
-    font-size:18px
+.page-header p {
+    margin: 8px 0 0;
+    font-size: 18px;
 }
 
-.header-buttons{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    flex-wrap:wrap
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-.btn-main{
-    background:#806052;
-    color:#fff;
-    border:none;
-    padding:13px 20px;
-    border-radius:12px;
-    font-size:16px;
-    cursor:pointer
+.btn-main {
+    background: #806052;
+    color: #fff;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.btn-main:hover{
-    background:#6D4C41
+.btn-main:hover {
+    background: #6D4C41;
 }
 
-.btn-secondary{
-    background:#E8E1D8;
-    color:#5D4037;
-    border:none;
-    padding:13px 20px;
-    border-radius:12px;
-    cursor:pointer
+.btn-secondary {
+    background: #E8E1D8;
+    color: #5D4037;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 12px;
+    cursor: pointer;
 }
 
-.btn-danger{
-    background:#B45D4C;
-    color:#fff;
-    border:none;
-    padding:9px 15px;
-    border-radius:10px;
-    cursor:pointer
+.btn-danger {
+    background: #B45D4C;
+    color: #fff;
+    border: none;
+    padding: 9px 15px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.btn-danger:hover{
-    background:#934737
+.btn-danger:hover {
+    background: #934737;
 }
 
-.btn-edit{
-    background:#C9A27E;
-    color:#fff;
-    border:none;
-    padding:9px 15px;
-    border-radius:10px;
-    cursor:pointer
+.btn-edit {
+    background: #C9A27E;
+    color: #fff;
+    border: none;
+    padding: 9px 15px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.btn-view{
-    background:#795548;
-    color:#fff;
-    border:none;
-    padding:9px 15px;
-    border-radius:10px;
-    cursor:pointer
+.btn-view {
+    background: #795548;
+    color: #fff;
+    border: none;
+    padding: 9px 15px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.summary{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:25px;
-    margin-bottom:35px
+.summary {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 25px;
+    margin-bottom: 35px;
 }
 
-.summary-card{
-    background:#fff;
-    border-radius:22px;
-    padding:25px 30px;
-    min-height:130px;
-    box-shadow:0 5px 20px rgba(62,51,40,.08)
+.summary-card {
+    background: #fff;
+    border-radius: 22px;
+    padding: 25px 30px;
+    min-height: 130px;
+    box-shadow: 0 5px 20px rgba(62,51,40,.08);
 }
 
-.summary-number{
-    font-size:34px;
-    font-weight:bold;
-    color:#795548;
-    margin-bottom:8px
+.summary-number {
+    font-size: 34px;
+    font-weight: bold;
+    color: #795548;
+    margin-bottom: 8px;
 }
 
-.summary-label{
-    font-size:17px;
-    color:#6D4C41
+.summary-label {
+    font-size: 17px;
+    color: #6D4C41;
 }
 
-.panel{
-    background:#fff;
-    border-radius:22px;
-    padding:30px;
-    margin-bottom:25px;
-    box-shadow:0 5px 20px rgba(62,51,40,.08)
+.panel {
+    background: #fff;
+    border-radius: 22px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(62,51,40,.08);
 }
 
-.search-row{
-    display:flex;
-    gap:12px
+.search-row {
+    display: flex;
+    gap: 12px;
 }
 
-.search-input,
-.form-control{
-    flex:1;
-    width:100%;
-    padding:13px 16px;
-    border:1px solid #D7CCC8;
-    border-radius:12px;
-    font-size:16px;
-    outline:none
+.search-input {
+    flex: 1;
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid #D7CCC8;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
 }
 
-.search-input:focus,
-.form-control:focus{
-    border-color:#795548;
-    box-shadow:0 0 0 3px rgba(121,85,72,.12)
+.search-input:focus {
+    border-color: #795548;
+    box-shadow: 0 0 0 3px rgba(121,85,72,.12);
 }
 
-.table-wrap{
-    overflow-x:auto
+.table-wrap {
+    overflow-x: auto;
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:850px
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
 }
 
-th{
-    background:#F7F3E8;
-    color:#6D4C41;
-    font-size:16px;
-    padding:16px 12px;
-    text-align:left;
-    border-bottom:2px solid #E0D2C5;
-    white-space:nowrap
+th {
+    background: #F7F3E8;
+    color: #6D4C41;
+    font-size: 16px;
+    padding: 16px 12px;
+    text-align: left;
+    border-bottom: 2px solid #E0D2C5;
+    white-space: nowrap;
 }
 
-td{
-    padding:16px 12px;
-    border-bottom:1px solid #E8E1D8;
-    vertical-align:middle
+td {
+    padding: 16px 12px;
+    border-bottom: 1px solid #E8E1D8;
+    vertical-align: middle;
 }
 
-tr:hover td{
-    background:#FCF9F3
+tr:hover td {
+    background: #FCF9F3;
 }
 
-.actions{
-    display:flex;
-    gap:7px;
-    flex-wrap:wrap
+.actions {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
 }
 
-.badge{
-    display:inline-block;
-    padding:8px 13px;
-    border-radius:20px;
-    font-size:14px
+.badge {
+    display: inline-block;
+    padding: 8px 13px;
+    border-radius: 20px;
+    font-size: 14px;
 }
 
-.badge-green{
-    background:#E8F3E8;
-    color:#4E7A52
+.badge-green {
+    background: #E8F3E8;
+    color: #4E7A52;
 }
 
-.badge-red{
-    background:#F8E5E1;
-    color:#A64B3C
+.badge-red {
+    background: #F8E5E1;
+    color: #A64B3C;
 }
 
-.badge-yellow{
-    background:#FFF1C9;
-    color:#8A6A16
+.badge-yellow {
+    background: #FFF1C9;
+    color: #8A6A16;
 }
 
-.empty{
-    text-align:center;
-    padding:50px;
-    color:#8D8178;
-    font-size:18px
+.empty {
+    text-align: center;
+    padding: 50px;
+    color: #8D8178;
+    font-size: 18px;
 }
 
-.form-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:16px
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.form-group{
-    display:flex;
-    flex-direction:column;
-    gap:7px
+.modal.show {
+    display: flex;
 }
 
-.form-group label{
-    font-weight:bold;
-    color:#6D4C41
+.modal-box {
+    background: #fff;
+    width: 100%;
+    max-width: 650px;
+    max-height: 90vh;
+    overflow: auto;
+    border-radius: 20px;
+    padding: 30px;
 }
 
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.55);
-    z-index:2000;
-    justify-content:center;
-    align-items:center;
-    padding:20px
+.modal-title {
+    font-size: 27px;
+    font-weight: bold;
+    color: #6D4C41;
+    margin-bottom: 20px;
 }
 
-.modal.show{
-    display:flex
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 22px;
 }
 
-.modal-box{
-    background:#fff;
-    width:100%;
-    max-width:650px;
-    max-height:90vh;
-    overflow:auto;
-    border-radius:20px;
-    padding:30px
+.detail {
+    background: #F7F3E8;
+    border-radius: 14px;
+    padding: 18px;
 }
 
-.modal-title{
-    font-size:27px;
-    font-weight:bold;
-    color:#6D4C41;
-    margin-bottom:20px
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 0;
+    border-bottom: 1px solid #E0D2C5;
 }
 
-.modal-actions{
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
-    margin-top:22px
+.detail-row:last-child {
+    border-bottom: 0;
 }
 
-.detail{
-    background:#F7F3E8;
-    border-radius:14px;
-    padding:18px
+.detail-label {
+    font-weight: bold;
+    color: #795548;
 }
 
-.detail-row{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-    padding:12px 0;
-    border-bottom:1px solid #E0D2C5
+footer {
+    text-align: center;
+    color: #756960;
+    padding: 25px;
 }
 
-.detail-row:last-child{
-    border-bottom:0
-}
+@media(max-width:1200px) {
 
-.detail-label{
-    font-weight:bold;
-    color:#795548
-}
-
-footer{
-    text-align:center;
-    color:#756960;
-    padding:25px
-}
-
-@media(max-width:1200px){
-
-    .sidebar{
-        width:240px
+    .sidebar {
+        width: 240px;
     }
 
-    .main{
-        margin-left:240px;
-        padding:25px
+    .main {
+        margin-left: 240px;
+        padding: 25px;
     }
 
-    .summary{
-        grid-template-columns:repeat(2,1fr)
+    .summary {
+        grid-template-columns: repeat(2,1fr);
     }
 
 }
 
-@media(max-width:800px){
+@media(max-width:800px) {
 
-    .sidebar{
-        position:relative;
-        width:100%;
-        height:auto;
-        padding:20px
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 20px;
     }
 
-    .main{
-        margin-left:0;
-        padding:20px
+    .main {
+        margin-left: 0;
+        padding: 20px;
     }
 
-    .page-header{
-        flex-direction:column;
-        align-items:flex-start
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    .page-header h1{
-        font-size:32px
+    .page-header h1 {
+        font-size: 32px;
     }
 
-    .summary{
-        grid-template-columns:1fr
+    .summary {
+        grid-template-columns: 1fr;
     }
 
-    .search-row{
-        flex-direction:column
-    }
-
-    .form-grid{
-        grid-template-columns:1fr
+    .search-row {
+        flex-direction: column;
     }
 
 }
@@ -431,35 +409,41 @@ footer{
 
 </head>
 
+
 <body>
 
 
 <div class="sidebar">
 
     <div class="logo">
+
         🏡 Mon Bridge
+
         <span>Stay</span>
+
     </div>
+
 
     <div class="menu">
 
-        <a href="admin.html" class="">
+        <a href="admin.html">
             📊 Dashboard
         </a>
 
-        <a href="admin-rooms.html" class="">
+        <a href="admin-rooms.html">
             🛏️ จัดการห้องพัก
         </a>
 
-        <a href="admin-bookings.html" class="active">
+        <a href="admin-bookings.html"
+           class="active">
             🗓️ การจอง
         </a>
 
-        <a href="admin-promotions.html" class="">
+        <a href="admin-promotions.html">
             🎁 โปรโมชั่น
         </a>
 
-        <a href="admin-guests.html" class="">
+        <a href="admin-guests.html">
             👥 ผู้เข้าพัก
         </a>
 
@@ -476,23 +460,6 @@ footer{
 
 </div>
 
-
-<script>
-
-function leaveAdmin(){
-
-    try{
-        localStorage.removeItem(
-            'monBridgeAdmin'
-        );
-    }
-    catch(e){}
-
-    return true;
-
-}
-
-</script>
 
 
 <main class="main">
@@ -512,19 +479,18 @@ function leaveAdmin(){
 
     </div>
 
+
     <div class="header-buttons">
 
-        <button
-            class="btn-secondary"
-            onclick="renderBookings()">
+        <button class="btn-secondary"
+                onclick="renderBookings()">
 
             🔄 รีเฟรช
 
         </button>
 
-        <button
-            class="btn-main"
-            onclick="location.href='admin-guests.html'">
+        <button class="btn-main"
+                onclick="location.href='admin-guests.html'">
 
             👥 ดูผู้เข้าพัก
 
@@ -535,13 +501,13 @@ function leaveAdmin(){
 </div>
 
 
+
 <div class="summary">
 
     <div class="summary-card">
 
-        <div
-            class="summary-number"
-            id="bookingTotal">
+        <div class="summary-number"
+             id="bookingTotal">
             0
         </div>
 
@@ -554,9 +520,8 @@ function leaveAdmin(){
 
     <div class="summary-card">
 
-        <div
-            class="summary-number"
-            id="bookingConfirmed">
+        <div class="summary-number"
+             id="bookingConfirmed">
             0
         </div>
 
@@ -569,9 +534,8 @@ function leaveAdmin(){
 
     <div class="summary-card">
 
-        <div
-            class="summary-number"
-            id="bookingPending">
+        <div class="summary-number"
+             id="bookingPending">
             0
         </div>
 
@@ -584,9 +548,8 @@ function leaveAdmin(){
 
     <div class="summary-card">
 
-        <div
-            class="summary-number"
-            id="bookingSearchCount">
+        <div class="summary-number"
+             id="bookingSearchCount">
             0
         </div>
 
@@ -597,6 +560,7 @@ function leaveAdmin(){
     </div>
 
 </div>
+
 
 
 <div class="panel">
@@ -610,10 +574,7 @@ function leaveAdmin(){
 
         <button
             class="btn-secondary"
-            onclick="
-                document.getElementById('bookingSearch').value='';
-                renderBookings()
-            ">
+            onclick="clearSearch()">
 
             ✕ ล้าง
 
@@ -622,6 +583,7 @@ function leaveAdmin(){
     </div>
 
 </div>
+
 
 
 <div class="panel">
@@ -642,8 +604,6 @@ function leaveAdmin(){
 
                     <th>วันที่เข้าพัก</th>
 
-                    <th>วันที่ออก</th>
-
                     <th>จำนวน</th>
 
                     <th>ราคา</th>
@@ -656,6 +616,7 @@ function leaveAdmin(){
 
             </thead>
 
+
             <tbody id="bookingTable">
 
             </tbody>
@@ -667,19 +628,21 @@ function leaveAdmin(){
 </div>
 
 
-<div
-    class="modal"
-    id="bookingModal">
+
+<div class="modal"
+     id="bookingModal">
 
     <div class="modal-box">
 
         <div class="modal-title">
+
             👁️ รายละเอียดการจอง
+
         </div>
 
-        <div
-            id="bookingDetail"
-            class="detail">
+        <div id="bookingDetail"
+             class="detail">
+
         </div>
 
         <div class="modal-actions">
@@ -699,149 +662,120 @@ function leaveAdmin(){
 </div>
 
 
+
 <footer>
+
     © 2026 Mon Bridge Stay. All rights reserved.
+
 </footer>
 
 
 </main>
 
 
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
 <script>
 
 
 /* =====================================================
-   แก้ไขสำคัญ
-   ให้ใช้ key เดียวกับหน้าจอง
+   SUPABASE
 ===================================================== */
 
-const BOOKING_KEY = "bookings";
+const SUPABASE_URL =
+    "https://nnliayqdzfypnzztjvsi.supabase.co";
 
+const SUPABASE_KEY =
+    "sb_publishable_1qPjT_zybkweIYWzlTceYQ_lTj0RurS";
 
-/* =====================================================
-   อ่านข้อมูลการจอง
-===================================================== */
-
-function getBookings(){
-
-    try{
-
-        let saved =
-            localStorage.getItem(
-                BOOKING_KEY
-            );
-
-        let bookings =
-            saved
-            ? JSON.parse(saved)
-            : [];
-
-
-        if(!Array.isArray(bookings)){
-
-            bookings = [];
-
-        }
-
-
-        /*
-         * รองรับข้อมูลเดิมที่อาจถูกบันทึกไว้ด้วย
-         * monBridgeBookings
-         */
-
-        if(bookings.length === 0){
-
-            const oldSaved =
-                localStorage.getItem(
-                    "monBridgeBookings"
-                );
-
-
-            if(oldSaved){
-
-                try{
-
-                    const oldBookings =
-                        JSON.parse(oldSaved);
-
-
-                    if(
-                        Array.isArray(
-                            oldBookings
-                        )
-                    ){
-
-                        bookings =
-                            oldBookings;
-
-
-                        localStorage.setItem(
-                            BOOKING_KEY,
-                            JSON.stringify(
-                                bookings
-                            )
-                        );
-
-                    }
-
-                }
-                catch(error){}
-
-            }
-
-        }
-
-
-        return bookings;
-
-    }
-    catch(error){
-
-        console.error(
-            "ไม่สามารถอ่านข้อมูลการจองได้",
-            error
-        );
-
-        return [];
-
-    }
-
-}
-
-
-/* =====================================================
-   บันทึกข้อมูล
-===================================================== */
-
-function saveBookings(bookings){
-
-    localStorage.setItem(
-        BOOKING_KEY,
-        JSON.stringify(bookings)
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
     );
 
-}
 
 
 /* =====================================================
-   ป้องกัน HTML
+   LOGOUT
 ===================================================== */
 
-function esc(value){
+function leaveAdmin() {
+
+    try {
+
+        localStorage.removeItem(
+            "monBridgeAdmin"
+        );
+
+    }
+
+    catch (e) {}
+
+    return true;
+
+}
+
+
+
+/* =====================================================
+   GET BOOKINGS
+===================================================== */
+
+async function getBookings() {
+
+    const {
+        data,
+        error
+    } = await supabaseClient
+        .from("bookings")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending: false
+            }
+        );
+
+
+    if (error) {
+
+        console.error(error);
+
+        throw error;
+
+    }
+
+
+    return data || [];
+
+}
+
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function esc(value) {
 
     return String(
         value ?? ""
     ).replace(
         /[&<>"']/g,
-        function(m){
+        function(m) {
 
             return {
 
-                "&":"&amp;",
-                "<":"&lt;",
-                ">":"&gt;",
-                '"':"&quot;",
-                "'":"&#039;"
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
 
             }[m];
 
@@ -851,26 +785,51 @@ function esc(value){
 }
 
 
+
 /* =====================================================
-   สถานะ
+   DATE
 ===================================================== */
 
-function statusText(status){
+function formatDate(dateString) {
 
-    if(
-        status === "confirmed" ||
-        status === "ยืนยันแล้ว"
-    ){
+    if (!dateString) {
+
+        return "-";
+
+    }
+
+
+    const parts =
+        String(dateString).split("-");
+
+
+    if (parts.length !== 3) {
+
+        return dateString;
+
+    }
+
+
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+
+}
+
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function statusText(status) {
+
+    if (status === "confirmed") {
 
         return "ยืนยันแล้ว";
 
     }
 
 
-    if(
-        status === "cancelled" ||
-        status === "ยกเลิก"
-    ){
+    if (status === "cancelled") {
 
         return "ยกเลิก";
 
@@ -882,183 +841,124 @@ function statusText(status){
 }
 
 
-/* =====================================================
-   วันที่
-===================================================== */
-
-function formatBookingDate(booking){
-
-    if(booking.dateDisplay){
-
-        return booking.dateDisplay;
-
-    }
-
-
-    if(booking.date){
-
-        const parts =
-            String(
-                booking.date
-            ).split("-");
-
-
-        if(parts.length === 3){
-
-            return `
-                ${parts[2]}/${parts[1]}/${parts[0]}
-            `.trim();
-
-        }
-
-
-        return booking.date;
-
-    }
-
-
-    return (
-        booking.checkIn ||
-        booking.startDate ||
-        "-"
-    );
-
-}
-
 
 /* =====================================================
-   แสดงรายการจอง
+   RENDER
 ===================================================== */
 
-function renderBookings(){
+async function renderBookings() {
 
-    const all =
-        getBookings();
-
-
-    const searchInput =
-        document.getElementById(
-            "bookingSearch"
-        );
-
-
-    const q =
-        searchInput
-        ? searchInput.value
-            .trim()
-            .toLowerCase()
-        : "";
-
-
-    const list =
-        all.filter(
-            function(booking){
-
-                return JSON
-                    .stringify(booking)
-                    .toLowerCase()
-                    .includes(q);
-
-            }
-        );
-
-
-    /* =========================
-       สรุปจำนวน
-    ========================== */
-
-    document.getElementById(
-        "bookingTotal"
-    ).textContent =
-        all.length;
-
-
-    document.getElementById(
-        "bookingConfirmed"
-    ).textContent =
-        all.filter(
-            function(booking){
-
-                return [
-                    "confirmed",
-                    "ยืนยันแล้ว"
-                ].includes(
-                    booking.status
-                );
-
-            }
-        ).length;
-
-
-    document.getElementById(
-        "bookingPending"
-    ).textContent =
-        all.filter(
-            function(booking){
-
-                return ![
-                    "confirmed",
-                    "ยืนยันแล้ว",
-                    "cancelled",
-                    "ยกเลิก"
-                ].includes(
-                    booking.status
-                );
-
-            }
-        ).length;
-
-
-    document.getElementById(
-        "bookingSearchCount"
-    ).textContent =
-        list.length;
-
-
-    /* =========================
-       ตาราง
-    ========================== */
-
-    const tb =
+    const table =
         document.getElementById(
             "bookingTable"
         );
 
 
-    tb.innerHTML = "";
+    table.innerHTML =
+        `<tr>
+            <td colspan="8"
+                class="empty">
+
+                ⏳ กำลังโหลดข้อมูล...
+
+            </td>
+        </tr>`;
 
 
-    if(!list.length){
+    try {
 
-        tb.innerHTML = `
-            <tr>
-                <td
-                    colspan="9"
-                    class="empty">
-
-                    📭 ไม่พบรายการจอง
-
-                </td>
-            </tr>
-        `;
-
-        return;
-
-    }
+        const all =
+            await getBookings();
 
 
-    list.forEach(
-        function(booking){
+        const search =
+            document
+            .getElementById(
+                "bookingSearch"
+            )
+            .value
+            .trim()
+            .toLowerCase();
 
-            const index =
-                all.indexOf(
-                    booking
-                );
+
+        const list =
+            all.filter(function(b) {
+
+                return JSON.stringify(b)
+                    .toLowerCase()
+                    .includes(search);
+
+            });
+
+
+        document
+        .getElementById(
+            "bookingTotal"
+        )
+        .textContent =
+            all.length;
+
+
+        document
+        .getElementById(
+            "bookingConfirmed"
+        )
+        .textContent =
+            all.filter(function(b) {
+
+                return b.status ===
+                    "confirmed";
+
+            }).length;
+
+
+        document
+        .getElementById(
+            "bookingPending"
+        )
+        .textContent =
+            all.filter(function(b) {
+
+                return b.status ===
+                    "pending";
+
+            }).length;
+
+
+        document
+        .getElementById(
+            "bookingSearchCount"
+        )
+        .textContent =
+            list.length;
+
+
+        table.innerHTML = "";
+
+
+        if (!list.length) {
+
+            table.innerHTML =
+                `<tr>
+                    <td colspan="8"
+                        class="empty">
+
+                        📭 ไม่พบรายการจอง
+
+                    </td>
+                </tr>`;
+
+            return;
+
+        }
+
+
+        list.forEach(function(b) {
 
 
             const status =
                 statusText(
-                    booking.status
+                    b.status
                 );
 
 
@@ -1066,17 +966,21 @@ function renderBookings(){
                 "badge-yellow";
 
 
-            if(
-                status === "ยืนยันแล้ว"
-            ){
+            if (
+                b.status ===
+                "confirmed"
+            ) {
 
                 cls =
                     "badge-green";
 
             }
-            else if(
-                status === "ยกเลิก"
-            ){
+
+
+            if (
+                b.status ===
+                "cancelled"
+            ) {
 
                 cls =
                     "badge-red";
@@ -1084,143 +988,105 @@ function renderBookings(){
             }
 
 
-            /* =========================
-               ข้อมูล
-            ========================== */
+            let actions = `
 
-            const bookingCode =
-                booking.code ||
-                booking.id ||
-                booking.bookingId ||
-                String(
-                    index + 1
-                ).padStart(
-                    3,
-                    "0"
-                );
+                <button
+                    class="btn-view"
+                    onclick="viewBooking('${b.booking_code}')">
+
+                    👁️ ดู
+
+                </button>
+
+            `;
 
 
-            const guestName =
-                booking.name ||
-                booking.guestName ||
-                booking.firstName ||
-                "-";
+            if (
+                b.status ===
+                "pending"
+            ) {
 
+                actions += `
 
-            const roomName =
-                booking.room ||
-                booking.roomName ||
-                booking.hotel ||
-                "-";
+                    <button
+                        class="btn-edit"
+                        onclick="confirmBooking('${b.booking_code}')">
 
+                        ✅ ยืนยัน
 
-            const checkIn =
-                formatBookingDate(
-                    booking
-                );
+                    </button>
 
-
-            const checkOut =
-                booking.checkOut ||
-                booking.endDate ||
-                "-";
-
-
-            const guests =
-                booking.guests ||
-                booking.quantity ||
-                "-";
-
-
-            let price = "-";
-
-
-            if(
-                booking.price !== undefined &&
-                booking.price !== null &&
-                booking.price !== ""
-            ){
-
-                price =
-                    Number(
-                        booking.price
-                    ).toLocaleString()
-                    + " บาท";
-
-            }
-            else if(
-                booking.total !== undefined &&
-                booking.total !== null &&
-                booking.total !== ""
-            ){
-
-                price =
-                    Number(
-                        booking.total
-                    ).toLocaleString()
-                    + " บาท";
+                `;
 
             }
 
 
-            /* =========================
-               ตาราง
-            ========================== */
+            actions += `
 
-            tb.innerHTML += `
+                <button
+                    class="btn-danger"
+                    onclick="deleteBooking('${b.booking_code}')">
+
+                    🗑️ ลบ
+
+                </button>
+
+            `;
+
+
+            table.innerHTML += `
 
                 <tr>
 
                     <td>
 
                         <strong>
-                            #${esc(
-                                bookingCode
-                            )}
+                            ${esc(b.booking_code)}
                         </strong>
 
                     </td>
 
 
                     <td>
-                        ${esc(
-                            guestName
-                        )}
+
+                        ${esc(b.name)}
+
                     </td>
 
 
                     <td>
-                        ${esc(
-                            roomName
-                        )}
+
+                        ${esc(b.room)}
+
                     </td>
 
 
                     <td>
+
                         ${esc(
-                            checkIn
+                            formatDate(
+                                b.check_in
+                            )
                         )}
+
                     </td>
 
 
                     <td>
-                        ${esc(
-                            checkOut
-                        )}
+
+                        ${esc(b.guests)}
+                        คน
+
                     </td>
 
 
                     <td>
-                        ${esc(
-                            guests
-                        )} คน
-                    </td>
 
+                        ${Number(
+                            b.price || 0
+                        ).toLocaleString()}
+                        บาท
 
-                    <td>
-                        ${esc(
-                            price
-                        )}
                     </td>
 
 
@@ -1229,9 +1095,7 @@ function renderBookings(){
                         <span
                             class="badge ${cls}">
 
-                            ${esc(
-                                status
-                            )}
+                            ${status}
 
                         </span>
 
@@ -1242,42 +1106,7 @@ function renderBookings(){
 
                         <div class="actions">
 
-                            <button
-                                class="btn-view"
-                                onclick="viewBooking(${index})">
-
-                                👁️ ดู
-
-                            </button>
-
-
-                            ${
-                                status !== "ยืนยันแล้ว" &&
-                                status !== "ยกเลิก"
-
-                                ? `
-
-                                    <button
-                                        class="btn-edit"
-                                        onclick="confirmBooking(${index})">
-
-                                        ✅ ยืนยัน
-
-                                    </button>
-
-                                `
-
-                                : ""
-                            }
-
-
-                            <button
-                                class="btn-danger"
-                                onclick="deleteBooking(${index})">
-
-                                🗑️ ลบ
-
-                            </button>
+                            ${actions}
 
                         </div>
 
@@ -1287,198 +1116,181 @@ function renderBookings(){
 
             `;
 
-        }
-    );
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        table.innerHTML =
+            `<tr>
+                <td colspan="8"
+                    class="empty">
+
+                    ❌ ไม่สามารถโหลดข้อมูลจากฐานข้อมูลได้
+
+                    <br><br>
+
+                    กรุณาตรวจสอบ Supabase และการเชื่อมต่อ
+
+                </td>
+            </tr>`;
+
+    }
 
 }
 
 
+
 /* =====================================================
-   ดูรายละเอียด
+   VIEW
 ===================================================== */
 
-function viewBooking(index){
+async function viewBooking(
+    bookingCode
+) {
 
-    const bookings =
-        getBookings();
+    try {
 
-
-    const booking =
-        bookings[index];
-
-
-    if(!booking){
-
-        return;
-
-    }
-
-
-    const detail =
-        document.getElementById(
-            "bookingDetail"
-        );
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from("bookings")
+            .select("*")
+            .eq(
+                "booking_code",
+                bookingCode
+            )
+            .single();
 
 
-    detail.innerHTML = `
+        if (error) {
 
-        <div class="detail-row">
+            throw error;
 
-            <span class="detail-label">
-                รหัสการจอง
-            </span>
-
-            <span>
-                ${esc(
-                    booking.code ||
-                    booking.id ||
-                    "-"
-                )}
-            </span>
-
-        </div>
+        }
 
 
-        <div class="detail-row">
-
-            <span class="detail-label">
-                ผู้จอง
-            </span>
-
-            <span>
-                ${esc(
-                    booking.name ||
-                    booking.guestName ||
-                    "-"
-                )}
-            </span>
-
-        </div>
+        const detail =
+            document.getElementById(
+                "bookingDetail"
+            );
 
 
-        <div class="detail-row">
-
-            <span class="detail-label">
-                เบอร์โทร
-            </span>
-
-            <span>
-                ${esc(
-                    booking.phone ||
-                    "-"
-                )}
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <span class="detail-label">
-                ที่พัก
-            </span>
-
-            <span>
-                ${esc(
-                    booking.room ||
-                    booking.roomName ||
-                    "-"
-                )}
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <span class="detail-label">
-                วันที่เข้าพัก
-            </span>
-
-            <span>
-                ${esc(
-                    formatBookingDate(
-                        booking
-                    )
-                )}
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <span class="detail-label">
-                จำนวนผู้เข้าพัก
-            </span>
-
-            <span>
-                ${esc(
-                    booking.guests ||
-                    "-"
-                )}
-                คน
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <span class="detail-label">
-                ราคา
-            </span>
-
-            <span>
-
-                ${
-                    booking.price
-                    ?
-                    Number(
-                        booking.price
-                    ).toLocaleString()
-                    + " บาท"
-                    :
-                    "-"
-                }
-
-            </span>
-
-        </div>
-
-
-        <div class="detail-row">
-
-            <span class="detail-label">
-                สถานะ
-            </span>
-
-            <span>
-                ${esc(
-                    statusText(
-                        booking.status
-                    )
-                )}
-            </span>
-
-        </div>
-
-    `;
-
-
-    if(booking.createdAt){
-
-        detail.innerHTML += `
+        detail.innerHTML = `
 
             <div class="detail-row">
 
                 <span class="detail-label">
-                    วันที่ส่งข้อมูล
+                    รหัสการจอง
+                </span>
+
+                <span>
+                    ${esc(data.booking_code)}
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    ผู้จอง
+                </span>
+
+                <span>
+                    ${esc(data.name)}
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    เบอร์โทร
+                </span>
+
+                <span>
+                    ${esc(data.phone)}
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    ที่พัก
+                </span>
+
+                <span>
+                    ${esc(data.room)}
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    วันที่เข้าพัก
                 </span>
 
                 <span>
                     ${esc(
-                        booking.createdAt
+                        formatDate(
+                            data.check_in
+                        )
+                    )}
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    จำนวนผู้เข้าพัก
+                </span>
+
+                <span>
+                    ${esc(data.guests)} คน
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    ราคา
+                </span>
+
+                <span>
+                    ${Number(
+                        data.price || 0
+                    ).toLocaleString()}
+                    บาท
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    สถานะ
+                </span>
+
+                <span>
+                    ${esc(
+                        statusText(
+                            data.status
+                        )
                     )}
                 </span>
 
@@ -1486,114 +1298,106 @@ function viewBooking(index){
 
         `;
 
-    }
 
-
-    document
+        document
         .getElementById(
             "bookingModal"
         )
-        .classList
-        .add("show");
-
-}
-
-
-/* =====================================================
-   ปิด Modal
-===================================================== */
-
-function closeBookingModal(){
-
-    document
-        .getElementById(
-            "bookingModal"
-        )
-        .classList
-        .remove("show");
-
-}
-
-
-/* =====================================================
-   ยืนยันการจอง
-===================================================== */
-
-function confirmBooking(index){
-
-    const bookings =
-        getBookings();
-
-
-    if(!bookings[index]){
-
-        return;
+        .classList.add("show");
 
     }
 
+    catch (error) {
 
-    bookings[index].status =
-        "confirmed";
+        console.error(error);
 
-
-    bookings[index].statusText =
-        "ยืนยันแล้ว";
-
-
-    saveBookings(
-        bookings
-    );
-
-
-    renderBookings();
-
-
-    alert(
-        "ยืนยันการจองเรียบร้อยแล้ว"
-    );
-
-}
-
-
-/* =====================================================
-   ลบการจอง
-===================================================== */
-
-function deleteBooking(index){
-
-    const bookings =
-        getBookings();
-
-
-    if(!bookings[index]){
-
-        return;
-
-    }
-
-
-    if(
-        confirm(
-            "ต้องการลบรายการจองนี้ใช่หรือไม่?"
-        )
-    ){
-
-        bookings.splice(
-            index,
-            1
+        alert(
+            "ไม่สามารถเปิดรายละเอียดได้"
         );
 
+    }
 
-        saveBookings(
-            bookings
+}
+
+
+
+/* =====================================================
+   CLOSE
+===================================================== */
+
+function closeBookingModal() {
+
+    document
+    .getElementById(
+        "bookingModal"
+    )
+    .classList.remove(
+        "show"
+    );
+
+}
+
+
+
+/* =====================================================
+   CONFIRM
+===================================================== */
+
+async function confirmBooking(
+    bookingCode
+) {
+
+    if (
+        !confirm(
+            "ต้องการยืนยันการจองนี้ใช่หรือไม่?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const {
+            error
+        } = await supabaseClient
+            .from("bookings")
+            .update({
+
+                status:
+                    "confirmed"
+
+            })
+            .eq(
+                "booking_code",
+                bookingCode
+            );
+
+
+        if (error) {
+
+            throw error;
+
+        }
+
+
+        alert(
+            "✅ ยืนยันการจองเรียบร้อยแล้ว"
         );
 
 
         renderBookings();
 
+    }
+
+    catch (error) {
+
+        console.error(error);
 
         alert(
-            "ลบรายการจองเรียบร้อยแล้ว"
+            "❌ ไม่สามารถยืนยันการจองได้"
         );
 
     }
@@ -1601,35 +1405,125 @@ function deleteBooking(index){
 }
 
 
+
 /* =====================================================
-   ค้นหา
+   DELETE
+===================================================== */
+
+async function deleteBooking(
+    bookingCode
+) {
+
+    if (
+        !confirm(
+            "ต้องการลบรายการจองนี้ใช่หรือไม่?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const {
+            error
+        } = await supabaseClient
+            .from("bookings")
+            .delete()
+            .eq(
+                "booking_code",
+                bookingCode
+            );
+
+
+        if (error) {
+
+            throw error;
+
+        }
+
+
+        alert(
+            "🗑️ ลบรายการจองเรียบร้อยแล้ว"
+        );
+
+
+        renderBookings();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "❌ ไม่สามารถลบรายการจองได้"
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SEARCH
 ===================================================== */
 
 document
+.getElementById(
+    "bookingSearch"
+)
+.addEventListener(
+    "input",
+    renderBookings
+);
+
+
+
+function clearSearch() {
+
+    document
     .getElementById(
         "bookingSearch"
     )
-    .addEventListener(
-        "input",
-        renderBookings
-    );
+    .value = "";
+
+    renderBookings();
+
+}
+
 
 
 /* =====================================================
-   เริ่มต้น
+   START
 ===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
-    function(){
+    function() {
 
         renderBookings();
 
     }
 );
 
+
+/* =====================================================
+   AUTO REFRESH
+   ทุก 5 วินาที
+===================================================== */
+
+setInterval(
+    renderBookings,
+    5000
+);
+
+
 </script>
 
-
 </body>
+
 </html>
