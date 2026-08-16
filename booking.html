@@ -76,9 +76,7 @@
             border-radius: 10px;
         }
 
-        /* =========================
-           SUCCESS
-        ========================== */
+        /* SUCCESS */
 
         .success-box {
             display: none;
@@ -118,6 +116,48 @@
             font-weight: 600;
         }
 
+        .status-confirmed {
+            display: inline-block;
+            background: #d1e7dd;
+            color: #0f5132;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .status-cancelled {
+            display: inline-block;
+            background: #f8d7da;
+            color: #842029;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .check-status-box {
+            background: #f7f3e8;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .error-box {
+            display: none;
+            background: #f8d7da;
+            color: #842029;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
         footer {
             background: #4e342e;
             color: white;
@@ -133,9 +173,7 @@
 <body>
 
 
-<!-- =========================
-     NAVBAR
-========================== -->
+<!-- NAVBAR -->
 
 <nav class="navbar bg-white shadow-sm">
 
@@ -161,34 +199,32 @@
 
 
 
-<!-- =========================
-     BOOKING
-========================== -->
+<!-- BOOKING -->
 
 <div class="container booking-container">
 
     <div class="booking-card">
 
 
-        <!-- TITLE -->
-
         <div class="text-center mb-4">
 
             <h1 class="booking-title">
+
                 🏠 จองห้องพัก
+
             </h1>
 
             <p class="text-muted">
+
                 กรุณากรอกข้อมูลสำหรับการจองห้องพัก
+
             </p>
 
         </div>
 
 
 
-        <!-- =========================
-             FORM
-        ========================== -->
+        <!-- FORM -->
 
         <form id="bookingForm">
 
@@ -215,7 +251,7 @@
 
 
 
-            <!-- เบอร์โทร -->
+            <!-- เบอร์ -->
 
             <div class="mb-4">
 
@@ -237,14 +273,16 @@
                        required>
 
                 <small class="text-muted">
+
                     กรุณากรอกเบอร์โทรศัพท์ 10 หลัก
+
                 </small>
 
             </div>
 
 
 
-            <!-- เลือกที่พัก -->
+            <!-- ที่พัก -->
 
             <div class="mb-4">
 
@@ -312,7 +350,9 @@
                        required>
 
                 <small class="text-muted">
+
                     สามารถเลือกได้ตั้งแต่วันนี้เป็นต้นไป
+
                 </small>
 
             </div>
@@ -340,7 +380,9 @@
                        required>
 
                 <small class="text-muted">
+
                     จำนวนผู้เข้าพัก 1–20 คน
+
                 </small>
 
             </div>
@@ -350,6 +392,7 @@
             <!-- BUTTON -->
 
             <button type="submit"
+                    id="submitButton"
                     class="btn btn-main w-100">
 
                 ✅ ยืนยันการจอง
@@ -361,12 +404,20 @@
 
 
 
-        <!-- =========================
-             SUCCESS
-        ========================== -->
+        <!-- ERROR -->
+
+        <div id="errorBox"
+             class="error-box">
+
+        </div>
+
+
+
+        <!-- SUCCESS -->
 
         <div id="successMessage"
              class="success-box">
+
 
             <h4 class="mb-3">
 
@@ -382,71 +433,120 @@
             </p>
 
 
+
             <div class="booking-detail">
 
 
                 <p>
+
                     <strong>รหัสการจอง:</strong>
 
                     <span id="resultCode"
                           class="booking-code">
 
                     </span>
+
                 </p>
 
 
                 <p>
+
                     <strong>ผู้จอง:</strong>
 
-                    <span id="resultName">
-                    </span>
+                    <span id="resultName"></span>
+
                 </p>
 
 
                 <p>
+
                     <strong>เบอร์โทร:</strong>
 
-                    <span id="resultPhone">
-                    </span>
+                    <span id="resultPhone"></span>
+
                 </p>
 
 
                 <p>
+
                     <strong>ที่พัก:</strong>
 
-                    <span id="resultRoom">
-                    </span>
+                    <span id="resultRoom"></span>
+
                 </p>
 
 
                 <p>
+
                     <strong>วันที่เข้าพัก:</strong>
 
-                    <span id="resultDate">
-                    </span>
+                    <span id="resultDate"></span>
+
                 </p>
 
 
                 <p>
+
                     <strong>จำนวนผู้เข้าพัก:</strong>
 
-                    <span id="resultGuests">
-                    </span>
+                    <span id="resultGuests"></span>
+
                     คน
+
                 </p>
 
 
                 <p>
+
                     <strong>สถานะ:</strong>
 
-                    <span class="status-pending">
+                    <span id="resultStatus"
+                          class="status-pending">
+
                         ⏳ รอยืนยัน
+
                     </span>
 
                 </p>
 
 
             </div>
+
+
+
+            <!-- ตรวจสอบสถานะ -->
+
+            <div class="check-status-box">
+
+                <h5>
+
+                    🔎 ตรวจสอบสถานะการจอง
+
+                </h5>
+
+                <p class="text-muted">
+
+                    หากแอดมินยืนยันการจองแล้ว
+                    สถานะจะเปลี่ยนเป็น "ยืนยันแล้ว"
+
+                </p>
+
+                <button id="checkStatusButton"
+                        class="btn btn-main">
+
+                    🔄 ตรวจสอบสถานะล่าสุด
+
+                </button>
+
+                <div id="loadingStatus"
+                     class="loading">
+
+                    กำลังตรวจสอบ...
+
+                </div>
+
+            </div>
+
 
         </div>
 
@@ -457,16 +557,14 @@
 
 
 
-<!-- =========================
-     FOOTER
-========================== -->
-
 <footer>
 
     <div class="container text-center">
 
         <h5>
+
             🏡 Mon Bridge Stay
+
         </h5>
 
         <p class="mb-0">
@@ -481,13 +579,34 @@
 
 
 
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
 <script>
 
 
 /* =====================================================
-   ตั้งค่าวันต่ำสุด
-   ใช้วันที่เครื่องโดยตรง
-   ไม่แปลงผ่าน Date
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+    "https://nnliayqdzfypnzztjvsi.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_1qPjT_zybkweIYWzlTceYQ_lTj0RurS";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+
+/* =====================================================
+   DATE
 ===================================================== */
 
 const dateInput =
@@ -519,38 +638,31 @@ dateInput.min =
 
 
 
-/* =====================================================
-   แปลงวันที่จาก yyyy-mm-dd
-   เป็น dd/mm/yyyy
-   โดยไม่ใช้ new Date()
-   เพื่อป้องกันปีเพี้ยน
-===================================================== */
-
 function formatDate(dateString) {
 
     if (!dateString) {
+
         return "-";
+
     }
 
     const parts =
         dateString.split("-");
 
     if (parts.length !== 3) {
+
         return dateString;
+
     }
 
-    const year = parts[0];
-    const month = parts[1];
-    const day = parts[2];
-
-    return `${day}/${month}/${year}`;
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
 
 }
 
 
 
 /* =====================================================
-   สร้างรหัสการจอง
+   BOOKING CODE
 ===================================================== */
 
 function generateBookingCode() {
@@ -568,7 +680,7 @@ function generateBookingCode() {
 
 
 /* =====================================================
-   FORM
+   ELEMENTS
 ===================================================== */
 
 const bookingForm =
@@ -577,17 +689,30 @@ const bookingForm =
 const successMessage =
     document.getElementById("successMessage");
 
+const errorBox =
+    document.getElementById("errorBox");
+
+const submitButton =
+    document.getElementById("submitButton");
+
+let currentBookingCode = "";
+
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
 
 bookingForm.addEventListener(
     "submit",
-    function(event) {
+    async function(event) {
 
         event.preventDefault();
 
 
-        /* =========================
-           อ่านข้อมูล
-        ========================== */
+        errorBox.style.display =
+            "none";
+
 
         const name =
             document
@@ -616,176 +741,294 @@ bookingForm.addEventListener(
 
 
         const guests =
-            document
-            .getElementById("guests")
-            .value;
+            Number(
+                document
+                .getElementById("guests")
+                .value
+            );
 
 
+        if (!name ||
+            !phone ||
+            !room ||
+            !date ||
+            !guests) {
 
-        /* =========================
-           สร้างรหัส
-        ========================== */
+            return;
+
+        }
+
 
         const bookingCode =
             generateBookingCode();
 
 
+        submitButton.disabled =
+            true;
 
-        /* =========================
-           ข้อมูลการจอง
-        ========================== */
-
-        const booking = {
-
-            id: bookingCode,
-
-            code: bookingCode,
-
-            name: name,
-
-            phone: phone,
-
-            room: room,
-
-            date: date,
-
-            dateDisplay: formatDate(date),
-
-            guests: Number(guests),
-
-            status: "pending",
-
-            statusText: "รอยืนยัน",
-
-            createdAt:
-                new Date().toISOString()
-
-        };
-
-
-
-        /* =================================================
-           ดึงข้อมูลเดิมจาก localStorage
-
-           ใช้ key = bookings
-           ซึ่งเป็น key เดียวกับ admin-bookings.html
-        ================================================== */
-
-        let bookings = [];
+        submitButton.textContent =
+            "กำลังส่งข้อมูล...";
 
 
         try {
 
-            const saved =
-                localStorage.getItem("bookings");
 
-            if (saved) {
+            const { data, error } =
+                await supabaseClient
+                .from("bookings")
+                .insert({
 
-                bookings =
-                    JSON.parse(saved);
+                    booking_code:
+                        bookingCode,
+
+                    name:
+                        name,
+
+                    phone:
+                        phone,
+
+                    room:
+                        room,
+
+                    check_in:
+                        date,
+
+                    guests:
+                        guests,
+
+                    price:
+                        0,
+
+                    status:
+                        "pending"
+
+                })
+                .select()
+                .single();
+
+
+            if (error) {
+
+                throw error;
 
             }
 
-            if (!Array.isArray(bookings)) {
 
-                bookings = [];
+            currentBookingCode =
+                data.booking_code;
 
-            }
 
-        } catch (error) {
+            document
+            .getElementById("resultCode")
+            .textContent =
+                data.booking_code;
 
-            bookings = [];
+
+            document
+            .getElementById("resultName")
+            .textContent =
+                data.name;
+
+
+            document
+            .getElementById("resultPhone")
+            .textContent =
+                data.phone;
+
+
+            document
+            .getElementById("resultRoom")
+            .textContent =
+                data.room;
+
+
+            document
+            .getElementById("resultDate")
+            .textContent =
+                formatDate(data.check_in);
+
+
+            document
+            .getElementById("resultGuests")
+            .textContent =
+                data.guests;
+
+
+            updateStatusDisplay(
+                data.status
+            );
+
+
+            bookingForm.style.display =
+                "none";
+
+
+            successMessage.style.display =
+                "block";
+
+
+            successMessage.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "start"
+
+            });
+
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+            errorBox.textContent =
+                "❌ ไม่สามารถส่งข้อมูลการจองได้ กรุณาลองใหม่อีกครั้ง";
+
+            errorBox.style.display =
+                "block";
+
+        }
+
+        finally {
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "✅ ยืนยันการจอง";
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   STATUS DISPLAY
+===================================================== */
+
+function updateStatusDisplay(status) {
+
+    const element =
+        document.getElementById(
+            "resultStatus"
+        );
+
+
+    if (status === "confirmed") {
+
+        element.textContent =
+            "🟢 ยืนยันแล้ว";
+
+        element.className =
+            "status-confirmed";
+
+    }
+
+    else if (status === "cancelled") {
+
+        element.textContent =
+            "🔴 ยกเลิก";
+
+        element.className =
+            "status-cancelled";
+
+    }
+
+    else {
+
+        element.textContent =
+            "⏳ รอยืนยัน";
+
+        element.className =
+            "status-pending";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   CHECK STATUS
+===================================================== */
+
+document
+.getElementById("checkStatusButton")
+.addEventListener(
+    "click",
+    checkBookingStatus
+);
+
+
+async function checkBookingStatus() {
+
+    if (!currentBookingCode) {
+
+        return;
+
+    }
+
+
+    const loading =
+        document.getElementById(
+            "loadingStatus"
+        );
+
+
+    loading.style.display =
+        "block";
+
+
+    try {
+
+        const { data, error } =
+            await supabaseClient
+            .from("bookings")
+            .select("*")
+            .eq(
+                "booking_code",
+                currentBookingCode
+            )
+            .single();
+
+
+        if (error) {
+
+            throw error;
 
         }
 
 
-
-        /* =========================
-           เพิ่มการจองใหม่
-        ========================== */
-
-        bookings.push(booking);
-
-
-
-        /* =================================================
-           บันทึกข้อมูล
-
-           admin-bookings.html
-           จะอ่านจาก localStorage key = bookings
-        ================================================== */
-
-        localStorage.setItem(
-            "bookings",
-            JSON.stringify(bookings)
+        updateStatusDisplay(
+            data.status
         );
 
 
+    }
 
-        /* =========================
-           แสดงผลการจอง
-        ========================== */
+    catch (error) {
 
-        document
-            .getElementById("resultCode")
-            .textContent =
-            booking.code;
+        console.error(error);
 
-
-        document
-            .getElementById("resultName")
-            .textContent =
-            booking.name;
-
-
-        document
-            .getElementById("resultPhone")
-            .textContent =
-            booking.phone;
-
-
-        document
-            .getElementById("resultRoom")
-            .textContent =
-            booking.room;
-
-
-        document
-            .getElementById("resultDate")
-            .textContent =
-            booking.dateDisplay;
-
-
-        document
-            .getElementById("resultGuests")
-            .textContent =
-            booking.guests;
-
-
-
-        /* =========================
-           ซ่อนฟอร์ม
-        ========================== */
-
-        bookingForm.style.display =
-            "none";
-
-
-        successMessage.style.display =
-            "block";
-
-
-        successMessage.scrollIntoView({
-
-            behavior: "smooth",
-
-            block: "start"
-
-        });
-
+        alert(
+            "ไม่สามารถตรวจสอบสถานะได้ กรุณาลองใหม่"
+        );
 
     }
-);
+
+    finally {
+
+        loading.style.display =
+            "none";
+
+    }
+
+}
 
 
 </script>
