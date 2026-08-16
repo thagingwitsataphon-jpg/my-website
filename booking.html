@@ -10,8 +10,12 @@
 
     <title>จองห้องพัก | Mon Bridge Stay</title>
 
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
 
@@ -72,11 +76,18 @@
             color: white;
         }
 
+        .btn-main:disabled {
+            background: #a1887f;
+            cursor: not-allowed;
+        }
+
         .back-btn {
             border-radius: 10px;
         }
 
-        /* SUCCESS */
+        /* =========================
+           SUCCESS
+        ========================== */
 
         .success-box {
             display: none;
@@ -136,26 +147,22 @@
             font-weight: 600;
         }
 
-        .check-status-box {
-            background: #f7f3e8;
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 25px;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
+        .checking-status {
+            color: #795548;
+            font-size: 14px;
             margin-top: 15px;
         }
 
-        .error-box {
+        .alert-box {
             display: none;
-            background: #f8d7da;
-            color: #842029;
             border-radius: 12px;
             padding: 15px;
-            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #842029;
         }
 
         footer {
@@ -173,7 +180,9 @@
 <body>
 
 
-<!-- NAVBAR -->
+<!-- =========================
+     NAVBAR
+========================== -->
 
 <nav class="navbar bg-white shadow-sm">
 
@@ -199,12 +208,16 @@
 
 
 
-<!-- BOOKING -->
+<!-- =========================
+     BOOKING
+========================== -->
 
 <div class="container booking-container">
 
     <div class="booking-card">
 
+
+        <!-- TITLE -->
 
         <div class="text-center mb-4">
 
@@ -224,7 +237,18 @@
 
 
 
-        <!-- FORM -->
+        <!-- ERROR -->
+
+        <div id="errorMessage"
+             class="alert-box alert-error">
+
+        </div>
+
+
+
+        <!-- =========================
+             FORM
+        ========================== -->
 
         <form id="bookingForm">
 
@@ -251,7 +275,7 @@
 
 
 
-            <!-- เบอร์ -->
+            <!-- เบอร์โทร -->
 
             <div class="mb-4">
 
@@ -282,7 +306,7 @@
 
 
 
-            <!-- ที่พัก -->
+            <!-- เลือกที่พัก -->
 
             <div class="mb-4">
 
@@ -299,31 +323,45 @@
                         required>
 
                     <option value="">
+
                         -- กรุณาเลือกที่พัก --
+
                     </option>
 
                     <option value="สามประสบ รีสอร์ท">
+
                         สามประสบ รีสอร์ท
+
                     </option>
 
                     <option value="บ้านมอญนอนเล่น">
+
                         บ้านมอญนอนเล่น
+
                     </option>
 
                     <option value="เบอมิซอินน์ รีสอร์ท">
+
                         เบอมิซอินน์ รีสอร์ท
+
                     </option>
 
                     <option value="ภูชมหมอก รีสอร์ท">
+
                         ภูชมหมอก รีสอร์ท
+
                     </option>
 
                     <option value="มาชิลล์ รีสอร์ท">
+
                         มาชิลล์ รีสอร์ท
+
                     </option>
 
                     <option value="สังขละวิลเลจ รีสอร์ท">
+
                         สังขละวิลเลจ รีสอร์ท
+
                     </option>
 
                 </select>
@@ -404,16 +442,9 @@
 
 
 
-        <!-- ERROR -->
-
-        <div id="errorBox"
-             class="error-box">
-
-        </div>
-
-
-
-        <!-- SUCCESS -->
+        <!-- =========================
+             SUCCESS
+        ========================== -->
 
         <div id="successMessage"
              class="success-box">
@@ -425,10 +456,11 @@
 
             </h4>
 
+
             <p>
 
                 ขอบคุณสำหรับการจอง
-                ทางที่พักจะติดต่อกลับเพื่อยืนยันการจองอีกครั้ง
+                ทางที่พักจะตรวจสอบและยืนยันการจองอีกครั้ง
 
             </p>
 
@@ -449,51 +481,67 @@
                 </p>
 
 
+
                 <p>
 
                     <strong>ผู้จอง:</strong>
 
-                    <span id="resultName"></span>
+                    <span id="resultName">
+
+                    </span>
 
                 </p>
+
 
 
                 <p>
 
                     <strong>เบอร์โทร:</strong>
 
-                    <span id="resultPhone"></span>
+                    <span id="resultPhone">
+
+                    </span>
 
                 </p>
+
 
 
                 <p>
 
                     <strong>ที่พัก:</strong>
 
-                    <span id="resultRoom"></span>
+                    <span id="resultRoom">
+
+                    </span>
 
                 </p>
+
 
 
                 <p>
 
                     <strong>วันที่เข้าพัก:</strong>
 
-                    <span id="resultDate"></span>
+                    <span id="resultDate">
+
+                    </span>
 
                 </p>
+
 
 
                 <p>
 
                     <strong>จำนวนผู้เข้าพัก:</strong>
 
-                    <span id="resultGuests"></span>
+                    <span id="resultGuests">
+
+                    </span>
 
                     คน
 
                 </p>
+
 
 
                 <p>
@@ -510,43 +558,15 @@
                 </p>
 
 
-            </div>
+                <div id="checkingStatus"
+                     class="checking-status">
 
-
-
-            <!-- ตรวจสอบสถานะ -->
-
-            <div class="check-status-box">
-
-                <h5>
-
-                    🔎 ตรวจสอบสถานะการจอง
-
-                </h5>
-
-                <p class="text-muted">
-
-                    หากแอดมินยืนยันการจองแล้ว
-                    สถานะจะเปลี่ยนเป็น "ยืนยันแล้ว"
-
-                </p>
-
-                <button id="checkStatusButton"
-                        class="btn btn-main">
-
-                    🔄 ตรวจสอบสถานะล่าสุด
-
-                </button>
-
-                <div id="loadingStatus"
-                     class="loading">
-
-                    กำลังตรวจสอบ...
+                    🔄 กำลังตรวจสอบสถานะการจอง...
 
                 </div>
 
-            </div>
 
+            </div>
 
         </div>
 
@@ -556,6 +576,10 @@
 </div>
 
 
+
+<!-- =========================
+     FOOTER
+========================== -->
 
 <footer>
 
@@ -579,13 +603,7 @@
 
 
 
-<!-- SUPABASE -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
 <script>
-
 
 /* =====================================================
    SUPABASE
@@ -594,8 +612,16 @@
 const SUPABASE_URL =
     "https://nnliayqdzfypnzztjvsi.supabase.co";
 
+
+/*
+   ใส่ Publishable Key ของคุณตรงนี้
+
+   ห้ามใส่ Secret Key
+*/
+
 const SUPABASE_KEY =
     "sb_publishable_1qPjT_zybkweIYWzlTceYQ_lTj0RurS";
+
 
 const supabaseClient =
     window.supabase.createClient(
@@ -604,14 +630,29 @@ const supabaseClient =
     );
 
 
-
 /* =====================================================
-   DATE
+   ELEMENTS
 ===================================================== */
 
 const dateInput =
     document.getElementById("date");
 
+const bookingForm =
+    document.getElementById("bookingForm");
+
+const successMessage =
+    document.getElementById("successMessage");
+
+const submitButton =
+    document.getElementById("submitButton");
+
+const errorMessage =
+    document.getElementById("errorMessage");
+
+
+/* =====================================================
+   วันที่วันนี้
+===================================================== */
 
 function getTodayString() {
 
@@ -638,6 +679,10 @@ dateInput.min =
 
 
 
+/* =====================================================
+   แปลงวันที่
+===================================================== */
+
 function formatDate(dateString) {
 
     if (!dateString) {
@@ -662,7 +707,7 @@ function formatDate(dateString) {
 
 
 /* =====================================================
-   BOOKING CODE
+   สร้างรหัสการจอง
 ===================================================== */
 
 function generateBookingCode() {
@@ -680,22 +725,31 @@ function generateBookingCode() {
 
 
 /* =====================================================
-   ELEMENTS
+   แสดง Error
 ===================================================== */
 
-const bookingForm =
-    document.getElementById("bookingForm");
+function showError(message) {
 
-const successMessage =
-    document.getElementById("successMessage");
+    errorMessage.textContent =
+        "❌ " + message;
 
-const errorBox =
-    document.getElementById("errorBox");
+    errorMessage.style.display =
+        "block";
 
-const submitButton =
-    document.getElementById("submitButton");
+    errorMessage.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
 
-let currentBookingCode = "";
+}
+
+
+function hideError() {
+
+    errorMessage.style.display =
+        "none";
+
+}
 
 
 
@@ -709,9 +763,7 @@ bookingForm.addEventListener(
 
         event.preventDefault();
 
-
-        errorBox.style.display =
-            "none";
+        hideError();
 
 
         const name =
@@ -748,114 +800,192 @@ bookingForm.addEventListener(
             );
 
 
-        if (!name ||
-            !phone ||
-            !room ||
-            !date ||
-            !guests) {
+        if (!name) {
+
+            showError("กรุณากรอกชื่อผู้จอง");
 
             return;
 
         }
 
 
-        const bookingCode =
-            generateBookingCode();
+        if (!/^[0-9]{10}$/.test(phone)) {
 
+            showError(
+                "กรุณากรอกเบอร์โทรศัพท์ 10 หลัก"
+            );
+
+            return;
+
+        }
+
+
+        if (!room) {
+
+            showError("กรุณาเลือกที่พัก");
+
+            return;
+
+        }
+
+
+        if (!date) {
+
+            showError("กรุณาเลือกวันที่เข้าพัก");
+
+            return;
+
+        }
+
+
+        if (guests < 1 || guests > 20) {
+
+            showError(
+                "จำนวนผู้เข้าพักต้องอยู่ระหว่าง 1–20 คน"
+            );
+
+            return;
+
+        }
+
+
+        /* =========================
+           ป้องกันกดซ้ำ
+        ========================== */
 
         submitButton.disabled =
             true;
 
         submitButton.textContent =
-            "กำลังส่งข้อมูล...";
+            "⏳ กำลังบันทึกการจอง...";
 
 
         try {
 
+            let bookingCode;
 
-            const { data, error } =
-                await supabaseClient
-                .from("bookings")
-                .insert({
-
-                    booking_code:
-                        bookingCode,
-
-                    name:
-                        name,
-
-                    phone:
-                        phone,
-
-                    room:
-                        room,
-
-                    check_in:
-                        date,
-
-                    guests:
-                        guests,
-
-                    price:
-                        0,
-
-                    status:
-                        "pending"
-
-                })
-                .select()
-                .single();
+            let insertedBooking = null;
 
 
-            if (error) {
+            /*
+               หากรหัสซ้ำ ให้สร้างใหม่
+            */
 
-                throw error;
+            for (let attempt = 0; attempt < 5; attempt++) {
+
+                bookingCode =
+                    generateBookingCode();
+
+
+                const { data, error } =
+                    await supabaseClient
+                    .from("bookings")
+                    .insert({
+
+                        booking_code:
+                            bookingCode,
+
+                        name:
+                            name,
+
+                        phone:
+                            phone,
+
+                        room:
+                            room,
+
+                        check_in:
+                            date,
+
+                        guests:
+                            guests,
+
+                        status:
+                            "pending"
+
+                    })
+                    .select()
+                    .single();
+
+
+                if (!error) {
+
+                    insertedBooking =
+                        data;
+
+                    break;
+
+                }
+
+
+                /*
+                   ถ้าเป็นรหัสซ้ำ ให้ลองใหม่
+                */
+
+                if (
+                    error.code !== "23505"
+                ) {
+
+                    throw error;
+
+                }
 
             }
 
 
-            currentBookingCode =
-                data.booking_code;
+            if (!insertedBooking) {
+
+                throw new Error(
+                    "ไม่สามารถสร้างรหัสการจองได้"
+                );
+
+            }
+
+
+            /* =========================
+               แสดงผล
+            ========================== */
+
+            document
+                .getElementById("resultCode")
+                .textContent =
+                insertedBooking.booking_code;
 
 
             document
-            .getElementById("resultCode")
-            .textContent =
-                data.booking_code;
+                .getElementById("resultName")
+                .textContent =
+                insertedBooking.name;
 
 
             document
-            .getElementById("resultName")
-            .textContent =
-                data.name;
+                .getElementById("resultPhone")
+                .textContent =
+                insertedBooking.phone;
 
 
             document
-            .getElementById("resultPhone")
-            .textContent =
-                data.phone;
+                .getElementById("resultRoom")
+                .textContent =
+                insertedBooking.room;
 
 
             document
-            .getElementById("resultRoom")
-            .textContent =
-                data.room;
+                .getElementById("resultDate")
+                .textContent =
+                formatDate(
+                    insertedBooking.check_in
+                );
 
 
             document
-            .getElementById("resultDate")
-            .textContent =
-                formatDate(data.check_in);
+                .getElementById("resultGuests")
+                .textContent =
+                insertedBooking.guests;
 
 
-            document
-            .getElementById("resultGuests")
-            .textContent =
-                data.guests;
-
-
-            updateStatusDisplay(
-                data.status
+            updateStatus(
+                insertedBooking.status
             );
 
 
@@ -868,34 +998,36 @@ bookingForm.addEventListener(
 
 
             successMessage.scrollIntoView({
-
-                behavior:
-                    "smooth",
-
-                block:
-                    "start"
-
+                behavior: "smooth",
+                block: "start"
             });
 
 
-        }
+            /*
+               เริ่มตรวจสถานะ
+            */
 
-        catch (error) {
+            startStatusChecking(
+                insertedBooking.booking_code
+            );
 
-            console.error(error);
 
-            errorBox.textContent =
-                "❌ ไม่สามารถส่งข้อมูลการจองได้ กรุณาลองใหม่อีกครั้ง";
+        } catch (error) {
 
-            errorBox.style.display =
-                "block";
+            console.error(
+                "Booking error:",
+                error
+            );
 
-        }
 
-        finally {
+            showError(
+                "ไม่สามารถบันทึกการจองได้ กรุณาตรวจสอบการเชื่อมต่อ Supabase และลองใหม่อีกครั้ง"
+            );
+
 
             submitButton.disabled =
                 false;
+
 
             submitButton.textContent =
                 "✅ ยืนยันการจอง";
@@ -908,44 +1040,63 @@ bookingForm.addEventListener(
 
 
 /* =====================================================
-   STATUS DISPLAY
+   อัปเดตสถานะบนหน้าลูกค้า
 ===================================================== */
 
-function updateStatusDisplay(status) {
+function updateStatus(status) {
 
-    const element =
+    const statusElement =
         document.getElementById(
             "resultStatus"
         );
 
 
+    statusElement.className = "";
+
+
     if (status === "confirmed") {
 
-        element.textContent =
-            "🟢 ยืนยันแล้ว";
-
-        element.className =
+        statusElement.className =
             "status-confirmed";
 
-    }
+        statusElement.textContent =
+            "✅ ยืนยันแล้ว";
 
-    else if (status === "cancelled") {
 
-        element.textContent =
-            "🔴 ยกเลิก";
+        document
+            .getElementById("checkingStatus")
+            .textContent =
+            "✅ การจองของคุณได้รับการยืนยันแล้ว";
 
-        element.className =
+
+    } else if (status === "cancelled") {
+
+        statusElement.className =
             "status-cancelled";
 
-    }
+        statusElement.textContent =
+            "❌ ยกเลิก";
 
-    else {
 
-        element.textContent =
+        document
+            .getElementById("checkingStatus")
+            .textContent =
+            "❌ การจองนี้ถูกยกเลิก";
+
+
+    } else {
+
+        statusElement.className =
+            "status-pending";
+
+        statusElement.textContent =
             "⏳ รอยืนยัน";
 
-        element.className =
-            "status-pending";
+
+        document
+            .getElementById("checkingStatus")
+            .textContent =
+            "🔄 กำลังตรวจสอบสถานะการจอง...";
 
     }
 
@@ -954,82 +1105,129 @@ function updateStatusDisplay(status) {
 
 
 /* =====================================================
-   CHECK STATUS
+   ตรวจสถานะจาก Supabase
 ===================================================== */
 
-document
-.getElementById("checkStatusButton")
-.addEventListener(
-    "click",
-    checkBookingStatus
-);
+let statusTimer = null;
 
 
-async function checkBookingStatus() {
+function startStatusChecking(
+    bookingCode
+) {
 
-    if (!currentBookingCode) {
+    /*
+       ตรวจทันที
+    */
 
-        return;
+    checkBookingStatus(
+        bookingCode
+    );
+
+
+    /*
+       ตรวจทุก 5 วินาที
+    */
+
+    if (statusTimer) {
+
+        clearInterval(statusTimer);
 
     }
 
 
-    const loading =
-        document.getElementById(
-            "loadingStatus"
+    statusTimer =
+        setInterval(
+            function() {
+
+                checkBookingStatus(
+                    bookingCode
+                );
+
+            },
+            5000
         );
 
+}
 
-    loading.style.display =
-        "block";
 
+
+/* =====================================================
+   อ่านสถานะ
+===================================================== */
+
+async function checkBookingStatus(
+    bookingCode
+) {
 
     try {
 
         const { data, error } =
             await supabaseClient
             .from("bookings")
-            .select("*")
+            .select(
+                "booking_code,status"
+            )
             .eq(
                 "booking_code",
-                currentBookingCode
+                bookingCode
             )
-            .single();
+            .maybeSingle();
 
 
         if (error) {
 
-            throw error;
+            console.error(
+                "Status error:",
+                error
+            );
+
+            return;
 
         }
 
 
-        updateStatusDisplay(
+        if (!data) {
+
+            return;
+
+        }
+
+
+        updateStatus(
             data.status
         );
 
 
-    }
+        /*
+           ถ้ายืนยันหรือยกเลิกแล้ว
+           หยุดตรวจ
+        */
 
-    catch (error) {
+        if (
+            data.status === "confirmed" ||
+            data.status === "cancelled"
+        ) {
+
+            if (statusTimer) {
+
+                clearInterval(
+                    statusTimer
+                );
+
+                statusTimer = null;
+
+            }
+
+        }
+
+
+    } catch (error) {
 
         console.error(error);
-
-        alert(
-            "ไม่สามารถตรวจสอบสถานะได้ กรุณาลองใหม่"
-        );
-
-    }
-
-    finally {
-
-        loading.style.display =
-            "none";
 
     }
 
 }
-
 
 </script>
 
