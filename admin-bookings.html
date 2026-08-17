@@ -1,170 +1,852 @@
 <!DOCTYPE html>
-<html lang="th"> 
+<html lang="th">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>จัดการการจอง | Mon Bridge Stay</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f6f1e7;color:#4e342e;font-family:"Noto Sans Thai","Segoe UI",Tahoma,sans-serif}
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:235px;background:#4e342e;color:#fff;padding:25px 15px;z-index:10}.brand{font-size:22px;font-weight:900;margin:5px 10px 30px}.menu{display:block;color:#fff;text-decoration:none;padding:13px 15px;border-radius:12px;margin-bottom:7px}.menu:hover,.menu.active{background:#795548;color:#fff}
-.main{margin-left:235px;padding:30px}.header,.stat,.tools,.table-card{background:#fff;border-radius:20px;box-shadow:0 5px 20px rgba(62,51,40,.08)}
-.header{padding:25px;margin-bottom:25px;display:flex;justify-content:space-between;align-items:center;gap:15px}.header h1{color:#5d4037;font-weight:900;margin:0}.header p{margin:6px 0 0;color:#777}
-.btn-main{background:#795548;color:#fff;border:0;border-radius:12px;padding:11px 18px}.btn-main:hover{background:#5d4037;color:#fff}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:25px}.stat{padding:22px}.stat .num{font-size:36px;font-weight:900;color:#795548}.stat .txt{margin-top:4px}
-.tools{padding:20px;margin-bottom:25px;display:flex;gap:12px}.search{flex:1;min-height:52px;border:1px solid #ddd0c8;border-radius:12px;padding:0 16px;font-size:16px}
-.table-card{padding:20px;overflow:auto}.table{margin:0;vertical-align:middle}.table thead th{background:#f7f3e8;color:#5d4037;white-space:nowrap}.table td{white-space:nowrap}.status{padding:6px 12px;border-radius:20px;font-size:13px;font-weight:800;display:inline-block}.pending{background:#fff3cd;color:#856404}.confirmed{background:#e8f5e9;color:#2e7d32}.cancelled{background:#f8d7da;color:#842029}.empty{text-align:center;padding:45px;color:#777}
-.modal-content{border:0;border-radius:20px}.modal-header{background:#5d4037;color:#fff}.detail-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed #ddd;gap:20px}
-@media(max-width:900px){.sidebar{width:70px;padding:20px 8px}.brand{font-size:0;text-align:center}.brand:first-letter{font-size:25px}.menu{font-size:0;text-align:center}.menu:first-letter{font-size:20px}.main{margin-left:70px;padding:18px}.stats{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.header{flex-direction:column;align-items:flex-start}.stats{grid-template-columns:1fr}.tools{flex-direction:column}}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:
+        "Noto Sans Thai",
+        "Segoe UI",
+        sans-serif;
+    background:#f6f1e9;
+    color:#4e342e;
+}
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:240px;
+    background:#50352d;
+    color:white;
+    padding:25px 15px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:700;
+    padding:10px 15px 30px;
+}
+
+.menu a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    margin:6px 0;
+    border-radius:14px;
+}
+
+.menu a:hover,
+.menu a.active{
+    background:#846253;
+}
+
+.main{
+    margin-left:240px;
+    padding:35px;
+}
+
+.header{
+    background:white;
+    border-radius:25px;
+    padding:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+.header h1{
+    margin:0;
+    font-size:36px;
+}
+
+.header p{
+    margin:8px 0 0;
+    color:#795548;
+}
+
+.btn{
+    border:none;
+    border-radius:12px;
+    padding:13px 20px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.btn-refresh{
+    background:#e8dfd5;
+    color:#5d4037;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+    gap:25px;
+    margin:30px 0;
+}
+
+.stat{
+    background:white;
+    border-radius:22px;
+    padding:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+
+.stat-number{
+    font-size:38px;
+    font-weight:800;
+    color:#795548;
+}
+
+.stat-title{
+    font-size:17px;
+}
+
+.search-box{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    margin-bottom:25px;
+}
+
+.search-box input{
+    width:100%;
+    padding:16px;
+    border:1px solid #daccc4;
+    border-radius:14px;
+    font-size:16px;
+}
+
+.table-card{
+    background:white;
+    border-radius:22px;
+    padding:20px;
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:1100px;
+}
+
+th{
+    background:#f6f0e7;
+    padding:16px;
+    text-align:left;
+}
+
+td{
+    padding:15px;
+    border-bottom:1px solid #eee2da;
+}
+
+.status{
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:20px;
+    font-weight:700;
+}
+
+.pending{
+    background:#fff1c7;
+    color:#8a6500;
+}
+
+.confirmed{
+    background:#d9f5df;
+    color:#18752d;
+}
+
+.cancelled{
+    background:#f9dede;
+    color:#a62929;
+}
+
+.action{
+    padding:7px 10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin:2px;
+    font-weight:700;
+}
+
+.confirm{
+    background:#43a047;
+    color:white;
+}
+
+.cancel{
+    background:#e53935;
+    color:white;
+}
+
 </style>
+
 </head>
+
+
 <body>
+
+
 <aside class="sidebar">
-<div class="brand">🌉 Mon Bridge Stay</div>
-<a class="menu" href="admin.html">🏠 Dashboard</a>
-<a class="menu active" href="admin-bookings.html">📋 การจอง</a>
-<a class="menu" href="admin-rooms.html">🏨 ห้องพัก</a>
-<a class="menu" href="admin-promotions.html">🎁 โปรโมชั่น</a>
-<a class="menu" href="admin-guests.html">👤 ผู้เข้าพัก</a>
-<a class="menu" href="index.html">🌐 เว็บไซต์</a>
-<a class="menu" href="admin-login.html">🚪 ออกจากระบบ</a>
+
+<div class="logo">
+🏠 Mon Bridge Stay
+</div>
+
+<div class="menu">
+
+<a href="admin.html">
+📊 Dashboard
+</a>
+
+<a href="admin-rooms.html">
+🛏️ จัดการห้องพัก
+</a>
+
+<a href="admin-bookings.html"
+class="active">
+📅 จัดการการจอง
+</a>
+
+<a href="admin-promotions.html">
+🎁 โปรโมชั่น
+</a>
+
+<a href="admin-guests.html">
+👥 ผู้เข้าพัก
+</a>
+
+<a href="index.html">
+🌐 ดูเว็บไซต์
+</a>
+
+</div>
+
 </aside>
 
+
 <main class="main">
-<section class="header">
-<div><h1>📅 จัดการการจอง</h1><p>ตรวจสอบ ยืนยัน ยกเลิก และจัดการรายการจองของ Mon Bridge Stay</p></div>
-<button class="btn-main" onclick="loadBookings()">🔄 รีเฟรช</button>
-</section>
 
-<section class="stats">
-<div class="stat"><div id="total" class="num">0</div><div class="txt">📋 การจองทั้งหมด</div></div>
-<div class="stat"><div id="confirmed" class="num">0</div><div class="txt">🟢 ยืนยันแล้ว</div></div>
-<div class="stat"><div id="pending" class="num">0</div><div class="txt">🟡 รอยืนยัน</div></div>
-<div class="stat"><div id="cancelled" class="num">0</div><div class="txt">🔴 ยกเลิก</div></div>
-</section>
 
-<section class="tools">
-<input id="search" class="search" placeholder="🔎 ค้นหารหัส ผู้เข้าพัก เบอร์โทร ที่พัก หรือประเภทห้อง">
-<button class="btn btn-outline-secondary" onclick="clearSearch()">ล้าง</button>
-</section>
+<div class="header">
 
-<section class="table-card">
-<div class="table-responsive">
-<table class="table">
-<thead><tr>
-<th>รหัส</th><th>ผู้เข้าพัก</th><th>ที่พัก</th><th>ประเภทห้อง</th><th>เช็กอิน</th><th>จำนวนคืน</th><th>ผู้เข้าพัก</th><th>ราคา</th><th>สถานะ</th><th>จัดการ</th>
-</tr></thead>
-<tbody id="tbody"></tbody>
-</table>
+<div>
+
+<h1>
+📅 จัดการการจอง
+</h1>
+
+<p>
+ตรวจสอบ ยืนยัน และจัดการรายการจอง
+</p>
+
 </div>
-</section>
+
+<button
+class="btn btn-refresh"
+onclick="loadBookings()">
+
+🔄 รีเฟรช
+
+</button>
+
+</div>
+
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div
+id="totalCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-title">
+📋 การจองทั้งหมด
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div
+id="confirmedCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-title">
+🟢 ยืนยันแล้ว
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div
+id="pendingCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-title">
+🟡 รอยืนยัน
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div
+id="cancelledCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-title">
+🔴 ยกเลิก
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="🔎 ค้นหารหัส ผู้เข้าพัก ที่พัก หรือเบอร์โทรศัพท์..."
+oninput="renderBookings()">
+
+</div>
+
+
+<div class="table-card">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>รหัส</th>
+
+<th>ผู้เข้าพัก</th>
+
+<th>เบอร์โทร</th>
+
+<th>ที่พัก</th>
+
+<th>ประเภทห้อง</th>
+
+<th>วันที่เข้าพัก</th>
+
+<th>จำนวนคืน</th>
+
+<th>ราคา</th>
+
+<th>สถานะ</th>
+
+<th>จัดการ</th>
+
+</tr>
+
+</thead>
+
+<tbody id="bookingTable">
+
+<tr>
+
+<td colspan="10"
+style="text-align:center;padding:40px;">
+
+กำลังโหลด...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
 </main>
 
-<div class="modal fade" id="detailModal" tabindex="-1">
-<div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content">
-<div class="modal-header"><h5 class="modal-title">รายละเอียดการจอง</h5><button class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
-<div class="modal-body" id="detail"></div>
-</div></div></div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-const STORAGE_KEY="bookings", OLD_STORAGE_KEY="monBridgeBookings";
-const SUPABASE_URL="", SUPABASE_ANON_KEY="";
-let supabaseClient=null;
-if(SUPABASE_URL&&SUPABASE_ANON_KEY&&window.supabase)supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
 
-function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
-function money(n){return Number(n||0).toLocaleString("th-TH")}
-function dateTH(v){if(!v)return"-";const [y,m,d]=v.split("-");return `${d}/${m}/${Number(y)+543}`}
-function normalize(b){
- const c=b.booking_code||b.code||b.id;
- return {id:c,booking_code:c,name:b.name||"",phone:b.phone||"",accommodation:b.accommodation||"",
- room:b.room||b.room_type||"",room_type:b.room_type||b.room||"",
- check_in:b.check_in||b.checkin||b.date||"",check_out:b.check_out||b.checkout||"",
- nights:Number(b.nights||0),guests:Number(b.guests||0),
- price_per_night:Number(b.price_per_night??b.room_price??0),total_price:Number(b.total_price||0),
- status:b.status||"pending",statusText:b.statusText||"รอยืนยัน",created_at:b.created_at||b.createdAt||new Date().toISOString()};
-}
-function getLocal(){
- const a=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]"),b=JSON.parse(localStorage.getItem(OLD_STORAGE_KEY)||"[]"),m=new Map();
- [...a,...b].forEach(x=>{const n=normalize(x);if(n.booking_code)m.set(String(n.booking_code),n)});return [...m.values()];
-}
-function saveLocal(arr){localStorage.setItem(STORAGE_KEY,JSON.stringify(arr));localStorage.setItem(OLD_STORAGE_KEY,JSON.stringify(arr))}
-async function getSupabase(){
- if(!supabaseClient)return [];
- try{const {data,error}=await supabaseClient.from("bookings").select("*").order("created_at",{ascending:false});if(error)throw error;return (data||[]).map(normalize)}
- catch(e){console.warn("Supabase:",e);return []}
-}
-async function all(){
- const local=getLocal(), remote=await getSupabase(),m=new Map();
- [...remote,...local].forEach(x=>m.set(String(x.booking_code),x));return [...m.values()].sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
-}
-let current=[];
+/* ================================
+   SUPABASE ชุดเดียวกับ booking.html
+================================ */
+
+const SUPABASE_URL =
+"https://drojzwcelybbbbkyptmns.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_JHexmXkHfhzsMT9iRMf1gg_Srdcw7UM";
+
+const supabaseClient =
+supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+/* ================================ */
+
+let bookings = [];
+
+
+/* ================================
+   โหลดข้อมูล
+================================ */
+
 async function loadBookings(){
- current=await all();render();
+
+    const tbody =
+    document.getElementById(
+        "bookingTable"
+    );
+
+    tbody.innerHTML = `
+        <tr>
+        <td colspan="10"
+        style="text-align:center;padding:40px">
+        กำลังโหลดข้อมูล...
+        </td>
+        </tr>
+    `;
+
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+    .from("bookings")
+    .select("*")
+    .order(
+        "created_at",
+        {
+            ascending:false
+        }
+    );
+
+
+    if(error){
+
+        console.error(error);
+
+        tbody.innerHTML = `
+        <tr>
+        <td colspan="10"
+        style="text-align:center;color:red;padding:40px">
+
+        โหลดข้อมูลไม่สำเร็จ<br>
+
+        ${error.message}
+
+        </td>
+        </tr>
+        `;
+
+        return;
+
+    }
+
+
+    bookings =
+    data || [];
+
+
+    updateStats();
+
+    renderBookings();
+
 }
-function statusHtml(s){
- if(s==="confirmed"||s==="ยืนยันแล้ว")return '<span class="status confirmed">✅ ยืนยันแล้ว</span>';
- if(s==="cancelled"||s==="ยกเลิก")return '<span class="status cancelled">❌ ยกเลิก</span>';
- return '<span class="status pending">⏳ รอยืนยัน</span>';
+
+
+/* ================================
+   สถิติ
+================================ */
+
+function updateStats(){
+
+    document.getElementById(
+        "totalCount"
+    ).textContent =
+    bookings.length;
+
+
+    document.getElementById(
+        "confirmedCount"
+    ).textContent =
+    bookings.filter(
+        b => b.status === "confirmed"
+    ).length;
+
+
+    document.getElementById(
+        "pendingCount"
+    ).textContent =
+    bookings.filter(
+        b => b.status === "pending"
+    ).length;
+
+
+    document.getElementById(
+        "cancelledCount"
+    ).textContent =
+    bookings.filter(
+        b => b.status === "cancelled"
+    ).length;
+
 }
-function render(){
- const q=document.getElementById("search").value.trim().toLowerCase();
- const data=current.filter(b=>!q||[b.booking_code,b.name,b.phone,b.accommodation,b.room].some(v=>String(v||"").toLowerCase().includes(q)));
- document.getElementById("total").textContent=current.length;
- document.getElementById("confirmed").textContent=current.filter(b=>b.status==="confirmed"||b.status==="ยืนยันแล้ว").length;
- document.getElementById("pending").textContent=current.filter(b=>b.status==="pending"||b.status==="รอยืนยัน").length;
- document.getElementById("cancelled").textContent=current.filter(b=>b.status==="cancelled"||b.status==="ยกเลิก").length;
- document.getElementById("tbody").innerHTML=data.length?data.map(b=>`<tr>
- <td><b>${esc(b.booking_code)}</b></td><td>${esc(b.name)}<br><small>${esc(b.phone)}</small></td>
- <td>${esc(b.accommodation)}</td><td>${esc(b.room)}</td><td>${dateTH(b.check_in)}</td><td>${b.nights} คืน</td>
- <td>${b.guests} คน</td><td>${money(b.total_price)} บาท</td><td>${statusHtml(b.status)}</td>
- <td>
- <button class="btn btn-sm btn-outline-secondary" onclick="viewBooking('${esc(b.booking_code)}')">ดู</button>
- ${b.status!=="confirmed"&&b.status!=="ยืนยันแล้ว"?`<button class="btn btn-sm btn-success" onclick="changeStatus('${esc(b.booking_code)}','confirmed')">ยืนยัน</button>`:""}
- ${b.status!=="cancelled"&&b.status!=="ยกเลิก"?`<button class="btn btn-sm btn-warning" onclick="changeStatus('${esc(b.booking_code)}','cancelled')">ยกเลิก</button>`:""}
- <button class="btn btn-sm btn-danger" onclick="deleteBooking('${esc(b.booking_code)}')">ลบ</button>
- </td></tr>`).join(""):'<tr><td colspan="10" class="empty">📭 ไม่พบรายการจอง</td></tr>';
+
+
+/* ================================
+   แสดงตาราง
+================================ */
+
+function renderBookings(){
+
+    const search =
+    document.getElementById(
+        "searchInput"
+    ).value
+    .trim()
+    .toLowerCase();
+
+
+    const filtered =
+    bookings.filter(b => {
+
+        return (
+
+            String(b.code || "")
+            .toLowerCase()
+            .includes(search)
+
+            ||
+
+            String(b.name || "")
+            .toLowerCase()
+            .includes(search)
+
+            ||
+
+            String(b.phone || "")
+            .toLowerCase()
+            .includes(search)
+
+            ||
+
+            String(b.accommodation || "")
+            .toLowerCase()
+            .includes(search)
+
+            ||
+
+            String(b.room_type || "")
+            .toLowerCase()
+            .includes(search)
+
+        );
+
+    });
+
+
+    const tbody =
+    document.getElementById(
+        "bookingTable"
+    );
+
+
+    if(filtered.length === 0){
+
+        tbody.innerHTML = `
+        <tr>
+
+        <td
+        colspan="10"
+        style="text-align:center;padding:50px">
+
+        📭 ไม่พบรายการจอง
+
+        </td>
+
+        </tr>
+        `;
+
+        return;
+
+    }
+
+
+    tbody.innerHTML =
+    filtered.map(
+        booking => `
+
+        <tr>
+
+        <td>
+        <strong>${escapeHtml(booking.code)}</strong>
+        </td>
+
+        <td>
+        ${escapeHtml(booking.name)}
+        </td>
+
+        <td>
+        ${escapeHtml(booking.phone)}
+        </td>
+
+        <td>
+        ${escapeHtml(booking.accommodation)}
+        </td>
+
+        <td>
+        ${escapeHtml(booking.room_type)}
+        </td>
+
+        <td>
+        ${formatThaiDate(booking.check_in)}
+        </td>
+
+        <td>
+        ${booking.nights} คืน
+        </td>
+
+        <td>
+        ${Number(
+            booking.total_price || 0
+        ).toLocaleString()}
+        บาท
+        </td>
+
+        <td>
+        ${getStatus(booking.status)}
+        </td>
+
+        <td>
+
+        ${
+            booking.status === "pending"
+            ?
+            `
+            <button
+            class="action confirm"
+            onclick="changeStatus(${booking.id},'confirmed')">
+
+            ✓ ยืนยัน
+
+            </button>
+
+            <button
+            class="action cancel"
+            onclick="changeStatus(${booking.id},'cancelled')">
+
+            ✕ ยกเลิก
+
+            </button>
+            `
+            :
+            booking.status === "confirmed"
+            ?
+            `
+            <button
+            class="action cancel"
+            onclick="changeStatus(${booking.id},'cancelled')">
+
+            ✕ ยกเลิก
+
+            </button>
+            `
+            :
+            `
+            <button
+            class="action confirm"
+            onclick="changeStatus(${booking.id},'confirmed')">
+
+            ✓ ยืนยันใหม่
+
+            </button>
+            `
+        }
+
+        </td>
+
+        </tr>
+
+        `
+    ).join("");
+
 }
-function find(code){return current.find(b=>String(b.booking_code)===String(code))}
-function viewBooking(code){
- const b=find(code);if(!b)return;
- document.getElementById("detail").innerHTML=`
- <div class="detail-row"><span>รหัสการจอง</span><strong>${esc(b.booking_code)}</strong></div>
- <div class="detail-row"><span>ผู้จอง</span><strong>${esc(b.name)}</strong></div>
- <div class="detail-row"><span>เบอร์โทรศัพท์</span><strong>${esc(b.phone)}</strong></div>
- <div class="detail-row"><span>ที่พัก</span><strong>${esc(b.accommodation)}</strong></div>
- <div class="detail-row"><span>ประเภทห้อง</span><strong>${esc(b.room)}</strong></div>
- <div class="detail-row"><span>เช็กอิน</span><strong>${dateTH(b.check_in)}</strong></div>
- <div class="detail-row"><span>เช็กเอาต์</span><strong>${dateTH(b.check_out)}</strong></div>
- <div class="detail-row"><span>จำนวนคืน</span><strong>${b.nights} คืน</strong></div>
- <div class="detail-row"><span>ผู้เข้าพัก</span><strong>${b.guests} คน</strong></div>
- <div class="detail-row"><span>ราคาต่อคืน</span><strong>${money(b.price_per_night)} บาท</strong></div>
- <div class="detail-row"><span>ราคารวม</span><strong style="color:#795548">${money(b.total_price)} บาท</strong></div>
- <div class="detail-row"><span>สถานะ</span><strong>${statusHtml(b.status)}</strong></div>`;
- new bootstrap.Modal(document.getElementById("detailModal")).show();
+
+
+/* ================================
+   เปลี่ยนสถานะ
+================================ */
+
+async function changeStatus(
+    id,
+    status
+){
+
+    const text =
+    status === "confirmed"
+    ? "ยืนยันการจองนี้หรือไม่?"
+    : "ยกเลิกการจองนี้หรือไม่?";
+
+
+    if(!confirm(text)){
+
+        return;
+
+    }
+
+
+    const {
+        error
+    } =
+    await supabaseClient
+    .from("bookings")
+    .update({
+        status:status
+    })
+    .eq("id",id);
+
+
+    if(error){
+
+        alert(
+            "แก้ไขสถานะไม่สำเร็จ\n" +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    await loadBookings();
+
 }
-async function changeStatus(code,status){
- const b=find(code);if(!b)return;
- if(!confirm(status==="confirmed"?"ยืนยันการจองนี้ใช่หรือไม่?":"ยกเลิกการจองนี้ใช่หรือไม่?"))return;
- b.status=status;b.statusText=status==="confirmed"?"ยืนยันแล้ว":"ยกเลิก";
- const arr=getLocal();const i=arr.findIndex(x=>String(normalize(x).booking_code)===String(code));
- if(i>=0){arr[i]=b;saveLocal(arr)}else{arr.push(b);saveLocal(arr)}
- if(supabaseClient){
-   try{await supabaseClient.from("bookings").update({status:status}).eq("booking_code",code)}catch(e){console.warn(e)}
- }
- await loadBookings();
+
+
+/* ================================
+   Status
+================================ */
+
+function getStatus(status){
+
+    if(status === "confirmed"){
+
+        return `
+        <span class="status confirmed">
+        🟢 ยืนยันแล้ว
+        </span>
+        `;
+
+    }
+
+
+    if(status === "cancelled"){
+
+        return `
+        <span class="status cancelled">
+        🔴 ยกเลิก
+        </span>
+        `;
+
+    }
+
+
+    return `
+    <span class="status pending">
+    🟡 รอยืนยัน
+    </span>
+    `;
+
 }
-async function deleteBooking(code){
- if(!confirm("ต้องการลบรายการจองนี้ใช่หรือไม่?"))return;
- let arr=getLocal().filter(b=>String(b.booking_code)!==String(code));saveLocal(arr);
- if(supabaseClient){try{await supabaseClient.from("bookings").delete().eq("booking_code",code)}catch(e){console.warn(e)}}
- await loadBookings();
+
+
+/* ================================ */
+
+function formatThaiDate(date){
+
+    if(!date) return "-";
+
+    return new Date(date)
+    .toLocaleDateString(
+        "th-TH",
+        {
+            day:"2-digit",
+            month:"2-digit",
+            year:"numeric"
+        }
+    );
+
 }
-document.getElementById("search").addEventListener("input",render);
-function clearSearch(){document.getElementById("search").value="";render()}
+
+
+/* ================================ */
+
+function escapeHtml(text){
+
+    const div =
+    document.createElement("div");
+
+    div.textContent =
+    text ?? "";
+
+    return div.innerHTML;
+
+}
+
+
+/* ================================ */
+
 loadBookings();
+
 </script>
+
+
 </body>
 </html>
