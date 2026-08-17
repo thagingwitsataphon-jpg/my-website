@@ -18,7 +18,12 @@ rel="stylesheet">
 rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+
 <style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 *{
     box-sizing:border-box;
@@ -31,7 +36,10 @@ body{
     font-family:"Noto Sans Thai","Segoe UI",Tahoma,sans-serif;
 }
 
-/* ================= NAVBAR ================= */
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 .navbar{
     background:#5d4037 !important;
@@ -47,7 +55,14 @@ body{
     color:#ffe0b2 !important;
 }
 
-/* ================= PAGE ================= */
+.nav-link.active{
+    font-weight:800;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
 
 .page{
     min-height:calc(100vh - 70px);
@@ -59,7 +74,10 @@ body{
     margin:auto;
 }
 
-/* ================= HEADER ================= */
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 .header{
     text-align:center;
@@ -77,6 +95,7 @@ body{
     background:#795548;
     color:#fff;
     font-size:31px;
+    box-shadow:0 8px 20px rgba(93,64,55,.15);
 }
 
 .header h1{
@@ -88,9 +107,13 @@ body{
 .header p{
     color:#795548;
     margin-top:8px;
+    margin-bottom:0;
 }
 
-/* ================= CARD ================= */
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
 
 .card-main{
     background:#fff;
@@ -100,7 +123,10 @@ body{
     border:1px solid rgba(121,85,72,.10);
 }
 
-/* ================= SECTION ================= */
+
+/* =========================================================
+   SECTION
+========================================================= */
 
 .section{
     margin-bottom:28px;
@@ -119,10 +145,14 @@ body{
     color:#795548;
 }
 
-/* ================= FORM ================= */
+
+/* =========================================================
+   FORM
+========================================================= */
 
 .form-label{
     font-weight:700;
+    color:#4e342e;
 }
 
 .form-control,
@@ -145,7 +175,10 @@ body{
     margin-top:7px;
 }
 
-/* ================= ROOM ================= */
+
+/* =========================================================
+   ROOM PREVIEW
+========================================================= */
 
 .room-preview{
     display:none;
@@ -180,7 +213,10 @@ body{
     display:block;
 }
 
-/* ================= SUMMARY ================= */
+
+/* =========================================================
+   SUMMARY
+========================================================= */
 
 .summary{
     margin-top:25px;
@@ -200,6 +236,7 @@ body{
 .price-row{
     display:flex;
     justify-content:space-between;
+    align-items:center;
     gap:15px;
     padding:9px 0;
     border-bottom:1px dashed #ddd;
@@ -221,7 +258,10 @@ body{
     color:#795548;
 }
 
-/* ================= BUTTON ================= */
+
+/* =========================================================
+   BUTTON
+========================================================= */
 
 .btn-book{
     width:100%;
@@ -233,18 +273,25 @@ body{
     font-size:17px;
     font-weight:800;
     box-shadow:0 8px 20px rgba(93,64,55,.20);
+    transition:.2s;
 }
 
 .btn-book:hover{
     background:linear-gradient(135deg,#6d4c41,#4e342e);
     color:#fff;
+    transform:translateY(-1px);
 }
 
 .btn-book:disabled{
     opacity:.65;
+    cursor:not-allowed;
+    transform:none;
 }
 
-/* ================= ERROR ================= */
+
+/* =========================================================
+   ERROR
+========================================================= */
 
 .error{
     display:none;
@@ -257,10 +304,19 @@ body{
 }
 
 .error.show{
-    display:block;
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
 }
 
-/* ================= SUCCESS ================= */
+.error i{
+    margin-top:3px;
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
 
 .success{
     display:none;
@@ -321,7 +377,10 @@ body{
     border-bottom:0;
 }
 
-/* ================= FOOTER ================= */
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
     text-align:center;
@@ -330,7 +389,10 @@ footer{
     margin-top:30px;
 }
 
-/* ================= MOBILE ================= */
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:768px){
 
@@ -347,6 +409,14 @@ footer{
         font-size:27px;
     }
 
+    .price-row{
+        align-items:flex-start;
+    }
+
+    .price-row strong{
+        text-align:right;
+    }
+
 }
 
 </style>
@@ -357,7 +427,9 @@ footer{
 <body>
 
 
-<!-- ================= NAVBAR ================= -->
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
 <nav class="navbar navbar-expand-lg">
 
@@ -389,38 +461,62 @@ id="nav">
 <ul class="navbar-nav ms-auto">
 
 <li class="nav-item">
+
 <a class="nav-link"
    href="index.html">
+
 หน้าแรก
+
 </a>
+
 </li>
 
+
 <li class="nav-item">
+
 <a class="nav-link"
    href="rooms.html">
+
 ที่พัก
+
 </a>
+
 </li>
 
+
 <li class="nav-item">
+
 <a class="nav-link active"
    href="booking.html">
+
 จองที่พัก
+
 </a>
+
 </li>
 
+
 <li class="nav-item">
+
 <a class="nav-link"
    href="history.html">
+
 ประวัติการจอง
+
 </a>
+
 </li>
 
+
 <li class="nav-item">
+
 <a class="nav-link"
    href="profile.html">
+
 โปรไฟล์
+
 </a>
+
 </li>
 
 </ul>
@@ -432,12 +528,17 @@ id="nav">
 </nav>
 
 
-<!-- ================= MAIN ================= -->
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
 <main class="page">
 
 <div class="wrap">
 
+
+<!-- HEADER -->
 
 <div class="header">
 
@@ -457,6 +558,8 @@ id="nav">
 
 
 
+<!-- MAIN CARD -->
+
 <div class="card-main">
 
 
@@ -473,12 +576,17 @@ class="error">
 </div>
 
 
-<!-- FORM -->
+
+<!-- =======================================================
+     FORM
+======================================================= -->
 
 <form id="bookingForm">
 
 
-<!-- ================= USER ================= -->
+<!-- =======================================================
+     USER
+======================================================= -->
 
 <div class="section">
 
@@ -537,7 +645,9 @@ required>
 
 
 
-<!-- ================= ACCOMMODATION ================= -->
+<!-- =======================================================
+     ACCOMMODATION
+======================================================= -->
 
 <div class="section">
 
@@ -559,25 +669,31 @@ required>
 -- กรุณาเลือกที่พัก --
 </option>
 
+
 <option value="samprasop">
 🏡 สามประสบ รีสอร์ท — 1,200 บาท/คืน
 </option>
+
 
 <option value="monplay">
 🌉 บ้านมอญนอนเล่น — 590–690 บาท/คืน
 </option>
 
+
 <option value="bermis">
 🏞️ เบอมิซอินน์ รีสอร์ท — 400 บาท/คืน
 </option>
+
 
 <option value="wangka">
 ⛰️ วังกะรีสอร์ท — 861 บาท/คืน
 </option>
 
+
 <option value="machill">
 🌿 มาชิลล์ รีสอร์ท — 487 บาท/คืน
 </option>
+
 
 <option value="sangkhlaburi">
 🏡 สังขละวิลเลจ รีสอร์ท — 950–1,150 บาท/คืน
@@ -586,6 +702,8 @@ required>
 </select>
 
 
+
+<!-- ROOM PREVIEW -->
 
 <div
 id="roomPreview"
@@ -604,6 +722,8 @@ class="price">
 </div>
 
 
+
+<!-- ROOM TYPE -->
 
 <div
 id="roomBox"
@@ -642,7 +762,9 @@ required>
 
 
 
-<!-- ================= DATE ================= -->
+<!-- =======================================================
+     DATE
+======================================================= -->
 
 <div class="section">
 
@@ -656,6 +778,7 @@ required>
 
 
 <div class="row g-3">
+
 
 <div class="col-md-6">
 
@@ -677,6 +800,7 @@ required>
 </div>
 
 
+
 <div class="col-md-6">
 
 <label
@@ -696,6 +820,7 @@ required>
 
 </div>
 
+
 </div>
 
 
@@ -709,7 +834,9 @@ required>
 
 
 
-<!-- ================= GUESTS ================= -->
+<!-- =======================================================
+     GUESTS
+======================================================= -->
 
 <div class="section">
 
@@ -742,7 +869,9 @@ required>
 
 
 
-<!-- ================= SUMMARY ================= -->
+<!-- =======================================================
+     SUMMARY
+======================================================= -->
 
 <div class="summary">
 
@@ -826,7 +955,9 @@ class="total">
 
 
 
-<!-- ================= SUBMIT ================= -->
+<!-- =======================================================
+     SUBMIT
+======================================================= -->
 
 <div class="mt-4">
 
@@ -848,11 +979,14 @@ type="submit">
 
 
 
-<!-- ================= SUCCESS ================= -->
+<!-- =======================================================
+     SUCCESS
+======================================================= -->
 
 <div
 id="successBox"
 class="success">
+
 
 <div class="success-icon">
 ✓
@@ -875,6 +1009,7 @@ class="code">
 กรุณาเก็บรหัสการจองไว้สำหรับตรวจสอบสถานะ
 
 </p>
+
 
 
 <div class="detail">
@@ -968,6 +1103,7 @@ class="code">
 <strong
 id="sTotal"
 style="color:#795548;font-size:20px">
+
 </strong>
 
 </div>
@@ -976,7 +1112,9 @@ style="color:#795548;font-size:20px">
 </div>
 
 
+
 <div class="text-center mt-4">
+
 
 <a
 href="history.html"
@@ -995,13 +1133,15 @@ class="btn btn-outline-secondary ms-2">
 
 </a>
 
-</div>
-
 
 </div>
 
 
 </div>
+
+
+</div>
+
 
 
 <footer>
@@ -1019,34 +1159,50 @@ class="btn btn-outline-secondary ms-2">
 
 
 
-<!-- ================= BOOTSTRAP ================= -->
+<!-- =========================================================
+     BOOTSTRAP
+========================================================= -->
 
 <script
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
 
 
-<!-- ================= SUPABASE ================= -->
+
+<!-- =========================================================
+     SUPABASE
+========================================================= -->
 
 <script
 src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
 </script>
 
 
+
 <script>
 
 /* =========================================================
-   SUPABASE
-   ใช้ชุดเดียวกับ admin-bookings.html
+   SUPABASE CONFIG
 ========================================================= */
 
+/*
+    สำคัญ:
+    ใช้ Project URL ของ Supabase
+
+    ไม่ต้องใส่ /rest/v1/
+*/
+
 const SUPABASE_URL =
-"https://drojzwcelybbbkyptmns.supabase.co";
+"https://drojzwcelwbbbkvptmns.supabase.co";
 
 
 const SUPABASE_ANON_KEY =
 "sb_publishable_JHexmXkHfhzsMT9iRMf1gg_Srdcw7UM";
 
+
+/*
+    สร้าง Supabase Client
+*/
 
 const supabaseClient =
 window.supabase.createClient(
@@ -1059,9 +1215,11 @@ window.supabase.createClient(
    STORAGE
 ========================================================= */
 
-const STORAGE_KEY = "bookings";
+const STORAGE_KEY =
+"bookings";
 
-const OLD_STORAGE_KEY = "monBridgeBookings";
+const OLD_STORAGE_KEY =
+"monBridgeBookings";
 
 
 /* =========================================================
@@ -1070,79 +1228,92 @@ const OLD_STORAGE_KEY = "monBridgeBookings";
 
 const accommodations = {
 
-samprasop:{
-    name:"สามประสบ รีสอร์ท",
-    display:"1,200 บาท/คืน",
-    rooms:[
-        {
-            name:"ห้องพักมาตรฐาน",
-            price:1200
-        }
-    ]
-},
+    samprasop:{
+        name:"สามประสบ รีสอร์ท",
+        display:"1,200 บาท/คืน",
 
-monplay:{
-    name:"บ้านมอญนอนเล่น",
-    display:"590–690 บาท/คืน",
-    rooms:[
-        {
-            name:"ห้องพักมาตรฐาน",
-            price:590
-        },
-        {
-            name:"ห้องพักวิว",
-            price:690
-        }
-    ]
-},
+        rooms:[
+            {
+                name:"ห้องพักมาตรฐาน",
+                price:1200
+            }
+        ]
+    },
 
-bermis:{
-    name:"เบอมิซอินน์ รีสอร์ท",
-    display:"400 บาท/คืน",
-    rooms:[
-        {
-            name:"ห้องพักมาตรฐาน",
-            price:400
-        }
-    ]
-},
 
-wangka:{
-    name:"วังกะรีสอร์ท",
-    display:"861 บาท/คืน",
-    rooms:[
-        {
-            name:"ห้องพักมาตรฐาน",
-            price:861
-        }
-    ]
-},
+    monplay:{
+        name:"บ้านมอญนอนเล่น",
+        display:"590–690 บาท/คืน",
 
-machill:{
-    name:"มาชิลล์ รีสอร์ท",
-    display:"487 บาท/คืน",
-    rooms:[
-        {
-            name:"ห้องพักมาตรฐาน",
-            price:487
-        }
-    ]
-},
+        rooms:[
+            {
+                name:"ห้องพักมาตรฐาน",
+                price:590
+            },
 
-sangkhlaburi:{
-    name:"สังขละวิลเลจ รีสอร์ท",
-    display:"950–1,150 บาท/คืน",
-    rooms:[
-        {
-            name:"ห้องพัก 2 คน",
-            price:950
-        },
-        {
-            name:"ห้องพักสำหรับครอบครัว",
-            price:1150
-        }
-    ]
-}
+            {
+                name:"ห้องพักวิว",
+                price:690
+            }
+        ]
+    },
+
+
+    bermis:{
+        name:"เบอมิซอินน์ รีสอร์ท",
+        display:"400 บาท/คืน",
+
+        rooms:[
+            {
+                name:"ห้องพักมาตรฐาน",
+                price:400
+            }
+        ]
+    },
+
+
+    wangka:{
+        name:"วังกะรีสอร์ท",
+        display:"861 บาท/คืน",
+
+        rooms:[
+            {
+                name:"ห้องพักมาตรฐาน",
+                price:861
+            }
+        ]
+    },
+
+
+    machill:{
+        name:"มาชิลล์ รีสอร์ท",
+        display:"487 บาท/คืน",
+
+        rooms:[
+            {
+                name:"ห้องพักมาตรฐาน",
+                price:487
+            }
+        ]
+    },
+
+
+    sangkhlaburi:{
+        name:"สังขละวิลเลจ รีสอร์ท",
+        display:"950–1,150 บาท/คืน",
+
+        rooms:[
+            {
+                name:"ห้องพัก 2 คน",
+                price:950
+            },
+
+            {
+                name:"ห้องพักสำหรับครอบครัว",
+                price:1150
+            }
+        ]
+    }
 
 };
 
@@ -1158,23 +1329,30 @@ document.getElementById(id);
 const form =
 $("bookingForm");
 
+
 const nameEl =
 $("name");
+
 
 const phoneEl =
 $("phone");
 
+
 const accEl =
 $("accommodation");
+
 
 const roomEl =
 $("roomType");
 
+
 const checkinEl =
 $("checkin");
 
+
 const checkoutEl =
 $("checkout");
+
 
 const guestsEl =
 $("guests");
@@ -1186,7 +1364,9 @@ $("guests");
 
 function todayString(){
 
-    const d = new Date();
+    const d =
+    new Date();
+
 
     return `${d.getFullYear()}-${
         String(d.getMonth()+1).padStart(2,"0")
@@ -1204,12 +1384,13 @@ todayString();
 checkinEl.min =
 today;
 
+
 checkoutEl.min =
 today;
 
 
 /* =========================================================
-   FORMAT
+   MONEY
 ========================================================= */
 
 function money(n){
@@ -1221,18 +1402,33 @@ function money(n){
 }
 
 
+/* =========================================================
+   DATE THAI
+========================================================= */
+
 function dateTH(v){
 
-    if(!v) return "-";
+    if(!v){
+
+        return "-";
+
+    }
+
 
     const parts =
     v.split("-");
 
-    if(parts.length !== 3)
+
+    if(parts.length !== 3){
+
         return v;
+
+    }
+
 
     const y =
     Number(parts[0]) + 543;
+
 
     return `${parts[2]}/${parts[1]}/${y}`;
 
@@ -1240,7 +1436,7 @@ function dateTH(v){
 
 
 /* =========================================================
-   NIGHTS
+   CALCULATE NIGHTS
 ========================================================= */
 
 function nights(){
@@ -1249,8 +1445,11 @@ function nights(){
         !checkinEl.value ||
         !checkoutEl.value
     ){
+
         return 0;
+
     }
+
 
     const a =
     new Date(
@@ -1258,21 +1457,23 @@ function nights(){
         "T00:00:00"
     );
 
+
     const b =
     new Date(
         checkoutEl.value +
         "T00:00:00"
     );
 
+
     return Math.round(
-        (b-a)/86400000
+        (b - a) / 86400000
     );
 
 }
 
 
 /* =========================================================
-   ROOM
+   SELECTED ROOM
 ========================================================= */
 
 function selectedRoom(){
@@ -1282,12 +1483,16 @@ function selectedRoom(){
         accEl.value
     ];
 
+
     if(
         !a ||
         roomEl.value === ""
     ){
+
         return null;
+
     }
+
 
     return a.rooms[
         Number(roomEl.value)
@@ -1297,7 +1502,7 @@ function selectedRoom(){
 
 
 /* =========================================================
-   UPDATE ROOM
+   UPDATE ROOM OPTIONS
 ========================================================= */
 
 function updateRoomOptions(){
@@ -1309,7 +1514,11 @@ function updateRoomOptions(){
 
 
     roomEl.innerHTML =
-    '<option value="">-- กรุณาเลือกประเภทห้อง --</option>';
+    `
+    <option value="">
+        -- กรุณาเลือกประเภทห้อง --
+    </option>
+    `;
 
 
     $("roomBox")
@@ -1354,11 +1563,14 @@ function updateRoomOptions(){
                 "option"
             );
 
+
             option.value =
             i;
 
+
             option.textContent =
             `${r.name} — ${money(r.price)}/คืน`;
+
 
             roomEl.appendChild(
                 option
@@ -1379,7 +1591,7 @@ function updateRoomOptions(){
 
 
 /* =========================================================
-   SUMMARY
+   UPDATE SUMMARY
 ========================================================= */
 
 function updateSummary(){
@@ -1389,8 +1601,10 @@ function updateSummary(){
         accEl.value
     ];
 
+
     const r =
     selectedRoom();
+
 
     const n =
     Math.max(
@@ -1401,12 +1615,16 @@ function updateSummary(){
 
     $("sumAccommodation")
         .textContent =
-        a ? a.name : "-";
+        a
+        ? a.name
+        : "-";
 
 
     $("sumRoom")
         .textContent =
-        r ? r.name : "-";
+        r
+        ? r.name
+        : "-";
 
 
     $("sumPrice")
@@ -1431,7 +1649,9 @@ function updateSummary(){
     $("sumTotal")
         .textContent =
         r && n > 0
-        ? money(r.price * n)
+        ? money(
+            r.price * n
+        )
         : "0 บาท";
 
 }
@@ -1454,8 +1674,11 @@ function showError(msg){
 
 
     window.scrollTo({
+
         top:0,
+
         behavior:"smooth"
+
     });
 
 }
@@ -1471,24 +1694,26 @@ function hideError(){
 
 
 /* =========================================================
-   BOOKING CODE
+   GENERATE BOOKING CODE
 ========================================================= */
 
 function generateBookingCode(){
 
-    return "MB" +
-        Date.now()
-        .toString()
-        .slice(-8) +
-        Math.floor(
-            Math.random()*10
-        );
+    const random =
+    Math.floor(
+        10000000 +
+        Math.random() *
+        90000000
+    );
+
+
+    return "MB" + random;
 
 }
 
 
 /* =========================================================
-   NORMALIZE
+   NORMALIZE BOOKING
 ========================================================= */
 
 function normalize(b){
@@ -1507,9 +1732,11 @@ function normalize(b){
 
         code:c,
 
-        name:b.name || "",
+        name:
+        b.name || "",
 
-        phone:b.phone || "",
+        phone:
+        b.phone || "",
 
         accommodation:
         b.accommodation || "",
@@ -1553,10 +1780,14 @@ function normalize(b){
         "",
 
         nights:
-        Number(b.nights || 0),
+        Number(
+            b.nights || 0
+        ),
 
         guests:
-        Number(b.guests || 0),
+        Number(
+            b.guests || 0
+        ),
 
         total_price:
         Number(
@@ -1582,7 +1813,7 @@ function normalize(b){
 
 
 /* =========================================================
-   LOCAL STORAGE
+   READ LOCAL BOOKINGS
 ========================================================= */
 
 function readBookings(){
@@ -1601,7 +1832,16 @@ function readBookings(){
             ) || "[]"
         );
 
-    }catch(e){}
+    }
+
+    catch(e){
+
+        console.warn(
+            "อ่าน bookings ไม่สำเร็จ",
+            e
+        );
+
+    }
 
 
     try{
@@ -1613,7 +1853,16 @@ function readBookings(){
             ) || "[]"
         );
 
-    }catch(e){}
+    }
+
+    catch(e){
+
+        console.warn(
+            "อ่าน monBridgeBookings ไม่สำเร็จ",
+            e
+        );
+
+    }
 
 
     const map =
@@ -1650,6 +1899,10 @@ function readBookings(){
 }
 
 
+/* =========================================================
+   SAVE LOCAL
+========================================================= */
+
 function saveLocal(b){
 
     const arr =
@@ -1661,7 +1914,8 @@ function saveLocal(b){
         x =>
         String(
             x.booking_code
-        ) === String(
+        ) ===
+        String(
             b.booking_code
         )
     );
@@ -1672,7 +1926,9 @@ function saveLocal(b){
         arr[index] =
         b;
 
-    }else{
+    }
+
+    else{
 
         arr.push(b);
 
@@ -1694,10 +1950,16 @@ function saveLocal(b){
 
 
 /* =========================================================
-   SUPABASE SAVE
+   SAVE SUPABASE
 ========================================================= */
 
 async function saveSupabase(b){
+
+    console.log(
+        "กำลังบันทึกข้อมูลไป Supabase...",
+        b
+    );
+
 
     const {
         data,
@@ -1757,11 +2019,18 @@ async function saveSupabase(b){
             error
         );
 
+
         throw new Error(
             error.message
         );
 
     }
+
+
+    console.log(
+        "บันทึก Supabase สำเร็จ:",
+        data
+    );
 
 
     return data;
@@ -1773,17 +2042,24 @@ async function saveSupabase(b){
    EVENTS
 ========================================================= */
 
+
+/* ACCOMMODATION */
+
 accEl.addEventListener(
     "change",
     updateRoomOptions
 );
 
 
+/* ROOM */
+
 roomEl.addEventListener(
     "change",
     updateSummary
 );
 
+
+/* CHECK IN */
 
 checkinEl.addEventListener(
     "change",
@@ -1800,7 +2076,8 @@ checkinEl.addEventListener(
             checkinEl.value
         ){
 
-            checkoutEl.value = "";
+            checkoutEl.value =
+            "";
 
         }
 
@@ -1811,11 +2088,15 @@ checkinEl.addEventListener(
 );
 
 
+/* CHECK OUT */
+
 checkoutEl.addEventListener(
     "change",
     updateSummary
 );
 
+
+/* GUESTS */
 
 guestsEl.addEventListener(
     "input",
@@ -1827,12 +2108,20 @@ guestsEl.addEventListener(
         );
 
 
-        if(n < 1)
-            guestsEl.value = 1;
+        if(n < 1){
+
+            guestsEl.value =
+            1;
+
+        }
 
 
-        if(n > 20)
-            guestsEl.value = 20;
+        if(n > 20){
+
+            guestsEl.value =
+            20;
+
+        }
 
 
         updateSummary();
@@ -1841,14 +2130,16 @@ guestsEl.addEventListener(
 );
 
 
+/* PHONE */
+
 phoneEl.addEventListener(
     "input",
     ()=>{
 
         phoneEl.value =
         phoneEl.value
-        .replace(/\D/g,"")
-        .slice(0,10);
+            .replace(/\D/g,"")
+            .slice(0,10);
 
     }
 );
@@ -1864,8 +2155,13 @@ async function(e){
 
     e.preventDefault();
 
+
     hideError();
 
+
+    /* -----------------------------------------------------
+       GET VALUES
+    ----------------------------------------------------- */
 
     const name =
     nameEl.value.trim();
@@ -1901,7 +2197,9 @@ async function(e){
     nights();
 
 
-    /* VALIDATION */
+    /* -----------------------------------------------------
+       VALIDATION
+    ----------------------------------------------------- */
 
     if(!name){
 
@@ -2007,7 +2305,9 @@ async function(e){
     }
 
 
-    /* BOOKING DATA */
+    /* -----------------------------------------------------
+       BOOKING CODE
+    ----------------------------------------------------- */
 
     const bookingCode =
     generateBookingCode();
@@ -2024,6 +2324,10 @@ async function(e){
     const accommodation =
     accommodations[key];
 
+
+    /* -----------------------------------------------------
+       BOOKING OBJECT
+    ----------------------------------------------------- */
 
     const booking = {
 
@@ -2081,10 +2385,19 @@ async function(e){
     };
 
 
-    /* BUTTON */
+    console.log(
+        "BOOKING DATA:",
+        booking
+    );
+
+
+    /* -----------------------------------------------------
+       DISABLE BUTTON
+    ----------------------------------------------------- */
 
     $("submitButton")
-        .disabled = true;
+        .disabled =
+        true;
 
 
     $("buttonText")
@@ -2092,11 +2405,17 @@ async function(e){
         "กำลังบันทึกการจอง...";
 
 
+    /* -----------------------------------------------------
+       SAVE
+    ----------------------------------------------------- */
+
     try{
 
         /*
-          1. บันทึก Supabase ก่อน
-          2. ถ้าสำเร็จค่อยเก็บ localStorage
+            สำคัญ:
+
+            1. บันทึก Supabase
+            2. ถ้าสำเร็จจึงบันทึก localStorage
         */
 
         await saveSupabase(
@@ -2109,7 +2428,9 @@ async function(e){
         );
 
 
-        /* SUCCESS */
+        /* -------------------------------------------------
+           SUCCESS
+        ------------------------------------------------- */
 
         form.style.display =
         "none";
@@ -2192,7 +2513,9 @@ async function(e){
             });
 
 
-    }catch(error){
+    }
+
+    catch(error){
 
         console.error(
             "บันทึกการจองไม่สำเร็จ:",
@@ -2200,16 +2523,42 @@ async function(e){
         );
 
 
+        /*
+            แสดงข้อความที่อ่านง่าย
+        */
+
+        let message =
+        error?.message ||
+        "ไม่สามารถเชื่อมต่อ Supabase ได้";
+
+
+        if(
+            message
+                .toLowerCase()
+                .includes("failed to fetch")
+        ){
+
+            message =
+            "ไม่สามารถเชื่อมต่อ Supabase ได้ กรุณาตรวจสอบ Project URL, API Key และ RLS Policy ของตาราง bookings";
+
+        }
+
+
         showError(
             "❌ บันทึกการจองไม่สำเร็จ: " +
-            error.message
+            message
         );
 
     }
 
 
+    /* -----------------------------------------------------
+       ENABLE BUTTON
+    ----------------------------------------------------- */
+
     $("submitButton")
-        .disabled = false;
+        .disabled =
+        false;
 
 
     $("buttonText")
@@ -2225,6 +2574,20 @@ async function(e){
 
 updateSummary();
 
+
+/* =========================================================
+   DEBUG SUPABASE CONNECTION
+========================================================= */
+
+console.log(
+    "Supabase URL:",
+    SUPABASE_URL
+);
+
+console.log(
+    "Supabase Client:",
+    supabaseClient
+);
 
 </script>
 
