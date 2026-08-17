@@ -1,1018 +1,170 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>จัดการการจอง | Mon Bridge Stay</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
-
-*{
-    box-sizing:border-box;
-}
-
-body{
-    margin:0;
-    background:#f5f0e8;
-    font-family:"Segoe UI","Tahoma",sans-serif;
-    color:#4e342e;
-}
-
-.sidebar{
-    position:fixed;
-    left:0;
-    top:0;
-    width:240px;
-    height:100vh;
-    background:#4e342e;
-    color:white;
-    padding:25px 15px;
-}
-
-.logo{
-    font-size:25px;
-    font-weight:700;
-    padding:15px;
-    margin-bottom:20px;
-}
-
-.sidebar a{
-    display:block;
-    color:white;
-    text-decoration:none;
-    padding:15px;
-    border-radius:12px;
-    margin-bottom:6px;
-}
-
-.sidebar a:hover,
-.sidebar a.active{
-    background:#806052;
-}
-
-.main{
-    margin-left:240px;
-    padding:35px;
-}
-
-.header{
-    background:white;
-    border-radius:25px;
-    padding:30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,.06);
-}
-
-.header h1{
-    margin:0;
-    font-size:34px;
-}
-
-.header p{
-    margin:8px 0 0;
-}
-
-.buttons{
-    display:flex;
-    gap:10px;
-}
-
-.btn{
-    border:none;
-    border-radius:12px;
-    padding:13px 20px;
-    cursor:pointer;
-    font-size:15px;
-}
-
-.btn-refresh{
-    background:#e8e0d8;
-    color:#5d4037;
-}
-
-.btn-guests{
-    background:#795548;
-    color:white;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:25px;
-    margin:30px 0;
-}
-
-.card{
-    background:white;
-    border-radius:22px;
-    padding:25px;
-    box-shadow:0 5px 20px rgba(0,0,0,.05);
-}
-
-.card-number{
-    font-size:38px;
-    font-weight:800;
-    color:#795548;
-}
-
-.card-title{
-    font-size:17px;
-    margin-top:5px;
-}
-
-.search-box{
-    background:white;
-    padding:25px;
-    border-radius:22px;
-    margin-bottom:25px;
-}
-
-.search{
-    width:100%;
-    height:52px;
-    border:1px solid #d7c7bd;
-    border-radius:12px;
-    padding:0 18px;
-    font-size:16px;
-}
-
-.table-box{
-    background:white;
-    border-radius:22px;
-    padding:25px;
-    overflow:auto;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:1100px;
-}
-
-th{
-    background:#f6f0e7;
-    padding:16px 12px;
-    text-align:left;
-}
-
-td{
-    padding:16px 12px;
-    border-bottom:1px solid #eee4de;
-}
-
-.status{
-    display:inline-block;
-    padding:6px 12px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:700;
-}
-
-.pending{
-    background:#fff1c7;
-    color:#936800;
-}
-
-.confirmed{
-    background:#dff6e5;
-    color:#19733b;
-}
-
-.cancelled{
-    background:#ffe0e0;
-    color:#b3261e;
-}
-
-.action-btn{
-    border:none;
-    border-radius:8px;
-    padding:7px 10px;
-    cursor:pointer;
-    margin-right:4px;
-}
-
-.confirm-btn{
-    background:#dff6e5;
-    color:#19733b;
-}
-
-.cancel-btn{
-    background:#ffe0e0;
-    color:#b3261e;
-}
-
-.delete-btn{
-    background:#4e342e;
-    color:white;
-}
-
-.empty{
-    text-align:center;
-    padding:50px;
-    color:#795548;
-}
-
-@media(max-width:1000px){
-
-    .sidebar{
-        position:relative;
-        width:100%;
-        height:auto;
-    }
-
-    .main{
-        margin-left:0;
-    }
-
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
-@media(max-width:600px){
-
-    .main{
-        padding:15px;
-    }
-
-    .header{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .cards{
-        grid-template-columns:1fr;
-    }
-
-}
-
+*{box-sizing:border-box}body{margin:0;background:#f6f1e7;color:#4e342e;font-family:"Noto Sans Thai","Segoe UI",Tahoma,sans-serif}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:235px;background:#4e342e;color:#fff;padding:25px 15px;z-index:10}.brand{font-size:22px;font-weight:900;margin:5px 10px 30px}.menu{display:block;color:#fff;text-decoration:none;padding:13px 15px;border-radius:12px;margin-bottom:7px}.menu:hover,.menu.active{background:#795548;color:#fff}
+.main{margin-left:235px;padding:30px}.header,.stat,.tools,.table-card{background:#fff;border-radius:20px;box-shadow:0 5px 20px rgba(62,51,40,.08)}
+.header{padding:25px;margin-bottom:25px;display:flex;justify-content:space-between;align-items:center;gap:15px}.header h1{color:#5d4037;font-weight:900;margin:0}.header p{margin:6px 0 0;color:#777}
+.btn-main{background:#795548;color:#fff;border:0;border-radius:12px;padding:11px 18px}.btn-main:hover{background:#5d4037;color:#fff}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:25px}.stat{padding:22px}.stat .num{font-size:36px;font-weight:900;color:#795548}.stat .txt{margin-top:4px}
+.tools{padding:20px;margin-bottom:25px;display:flex;gap:12px}.search{flex:1;min-height:52px;border:1px solid #ddd0c8;border-radius:12px;padding:0 16px;font-size:16px}
+.table-card{padding:20px;overflow:auto}.table{margin:0;vertical-align:middle}.table thead th{background:#f7f3e8;color:#5d4037;white-space:nowrap}.table td{white-space:nowrap}.status{padding:6px 12px;border-radius:20px;font-size:13px;font-weight:800;display:inline-block}.pending{background:#fff3cd;color:#856404}.confirmed{background:#e8f5e9;color:#2e7d32}.cancelled{background:#f8d7da;color:#842029}.empty{text-align:center;padding:45px;color:#777}
+.modal-content{border:0;border-radius:20px}.modal-header{background:#5d4037;color:#fff}.detail-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed #ddd;gap:20px}
+@media(max-width:900px){.sidebar{width:70px;padding:20px 8px}.brand{font-size:0;text-align:center}.brand:first-letter{font-size:25px}.menu{font-size:0;text-align:center}.menu:first-letter{font-size:20px}.main{margin-left:70px;padding:18px}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.header{flex-direction:column;align-items:flex-start}.stats{grid-template-columns:1fr}.tools{flex-direction:column}}
 </style>
-
 </head>
-
 <body>
-
-
 <aside class="sidebar">
-
-    <div class="logo">
-        🏠 Mon Bridge Stay
-    </div>
-
-    <a href="admin.html">
-        📊 Dashboard
-    </a>
-
-    <a href="admin-rooms.html">
-        🛏️ จัดการห้องพัก
-    </a>
-
-    <a href="admin-bookings.html"
-       class="active">
-        📅 จัดการการจอง
-    </a>
-
-    <a href="admin-promotions.html">
-        🎁 โปรโมชั่น
-    </a>
-
-    <a href="admin-guests.html">
-        👥 ผู้เข้าพัก
-    </a>
-
-    <a href="index.html">
-        🌐 กลับหน้าเว็บไซต์
-    </a>
-
+<div class="brand">🌉 Mon Bridge Stay</div>
+<a class="menu" href="admin.html">🏠 Dashboard</a>
+<a class="menu active" href="admin-bookings.html">📋 การจอง</a>
+<a class="menu" href="admin-rooms.html">🏨 ห้องพัก</a>
+<a class="menu" href="admin-promotions.html">🎁 โปรโมชั่น</a>
+<a class="menu" href="admin-guests.html">👤 ผู้เข้าพัก</a>
+<a class="menu" href="index.html">🌐 เว็บไซต์</a>
+<a class="menu" href="admin-login.html">🚪 ออกจากระบบ</a>
 </aside>
 
-
 <main class="main">
-
-
-    <div class="header">
-
-        <div>
-
-            <h1>
-                📅 จัดการการจอง
-            </h1>
-
-            <p>
-                ตรวจสอบ ยืนยัน และจัดการรายการจอง
-            </p>
-
-        </div>
-
-
-        <div class="buttons">
-
-            <button
-                class="btn btn-refresh"
-                onclick="loadBookings()">
-
-                🔄 รีเฟรช
-
-            </button>
-
-            <a href="admin-guests.html"
-               style="text-decoration:none">
-
-                <button class="btn btn-guests">
-                    👥 ดูผู้เข้าพัก
-                </button>
-
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div
-                id="totalCount"
-                class="card-number">
-                0
-            </div>
-
-            <div class="card-title">
-                📋 การจองทั้งหมด
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div
-                id="confirmedCount"
-                class="card-number">
-                0
-            </div>
-
-            <div class="card-title">
-                🟢 ยืนยันแล้ว
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div
-                id="pendingCount"
-                class="card-number">
-                0
-            </div>
-
-            <div class="card-title">
-                🟡 รอยืนยัน
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div
-                id="cancelledCount"
-                class="card-number">
-                0
-            </div>
-
-            <div class="card-title">
-                🔴 ยกเลิก
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="search-box">
-
-        <input
-            id="search"
-            class="search"
-            placeholder="🔎 ค้นหารหัส ผู้เข้าพัก ที่พัก หรือวันที่...">
-
-    </div>
-
-
-    <div class="table-box">
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>รหัส</th>
-
-                    <th>ผู้เข้าพัก</th>
-
-                    <th>ที่พัก</th>
-
-                    <th>ประเภทห้อง</th>
-
-                    <th>เช็กอิน</th>
-
-                    <th>เช็กเอาต์</th>
-
-                    <th>จำนวน</th>
-
-                    <th>ราคา</th>
-
-                    <th>สถานะ</th>
-
-                    <th>จัดการ</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody id="bookingTable">
-
-            </tbody>
-
-        </table>
-
-    </div>
-
+<section class="header">
+<div><h1>📅 จัดการการจอง</h1><p>ตรวจสอบ ยืนยัน ยกเลิก และจัดการรายการจองของ Mon Bridge Stay</p></div>
+<button class="btn-main" onclick="loadBookings()">🔄 รีเฟรช</button>
+</section>
+
+<section class="stats">
+<div class="stat"><div id="total" class="num">0</div><div class="txt">📋 การจองทั้งหมด</div></div>
+<div class="stat"><div id="confirmed" class="num">0</div><div class="txt">🟢 ยืนยันแล้ว</div></div>
+<div class="stat"><div id="pending" class="num">0</div><div class="txt">🟡 รอยืนยัน</div></div>
+<div class="stat"><div id="cancelled" class="num">0</div><div class="txt">🔴 ยกเลิก</div></div>
+</section>
+
+<section class="tools">
+<input id="search" class="search" placeholder="🔎 ค้นหารหัส ผู้เข้าพัก เบอร์โทร ที่พัก หรือประเภทห้อง">
+<button class="btn btn-outline-secondary" onclick="clearSearch()">ล้าง</button>
+</section>
+
+<section class="table-card">
+<div class="table-responsive">
+<table class="table">
+<thead><tr>
+<th>รหัส</th><th>ผู้เข้าพัก</th><th>ที่พัก</th><th>ประเภทห้อง</th><th>เช็กอิน</th><th>จำนวนคืน</th><th>ผู้เข้าพัก</th><th>ราคา</th><th>สถานะ</th><th>จัดการ</th>
+</tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+</section>
 </main>
 
+<div class="modal fade" id="detailModal" tabindex="-1">
+<div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content">
+<div class="modal-header"><h5 class="modal-title">รายละเอียดการจอง</h5><button class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+<div class="modal-body" id="detail"></div>
+</div></div></div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+const STORAGE_KEY="bookings", OLD_STORAGE_KEY="monBridgeBookings";
+const SUPABASE_URL="", SUPABASE_ANON_KEY="";
+let supabaseClient=null;
+if(SUPABASE_URL&&SUPABASE_ANON_KEY&&window.supabase)supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
 
-/* =========================================================
-   SUPABASE
-========================================================= */
-
-const SUPABASE_URL = "YOUR_SUPABASE_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
-
-const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_ANON_KEY
-    );
-
-
-let allBookings = [];
-
-
-/* =========================================================
-   โหลดการจอง
-========================================================= */
-
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function money(n){return Number(n||0).toLocaleString("th-TH")}
+function dateTH(v){if(!v)return"-";const [y,m,d]=v.split("-");return `${d}/${m}/${Number(y)+543}`}
+function normalize(b){
+ const c=b.booking_code||b.code||b.id;
+ return {id:c,booking_code:c,name:b.name||"",phone:b.phone||"",accommodation:b.accommodation||"",
+ room:b.room||b.room_type||"",room_type:b.room_type||b.room||"",
+ check_in:b.check_in||b.checkin||b.date||"",check_out:b.check_out||b.checkout||"",
+ nights:Number(b.nights||0),guests:Number(b.guests||0),
+ price_per_night:Number(b.price_per_night??b.room_price??0),total_price:Number(b.total_price||0),
+ status:b.status||"pending",statusText:b.statusText||"รอยืนยัน",created_at:b.created_at||b.createdAt||new Date().toISOString()};
+}
+function getLocal(){
+ const a=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]"),b=JSON.parse(localStorage.getItem(OLD_STORAGE_KEY)||"[]"),m=new Map();
+ [...a,...b].forEach(x=>{const n=normalize(x);if(n.booking_code)m.set(String(n.booking_code),n)});return [...m.values()];
+}
+function saveLocal(arr){localStorage.setItem(STORAGE_KEY,JSON.stringify(arr));localStorage.setItem(OLD_STORAGE_KEY,JSON.stringify(arr))}
+async function getSupabase(){
+ if(!supabaseClient)return [];
+ try{const {data,error}=await supabaseClient.from("bookings").select("*").order("created_at",{ascending:false});if(error)throw error;return (data||[]).map(normalize)}
+ catch(e){console.warn("Supabase:",e);return []}
+}
+async function all(){
+ const local=getLocal(), remote=await getSupabase(),m=new Map();
+ [...remote,...local].forEach(x=>m.set(String(x.booking_code),x));return [...m.values()].sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
+}
+let current=[];
 async function loadBookings(){
-
-    const tbody =
-        document.getElementById(
-            "bookingTable"
-        );
-
-    tbody.innerHTML = `
-
-        <tr>
-            <td colspan="10"
-                style="text-align:center;padding:40px">
-
-                ⏳ กำลังโหลดข้อมูล...
-
-            </td>
-        </tr>
-
-    `;
-
-
-    const {
-        data,
-        error
-    } = await supabaseClient
-        .from("bookings")
-        .select("*")
-        .order(
-            "created_at",
-            {
-                ascending:false
-            }
-        );
-
-
-    if(error){
-
-        console.error(error);
-
-        tbody.innerHTML = `
-
-            <tr>
-                <td colspan="10"
-                    style="text-align:center;color:red;padding:40px">
-
-                    ❌ โหลดข้อมูลไม่ได้<br>
-                    ${error.message}
-
-                </td>
-            </tr>
-
-        `;
-
-        return;
-
-    }
-
-
-    allBookings =
-        data || [];
-
-
-    updateCards();
-
-    renderBookings(
-        allBookings
-    );
-
+ current=await all();render();
 }
-
-
-/* =========================================================
-   แสดงข้อมูล
-========================================================= */
-
-function renderBookings(bookings){
-
-    const tbody =
-        document.getElementById(
-            "bookingTable"
-        );
-
-
-    if(!bookings.length){
-
-        tbody.innerHTML = `
-
-            <tr>
-                <td colspan="10"
-                    class="empty">
-
-                    📭 ไม่พบรายการจอง
-
-                </td>
-            </tr>
-
-        `;
-
-        return;
-
-    }
-
-
-    tbody.innerHTML =
-        bookings.map(
-            booking => {
-
-                const status =
-                    booking.status ||
-                    "pending";
-
-
-                let statusText =
-                    "รอยืนยัน";
-
-                let statusClass =
-                    "pending";
-
-
-                if(status === "confirmed"){
-
-                    statusText =
-                        "ยืนยันแล้ว";
-
-                    statusClass =
-                        "confirmed";
-
-                }
-
-
-                if(status === "cancelled"){
-
-                    statusText =
-                        "ยกเลิก";
-
-                    statusClass =
-                        "cancelled";
-
-                }
-
-
-                return `
-
-                <tr>
-
-                    <td>
-                        <strong>
-                            ${escapeHtml(
-                                booking.booking_code || "-"
-                            )}
-                        </strong>
-                    </td>
-
-
-                    <td>
-                        ${escapeHtml(
-                            booking.name || "-"
-                        )}
-                        <br>
-                        <small>
-                            ${escapeHtml(
-                                booking.phone || ""
-                            )}
-                        </small>
-                    </td>
-
-
-                    <td>
-                        ${escapeHtml(
-                            booking.accommodation || "-"
-                        )}
-                    </td>
-
-
-                    <td>
-                        ${escapeHtml(
-                            booking.room || "-"
-                        )}
-                    </td>
-
-
-                    <td>
-                        ${formatDate(
-                            booking.check_in
-                        )}
-                    </td>
-
-
-                    <td>
-                        ${formatDate(
-                            booking.check_out
-                        )}
-                    </td>
-
-
-                    <td>
-                        ${booking.guests || 0} คน
-                    </td>
-
-
-                    <td>
-                        <strong>
-                            ${Number(
-                                booking.total_price || 0
-                            ).toLocaleString()}
-                            บาท
-                        </strong>
-                    </td>
-
-
-                    <td>
-
-                        <span class="status ${statusClass}">
-                            ${statusText}
-                        </span>
-
-                    </td>
-
-
-                    <td>
-
-                        ${
-                            status !== "confirmed"
-                            ?
-                            `
-                            <button
-                                class="action-btn confirm-btn"
-                                onclick="changeStatus('${booking.id}','confirmed')">
-
-                                ✓ ยืนยัน
-
-                            </button>
-                            `
-                            :
-                            ""
-                        }
-
-
-                        ${
-                            status !== "cancelled"
-                            ?
-                            `
-                            <button
-                                class="action-btn cancel-btn"
-                                onclick="changeStatus('${booking.id}','cancelled')">
-
-                                ✕ ยกเลิก
-
-                            </button>
-                            `
-                            :
-                            ""
-                        }
-
-
-                        <button
-                            class="action-btn delete-btn"
-                            onclick="deleteBooking('${booking.id}')">
-
-                            🗑 ลบ
-
-                        </button>
-
-                    </td>
-
-                </tr>
-
-                `;
-
-            }
-        ).join("");
-
+function statusHtml(s){
+ if(s==="confirmed"||s==="ยืนยันแล้ว")return '<span class="status confirmed">✅ ยืนยันแล้ว</span>';
+ if(s==="cancelled"||s==="ยกเลิก")return '<span class="status cancelled">❌ ยกเลิก</span>';
+ return '<span class="status pending">⏳ รอยืนยัน</span>';
 }
-
-
-/* =========================================================
-   สถานะ
-========================================================= */
-
-async function changeStatus(
-    id,
-    status
-){
-
-    const {
-        error
-    } = await supabaseClient
-        .from("bookings")
-        .update({
-            status:status
-        })
-        .eq(
-            "id",
-            id
-        );
-
-
-    if(error){
-
-        alert(
-            "ไม่สามารถเปลี่ยนสถานะได้\n" +
-            error.message
-        );
-
-        return;
-
-    }
-
-
-    await loadBookings();
-
+function render(){
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ const data=current.filter(b=>!q||[b.booking_code,b.name,b.phone,b.accommodation,b.room].some(v=>String(v||"").toLowerCase().includes(q)));
+ document.getElementById("total").textContent=current.length;
+ document.getElementById("confirmed").textContent=current.filter(b=>b.status==="confirmed"||b.status==="ยืนยันแล้ว").length;
+ document.getElementById("pending").textContent=current.filter(b=>b.status==="pending"||b.status==="รอยืนยัน").length;
+ document.getElementById("cancelled").textContent=current.filter(b=>b.status==="cancelled"||b.status==="ยกเลิก").length;
+ document.getElementById("tbody").innerHTML=data.length?data.map(b=>`<tr>
+ <td><b>${esc(b.booking_code)}</b></td><td>${esc(b.name)}<br><small>${esc(b.phone)}</small></td>
+ <td>${esc(b.accommodation)}</td><td>${esc(b.room)}</td><td>${dateTH(b.check_in)}</td><td>${b.nights} คืน</td>
+ <td>${b.guests} คน</td><td>${money(b.total_price)} บาท</td><td>${statusHtml(b.status)}</td>
+ <td>
+ <button class="btn btn-sm btn-outline-secondary" onclick="viewBooking('${esc(b.booking_code)}')">ดู</button>
+ ${b.status!=="confirmed"&&b.status!=="ยืนยันแล้ว"?`<button class="btn btn-sm btn-success" onclick="changeStatus('${esc(b.booking_code)}','confirmed')">ยืนยัน</button>`:""}
+ ${b.status!=="cancelled"&&b.status!=="ยกเลิก"?`<button class="btn btn-sm btn-warning" onclick="changeStatus('${esc(b.booking_code)}','cancelled')">ยกเลิก</button>`:""}
+ <button class="btn btn-sm btn-danger" onclick="deleteBooking('${esc(b.booking_code)}')">ลบ</button>
+ </td></tr>`).join(""):'<tr><td colspan="10" class="empty">📭 ไม่พบรายการจอง</td></tr>';
 }
-
-
-/* =========================================================
-   ลบ
-========================================================= */
-
-async function deleteBooking(id){
-
-    if(
-        !confirm(
-            "ต้องการลบรายการจองนี้หรือไม่?"
-        )
-    ){
-
-        return;
-
-    }
-
-
-    const {
-        error
-    } = await supabaseClient
-        .from("bookings")
-        .delete()
-        .eq(
-            "id",
-            id
-        );
-
-
-    if(error){
-
-        alert(
-            "ลบไม่ได้\n" +
-            error.message
-        );
-
-        return;
-
-    }
-
-
-    await loadBookings();
-
+function find(code){return current.find(b=>String(b.booking_code)===String(code))}
+function viewBooking(code){
+ const b=find(code);if(!b)return;
+ document.getElementById("detail").innerHTML=`
+ <div class="detail-row"><span>รหัสการจอง</span><strong>${esc(b.booking_code)}</strong></div>
+ <div class="detail-row"><span>ผู้จอง</span><strong>${esc(b.name)}</strong></div>
+ <div class="detail-row"><span>เบอร์โทรศัพท์</span><strong>${esc(b.phone)}</strong></div>
+ <div class="detail-row"><span>ที่พัก</span><strong>${esc(b.accommodation)}</strong></div>
+ <div class="detail-row"><span>ประเภทห้อง</span><strong>${esc(b.room)}</strong></div>
+ <div class="detail-row"><span>เช็กอิน</span><strong>${dateTH(b.check_in)}</strong></div>
+ <div class="detail-row"><span>เช็กเอาต์</span><strong>${dateTH(b.check_out)}</strong></div>
+ <div class="detail-row"><span>จำนวนคืน</span><strong>${b.nights} คืน</strong></div>
+ <div class="detail-row"><span>ผู้เข้าพัก</span><strong>${b.guests} คน</strong></div>
+ <div class="detail-row"><span>ราคาต่อคืน</span><strong>${money(b.price_per_night)} บาท</strong></div>
+ <div class="detail-row"><span>ราคารวม</span><strong style="color:#795548">${money(b.total_price)} บาท</strong></div>
+ <div class="detail-row"><span>สถานะ</span><strong>${statusHtml(b.status)}</strong></div>`;
+ new bootstrap.Modal(document.getElementById("detailModal")).show();
 }
-
-
-/* =========================================================
-   Cards
-========================================================= */
-
-function updateCards(){
-
-    const total =
-        allBookings.length;
-
-
-    const confirmed =
-        allBookings.filter(
-            b =>
-            b.status === "confirmed"
-        ).length;
-
-
-    const pending =
-        allBookings.filter(
-            b =>
-            !b.status ||
-            b.status === "pending"
-        ).length;
-
-
-    const cancelled =
-        allBookings.filter(
-            b =>
-            b.status === "cancelled"
-        ).length;
-
-
-    document.getElementById(
-        "totalCount"
-    ).textContent =
-        total;
-
-
-    document.getElementById(
-        "confirmedCount"
-    ).textContent =
-        confirmed;
-
-
-    document.getElementById(
-        "pendingCount"
-    ).textContent =
-        pending;
-
-
-    document.getElementById(
-        "cancelledCount"
-    ).textContent =
-        cancelled;
-
+async function changeStatus(code,status){
+ const b=find(code);if(!b)return;
+ if(!confirm(status==="confirmed"?"ยืนยันการจองนี้ใช่หรือไม่?":"ยกเลิกการจองนี้ใช่หรือไม่?"))return;
+ b.status=status;b.statusText=status==="confirmed"?"ยืนยันแล้ว":"ยกเลิก";
+ const arr=getLocal();const i=arr.findIndex(x=>String(normalize(x).booking_code)===String(code));
+ if(i>=0){arr[i]=b;saveLocal(arr)}else{arr.push(b);saveLocal(arr)}
+ if(supabaseClient){
+   try{await supabaseClient.from("bookings").update({status:status}).eq("booking_code",code)}catch(e){console.warn(e)}
+ }
+ await loadBookings();
 }
-
-
-/* =========================================================
-   Search
-========================================================= */
-
-document.getElementById(
-    "search"
-).addEventListener(
-    "input",
-    function(){
-
-        const keyword =
-            this.value
-                .trim()
-                .toLowerCase();
-
-
-        if(!keyword){
-
-            renderBookings(
-                allBookings
-            );
-
-            return;
-
-        }
-
-
-        const filtered =
-            allBookings.filter(
-                booking => {
-
-                    return [
-
-                        booking.booking_code,
-
-                        booking.name,
-
-                        booking.phone,
-
-                        booking.accommodation,
-
-                        booking.room,
-
-                        booking.check_in,
-
-                        booking.check_out
-
-                    ]
-                    .filter(Boolean)
-                    .some(
-                        value =>
-                        String(value)
-                        .toLowerCase()
-                        .includes(keyword)
-                    );
-
-                }
-            );
-
-
-        renderBookings(
-            filtered
-        );
-
-    }
-);
-
-
-/* =========================================================
-   Date
-========================================================= */
-
-function formatDate(value){
-
-    if(!value){
-        return "-";
-    }
-
-    const date =
-        new Date(
-            value + "T00:00:00"
-        );
-
-    return date.toLocaleDateString(
-        "th-TH",
-        {
-            day:"2-digit",
-            month:"2-digit",
-            year:"numeric"
-        }
-    );
-
+async function deleteBooking(code){
+ if(!confirm("ต้องการลบรายการจองนี้ใช่หรือไม่?"))return;
+ let arr=getLocal().filter(b=>String(b.booking_code)!==String(code));saveLocal(arr);
+ if(supabaseClient){try{await supabaseClient.from("bookings").delete().eq("booking_code",code)}catch(e){console.warn(e)}}
+ await loadBookings();
 }
-
-
-/* =========================================================
-   ป้องกัน HTML
-========================================================= */
-
-function escapeHtml(value){
-
-    return String(value || "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-
-}
-
-
-/* =========================================================
-   START
-========================================================= */
-
+document.getElementById("search").addEventListener("input",render);
+function clearSearch(){document.getElementById("search").value="";render()}
 loadBookings();
-
 </script>
-
 </body>
 </html>
