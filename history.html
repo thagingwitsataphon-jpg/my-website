@@ -6,67 +6,800 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+      content="width=device-width, initial-scale=1.0">
 
-<title>ประวัติการจอง</title>
+<title>ประวัติการจอง | Mon Bridge Stay</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#f8f9fa;
+    color:#3e2723;
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        "Noto Sans Thai",
+        sans-serif;
+}
+
+.navbar{
+    height:70px;
+    background:white;
+    display:flex;
+    align-items:center;
+    padding:0 8%;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.logo{
+    font-size:25px;
+    font-weight:700;
+    color:#111;
+    text-decoration:none;
+}
+
+.container-history{
+    max-width:1200px;
+    margin:55px auto;
+    padding:0 20px;
+}
+
+.title{
+    font-size:36px;
+    font-weight:700;
+    margin-bottom:30px;
+}
+
+.search-card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 4px 18px rgba(0,0,0,.07);
+    margin-bottom:30px;
+}
+
+.search-row{
+    display:flex;
+    gap:12px;
+}
+
+.search-input{
+    flex:1;
+    min-height:55px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:12px 18px;
+    font-size:17px;
+}
+
+.search-button{
+    border:none;
+    background:#795548;
+    color:white;
+    border-radius:12px;
+    padding:0 25px;
+    font-size:17px;
+}
+
+.booking-card{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 4px 18px rgba(0,0,0,.07);
+}
+
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.booking-code{
+    font-size:21px;
+    font-weight:700;
+    color:#795548;
+}
+
+.status{
+    padding:8px 14px;
+    border-radius:30px;
+    font-weight:600;
+    font-size:14px;
+}
+
+.pending{
+    background:#fff1bd;
+    color:#765b00;
+}
+
+.confirmed{
+    background:#d9f4df;
+    color:#18743a;
+}
+
+.cancelled{
+    background:#f6d8d8;
+    color:#a33c3c;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:
+        repeat(2,1fr);
+    gap:15px;
+}
+
+.info-item{
+    padding:13px 0;
+    border-bottom:1px dashed #ddd;
+}
+
+.label{
+    color:#795548;
+    font-size:14px;
+}
+
+.value{
+    font-weight:600;
+    margin-top:4px;
+}
+
+.total{
+    margin-top:20px;
+    padding-top:20px;
+    border-top:2px solid #eee;
+    display:flex;
+    justify-content:space-between;
+    font-size:24px;
+    font-weight:700;
+    color:#795548;
+}
+
+.empty{
+    background:white;
+    border-radius:18px;
+    padding:60px 20px;
+    text-align:center;
+    color:#795548;
+    box-shadow:0 4px 18px rgba(0,0,0,.07);
+}
+
+.loading{
+    text-align:center;
+    padding:50px;
+}
+
+@media(max-width:700px){
+
+    .search-row{
+        flex-direction:column;
+    }
+
+    .search-button{
+        min-height:50px;
+    }
+
+    .info{
+        grid-template-columns:1fr;
+    }
+
+    .card-top{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .total{
+        flex-direction:column;
+        gap:5px;
+    }
+
+}
+
+</style>
 
 </head>
 
-<body class="bg-light">
+<body>
 
-<nav class="navbar bg-white shadow-sm">
 
-<div class="container">
+<nav class="navbar">
 
-<a class="navbar-brand fw-bold"
-href="index.html">
+    <a
+        href="index.html"
+        class="logo">
 
-🏡 Mon Bridge Stay
+        🏠 Mon Bridge Stay
 
-</a>
-
-</div>
+    </a>
 
 </nav>
 
 
-<div class="container mt-5">
 
-<h2 class="fw-bold mb-4">
-📖 ประวัติการจอง
-</h2>
+<div class="container-history">
 
-<div class="card shadow-sm border-0">
 
-<div class="card-body">
+    <h1 class="title">
+        📖 ประวัติการจอง
+    </h1>
 
-<h5>
-บ้านมอญริมน้ำ
-</h5>
 
-<p>
-เลขการจอง : MB20260810001
-</p>
+    <div class="search-card">
 
-<p>
-เข้าพัก : 15 สิงหาคม 2569
-</p>
+        <div class="mb-3">
 
-<p>
-จำนวน : 2 คน
-</p>
+            <strong>
+                ค้นหาประวัติการจองด้วยเบอร์โทรศัพท์
+            </strong>
 
-<span class="badge bg-success">
-ยืนยันการจอง
-</span>
+        </div>
+
+
+        <div class="search-row">
+
+            <input
+                type="tel"
+                id="phoneSearch"
+                class="search-input"
+                maxlength="10"
+                placeholder="กรอกเบอร์โทรศัพท์ 10 หลัก">
+
+            <button
+                class="search-button"
+                onclick="loadHistory()">
+
+                🔎 ค้นหา
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div id="result">
+
+        <div class="loading">
+            ⏳ กำลังโหลดประวัติการจอง...
+        </div>
+
+    </div>
+
 
 </div>
-</div>
 
-</div>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+    "ใส่_SUPABASE_URL_ของคุณ";
+
+const SUPABASE_ANON_KEY =
+    "ใส่_SUPABASE_ANON_KEY_ของคุณ";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
+
+
+/* =====================================================
+   START
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const savedPhone =
+            localStorage.getItem(
+                "userPhone"
+            )
+            ||
+            localStorage.getItem(
+                "memberPhone"
+            );
+
+
+        if(savedPhone){
+
+            document.getElementById(
+                "phoneSearch"
+            ).value =
+                savedPhone;
+
+
+            loadHistory();
+
+        }else{
+
+            document.getElementById(
+                "result"
+            ).innerHTML = `
+
+                <div class="empty">
+
+                    📖
+                    <br><br>
+
+                    กรุณากรอกเบอร์โทรศัพท์
+                    เพื่อดูประวัติการจอง
+
+                </div>
+
+            `;
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   LOAD HISTORY
+===================================================== */
+
+async function loadHistory(){
+
+    const phone =
+        document.getElementById(
+            "phoneSearch"
+        ).value.trim();
+
+
+    if(!/^[0-9]{10}$/.test(phone)){
+
+        document.getElementById(
+            "result"
+        ).innerHTML = `
+
+            <div class="empty">
+
+                ⚠️ กรุณากรอกเบอร์โทรศัพท์ 10 หลัก
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "userPhone",
+        phone
+    );
+
+    localStorage.setItem(
+        "memberPhone",
+        phone
+    );
+
+
+    document.getElementById(
+        "result"
+    ).innerHTML = `
+
+        <div class="loading">
+
+            ⏳ กำลังค้นหาประวัติ...
+
+        </div>
+
+    `;
+
+
+    try{
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+            .from("bookings")
+            .select("*")
+            .eq("phone",phone)
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
+
+
+        if(error){
+
+            throw error;
+
+        }
+
+
+        renderHistory(
+            data || []
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        document.getElementById(
+            "result"
+        ).innerHTML = `
+
+            <div class="empty">
+
+                ❌ ไม่สามารถโหลดข้อมูลได้
+
+                <br><br>
+
+                ${escapeHtml(
+                    error.message
+                )}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderHistory(bookings){
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    if(bookings.length === 0){
+
+        result.innerHTML = `
+
+            <div class="empty">
+
+                📭
+
+                <br><br>
+
+                ไม่พบประวัติการจอง
+                สำหรับเบอร์โทรศัพท์นี้
+
+                <br><br>
+
+                <a
+                    href="booking.html"
+                    style="
+                    color:#795548;
+                    font-weight:700;
+                    ">
+
+                    🏨 จองที่พัก
+
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    result.innerHTML =
+        bookings.map(
+            booking => `
+
+        <div class="booking-card">
+
+
+            <div class="card-top">
+
+                <div class="booking-code">
+
+                    ${escapeHtml(
+                        booking.booking_code
+                    )}
+
+                </div>
+
+
+                ${statusBadge(
+                    booking.status
+                )}
+
+            </div>
+
+
+
+            <div class="info">
+
+
+                <div class="info-item">
+
+                    <div class="label">
+                        🏠 ที่พัก
+                    </div>
+
+                    <div class="value">
+
+                        ${escapeHtml(
+                            booking.accommodation
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="label">
+                        🛏️ ประเภทห้อง
+                    </div>
+
+                    <div class="value">
+
+                        ${escapeHtml(
+                            booking.room_type
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="label">
+                        📅 เช็กอิน
+                    </div>
+
+                    <div class="value">
+
+                        ${formatDate(
+                            booking.check_in
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="label">
+                        📅 เช็กเอาต์
+                    </div>
+
+                    <div class="value">
+
+                        ${formatDate(
+                            booking.check_out
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="label">
+                        🌙 จำนวนคืน
+                    </div>
+
+                    <div class="value">
+
+                        ${booking.nights} คืน
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="label">
+                        👥 ผู้เข้าพัก
+                    </div>
+
+                    <div class="value">
+
+                        ${booking.guests} คน
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="label">
+                        💰 ราคาต่อคืน
+                    </div>
+
+                    <div class="value">
+
+                        ${Number(
+                            booking.price_per_night || 0
+                        ).toLocaleString()} บาท
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="label">
+                        👤 ผู้จอง
+                    </div>
+
+                    <div class="value">
+
+                        ${escapeHtml(
+                            booking.name
+                        )}
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="total">
+
+                <span>
+                    ราคารวม
+                </span>
+
+                <span>
+
+                    ${Number(
+                        booking.total_price || 0
+                    ).toLocaleString()} บาท
+
+                </span>
+
+            </div>
+
+
+        </div>
+
+    `
+        ).join("");
+
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function statusBadge(status){
+
+    if(status === "confirmed"){
+
+        return `
+            <span class="status confirmed">
+                🟢 ยืนยันการจองแล้ว
+            </span>
+        `;
+
+    }
+
+
+    if(status === "cancelled"){
+
+        return `
+            <span class="status cancelled">
+                🔴 ยกเลิกการจอง
+            </span>
+        `;
+
+    }
+
+
+    return `
+        <span class="status pending">
+            🟡 รอยืนยัน
+        </span>
+    `;
+
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+function formatDate(dateString){
+
+    if(!dateString){
+
+        return "-";
+
+    }
+
+
+    const date =
+        new Date(
+            dateString + "T00:00:00"
+        );
+
+
+    return date.toLocaleDateString(
+        "th-TH",
+        {
+            day:"2-digit",
+            month:"2-digit",
+            year:"numeric"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function escapeHtml(value){
+
+    if(
+        value === null ||
+        value === undefined
+    ){
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+</script>
 
 </body>
+
 </html>
